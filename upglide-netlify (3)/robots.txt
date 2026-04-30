@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://upglide.fr/sitemap.xml

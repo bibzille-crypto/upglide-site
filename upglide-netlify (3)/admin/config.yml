@@ -1,0 +1,161 @@
+# ─────────────────────────────────────────────────────
+# Decap CMS — Configuration Upglide
+# ─────────────────────────────────────────────────────
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Langue de l'interface
+locale: fr
+
+# Dossier pour les images uploadées
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# ─────────────────────────────────────────────────────
+# COLLECTIONS DE CONTENU
+# ─────────────────────────────────────────────────────
+
+collections:
+
+  # ── BLOG ──────────────────────────────────────────
+  - name: "blog"
+    label: "📝 Articles de blog"
+    label_singular: "Article"
+    files:
+      - label: "Tous les articles"
+        name: "posts"
+        file: "data/blog.json"
+        fields:
+          - label: "Articles"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.category}}"
+            minimize_collapsed: true
+            fields:
+              - label: "Titre"
+                name: "title"
+                widget: "string"
+                hint: "Titre affiché sur le blog et dans Google"
+
+              - label: "Slug (URL)"
+                name: "slug"
+                widget: "string"
+                hint: "Généré depuis le titre — lettres minuscules et tirets uniquement"
+                pattern: ['^[a-z0-9-]+$', "Lettres minuscules et tirets uniquement"]
+
+              - label: "Date"
+                name: "date"
+                widget: "datetime"
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
+                time_format: false
+                default: ""
+
+              - label: "Catégorie"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Marges", value: "Marges" }
+                  - { label: "Process", value: "Process" }
+                  - { label: "Délégation", value: "Délégation" }
+                  - { label: "Pilotage", value: "Pilotage" }
+                  - { label: "Marketplaces", value: "Marketplaces" }
+                  - { label: "Acquisition", value: "Acquisition" }
+                  - { label: "Outils", value: "Outils" }
+                  - { label: "Stratégie", value: "Stratégie" }
+
+              - label: "Temps de lecture (minutes)"
+                name: "readTime"
+                widget: "number"
+                default: 5
+                value_type: "int"
+                min: 1
+                max: 60
+
+              - label: "Extrait"
+                name: "excerpt"
+                widget: "text"
+                hint: "1–2 phrases affichées dans la liste du blog"
+
+              - label: "Contenu"
+                name: "content"
+                widget: "markdown"
+                hint: "Utilisez la barre d'outils pour mettre en forme"
+
+              - label: "Publié"
+                name: "published"
+                widget: "boolean"
+                default: true
+                hint: "Décocher pour sauvegarder en brouillon"
+
+  # ── PODCAST ───────────────────────────────────────
+  - name: "podcast"
+    label: "🎙️ Épisodes podcast"
+    label_singular: "Épisode"
+    files:
+      - label: "Tous les épisodes"
+        name: "episodes"
+        file: "data/podcast.json"
+        fields:
+          - label: "Épisodes"
+            name: "episodes"
+            widget: "list"
+            summary: "Ep. {{fields.number}} — {{fields.title}}"
+            minimize_collapsed: true
+            fields:
+              - label: "Numéro d'épisode"
+                name: "number"
+                widget: "number"
+                value_type: "int"
+                min: 1
+
+              - label: "Titre"
+                name: "title"
+                widget: "string"
+
+              - label: "Date"
+                name: "date"
+                widget: "datetime"
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
+                time_format: false
+                default: ""
+
+              - label: "Durée"
+                name: "duration"
+                widget: "string"
+                hint: "Ex : 28:45"
+                required: false
+
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+                hint: "Affiché sous le titre de l'épisode"
+
+              - label: "🎵 Lien Spotify"
+                name: "spotify"
+                widget: "string"
+                required: false
+
+              - label: "🎧 Lien Apple Podcasts"
+                name: "apple"
+                widget: "string"
+                required: false
+
+              - label: "▶️ Lien YouTube"
+                name: "youtube"
+                widget: "string"
+                required: false
+
+              - label: "📻 Lien Deezer"
+                name: "deezer"
+                widget: "string"
+                required: false
+
+              - label: "Publié"
+                name: "published"
+                widget: "boolean"
+                default: true
