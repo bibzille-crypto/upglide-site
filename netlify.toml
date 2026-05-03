@@ -41,13 +41,6 @@
   to   = "/admin/index.html"
   status = 200
 
-# Redirection www → apex (si non géré côté DNS)
-[[redirects]]
-  from = "https://www.upglide.fr/*"
-  to   = "https://upglide.fr/:splat"
-  status = 301
-  force = true
-
 # ── HEADERS ─────────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"
