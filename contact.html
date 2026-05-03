@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<style id="nav-styles">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Upglide</title>
+<meta name="description" content="Contactez Upglide pour un accompagnement e-commerce 1:1.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://upglide.fr/contact">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" content="Contact — Upglide">
+<meta property="og:description" content="Contactez Upglide pour un accompagnement e-commerce 1:1.">
+<meta property="og:url" content="https://upglide.fr/contact">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},
+  {"@type":"ListItem","position":2,"name":"Contact","item":"https://upglide.fr/contact"}
+]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+/* TOKENS */
 :root {
   --isa:   #F5F1E8;
   --alm:   #E8D4AA;
@@ -24,8 +50,31 @@
   --shlg: 0 20px 64px rgba(30,45,90,.18);
   --shg:  0 6px 24px rgba(201,160,82,.3);
   --t: .22s ease;
+
+  /* Legacy variable aliases */
+  --marine: #1A3050;
+  --marine-2: #2D4A6E;
+  --acier: #2C6A9A;
+  --sable: #C8A870;
+  --sable-2: #B8984A;
+  --blanc: #FFFFFF;
+  --border: #D0DCE8;
+  --fond: #F4F7FB;
+  --fond-2: #EBF0F8;
+  --fond-3: #E2EAF5;
+  --ciel: #B4C8E8;
+  --radius: 8px;
+  --shadow-sm: 0 2px 8px rgba(26,48,80,.08);
+  --shadow-md: 0 8px 32px rgba(26,48,80,.12);
+  --shadow-lg: 0 20px 64px rgba(26,48,80,.18);
+  --transition: .2s ease;
+  --txt-2: #4A6078;
+  --txt-3: #8090B0;
 }
+/* NAV */
+/* ── NAV ── */
 nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky; top:0; z-index:200; transition:box-shadow var(--t); }
+nav.scrolled { box-shadow:0 2px 24px rgba(30,45,90,.1); }
 .nav-i { display:flex; align-items:center; justify-content:space-between; padding:1.125rem clamp(1.5rem,5vw,4rem); gap:1rem; }
 .logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; color:var(--cad); letter-spacing:-.01em; font-style:italic; }
 .logo span { color:var(--lion); font-style:normal; }
@@ -34,38 +83,44 @@ nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky;
 .nav-a { display:flex; align-items:center; gap:4px; font-size:.875rem; font-weight:500; color:var(--txt2); padding:.5rem .875rem; transition:color var(--t); cursor:pointer; border:none; background:none; font-family:var(--fb); border-radius:6px; }
 .nav-a:hover { color:var(--cad); }
 .chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); }
-.chv { transform:rotate(180deg); }
+.nav-it:hover .chv { transform:rotate(180deg); }
 .nav-drop { display:none; position:absolute; top:calc(100% + 10px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:220px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
-.nav-drop { display:block; }
+.nav-it:hover .nav-drop { display:block; }
 .nd-lnk { display:block; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
+.nd-lnk:hover { background:var(--isa); color:var(--cad); }
 .nd-sec { padding:.5rem 1.25rem .25rem; font-size:.625rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
+.nd-sec:first-child { border-top:none; }
 .nav-cta { background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.8125rem; font-weight:700; padding:.65rem 1.5rem; border:none; cursor:pointer; transition:all var(--t); border-radius:100px; margin-left:.75rem; white-space:nowrap; }
 .nav-cta:hover { background:var(--cad2); transform:translateY(-1px); }
 .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.5rem; }
 .burger span { display:block; width:22px; height:2px; background:var(--cad); transition:transform .3s,opacity .3s; border-radius:2px; }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 .mob-nav { display:none; position:fixed; inset:0; background:var(--isa); z-index:300; padding:5rem 2rem 2rem; flex-direction:column; }
+.mob-nav.open { display:flex; }
 .mob-it { border-bottom:1px solid var(--bdr); }
 .mob-a { display:block; padding:1rem 0; font-size:1rem; font-weight:600; color:var(--cad); }
 .mob-cta { margin-top:2rem; background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.9375rem; font-weight:700; padding:1rem; border:none; border-radius:100px; cursor:pointer; width:100%; text-align:center; }
-.nav-m { display:none; }
-.burger { display:flex; }
-.nav-i { padding:.875rem 1.25rem; }
-</style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Upglide | Accompagnement e-commerce &amp; marketplaces</title>
-<meta name="description" content="Contactez Caroline de Upglide pour un audit e-commerce, un accompagnement ou le programme 90 jours. Réponse sous 48h. Appel découverte gratuit.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://upglide.fr/contact">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Upglide">
-<meta property="og:title" content="Contact — Upglide">
-<meta property="og:description" content="Contactez Caroline pour un audit e-commerce, un accompagnement ou le programme 90 jours. Réponse sous 48h.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--fond:#F6F8FB;--fond-2:#EEF2F7;--fond-3:#E4EAF2;--marine:#1A3050;--marine-2:#2A4A6A;--acier:#2C6A9A;--ciel:#B8C8D8;--sable:#C8A870;--sable-2:#DFC090;--txt:#141E2C;--txt-2:#4A6078;--txt-3:#8AA0B8;--border:#D0DCE8;--blanc:#FDFEFF;--ft:'Libre Baskerville',Georgia,serif;--fb:'Inter',system-ui,sans-serif;--shadow-md:0 8px 24px rgba(26,48,80,0.10);--radius:4px;--transition:0.2s ease;}
+
+
+/* FOOTER */
+/* ── FOOTER ── */
+footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
+.foot { display:flex; flex-wrap:wrap; align-items:flex-start; gap:2rem; justify-content:space-between; }
+.foot-logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; font-style:italic; color:var(--wh); }
+.foot-logo span { color:var(--lion); font-style:normal; }
+.foot-links { display:flex; gap:2rem; flex-wrap:wrap; }
+.foot-link { font-size:.8125rem; font-weight:500; color:rgba(255,255,255,.3); transition:color var(--t); }
+.foot-link:hover { color:var(--wh); }
+.foot-copy { font-size:.6875rem; color:rgba(255,255,255,.12); width:100%; text-align:right; margin-top:.25rem; }
+
+
+/* REVEAL FIX — content always visible */
+.reveal{opacity:1!important;transform:none!important;} .rv{opacity:1!important;transform:none!important;}
+/* PAGE */
+
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
@@ -78,46 +133,6 @@ hr.divider{border:none;border-top:1px solid var(--border);}
 .s-label::after{content:'';flex:0 0 36px;height:1px;background:var(--acier);}
 
 /* NAV (identique aux autres pages) */
-nav{background:var(--blanc);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;transition:box-shadow var(--transition);}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem;}
-.nav-logo{font-family:var(--ft);font-size:1.25rem;font-weight:700;color:var(--marine);flex-shrink:0;}
-.nav-logo span{color:var(--sable);}
-.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
-.nav-item{position:relative;}
-.nav-link{display:flex;align-items:center;gap:4px;font-size:0.8125rem;font-weight:400;color:var(--txt-2);letter-spacing:0.03em;padding:0.5rem 0.875rem;transition:color var(--transition);cursor:pointer;border:none;background:none;font-family:var(--fb);}
-.nav-link:hover,.nav-link.active{color:var(--marine);}
-.nav-link.active{font-weight:500;}
-.nav-link .chevron{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform var(--transition);}
-.nav-item:hover .chevron{transform:rotate(180deg);}
-.nav-dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;min-width:210px;box-shadow:var(--shadow-md);z-index:300;}
-.nav-item:hover .nav-dropdown{display:block;}
-.nav-dropdown-link{display:block;padding:0.625rem 1.25rem;font-size:0.8125rem;color:var(--txt-2);transition:background var(--transition),color var(--transition);}
-.nav-dropdown-link:hover{background:var(--fond);color:var(--marine);}
-.nav-dropdown-section{padding:0.5rem 1.25rem 0.25rem;font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt-3);border-top:1px solid var(--border);margin-top:0.25rem;}
-.nav-dropdown-section:first-child{border-top:none;margin-top:0;}
-.nav-mega{display:none;position:absolute;top:calc(100% + 1px);left:-80px;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;width:480px;padding:1.5rem;box-shadow:var(--shadow-md);z-index:300;}
-.nav-item:hover .nav-mega{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 2rem;}
-.nav-mega-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--acier);margin-bottom:0.5rem;padding-bottom:0.375rem;border-bottom:1px solid var(--border);}
-.nav-mega-link{display:block;padding:0.375rem 0;font-size:0.8125rem;color:var(--txt-2);transition:color var(--transition);}
-.nav-mega-link:hover{color:var(--marine);}
-.nav-cta{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;padding:0.625rem 1.375rem;border:none;cursor:pointer;transition:background var(--transition);border-radius:var(--radius);white-space:nowrap;margin-left:0.5rem;}
-.nav-cta:hover{background:var(--marine-2);}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0.5rem;}
-.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--marine);transition:transform 0.3s ease,opacity 0.3s ease;transform-origin:center;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;inset:0;background:var(--blanc);z-index:300;padding:5rem 2rem 2rem;overflow-y:auto;flex-direction:column;}
-.nav-mobile.open{display:flex;}
-.nav-mobile-item{border-bottom:1px solid var(--border);}
-.nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;font-size:1rem;color:var(--txt);cursor:pointer;background:none;border:none;font-family:var(--fb);width:100%;text-align:left;}
-.nav-mobile-link .chevron{width:12px;height:12px;stroke:var(--txt-3);fill:none;stroke-width:2;transition:transform 0.2s;}
-.nav-mobile-link.expanded .chevron{transform:rotate(180deg);}
-.nav-mobile-sub{display:none;padding:0.5rem 0 1rem 1rem;flex-direction:column;}
-.nav-mobile-sub.open{display:flex;}
-.nav-mobile-sub a{font-size:0.875rem;color:var(--txt-2);padding:0.5rem 0;display:block;}
-.nav-mobile-sub-label{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt-3);padding:0.75rem 0 0.25rem;font-weight:500;}
-.nav-mobile-cta{margin-top:2rem;background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.9375rem;font-weight:500;padding:1rem;border:none;border-radius:var(--radius);cursor:pointer;width:100%;text-align:center;}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;}
@@ -156,33 +171,25 @@ nav{background:var(--blanc);border-bottom:1px solid var(--border);position:stick
 footer{background:var(--marine);padding:2.5rem 0;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .footer-logo{font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--blanc);}
-.footer-logo span{color:var(--sable);}
 .footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
 .footer-link{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ciel);transition:color var(--transition);}
 .footer-link:hover{color:var(--blanc);}
 .footer-copy{font-size:0.6875rem;color:rgba(184,200,216,0.25);width:100%;text-align:right;margin-top:0.25rem;}
 
-.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:none;}
 .reveal-d1{transition-delay:0.07s;}.reveal-d2{transition-delay:0.14s;}
 
 @media(max-width:768px){
-  .nav-menu{display:none;}.nav-hamburger{display:flex;}
   .contact-grid,.form-row{grid-template-columns:1fr;}
   .container{padding:0 1.25rem;}.section{padding:3.5rem 0;}
   .footer-copy{text-align:left;}.footer-links{gap:1rem;}
 }
+
+
+/* Layout utilities */
+.wrap { max-width:1040px; margin:0 auto; padding:0 2rem; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://upglide.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://upglide.fr/contact" }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -203,7 +210,7 @@ footer{background:var(--marine);padding:2.5rem 0;}
       </li>
       <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
     </ul>
-    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
+    <button class="nav-cta" onclick="goTo('lm')">Guide gratuit</button>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -213,7 +220,7 @@ footer{background:var(--marine);padding:2.5rem 0;}
     <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
     <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
     <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
-    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
+    <button class="mob-cta" onclick="goTo('lm');closeMob()">Télécharger le guide gratuit →</button>
   </div>
 </nav>
 
@@ -227,9 +234,7 @@ footer{background:var(--marine);padding:2.5rem 0;}
           <h1 class="contact-form-title reveal">Parlons de<br>ton e-commerce.</h1>
           <p class="contact-form-sub reveal">Remplis le formulaire et je te répondrai sous 48h. Si tu souhaites un accompagnement, indique le format qui t'intéresse — on planifiera un appel découverte gratuit.</p>
 
-          <form id="contact-form" onsubmit="handleContact(event)" novalidate class="reveal" name="contact" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="contact">
-            <input type="text" name="bot-field" style="display:none">
+          <form id="contact-form" onsubmit="handleContact(event)" novalidate class="reveal">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="c-prenom">Prénom *</label>
@@ -325,45 +330,44 @@ footer{background:var(--marine);padding:2.5rem 0;}
   </div>
 </div>
 
+<div style="background:var(--cad);padding:3.5rem 0;text-align:center;">
+  <div style="max-width:1040px;margin:0 auto;padding:0 2rem;">
+    <p style="font-size:.5625rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,160,82,.6);margin-bottom:.875rem;">Accompagnement 1:1</p>
+    <p style="font-family:var(--ft);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:600;color:#fff;line-height:1.1;margin-bottom:1rem;">Votre boutique mérite<br><em style="font-style:italic;color:var(--lion);">un regard extérieur.</em></p>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.45);margin-bottom:2rem;">30 minutes. Gratuit. On voit si on peut travailler ensemble.</p>
+    <a href="accompagnements.html" style="display:inline-block;background:var(--lion);color:var(--cad);font-family:var(--fb);font-size:.9375rem;font-weight:700;padding:1rem 2.5rem;border-radius:100px;text-decoration:none;">Réserver l'appel découverte →</a>
+  </div>
+</div>
 <footer>
-  <div class="container">
-    <div class="footer-inner">
-      <span class="footer-logo">Upglide<span> ·</span></span>
-      <div class="footer-links">
-        <a class="footer-link" href="podcast.html">Podcast</a>
-        <a class="footer-link" href="blog.html">Blog</a>
-        <a class="footer-link" href="ressources.html">Ressources</a>
-        <a class="footer-link" href="a-propos.html">À propos</a>
-        <a class="footer-link" href="contact.html">Contact</a>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-logo">Upglide<span> ·</span></span>
+      <div class="foot-links">
+        <a class="foot-link" href="podcast.html">Podcast</a>
+        <a class="foot-link" href="blog.html">Blog</a>
+        <a class="foot-link" href="ressources.html">Ressources</a>
+        <a class="foot-link" href="a-propos.html">À propos</a>
+        <a class="foot-link" href="contact.html">Contact</a>
       </div>
-      <p class="footer-copy">© 2026 Upglide — Tous droits réservés</p>
+      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
     </div>
   </div>
 </footer>
 
+
+<script src="content-loader.js"></script>
 <script>
-const hamburger=document.getElementById('hamburger');
-const navMobile=document.getElementById('nav-mobile');
-hamburger.addEventListener('click',()=>{const o=navMobile.classList.toggle('open');hamburger.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){navMobile.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}});
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
+if(burger&&mobnav){burger.addEventListener('click',function(){var o=mobnav.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});}
+function closeMob(){if(mobnav)mobnav.classList.remove('open');if(burger)burger.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMob();});
+if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
+function goTo(id){var el=document.getElementById(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
+document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none';});
+</script>
+<script>
+/* Page functions */
 function toggleMobileSub(btn){const s=btn.nextElementSibling;const o=s.classList.toggle('open');btn.classList.toggle('expanded',o);}
-const obs=new IntersectionObserver((entries)=>entries.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12});
-document.querySelectorAll('.reveal').forEach((el)=>obs.observe(el));
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>10?'0 2px 12px rgba(26,48,80,0.08)':'';},{passive:true});
-
-/* Pré-sélection depuis URL */
-window.addEventListener('DOMContentLoaded',()=>{
-  const params=new URLSearchParams(window.location.search);
-  const offre=params.get('offre');
-  if(offre){const sel=document.getElementById('c-offre');if(sel)sel.value=offre;}
-});
-
-function selectOffre(val){
-  const sel=document.getElementById('c-offre');
-  if(sel){sel.value=val;sel.scrollIntoView({behavior:'smooth',block:'center'});sel.focus();}
-}
-
 function handleContact(e){
   e.preventDefault();
   const prenom=document.getElementById('c-prenom');
@@ -378,29 +382,6 @@ function handleContact(e){
   document.getElementById('contact-form').style.display='none';
   document.getElementById('form-success').style.display='block';
 }
-</script>
-<script src="content-loader.js"></script>
-<script id="nav-script">
-const nav = document.getElementById('nav');
-const burger = document.getElementById('burger');
-const mobnav = document.getElementById('mobnav');
-burger.addEventListener('click', () => {
-  const o = mobnav.classList.toggle('open');
-  burger.classList.toggle('open', o);
-  document.body.style.overflow = o ? 'hidden' : '';
-});
-function closeMob() {
-  mobnav.classList.remove('open');
-  burger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeMob(); });
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
-}, {passive:true});
-function goTo(id) {
-  const el = document.getElementById(id);
-  if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({top:y, behavior:'smooth'}
 </script>
 </body>
 </html>

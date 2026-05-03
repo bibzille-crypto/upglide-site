@@ -502,6 +502,20 @@ html, body { overflow-x:hidden; }
 img { height:auto; }
 
 </style>
+<!-- Netlify Identity — gère les tokens d'invitation et de récupération -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  // Redirige vers /admin/ après connexion ou inscription
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function(user) {
+      if (!user) {
+        window.netlifyIdentity.on("login", function() {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </head>
 <body>
 

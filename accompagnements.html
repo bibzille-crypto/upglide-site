@@ -149,7 +149,7 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
   .offer-feat { padding:2rem 1.5rem; }
 }
 /* ═══ REVEAL ═══ */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+.rv{opacity:1;transform:none;transition:opacity .5s,transform .5s;}
 .rv.visible{opacity:1;transform:none;}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
 /* ═══ PAGE CSS ═══ */
@@ -811,18 +811,7 @@ footer{background:var(--cad2);border-top:1px solid rgba(255,255,255,.05);padding
   <button class="sticky-mobile-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'});document.getElementById('sticky-mobile').style.display='none';">Réserver →</button>
 </div>
 
-<script>
-const navEl=document.getElementById('nav');
-window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
-const hamburger=document.getElementById('burger');
-const navMobile=document.getElementById('mobnav');
-hamburger.addEventListener('click',()=>{const o=navMobile.classList.toggle('open');hamburger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){navMobile.classList.remove('open');hamburger.classList.remove('open');document.body.style.overflow='';}});
-const obs=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-function toggleFaq(btn){btn.closest('.fi-item').classList.toggle('open');}
-function handleSubmit(e){e.preventDefault();document.getElementById('contact-form').style.display='none';document.getElementById('form-success').style.display='block';}
-</script>
+
 <script>
 const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
 if(burger&&mobnav){burger.addEventListener('click',()=>{const o=mobnav.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});}
@@ -830,7 +819,7 @@ function closeMob(){mobnav&&mobnav.classList.remove('open');burger&&burger.class
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
 if(nav)window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
 function goTo(id){const el=document.getElementById(id);if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}}
-const rvO=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target);}}),{threshold:.08});
+const rvO=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible'); e.target.style.opacity='1';o.unobserve(e.target);}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>rvO.observe(el));
 </script>
 </body>
