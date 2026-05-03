@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<style id="nav-styles">
+:root {
+  --isa:   #F5F1E8;
+  --alm:   #E8D4AA;
+  --lion:  #C9A052;
+  --lion2: #A8802E;
+  --pow:   #B4C8E8;
+  --dusk:  #4E6898;
+  --cad:   #1E2D5A;
+  --cad2:  #131D3C;
+  --wh:    #FFFFFF;
+  --txt:   #1E2D5A;
+  --txt2:  #4A5878;
+  --txt3:  #8090B0;
+  --bdr:   rgba(30,45,90,.09);
+  --ft: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --r: 12px; --rlg: 20px; --rxl: 32px;
+  --shsm: 0 2px 12px rgba(30,45,90,.08);
+  --shmd: 0 8px 32px rgba(30,45,90,.12);
+  --shlg: 0 20px 64px rgba(30,45,90,.18);
+  --shg:  0 6px 24px rgba(201,160,82,.3);
+  --t: .22s ease;
+}
+nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky; top:0; z-index:200; transition:box-shadow var(--t); }
+.nav-i { display:flex; align-items:center; justify-content:space-between; padding:1.125rem clamp(1.5rem,5vw,4rem); gap:1rem; }
+.logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; color:var(--cad); letter-spacing:-.01em; font-style:italic; }
+.logo span { color:var(--lion); font-style:normal; }
+.nav-m { display:flex; align-items:center; list-style:none; }
+.nav-it { position:relative; }
+.nav-a { display:flex; align-items:center; gap:4px; font-size:.875rem; font-weight:500; color:var(--txt2); padding:.5rem .875rem; transition:color var(--t); cursor:pointer; border:none; background:none; font-family:var(--fb); border-radius:6px; }
+.nav-a:hover { color:var(--cad); }
+.chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); }
+.chv { transform:rotate(180deg); }
+.nav-drop { display:none; position:absolute; top:calc(100% + 10px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:220px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
+.nav-drop { display:block; }
+.nd-lnk { display:block; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
+.nd-sec { padding:.5rem 1.25rem .25rem; font-size:.625rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
+.nav-cta { background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.8125rem; font-weight:700; padding:.65rem 1.5rem; border:none; cursor:pointer; transition:all var(--t); border-radius:100px; margin-left:.75rem; white-space:nowrap; }
+.nav-cta:hover { background:var(--cad2); transform:translateY(-1px); }
+.burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.5rem; }
+.burger span { display:block; width:22px; height:2px; background:var(--cad); transition:transform .3s,opacity .3s; border-radius:2px; }
+.mob-nav { display:none; position:fixed; inset:0; background:var(--isa); z-index:300; padding:5rem 2rem 2rem; flex-direction:column; }
+.mob-it { border-bottom:1px solid var(--bdr); }
+.mob-a { display:block; padding:1rem 0; font-size:1rem; font-weight:600; color:var(--cad); }
+.mob-cta { margin-top:2rem; background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.9375rem; font-weight:700; padding:1rem; border:none; border-radius:100px; cursor:pointer; width:100%; text-align:center; }
+.nav-m { display:none; }
+.burger { display:flex; }
+.nav-i { padding:.875rem 1.25rem; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog e-commerce — Upglide | Guides terrain, marges, marketplaces, process</title>
+<meta name="description" content="Articles et guides terrain sur l'e-commerce : marges, process, délégation, automatisation, marketplaces. Par Caroline de Upglide. Actionnable dès la lecture.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://upglide.fr/blog">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" content="Blog Upglide — Guides e-commerce terrain">
+<meta property="og:description" content="Articles concrets sur l'e-commerce : marges, process, délégation, marketplaces. Actionnable dès la lecture.">
+<meta property="og:url" content="https://upglide.fr/blog">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog Upglide",
+  "description": "Articles et guides terrain sur l'e-commerce : marges, process, délégation, automatisation, marketplaces.",
+  "author": { "@type": "Person", "name": "Caroline" },
+  "inLanguage": "fr-FR",
+  "url": "https://upglide.fr/blog"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--fond:#F6F8FB;--fond-2:#EEF2F7;--fond-3:#E4EAF2;--marine:#1A3050;--marine-2:#2A4A6A;--acier:#2C6A9A;--ciel:#B8C8D8;--sable:#C8A870;--sable-2:#DFC090;--txt:#141E2C;--txt-2:#4A6078;--txt-3:#8AA0B8;--border:#D0DCE8;--blanc:#FDFEFF;--ft:'Libre Baskerville',Georgia,serif;--fb:'Inter',system-ui,sans-serif;--shadow-sm:0 2px 8px rgba(26,48,80,0.06);--shadow-md:0 8px 24px rgba(26,48,80,0.10);--radius:4px;--transition:0.2s ease;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:920px;margin:0 auto;padding:0 2rem;}
+.section{padding:5rem 0;}
+.section--alt{background:var(--blanc);}
+hr.divider{border:none;border-top:1px solid var(--border);}
+.s-label{font-size:0.6875rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--acier);margin-bottom:0.875rem;display:flex;align-items:center;gap:0.75rem;font-weight:500;}
+.s-label::after{content:'';flex:0 0 36px;height:1px;background:var(--acier);}
+.s-h2{font-family:var(--ft);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;color:var(--marine);margin-bottom:0.875rem;}
+.s-h2 em{font-style:italic;color:var(--acier);}
+
+/* NAV */
+nav{background:var(--blanc);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;transition:box-shadow var(--transition);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem;}
+.nav-logo{font-family:var(--ft);font-size:1.25rem;font-weight:700;color:var(--marine);flex-shrink:0;}
+.nav-logo span{color:var(--sable);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;gap:4px;font-size:0.8125rem;font-weight:400;color:var(--txt-2);letter-spacing:0.03em;padding:0.5rem 0.875rem;transition:color var(--transition);cursor:pointer;border:none;background:none;font-family:var(--fb);}
+.nav-link:hover,.nav-link.active{color:var(--marine);}
+.nav-link.active{font-weight:500;}
+.nav-link .chevron{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform var(--transition);}
+.nav-item:hover .chevron{transform:rotate(180deg);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;min-width:210px;box-shadow:var(--shadow-md);z-index:300;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown-link{display:block;padding:0.625rem 1.25rem;font-size:0.8125rem;color:var(--txt-2);transition:background var(--transition),color var(--transition);}
+.nav-dropdown-link:hover{background:var(--fond);color:var(--marine);}
+.nav-dropdown-section{padding:0.5rem 1.25rem 0.25rem;font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt-3);border-top:1px solid var(--border);margin-top:0.25rem;}
+.nav-dropdown-section:first-child{border-top:none;margin-top:0;}
+.nav-mega{display:none;position:absolute;top:calc(100% + 1px);left:-80px;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;width:480px;padding:1.5rem;box-shadow:var(--shadow-md);z-index:300;}
+.nav-item:hover .nav-mega{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 2rem;}
+.nav-mega-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--acier);margin-bottom:0.5rem;padding-bottom:0.375rem;border-bottom:1px solid var(--border);}
+.nav-mega-link{display:block;padding:0.375rem 0;font-size:0.8125rem;color:var(--txt-2);transition:color var(--transition);}
+.nav-mega-link:hover{color:var(--marine);}
+.nav-cta{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;padding:0.625rem 1.375rem;border:none;cursor:pointer;transition:background var(--transition);border-radius:var(--radius);white-space:nowrap;margin-left:0.5rem;}
+.nav-cta:hover{background:var(--marine-2);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0.5rem;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--marine);transition:transform 0.3s ease,opacity 0.3s ease;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.nav-mobile{display:none;position:fixed;inset:0;background:var(--blanc);z-index:300;padding:5rem 2rem 2rem;overflow-y:auto;flex-direction:column;}
+.nav-mobile.open{display:flex;}
+.nav-mobile-item{border-bottom:1px solid var(--border);}
+.nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;font-size:1rem;color:var(--txt);cursor:pointer;background:none;border:none;font-family:var(--fb);width:100%;text-align:left;}
+.nav-mobile-link .chevron{width:12px;height:12px;stroke:var(--txt-3);fill:none;stroke-width:2;transition:transform 0.2s;}
+.nav-mobile-link.expanded .chevron{transform:rotate(180deg);}
+.nav-mobile-sub{display:none;padding:0.5rem 0 1rem 1rem;flex-direction:column;}
+.nav-mobile-sub.open{display:flex;}
+.nav-mobile-sub a{font-size:0.875rem;color:var(--txt-2);padding:0.5rem 0;display:block;}
+.nav-mobile-sub-label{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt-3);padding:0.75rem 0 0.25rem;font-weight:500;}
+.nav-mobile-cta{margin-top:2rem;background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.9375rem;font-weight:500;padding:1rem;border:none;border-radius:var(--radius);cursor:pointer;width:100%;text-align:center;}
+
+/* BLOG */
+.page-hero{padding:4rem 0 3rem;}
+.page-eyebrow{font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--acier);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+.page-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--acier);}
+.page-h1{font-family:var(--ft);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;color:var(--marine);margin-bottom:1rem;}
+.page-h1 em{font-style:italic;color:var(--acier);}
+.page-sub{font-size:1rem;color:var(--txt-2);line-height:1.8;font-weight:300;max-width:520px;}
+
+.filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.filter-btn{background:var(--blanc);border:1px solid var(--border);border-radius:50px;padding:0.375rem 1rem;font-size:0.8125rem;color:var(--txt-2);cursor:pointer;transition:background var(--transition),border-color var(--transition),color var(--transition);}
+.filter-btn:hover,.filter-btn.active{background:var(--marine);border-color:var(--marine);color:var(--blanc);}
+
+/* ARTICLE VEDETTE */
+.article-featured{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:1fr 320px;margin-bottom:2.5rem;transition:box-shadow var(--transition),transform var(--transition);cursor:pointer;}
+.article-featured:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.article-featured-img{background:linear-gradient(135deg,var(--marine) 0%,var(--acier) 100%);display:flex;align-items:center;justify-content:center;min-height:280px;}
+.article-featured-img-inner{font-family:var(--ft);font-size:4rem;color:rgba(255,255,255,0.15);user-select:none;}
+.article-featured-body{padding:2.5rem;}
+.art-badge{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--acier);background:var(--fond-2);border:1px solid var(--border);border-radius:50px;padding:0.2rem 0.625rem;display:inline-block;margin-bottom:0.875rem;}
+.art-featured-badge{background:rgba(200,168,112,0.1);border-color:rgba(200,168,112,0.3);color:var(--sable);}
+.art-title{font-family:var(--ft);font-size:1.375rem;font-weight:700;color:var(--marine);margin-bottom:0.625rem;line-height:1.3;}
+.art-desc{font-size:0.875rem;color:var(--txt-2);line-height:1.7;font-weight:300;margin-bottom:1.25rem;}
+.art-meta{display:flex;gap:1rem;align-items:center;font-size:0.75rem;color:var(--txt-3);font-weight:300;}
+.art-read{color:var(--acier);font-weight:500;font-size:0.8125rem;display:flex;align-items:center;gap:0.375rem;}
+.art-read::after{content:'→';}
+
+/* GRILLE ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.article-card{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow var(--transition),transform var(--transition);cursor:pointer;}
+.article-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.article-card-img{height:140px;background:linear-gradient(135deg,var(--fond-2) 0%,var(--fond-3) 100%);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--ciel);}
+.article-card-body{padding:1.25rem;}
+.article-card .art-title{font-size:0.9375rem;margin-bottom:0.5rem;}
+.article-card .art-desc{font-size:0.8125rem;margin-bottom:0.875rem;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;}
+.article-card .art-meta{font-size:0.6875rem;}
+
+/* NL INLINE */
+.nl-inline{background:var(--fond-2);border:1px solid var(--border);border-left:3px solid var(--sable);border-radius:var(--radius);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;margin:2.5rem 0;}
+.nl-inline-text h3{font-family:var(--ft);font-size:1rem;font-weight:700;color:var(--marine);margin-bottom:0.25rem;}
+.nl-inline-text p{font-size:0.875rem;color:var(--txt-2);font-weight:300;}
+.nl-inline-form{display:flex;gap:0.75rem;flex-shrink:0;}
+.nl-inline-input{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);padding:0.75rem 1rem;font-family:var(--fb);font-size:0.875rem;color:var(--txt);outline:none;width:220px;transition:border-color var(--transition);}
+.nl-inline-input:focus{border-color:var(--acier);}
+.nl-inline-btn{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.75rem 1.25rem;border:none;border-radius:var(--radius);cursor:pointer;white-space:nowrap;transition:background var(--transition);}
+.nl-inline-btn:hover{background:var(--marine-2);}
+
+/* FOOTER */
+footer{background:var(--marine);padding:2.5rem 0;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--blanc);}
+.footer-logo span{color:var(--sable);}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-link{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ciel);transition:color var(--transition);}
+.footer-link:hover{color:var(--blanc);}
+.footer-copy{font-size:0.6875rem;color:rgba(184,200,216,0.25);width:100%;text-align:right;margin-top:0.25rem;}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:0.07s;}.reveal-d2{transition-delay:0.14s;}.reveal-d3{transition-delay:0.22s;}
+
+@media(max-width:768px){
+  .nav-menu{display:none;}.nav-hamburger{display:flex;}
+  .article-featured{grid-template-columns:1fr;}
+  .article-featured-img{min-height:160px;}
+  .articles-grid{grid-template-columns:1fr;}
+  .nl-inline{grid-template-columns:1fr;}.nl-inline-form{flex-direction:column;}.nl-inline-input{width:100%;}
+  .container{padding:0 1.25rem;}.section{padding:3.5rem 0;}
+  .footer-copy{text-align:left;}.footer-links{gap:1rem;}
+}
+@media(min-width:769px) and (max-width:1024px){.articles-grid{grid-template-columns:1fr 1fr;}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://upglide.fr/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog </head> guides terrain", "item": "https://upglide.fr/blog" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-i">
+    <a class="logo" href="index.html">Upglide<span> ·</span></a>
+    <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
+      <li class="nav-it">
+        <button class="nav-a">Ressources<svg class="chv" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="nav-drop">
+          <div class="nd-sec">Contenu gratuit</div>
+          <a class="nd-lnk" href="blog.html">Blog &amp; guides terrain</a>
+          <a class="nd-lnk" href="podcast.html">Podcast</a>
+          <div class="nd-sec">Outils</div>
+          <a class="nd-lnk" href="ressources.html">Templates &amp; frameworks</a>
+        </div>
+      </li>
+      <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
+    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
+    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
+    <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
+    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="section--alt">
+  <div class="container">
+    <div class="page-hero">
+      <p class="page-eyebrow">Blog &amp; guides terrain</p>
+      <h1 class="page-h1">L'e-commerce expliqué<br>par <em>quelqu'un qui le fait.</em></h1>
+      <p class="page-sub">Articles, analyses, décryptages. Le contenu qui manque dans le milieu e-commerce. Actionnable dès la lecture.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ARTICLES -->
+<div class="section--alt">
+  <div class="container">
+    <section class="section">
+
+      <div class="filters reveal">
+        <button class="filter-btn active" onclick="filterArt(this,'all')">Tous</button>
+        <button class="filter-btn" onclick="filterArt(this,'marges')">Marges</button>
+        <button class="filter-btn" onclick="filterArt(this,'process')">Process</button>
+        <button class="filter-btn" onclick="filterArt(this,'marketplace')">Marketplaces</button>
+        <button class="filter-btn" onclick="filterArt(this,'delegation')">Délégation</button>
+        <button class="filter-btn" onclick="filterArt(this,'automation')">Automatisation</button>
+      </div>
+
+      <!-- ARTICLE VEDETTE -->
+      <div class="article-featured reveal" data-category="marges">
+        <div class="article-featured-img"><span class="article-featured-img-inner">€</span></div>
+        <div class="article-featured-body">
+          <span class="art-badge art-featured-badge">★ À lire en premier</span>
+          <h2 class="art-title">Le guide complet pour calculer ses marges e-commerce (et ne plus se tromper)</h2>
+          <p class="art-desc">Coût d'achat, frais de port, retours, commissions marketplace, frais de paiement, coûts opérationnels… On décortique chaque ligne et on te donne la formule définitive.</p>
+          <div class="art-meta">
+            <span>Marges</span>
+            <span>·</span>
+            <span>12 min de lecture</span>
+            <span>·</span>
+            <span>Mars 2026</span>
+          </div>
+          <br>
+          <span class="art-read">Lire l'article</span>
+        </div>
+      </div>
+
+      <!-- GRILLE -->
+      <div class="articles-grid">
+        <div class="article-card reveal reveal-d1" data-category="process">
+          <div class="article-card-img">📋</div>
+          <div class="article-card-body">
+            <span class="art-badge">Process</span>
+            <h3 class="art-title">Comment créer ses SOP e-commerce en une journée</h3>
+            <p class="art-desc">La méthode pas à pas pour documenter tous tes process, de la réception commande à la gestion SAV, sans passer des semaines dessus.</p>
+            <div class="art-meta"><span>8 min</span><span>·</span><span>Fév. 2026</span></div>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d2" data-category="marketplace">
+          <div class="article-card-img">🏪</div>
+          <div class="article-card-body">
+            <span class="art-badge">Marketplace</span>
+            <h3 class="art-title">Amazon vs Cdiscount vs Fnac : comparatif complet 2026</h3>
+            <p class="art-desc">Commissions, audience, algorithmes, politique retours — tout ce qu'il faut savoir pour choisir où vendre en priorité.</p>
+            <div class="art-meta"><span>10 min</span><span>·</span><span>Fév. 2026</span></div>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d3" data-category="delegation">
+          <div class="article-card-img">👥</div>
+          <div class="article-card-body">
+            <span class="art-badge">Délégation</span>
+            <h3 class="art-title">Recruter son premier assistant e-commerce : le guide complet</h3>
+            <p class="art-desc">Fiche de poste, où trouver le bon profil, comment l'onboarder en 2 semaines, les erreurs à éviter absolument.</p>
+            <div class="art-meta"><span>9 min</span><span>·</span><span>Jan. 2026</span></div>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d1" data-category="automation">
+          <div class="article-card-img">⚡</div>
+          <div class="article-card-body">
+            <span class="art-badge">Automatisation</span>
+            <h3 class="art-title">5 automatisations Make pour e-commerçants (sans coder)</h3>
+            <p class="art-desc">Synchro stocks, alertes rupture, relances panier, rapports hebdo — 5 workflows prêts à l'emploi pour récupérer 4h par semaine.</p>
+            <div class="art-meta"><span>7 min</span><span>·</span><span>Jan. 2026</span></div>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d2" data-category="marges">
+          <div class="article-card-img">📊</div>
+          <div class="article-card-body">
+            <span class="art-badge">Marges</span>
+            <h3 class="art-title">Les 5 KPIs e-commerce à suivre chaque semaine (et rien d'autre)</h3>
+            <p class="art-desc">Marge brute, taux de retour, coût d'acquisition, panier moyen, CLV — pourquoi ces 5 là, et comment les tracker en 30 minutes.</p>
+            <div class="art-meta"><span>6 min</span><span>·</span><span>Déc. 2025</span></div>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d3" data-category="marketplace">
+          <div class="article-card-img">🔍</div>
+          <div class="article-card-body">
+            <span class="art-badge">Marketplace</span>
+            <h3 class="art-title">Optimiser ses fiches produits marketplace : ce qui marche vraiment</h3>
+            <p class="art-desc">Titre, bullet points, images, A+ content — les leviers qui font vraiment bouger l'aiguille selon mon expérience terrain.</p>
+            <div class="art-meta"><span>8 min</span><span>·</span><span>Déc. 2025</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NL INLINE -->
+      <div class="nl-inline reveal">
+        <div class="nl-inline-text">
+          <h3>Reçois les nouveaux articles chaque semaine</h3>
+          <p>Plus la checklist gratuite "10 signaux que ton e-commerce plafonne".</p>
+        </div>
+        <div class="nl-inline-form">
+          <input class="nl-inline-input" type="email" id="nl-blog-email" placeholder="ton@email.com">
+          <button class="nl-inline-btn" onclick="handleNLBlog()">S'abonner →</button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+
+<!-- Dynamic article grid -->
+<div class="container">
+  <div id="blog-dynamic-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:3.5rem 0;">
+    <div style="grid-column:span 2;text-align:center;padding:3rem;color:var(--txt-3,#8090B0);font-size:.9375rem;">Chargement des articles…</div>
+  </div>
+</div>
+
+<!-- Article modal -->
+<div id="article-modal" style="display:none;position:fixed;inset:0;background:rgba(26,48,80,.7);z-index:500;overflow-y:auto;align-items:flex-start;justify-content:center;padding:2rem 1rem;">
+  <div id="modal-body" style="background:#fff;border-radius:16px;width:100%;max-width:780px;min-height:60vh;position:relative;"></div>
+</div>
+
+<style>
+.blog-card{background:#fff;border:1px solid var(--border,#D0DCE8);border-radius:8px;padding:2rem;transition:box-shadow .2s,transform .2s;}
+.blog-card:hover{box-shadow:0 8px 32px rgba(26,48,80,.12);transform:translateY(-2px);}
+.blog-card--featured{grid-column:span 2;}
+.bc-meta{display:flex;align-items:center;gap:1rem;font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--txt-3,#8090B0);margin-bottom:.75rem;font-weight:600;}
+.bc-cat{color:var(--acier,#2C6A9A);}
+.bc-title{font-family:var(--ft,'Cormorant Garamond',serif);font-size:1.5rem;font-weight:400;line-height:1.2;color:var(--marine,#1A3050);margin-bottom:.75rem;}
+.blog-card--featured .bc-title{font-size:clamp(1.75rem,3vw,2.25rem);}
+.bc-excerpt{font-size:.9rem;color:var(--txt-2,#4A6078);line-height:1.7;margin-bottom:1rem;}
+.bc-link{font-size:.8125rem;font-weight:600;color:var(--acier,#2C6A9A);}
+.blog-empty{text-align:center;padding:4rem;color:var(--txt-3,#8090B0);font-style:italic;}
+.art-h2{font-size:1.375rem;margin:1.5rem 0 .5rem;}
+.art-h3{font-size:1.125rem;font-weight:700;margin:1rem 0 .375rem;}
+.art-hr{border:none;border-top:1px solid #E0E6F0;margin:1.5rem 0;}
+.art-content p{margin-bottom:.875rem;}
+.art-content li{margin-left:1.25rem;margin-bottom:.375rem;}
+@media(max-width:640px){#blog-dynamic-grid{grid-template-columns:1fr;}.blog-card--featured{grid-column:auto;}}
+</style>
+
+
+<div style="background:var(--cad,#1E2D5A);padding:3.5rem 0;text-align:center;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,4rem);">
+    <p style="font-size:.5625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,160,82,.6);margin-bottom:.875rem;">Accompagnement 1:1</p>
+    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:600;color:#fff;line-height:1.1;margin-bottom:1rem;">Votre boutique mérite<br><em style="font-style:italic;color:#C9A052;">un regard extérieur.</em></p>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.4);margin-bottom:2rem;line-height:1.7;">30 minutes. Gratuit. On voit si on peut travailler ensemble.</p>
+    <a href="accompagnements.html" style="display:inline-block;background:#C9A052;color:#1E2D5A;font-family:'Manrope',sans-serif;font-size:.9375rem;font-weight:800;padding:1rem 2.5rem;border-radius:8px;text-decoration:none;letter-spacing:.02em;transition:background .2s;">Réserver l'appel découverte →</a>
+    <p style="font-size:.6875rem;color:rgba(255,255,255,.2);margin-top:.875rem;">Garantie Découverte incluse</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Upglide<span> ·</span></span>
+      <div class="footer-links">
+        <a class="footer-link" href="podcast.html">Podcast</a>
+        <a class="footer-link" href="blog.html">Blog</a>
+        <a class="footer-link" href="ressources.html">Ressources</a>
+        <a class="footer-link" href="a-propos.html">À propos</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <p class="footer-copy">© 2026 Upglide — Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navMobile=document.getElementById('nav-mobile');
+hamburger.addEventListener('click',()=>{const o=navMobile.classList.toggle('open');hamburger.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){navMobile.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}});
+function toggleMobileSub(btn){const s=btn.nextElementSibling;const o=s.classList.toggle('open');btn.classList.toggle('expanded',o);}
+const obs=new IntersectionObserver((entries)=>entries.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach((el)=>obs.observe(el));
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>10?'0 2px 12px rgba(26,48,80,0.08)':'';},{passive:true});
+function filterArt(btn,cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.article-card,.article-featured').forEach(a=>{
+    if(cat==='all'||a.dataset.category===cat){a.style.display='';}else{a.style.display='none';}
+  });
+}
+function handleNLBlog(){
+  const input=document.getElementById('nl-blog-email');
+  if(!input.value.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)){input.style.borderColor='var(--sable)';input.focus();return;}
+  input.value='';input.placeholder='Abonnement confirmé !';input.disabled=true;
+  const btn=input.nextElementSibling;btn.textContent='Abonné(e) ✓';btn.style.background='var(--marine-2)';btn.disabled=true;
+}
+</script>
+<script src="content-loader.js"></script>
+<!-- REPLACED --><<script>
+/* ── BLOG — lecture depuis /data/blog.json (Decap CMS) ── */
+(function() {
+  // Markdown parser simple mais complet
+  function parseMD(md) {
+    if (!md) return '';
+    const lines = md.split('\n');
+    let html = '';
+    let inList = false;
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+      // Inline formatting
+      line = line
+        .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code>$1</code>')
+        .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>');
+      // Block elements
+      if (/^#{1} /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h1 class="art-h1">' + line.replace(/^# /,'') + '</h1>';
+      } else if (/^#{2} /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h2 class="art-h2">' + line.replace(/^## /,'') + '</h2>';
+      } else if (/^#{3} /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h3 class="art-h3">' + line.replace(/^### /,'') + '</h3>';
+      } else if (/^- /.test(line) || /^\* /.test(line)) {
+        if (!inList) { html += '<ul class="art-ul">'; inList = true; }
+        html += '<li>' + line.replace(/^[\-\*] /,'') + '</li>';
+      } else if (/^\d+\. /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<ol><li>' + line.replace(/^\d+\. /,'') + '</li></ol>';
+      } else if (/^---/.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<hr class="art-hr">';
+      } else if (line.trim() === '') {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '';
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<p>' + line + '</p>';
+      }
+    }
+    if (inList) html += '</ul>';
+    return html;
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    const date = new Date(d + (d.length === 10 ? 'T00:00:00' : ''));
+    return date.toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'});
+  }
+
+  function openArticle(id, posts) {
+    const art = posts.find(a => a.slug === id || a.title === id);
+    if (!art) return;
+    const modal = document.getElementById('article-modal');
+    const body = document.getElementById('modal-body');
+    body.innerHTML = `
+      <div style="max-width:680px;margin:0 auto;padding:3rem 2rem;">
+        <button onclick="window.closeModal()" style="display:flex;align-items:center;gap:.5rem;background:none;border:none;cursor:pointer;font-size:.8125rem;color:var(--txt-3,#8090B0);margin-bottom:2rem;padding:0;font-family:inherit;">
+          ← Retour au blog
+        </button>
+        <span style="font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acier,#2C6A9A);">${art.category||''}</span>
+        <h1 style="font-family:var(--ft,'Cormorant Garamond',serif);font-size:clamp(2rem,5vw,3.25rem);font-weight:400;line-height:1.15;margin:.625rem 0 1rem;color:var(--marine,#1A3050);">${art.title}</h1>
+        <div style="display:flex;gap:1.5rem;font-size:.8125rem;color:var(--txt-3,#8090B0);margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border,#D0DCE8);">
+          <span>${formatDate(art.date)}</span><span>${art.readTime||5} min de lecture</span>
+        </div>
+        <div class="art-content">${parseMD(art.content||'')}</div>
+      </div>`;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeModal = function() {
+    document.getElementById('article-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeModal(); });
+
+  function render(posts) {
+    const grid = document.getElementById('blog-dynamic-grid');
+    if (!grid) return;
+    const published = posts.filter(p => p.published).sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (published.length === 0) {
+      grid.innerHTML = '<div class="blog-empty" style="grid-column:span 2;text-align:center;padding:4rem;color:var(--txt-3,#8090B0);font-style:italic;">Les articles arrivent bientôt.</div>';
+      return;
+    }
+    grid.innerHTML = published.map((a, i) => `
+      <article class="blog-card ${i===0?'blog-card--featured':''}" onclick="(function(){${JSON.stringify('openArticle(' + JSON.stringify(a.slug||a.title) + ', __POSTS__)')}})()">
+        <div class="bc-meta">
+          <span class="bc-cat">${a.category||'Article'}</span>
+          <span class="bc-date">${formatDate(a.date)}</span>
+          <span class="bc-read">${a.readTime||5} min</span>
+        </div>
+        <h2 class="bc-title">${a.title}</h2>
+        ${a.excerpt ? `<p class="bc-excerpt">${a.excerpt}</p>` : ''}
+        <span class="bc-link">Lire l'article →</span>
+      </article>`).join('');
+    // Fix onclick with actual posts reference
+    grid.querySelectorAll('article').forEach((el, i) => {
+      const art = published[i];
+      el.onclick = () => openArticle(art.slug || art.title, published);
+    });
+  }
+
+  // Fetch from CMS data file
+  fetch('/data/blog.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => render(data.posts || []))
+    .catch(() => {
+      const g = document.getElementById('blog-dynamic-grid');
+      if (g) g.innerHTML = '<div class="blog-empty" style="grid-column:span 2;text-align:center;padding:4rem;color:var(--txt-3,#8090B0);font-style:italic;">Articles bientôt disponibles.</div>';
+    });
+})();
+</script>
+
+<script id="nav-script">
+const nav = document.getElementById('nav');
+const burger = document.getElementById('burger');
+const mobnav = document.getElementById('mobnav');
+burger.addEventListener('click', () => {
+  const o = mobnav.classList.toggle('open');
+  burger.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+function closeMob() {
+  mobnav.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeMob(); });
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, {passive:true});
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({top:y, behavior:'smooth'}
+</script>
+</body>
+</html>

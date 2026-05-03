@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<style id="nav-styles">
+:root {
+  --isa:   #F5F1E8;
+  --alm:   #E8D4AA;
+  --lion:  #C9A052;
+  --lion2: #A8802E;
+  --pow:   #B4C8E8;
+  --dusk:  #4E6898;
+  --cad:   #1E2D5A;
+  --cad2:  #131D3C;
+  --wh:    #FFFFFF;
+  --txt:   #1E2D5A;
+  --txt2:  #4A5878;
+  --txt3:  #8090B0;
+  --bdr:   rgba(30,45,90,.09);
+  --ft: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --r: 12px; --rlg: 20px; --rxl: 32px;
+  --shsm: 0 2px 12px rgba(30,45,90,.08);
+  --shmd: 0 8px 32px rgba(30,45,90,.12);
+  --shlg: 0 20px 64px rgba(30,45,90,.18);
+  --shg:  0 6px 24px rgba(201,160,82,.3);
+  --t: .22s ease;
+}
+nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky; top:0; z-index:200; transition:box-shadow var(--t); }
+.nav-i { display:flex; align-items:center; justify-content:space-between; padding:1.125rem clamp(1.5rem,5vw,4rem); gap:1rem; }
+.logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; color:var(--cad); letter-spacing:-.01em; font-style:italic; }
+.logo span { color:var(--lion); font-style:normal; }
+.nav-m { display:flex; align-items:center; list-style:none; }
+.nav-it { position:relative; }
+.nav-a { display:flex; align-items:center; gap:4px; font-size:.875rem; font-weight:500; color:var(--txt2); padding:.5rem .875rem; transition:color var(--t); cursor:pointer; border:none; background:none; font-family:var(--fb); border-radius:6px; }
+.nav-a:hover { color:var(--cad); }
+.chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); }
+.chv { transform:rotate(180deg); }
+.nav-drop { display:none; position:absolute; top:calc(100% + 10px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:220px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
+.nav-drop { display:block; }
+.nd-lnk { display:block; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
+.nd-sec { padding:.5rem 1.25rem .25rem; font-size:.625rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
+.nav-cta { background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.8125rem; font-weight:700; padding:.65rem 1.5rem; border:none; cursor:pointer; transition:all var(--t); border-radius:100px; margin-left:.75rem; white-space:nowrap; }
+.nav-cta:hover { background:var(--cad2); transform:translateY(-1px); }
+.burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.5rem; }
+.burger span { display:block; width:22px; height:2px; background:var(--cad); transition:transform .3s,opacity .3s; border-radius:2px; }
+.mob-nav { display:none; position:fixed; inset:0; background:var(--isa); z-index:300; padding:5rem 2rem 2rem; flex-direction:column; }
+.mob-it { border-bottom:1px solid var(--bdr); }
+.mob-a { display:block; padding:1rem 0; font-size:1rem; font-weight:600; color:var(--cad); }
+.mob-cta { margin-top:2rem; background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.9375rem; font-weight:700; padding:1rem; border:none; border-radius:100px; cursor:pointer; width:100%; text-align:center; }
+.nav-m { display:none; }
+.burger { display:flex; }
+.nav-i { padding:.875rem 1.25rem; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos de Caroline — Upglide | Experte e-commerce &amp; marketplaces</title>
+<meta name="description" content="Caroline, co-gérante d'un e-commerce en secteur ultra-concurrentiel avec des croissances annuelles où le CA pouvait doubler. 7 ans de terrain, +10 marketplaces. Elle aide les e-commerçants à structurer et accélérer leur croissance.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://upglide.fr/a-propos">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" content="À propos de Caroline — Upglide">
+<meta property="og:description" content="7 ans de terrain e-commerce, +10 marketplaces, co-gérante d'un e-commerce avec CA x2 certaines années. Découvrez le parcours de Caroline.">
+<meta property="og:url" content="https://upglide.fr/a-propos">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Caroline",
+    "jobTitle": "Experte e-commerce et marketplaces",
+    "description": "Co-gérante d'un e-commerce en secteur ultra-concurrentiel avec des croissances annuelles pouvant doubler le CA. 7 ans d'expérience terrain, maîtrise de +10 marketplaces.",
+    "knowsAbout": ["e-commerce", "marketplaces", "Amazon", "Cdiscount", "Fnac", "gestion des marges", "process opérationnels", "délégation", "automatisation", "croissance e-commerce"],
+    "url": "https://upglide.fr/"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fond:#F6F8FB;--fond-2:#EEF2F7;--fond-3:#E4EAF2;--marine:#1A3050;--marine-2:#2A4A6A;
+  --acier:#2C6A9A;--ciel:#B8C8D8;--sable:#C8A870;--sable-2:#DFC090;--txt:#141E2C;
+  --txt-2:#4A6078;--txt-3:#8AA0B8;--border:#D0DCE8;--blanc:#FDFEFF;
+  --ft:'Libre Baskerville',Georgia,serif;--fb:'Inter',system-ui,sans-serif;
+  --shadow-md:0 8px 24px rgba(26,48,80,0.10);--radius:4px;--transition:0.2s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:920px;margin:0 auto;padding:0 2rem;}
+.section{padding:5rem 0;}
+.section--alt{background:var(--blanc);}
+hr.divider{border:none;border-top:1px solid var(--border);}
+.s-label{font-size:0.6875rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--acier);margin-bottom:0.875rem;display:flex;align-items:center;gap:0.75rem;font-weight:500;}
+.s-label::after{content:'';flex:0 0 36px;height:1px;background:var(--acier);}
+.s-h2{font-family:var(--ft);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;color:var(--marine);margin-bottom:0.875rem;}
+.s-h2 em{font-style:italic;color:var(--acier);}
+
+/* NAV */
+nav{background:var(--blanc);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;transition:box-shadow var(--transition);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem;}
+.nav-logo{font-family:var(--ft);font-size:1.25rem;font-weight:700;color:var(--marine);flex-shrink:0;}
+.nav-logo span{color:var(--sable);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;gap:4px;font-size:0.8125rem;font-weight:400;color:var(--txt-2);letter-spacing:0.03em;padding:0.5rem 0.875rem;transition:color var(--transition);cursor:pointer;border:none;background:none;font-family:var(--fb);}
+.nav-link:hover{color:var(--marine);}
+.nav-link.active{color:var(--marine);font-weight:500;}
+.nav-link .chevron{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform var(--transition);}
+.nav-item:hover .chevron{transform:rotate(180deg);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;min-width:210px;box-shadow:var(--shadow-md);z-index:300;}
+.nav-item:hover .nav-dropdown{display:block;}
+.nav-dropdown-link{display:block;padding:0.625rem 1.25rem;font-size:0.8125rem;color:var(--txt-2);transition:background var(--transition),color var(--transition);}
+.nav-dropdown-link:hover{background:var(--fond);color:var(--marine);}
+.nav-dropdown-section{padding:0.5rem 1.25rem 0.25rem;font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt-3);border-top:1px solid var(--border);margin-top:0.25rem;}
+.nav-dropdown-section:first-child{border-top:none;margin-top:0;}
+.nav-mega{display:none;position:absolute;top:calc(100% + 1px);left:-80px;background:var(--blanc);border:1px solid var(--border);border-top:2px solid var(--acier);border-radius:0 0 6px 6px;width:480px;padding:1.5rem;box-shadow:var(--shadow-md);z-index:300;}
+.nav-item:hover .nav-mega{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 2rem;}
+.nav-mega-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--acier);margin-bottom:0.5rem;padding-bottom:0.375rem;border-bottom:1px solid var(--border);}
+.nav-mega-link{display:block;padding:0.375rem 0;font-size:0.8125rem;color:var(--txt-2);transition:color var(--transition);}
+.nav-mega-link:hover{color:var(--marine);}
+.nav-cta{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;letter-spacing:0.04em;padding:0.625rem 1.375rem;border:none;cursor:pointer;transition:background var(--transition);border-radius:var(--radius);white-space:nowrap;margin-left:0.5rem;}
+.nav-cta:hover{background:var(--marine-2);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0.5rem;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--marine);transition:transform 0.3s ease,opacity 0.3s ease;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.nav-mobile{display:none;position:fixed;inset:0;background:var(--blanc);z-index:300;padding:5rem 2rem 2rem;overflow-y:auto;flex-direction:column;}
+.nav-mobile.open{display:flex;}
+.nav-mobile-item{border-bottom:1px solid var(--border);}
+.nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;font-size:1rem;color:var(--txt);cursor:pointer;background:none;border:none;font-family:var(--fb);width:100%;text-align:left;}
+.nav-mobile-link .chevron{width:12px;height:12px;stroke:var(--txt-3);fill:none;stroke-width:2;transition:transform 0.2s;}
+.nav-mobile-link.expanded .chevron{transform:rotate(180deg);}
+.nav-mobile-sub{display:none;padding:0.5rem 0 1rem 1rem;flex-direction:column;}
+.nav-mobile-sub.open{display:flex;}
+.nav-mobile-sub a{font-size:0.875rem;color:var(--txt-2);padding:0.5rem 0;display:block;}
+.nav-mobile-sub-label{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--txt-3);padding:0.75rem 0 0.25rem;font-weight:500;}
+.nav-mobile-cta{margin-top:2rem;background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.9375rem;font-weight:500;padding:1rem;border:none;border-radius:var(--radius);cursor:pointer;width:100%;text-align:center;}
+
+/* PAGE HERO */
+.page-hero{background:var(--blanc);padding:4rem 0 3rem;}
+.page-hero-inner{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;}
+.page-eyebrow{font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--acier);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+.page-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--acier);}
+.page-h1{font-family:var(--ft);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;color:var(--marine);margin-bottom:1rem;}
+.page-h1 em{font-style:italic;color:var(--acier);}
+.page-sub{font-size:1rem;color:var(--txt-2);line-height:1.8;font-weight:300;max-width:480px;}
+.page-photo{height:400px;background:linear-gradient(160deg,var(--fond-2) 0%,var(--fond-3) 100%);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;}
+.page-initiale{font-family:var(--ft);font-size:7rem;font-weight:400;color:var(--ciel);opacity:0.5;user-select:none;}
+
+/* CONTENU */
+.about-body{display:grid;grid-template-columns:1fr 280px;gap:4rem;}
+.prose p{font-size:0.9375rem;color:var(--txt-2);line-height:1.9;font-weight:300;margin-bottom:1.125rem;}
+.prose p strong{color:var(--marine);font-weight:500;}
+.prose h3{font-family:var(--ft);font-size:1.25rem;font-weight:700;color:var(--marine);margin:2rem 0 0.75rem;}
+.quote-pull{border-left:2px solid var(--sable);padding-left:1.5rem;margin:2rem 0;font-family:var(--ft);font-size:1.125rem;font-style:italic;color:var(--marine);line-height:1.6;}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem;}
+.sidebar-card{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;}
+.sidebar-card-title{font-family:var(--ft);font-size:0.9375rem;font-weight:700;color:var(--marine);margin-bottom:1rem;}
+.sidebar-stat{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border);}
+.sidebar-stat:last-child{border-bottom:none;}
+.sidebar-num{font-family:var(--ft);font-size:1.25rem;color:var(--sable);font-weight:400;min-width:50px;}
+.sidebar-lbl{font-size:0.8125rem;color:var(--txt-2);font-weight:300;}
+.sidebar-skills{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.skill-tag{background:var(--fond-2);border:1px solid var(--border);border-radius:50px;padding:0.25rem 0.75rem;font-size:0.75rem;color:var(--marine);font-weight:400;}
+.sidebar-cta{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.875rem;font-weight:500;letter-spacing:0.04em;padding:1rem;border:none;border-radius:var(--radius);cursor:pointer;width:100%;text-align:center;transition:background var(--transition);}
+.sidebar-cta:hover{background:var(--marine-2);}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;}
+.value-card{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;border-top:2px solid var(--acier);}
+.value-icon{font-size:1.5rem;margin-bottom:0.875rem;}
+.value-title{font-family:var(--ft);font-size:1rem;font-weight:700;color:var(--marine);margin-bottom:0.5rem;}
+.value-text{font-size:0.875rem;color:var(--txt-2);line-height:1.7;font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--marine);padding:2.5rem 0;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--blanc);}
+.footer-logo span{color:var(--sable);}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-link{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ciel);transition:color var(--transition);}
+.footer-link:hover{color:var(--blanc);}
+.footer-copy{font-size:0.6875rem;color:rgba(184,200,216,0.25);width:100%;text-align:right;margin-top:0.25rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:0.07s;}.reveal-d2{transition-delay:0.14s;}.reveal-d3{transition-delay:0.22s;}
+
+@media(max-width:768px){
+  .nav-menu{display:none;}.nav-hamburger{display:flex;}
+  .page-hero-inner,.about-body{grid-template-columns:1fr;}
+  .page-photo{height:240px;}.values-grid{grid-template-columns:1fr;}
+  .container{padding:0 1.25rem;}.section{padding:3.5rem 0;}
+  .footer-copy{text-align:left;}.footer-links{gap:1rem;}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://upglide.fr/" },
+    { "@type": "ListItem", "position": 2, "name": "À propos", "item": "https://upglide.fr/a-propos" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-i">
+    <a class="logo" href="index.html">Upglide<span> ·</span></a>
+    <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
+      <li class="nav-it">
+        <button class="nav-a">Ressources<svg class="chv" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="nav-drop">
+          <div class="nd-sec">Contenu gratuit</div>
+          <a class="nd-lnk" href="blog.html">Blog &amp; guides terrain</a>
+          <a class="nd-lnk" href="podcast.html">Podcast</a>
+          <div class="nd-sec">Outils</div>
+          <a class="nd-lnk" href="ressources.html">Templates &amp; frameworks</a>
+        </div>
+      </li>
+      <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
+    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
+    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
+    <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
+    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="section--alt">
+  <div class="container">
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div>
+          <p class="page-eyebrow">À propos</p>
+          <h1 class="page-h1">Caroline,<br>experte e-commerce<br>&amp; <em>marketplaces.</em></h1>
+          <p class="page-sub">7 ans de terrain. Co-gérante d'un e-commerce en secteur ultra-concurrentiel. Des méthodes forgées dans la réalité, pas dans les livres.</p>
+        </div>
+        <div class="page-photo"><span class="page-initiale">C</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTENU PRINCIPAL -->
+<div class="section--alt">
+  <div class="container">
+    <section class="section">
+      <div class="about-body">
+        <div class="prose reveal">
+          <h3>D'où je viens</h3>
+          <p>Avant de créer Upglide, j'ai passé <strong>7 ans dans l'e-commerce opérationnel</strong>. Pas en conseil, pas à théoriser depuis un bureau — à l'intérieur des opérations, avec tous les problèmes concrets que ça implique.</p>
+          <p>J'ai co-géré une boutique en ligne dans un <strong>secteur ultra-concurrentiel</strong>. On a connu des années de forte pression, des erreurs coûteuses, et des restructurations complètes de nos process. Au total, nous avons co-géré <strong>plus de 40 millions d'euros de chiffre d'affaires cumulé</strong>. Ces expériences m'ont appris des choses qu'aucune formation ne peut enseigner.</p>
+
+          <div class="quote-pull">"Ce que je partage ici, j'ai été payée pour le faire pour d'autres — et je l'ai vécu de l'intérieur."</div>
+
+          <div style="margin:1.5rem 0;padding:1.25rem 1.5rem;background:var(--fond-2);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <p style="font-size:0.9375rem;color:var(--txt-2);font-weight:300;margin:0;">Curieux de voir comment ça s'applique à ton business ?</p>
+            <a href="index.html#lm" style="background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.625rem 1.25rem;border-radius:var(--radius);white-space:nowrap;transition:background 0.2s ease;" onmouseover="this.style.background='var(--marine-2)'" onmouseout="this.style.background='var(--marine)'">Télécharger la checklist gratuite →</a>
+          </div>
+
+          <h3>Ce que j'ai vraiment fait</h3>
+          <p>J'ai géré des équipes, recruté, onboardé, et aussi dû me séparer de collaborateurs. J'ai négocié avec des fournisseurs, suivi des marges à la ligne, mis en place des SOP de zéro. J'ai piloté des campagnes sur <strong>plus de 10 marketplaces</strong> — Amazon, Cdiscount, Fnac, Rakuten et d'autres — avec toute la complexité que ça implique : référencement, performance, algorithmes, gestion des stocks multi-canaux.</p>
+          <p>J'ai automatisé des dizaines de process sans être développeuse. J'ai construit des dashboards de pilotage que mon équipe utilisait vraiment. J'ai pris de mauvaises décisions — et appris à en prendre de meilleures grâce aux données.</p>
+
+          <div style="margin:1.5rem 0;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="ressources.html" style="background:var(--blanc);border:1px solid var(--border);color:var(--marine);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.625rem 1.25rem;border-radius:var(--radius);transition:border-color 0.2s ease;" onmouseover="this.style.borderColor='var(--acier)'" onmouseout="this.style.borderColor='var(--border)'">📦 Templates &amp; outils</a>
+            <a href="podcast.html" style="background:var(--blanc);border:1px solid var(--border);color:var(--marine);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.625rem 1.25rem;border-radius:var(--radius);transition:border-color 0.2s ease;" onmouseover="this.style.borderColor='var(--acier)'" onmouseout="this.style.borderColor='var(--border)'">🎙 Écouter le podcast</a>
+            <a href="blog.html" style="background:var(--blanc);border:1px solid var(--border);color:var(--marine);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.625rem 1.25rem;border-radius:var(--radius);transition:border-color 0.2s ease;" onmouseover="this.style.borderColor='var(--acier)'" onmouseout="this.style.borderColor='var(--border)'">✍️ Lire le blog</a>
+          </div>
+
+          <h3>Pourquoi Upglide</h3>
+          <p>J'ai créé Upglide parce que j'ai réalisé que <strong>la plupart des e-commerçants construisent leur business à l'instinct</strong>, faute d'accès aux bonnes méthodes. Les grandes structures ont des équipes spécialisées. Les petits e-commerçants, eux, font tout seuls.</p>
+          <p>Upglide, c'est la façon de <strong>mettre ces méthodes à la portée de tous</strong> — concrètement, rapidement, sans jargon. Que tu veuilles mieux comprendre tes marges, déléguer pour la première fois, ou te lancer sur les marketplaces.</p>
+
+          <h3>Comment je peux t'aider</h3>
+          <p>Via le <a href="podcast.html" style="color:var(--acier);border-bottom:1px solid var(--ciel);">podcast hebdomadaire</a>, les <a href="blog.html" style="color:var(--acier);border-bottom:1px solid var(--ciel);">articles de fond</a>, les <a href="ressources.html" style="color:var(--acier);border-bottom:1px solid var(--ciel);">templates et outils</a> directement applicables — ou en <a href="accompagnements.html" style="color:var(--acier);border-bottom:1px solid var(--ciel);">accompagnement individuel</a> si tu veux aller plus vite.</p>
+          <p>Le meilleur point de départ : <a href="index.html#lm" style="color:var(--acier);border-bottom:1px solid var(--ciel);font-weight:500;">télécharge la checklist gratuite →</a></p>
+
+          <div style="margin-top:2rem;padding:1.5rem;background:var(--marine);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-family:var(--ft);font-size:1rem;color:var(--blanc);margin-bottom:0.25rem;">Prêt à passer à l'étape suivante ?</p>
+              <p style="font-size:0.8125rem;color:var(--ciel);font-weight:300;margin:0;">Audit, accompagnement ou programme 90 jours — selon où tu en es.</p>
+            </div>
+            <a href="accompagnements.html" style="background:var(--sable);color:var(--marine);font-family:var(--fb);font-size:0.875rem;font-weight:500;padding:0.875rem 1.5rem;border-radius:var(--radius);white-space:nowrap;transition:background 0.2s ease;" onmouseover="this.style.background='var(--sable-2)'" onmouseout="this.style.background='var(--sable)'">Voir les accompagnements →</a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-card reveal reveal-d1">
+            <p class="sidebar-card-title">En chiffres</p>
+            <div class="sidebar-stat"><span class="sidebar-num">7 ans</span><span class="sidebar-lbl">d'expérience e-commerce terrain</span></div>
+            <div class="sidebar-stat"><span class="sidebar-num">+40M€</span><span class="sidebar-lbl">de CA cumulé co-géré</span></div>
+            <div class="sidebar-stat"><span class="sidebar-num">+10</span><span class="sidebar-lbl">marketplaces maîtrisées</span></div>
+            <div class="sidebar-stat"><span class="sidebar-num">4 axes</span><span class="sidebar-lbl">pour accélérer durablement</span></div>
+          </div>
+          <div class="sidebar-card reveal reveal-d2">
+            <p class="sidebar-card-title">Domaines d'expertise</p>
+            <div class="sidebar-skills">
+              <span class="skill-tag">Marges e-commerce</span>
+              <span class="skill-tag">Marketplaces</span>
+              <span class="skill-tag">Amazon</span>
+              <span class="skill-tag">Process & SOP</span>
+              <span class="skill-tag">Délégation</span>
+              <span class="skill-tag">Automatisation</span>
+              <span class="skill-tag">KPIs & pilotage</span>
+              <span class="skill-tag">Gestion fournisseurs</span>
+              <span class="skill-tag">Recrutement</span>
+              <span class="skill-tag">Multi-canal</span>
+            </div>
+          </div>
+          <div class="sidebar-card reveal reveal-d3">
+            <p class="sidebar-card-title">Travailler avec moi</p>
+            <p style="font-size:0.875rem;color:var(--txt-2);font-weight:300;margin-bottom:1rem;line-height:1.7;">Un audit, un suivi mensuel, ou le programme 90 jours — selon où tu en es.</p>
+            <button class="sidebar-cta" onclick="window.location='accompagnements.html'">Voir les accompagnements →</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- VALEURS -->
+<div class="container">
+  <section class="section">
+    <p class="s-label reveal">Ce en quoi je crois</p>
+    <h2 class="s-h2 reveal reveal-d1">Trois principes qui guident<br>tout ce que je <em>partage.</em></h2>
+    <div class="values-grid">
+      <div class="value-card reveal reveal-d1">
+        <div class="value-icon">🔬</div>
+        <h3 class="value-title">Terrain avant tout</h3>
+        <p class="value-text">Je ne partage que ce que j'ai testé, vécu, ou que j'ai vu fonctionner de l'intérieur. Pas de théorie importée d'un MBA. Du concret, point.</p>
+      </div>
+      <div class="value-card reveal reveal-d2">
+        <div class="value-icon">⚡</div>
+        <h3 class="value-title">Applicable immédiatement</h3>
+        <p class="value-text">Chaque contenu, chaque outil, chaque conseil doit pouvoir être mis en pratique dans les 48h. Si ce n'est pas actionnable, ça ne m'intéresse pas.</p>
+      </div>
+      <div class="value-card reveal reveal-d3">
+        <div class="value-icon">🎯</div>
+        <h3 class="value-title">Sans jargon inutile</h3>
+        <p class="value-text">L'e-commerce est déjà complexe. Je m'engage à rendre les choses claires, directes, compréhensibles — même pour quelqu'un qui débute.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA FINAL -->
+<div style="background:var(--fond-2);border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+      <a href="index.html#lm" style="display:block;background:var(--blanc);border:1px solid var(--border);border-radius:4px;padding:1.5rem;text-align:center;transition:box-shadow 0.2s ease;text-decoration:none;" onmouseover="this.style.boxShadow='0 4px 16px rgba(26,48,80,0.10)'" onmouseout="this.style.boxShadow='none'">
+        <p style="font-size:1.375rem;margin-bottom:0.5rem;">🎁</p>
+        <p style="font-family:'Libre Baskerville',Georgia,serif;font-size:0.9375rem;font-weight:700;color:var(--marine);margin-bottom:0.375rem;">Checklist gratuite</p>
+        <p style="font-size:0.8125rem;color:var(--txt-3);font-weight:300;">Identifie ce qui te freine en 15 min</p>
+      </a>
+      <a href="podcast.html" style="display:block;background:var(--blanc);border:1px solid var(--border);border-radius:4px;padding:1.5rem;text-align:center;transition:box-shadow 0.2s ease;text-decoration:none;" onmouseover="this.style.boxShadow='0 4px 16px rgba(26,48,80,0.10)'" onmouseout="this.style.boxShadow='none'">
+        <p style="font-size:1.375rem;margin-bottom:0.5rem;">🎙</p>
+        <p style="font-family:'Libre Baskerville',Georgia,serif;font-size:0.9375rem;font-weight:700;color:var(--marine);margin-bottom:0.375rem;">Le podcast</p>
+        <p style="font-size:0.8125rem;color:var(--txt-3);font-weight:300;">Un levier concret par épisode</p>
+      </a>
+      <a href="accompagnements.html" style="display:block;background:var(--marine);border:1px solid var(--marine);border-radius:4px;padding:1.5rem;text-align:center;transition:background 0.2s ease;text-decoration:none;" onmouseover="this.style.background='var(--marine-2)'" onmouseout="this.style.background='var(--marine)'">
+        <p style="font-size:1.375rem;margin-bottom:0.5rem;">🎯</p>
+        <p style="font-family:'Libre Baskerville',Georgia,serif;font-size:0.9375rem;font-weight:700;color:var(--blanc);margin-bottom:0.375rem;">Travailler ensemble</p>
+        <p style="font-size:0.8125rem;color:var(--ciel);font-weight:300;">Audit, accompagnement, programme 90j</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Upglide<span> ·</span></span>
+      <div class="footer-links">
+        <a class="footer-link" href="podcast.html">Podcast</a>
+        <a class="footer-link" href="blog.html">Blog</a>
+        <a class="footer-link" href="ressources.html">Ressources</a>
+        <a class="footer-link" href="a-propos.html">À propos</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <p class="footer-copy">© 2026 Upglide — Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navMobile=document.getElementById('nav-mobile');
+hamburger.addEventListener('click',()=>{const o=navMobile.classList.toggle('open');hamburger.classList.toggle('open',o);hamburger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){navMobile.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}});
+function toggleMobileSub(btn){const s=btn.nextElementSibling;const o=s.classList.toggle('open');btn.classList.toggle('expanded',o);}
+const obs=new IntersectionObserver((entries)=>entries.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach((el)=>obs.observe(el));
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>10?'0 2px 12px rgba(26,48,80,0.08)':'';},{passive:true});
+</script>
+<script src="content-loader.js"></script>
+<script id="nav-script">
+const nav = document.getElementById('nav');
+const burger = document.getElementById('burger');
+const mobnav = document.getElementById('mobnav');
+burger.addEventListener('click', () => {
+  const o = mobnav.classList.toggle('open');
+  burger.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+function closeMob() {
+  mobnav.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeMob(); });
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, {passive:true});
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({top:y, behavior:'smooth'}
+</script>
+</body>
+</html>
