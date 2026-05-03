@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Article — Upglide</title>
+<meta name="description" id="page-desc" content="Article e-commerce — Upglide">
+<link rel="canonical" id="page-canonical" href="https://upglide.fr/blog">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" id="og-title" content="Article — Upglide">
+<meta property="og:description" id="og-desc" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --isa:   #F5F1E8;
+  --alm:   #E8D4AA;
+  --lion:  #C9A052;
+  --lion2: #A8802E;
+  --pow:   #B4C8E8;
+  --dusk:  #4E6898;
+  --cad:   #1E2D5A;
+  --cad2:  #131D3C;
+  --wh:    #FFFFFF;
+  --txt:   #1E2D5A;
+  --txt2:  #4A5878;
+  --txt3:  #8090B0;
+  --bdr:   rgba(30,45,90,.09);
+  --ft: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --r: 12px; --rlg: 20px; --rxl: 32px;
+  --shsm: 0 2px 12px rgba(30,45,90,.08);
+  --shmd: 0 8px 32px rgba(30,45,90,.12);
+  --shlg: 0 20px 64px rgba(30,45,90,.18);
+  --shg:  0 6px 24px rgba(201,160,82,.3);
+  --t: .22s ease;
+}
+/* ── NAV ── */
+nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky; top:0; z-index:200; transition:box-shadow var(--t); }
+nav.scrolled { box-shadow:0 2px 24px rgba(30,45,90,.1); }
+.nav-i { display:flex; align-items:center; justify-content:space-between; padding:1.125rem clamp(1.5rem,5vw,4rem); gap:1rem; }
+.logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; color:var(--cad); letter-spacing:-.01em; font-style:italic; }
+.logo span { color:var(--lion); font-style:normal; }
+.nav-m { display:flex; align-items:center; list-style:none; }
+.nav-it { position:relative; }
+.nav-a { display:flex; align-items:center; gap:4px; font-size:.875rem; font-weight:500; color:var(--txt2); padding:.5rem .875rem; transition:color var(--t); cursor:pointer; border:none; background:none; font-family:var(--fb); border-radius:6px; }
+.nav-a:hover { color:var(--cad); }
+.chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); }
+.nav-it:hover .chv { transform:rotate(180deg); }
+.nav-drop { display:none; position:absolute; top:calc(100% + 10px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:220px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
+.nav-it:hover .nav-drop { display:block; }
+.nd-lnk { display:block; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
+.nd-lnk:hover { background:var(--isa); color:var(--cad); }
+.nd-sec { padding:.5rem 1.25rem .25rem; font-size:.625rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
+.nd-sec:first-child { border-top:none; }
+.nav-cta { background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.8125rem; font-weight:700; padding:.65rem 1.5rem; border:none; cursor:pointer; transition:all var(--t); border-radius:100px; margin-left:.75rem; white-space:nowrap; }
+.nav-cta:hover { background:var(--cad2); transform:translateY(-1px); }
+.burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.5rem; }
+.burger span { display:block; width:22px; height:2px; background:var(--cad); transition:transform .3s,opacity .3s; border-radius:2px; }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mob-nav { display:none; position:fixed; inset:0; background:var(--isa); z-index:300; padding:5rem 2rem 2rem; flex-direction:column; }
+.mob-nav.open { display:flex; }
+.mob-it { border-bottom:1px solid var(--bdr); }
+.mob-a { display:block; padding:1rem 0; font-size:1rem; font-weight:600; color:var(--cad); }
+.mob-cta { margin-top:2rem; background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.9375rem; font-weight:700; padding:1rem; border:none; border-radius:100px; cursor:pointer; width:100%; text-align:center; }
+
+
+/* ── FOOTER ── */
+footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
+.foot { display:flex; flex-wrap:wrap; align-items:flex-start; gap:2rem; justify-content:space-between; }
+.foot-logo { font-family:var(--ft); font-size:1.625rem; font-weight:700; font-style:italic; color:var(--wh); }
+.foot-logo span { color:var(--lion); font-style:normal; }
+.foot-links { display:flex; gap:2rem; flex-wrap:wrap; }
+.foot-link { font-size:.8125rem; font-weight:500; color:rgba(255,255,255,.3); transition:color var(--t); }
+.foot-link:hover { color:var(--wh); }
+.foot-copy { font-size:.6875rem; color:rgba(255,255,255,.12); width:100%; text-align:right; margin-top:.25rem; }
+
+
+/* REVEAL */
+.rv{opacity:1;transform:none;}
+
+/* ARTICLE PAGE */
+.art-page { background: var(--isa); min-height: 100vh; }
+.art-hero {
+  background: var(--cad2);
+  padding: 4.5rem 0 3.5rem;
+  position: relative;
+}
+.art-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 80px;
+  background: var(--isa);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.art-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 2rem;
+}
+.art-breadcrumb a {
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+.art-breadcrumb a:hover { color: var(--lion); }
+.art-breadcrumb-sep { color: rgba(255,255,255,.2); }
+.art-category {
+  display: inline-block;
+  font-size: .5625rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--lion);
+  margin-bottom: 1rem;
+}
+.art-h1 {
+  font-family: var(--ft);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--wh);
+  margin-bottom: 1.5rem;
+  letter-spacing: -.01em;
+}
+.art-h1 em { font-style: italic; color: var(--lion); }
+.art-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: .8125rem;
+  color: rgba(255,255,255,.35);
+}
+.art-meta-dot { width: 3px; height: 3px; background: rgba(255,255,255,.2); border-radius: 50%; }
+
+/* ARTICLE BODY */
+.art-body-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+.art-body-wrap p {
+  font-size: 1.0625rem;
+  color: var(--txt2);
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.art-body-wrap h2 {
+  font-family: var(--ft);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--cad);
+  margin: 2.5rem 0 .875rem;
+  line-height: 1.2;
+}
+.art-body-wrap h3 {
+  font-family: var(--ft);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cad);
+  margin: 1.75rem 0 .625rem;
+}
+.art-body-wrap ul, .art-body-wrap ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.art-body-wrap li {
+  font-size: 1.0625rem;
+  color: var(--txt2);
+  line-height: 1.75;
+  margin-bottom: .375rem;
+}
+.art-body-wrap strong { color: var(--cad); font-weight: 700; }
+.art-body-wrap em { font-style: italic; }
+.art-body-wrap a { color: var(--lion); text-decoration: underline; }
+.art-body-wrap code {
+  font-family: monospace;
+  background: var(--isa);
+  border: 1px solid var(--bdr);
+  border-radius: 4px;
+  padding: .1em .4em;
+  font-size: .9em;
+  color: var(--cad);
+}
+.art-body-wrap hr {
+  border: none;
+  border-top: 1px solid var(--bdr);
+  margin: 2.5rem 0;
+}
+.art-body-wrap blockquote {
+  border-left: 3px solid var(--lion);
+  padding: .875rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--isa);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  color: var(--txt2);
+}
+
+/* BACK LINK */
+.art-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--txt3);
+  text-decoration: none;
+  margin-bottom: 3rem;
+  transition: color .2s;
+}
+.art-back:hover { color: var(--cad); }
+.art-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* SHARE */
+.art-share {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--bdr);
+  margin-top: 3rem;
+}
+.art-share-lbl { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--txt3); }
+.art-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border: 1px solid var(--bdr);
+  border-radius: 100px;
+  background: var(--wh);
+  color: var(--txt2);
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+}
+.art-share-btn:hover { background: var(--cad); color: var(--wh); border-color: var(--cad); }
+
+/* CTA */
+.art-cta {
+  background: var(--cad);
+  border-radius: var(--rlg);
+  padding: 3rem;
+  text-align: center;
+  margin: 0 0 4rem;
+}
+.art-cta-label {
+  font-size: .5625rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(201,160,82,.6);
+  margin-bottom: .75rem;
+  display: block;
+}
+.art-cta h3 {
+  font-family: var(--ft);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--wh);
+  line-height: 1.1;
+  margin-bottom: .875rem;
+}
+.art-cta h3 em { font-style: italic; color: var(--lion); }
+.art-cta p { font-size: .9375rem; color: rgba(255,255,255,.45); margin-bottom: 1.75rem; }
+.art-cta-btn {
+  display: inline-block;
+  background: var(--lion);
+  color: var(--cad);
+  font-family: var(--fb);
+  font-size: .9375rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: background .2s;
+}
+.art-cta-btn:hover { background: var(--lion2); }
+
+/* LOADING / ERROR */
+.art-loading {
+  text-align: center;
+  padding: 8rem 2rem;
+  color: var(--txt3);
+}
+.art-loading svg {
+  width: 48px; height: 48px;
+  stroke: var(--bdr);
+  fill: none;
+  stroke-width: 1.5;
+  margin: 0 auto 1.5rem;
+  display: block;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .nav-m { display: none; }
+  .burger { display: flex; }
+  .art-hero { padding: 3.5rem 0 2.5rem; }
+  .art-body-wrap { padding: 3rem 1.25rem 4rem; }
+  .art-cta { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body class="art-page">
+
+<nav id="nav">
+  <div class="nav-i">
+    <a class="logo" href="index.html">Upglide<span> ·</span></a>
+    <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
+      <li class="nav-it">
+        <button class="nav-a">Ressources<svg class="chv" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="nav-drop">
+          <div class="nd-sec">Contenu gratuit</div>
+          <a class="nd-lnk" href="blog.html">Blog &amp; guides terrain</a>
+          <a class="nd-lnk" href="podcast.html">Podcast</a>
+          <div class="nd-sec">Outils</div>
+          <a class="nd-lnk" href="ressources.html">Templates &amp; frameworks</a>
+        </div>
+      </li>
+      <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
+    </ul>
+    <button class="nav-cta" onclick="goTo('lm')">Guide gratuit</button>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
+    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
+    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
+    <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
+    <button class="mob-cta" onclick="goTo('lm');closeMob()">Télécharger le guide gratuit →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="art-hero" id="art-hero">
+  <div class="wrap">
+    <div class="art-breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span class="art-breadcrumb-sep">›</span>
+      <a href="blog.html">Blog</a>
+      <span class="art-breadcrumb-sep">›</span>
+      <span id="breadcrumb-title">Article</span>
+    </div>
+    <span class="art-category" id="art-cat"></span>
+    <h1 class="art-h1" id="art-h1">Chargement…</h1>
+    <div class="art-meta-bar">
+      <span id="art-date"></span>
+      <span class="art-meta-dot" id="meta-dot" style="display:none"></span>
+      <span id="art-read"></span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+  <div class="art-body-wrap">
+
+    <a href="blog.html" class="art-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour au blog
+    </a>
+
+    <!-- Loading state -->
+    <div class="art-loading" id="art-loading">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <p>Chargement de l'article…</p>
+    </div>
+
+    <!-- Article content -->
+    <div id="art-content" style="display:none;"></div>
+
+    <!-- Share -->
+    <div class="art-share" id="art-share" style="display:none;">
+      <span class="art-share-lbl">Partager</span>
+      <a id="share-linkedin" class="art-share-btn" href="#" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <button class="art-share-btn" onclick="copyLink()">
+        <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span id="copy-lbl">Copier le lien</span>
+      </button>
+    </div>
+
+    <!-- CTA -->
+    <div class="art-cta" id="art-cta" style="display:none;">
+      <span class="art-cta-label">Accompagnement 1:1</span>
+      <h3>Votre boutique mérite<br><em>un regard extérieur.</em></h3>
+      <p>30 minutes. Gratuit. On voit si on peut travailler ensemble.</p>
+      <a href="accompagnements.html" class="art-cta-btn">Réserver l'appel découverte →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-logo">Upglide<span> ·</span></span>
+      <div class="foot-links">
+        <a class="foot-link" href="podcast.html">Podcast</a>
+        <a class="foot-link" href="blog.html">Blog</a>
+        <a class="foot-link" href="ressources.html">Ressources</a>
+        <a class="foot-link" href="a-propos.html">À propos</a>
+        <a class="foot-link" href="contact.html">Contact</a>
+      </div>
+      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
+if(burger&&mobnav){burger.addEventListener('click',function(){var o=mobnav.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});}
+function closeMob(){if(mobnav)mobnav.classList.remove('open');if(burger)burger.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMob();});
+if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
+
+/* ── ARTICLE PAGE ── */
+(function() {
+  function parseMD(md) {
+    if (!md) return '';
+    var inList = false;
+    var html = '';
+    var lines = md.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      line = line
+        .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`(.+?)`/g, '<code>$1</code>')
+        .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      if (/^## /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h2>' + line.slice(3) + '</h2>';
+      } else if (/^### /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h3>' + line.slice(4) + '</h3>';
+      } else if (/^> /.test(line)) {
+        html += '<blockquote>' + line.slice(2) + '</blockquote>';
+      } else if (/^- /.test(line) || /^\* /.test(line)) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += '<li>' + line.slice(2) + '</li>';
+      } else if (/^---/.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<hr>';
+      } else if (line.trim() === '') {
+        if (inList) { html += '</ul>'; inList = false; }
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<p>' + line + '</p>';
+      }
+    }
+    if (inList) html += '</ul>';
+    return html;
+  }
+
+  function fmtDate(d) {
+    if (!d) return '';
+    var date = new Date(d + (d.length === 10 ? 'T00:00:00' : ''));
+    return date.toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      var lbl = document.getElementById('copy-lbl');
+      lbl.textContent = 'Copié !';
+      setTimeout(function() { lbl.textContent = 'Copier le lien'; }, 2000);
+    });
+  }
+  window.copyLink = copyLink;
+
+  function showError(msg) {
+    document.getElementById('art-loading').innerHTML =
+      '<p style="color:var(--txt3);font-size:1rem;">' + msg + '</p>'
+      + '<a href="blog.html" style="display:inline-block;margin-top:1.5rem;color:var(--lion);font-weight:600;">← Retour au blog</a>';
+  }
+
+  function render(art) {
+    // Update <head> meta
+    document.title = art.title + ' — Upglide';
+    var descEl = document.getElementById('page-desc');
+    if (descEl && art.excerpt) descEl.setAttribute('content', art.excerpt);
+    var canonEl = document.getElementById('page-canonical');
+    if (canonEl) canonEl.setAttribute('href', 'https://upglide.fr/blog/' + (art.slug || ''));
+    var ogT = document.getElementById('og-title');
+    if (ogT) ogT.setAttribute('content', art.title + ' — Upglide');
+    var ogD = document.getElementById('og-desc');
+    if (ogD && art.excerpt) ogD.setAttribute('content', art.excerpt);
+
+    // Hero
+    var bc = document.getElementById('breadcrumb-title');
+    if (bc) bc.textContent = art.title.length > 40 ? art.title.slice(0, 40) + '…' : art.title;
+    var catEl = document.getElementById('art-cat');
+    if (catEl && art.category) catEl.textContent = art.category;
+    var h1 = document.getElementById('art-h1');
+    if (h1) h1.textContent = art.title;
+    var dateEl = document.getElementById('art-date');
+    if (dateEl) dateEl.textContent = fmtDate(art.date);
+    var readEl = document.getElementById('art-read');
+    if (readEl && art.readTime) {
+      readEl.textContent = art.readTime + ' min de lecture';
+      var dot = document.getElementById('meta-dot');
+      if (dot) dot.style.display = '';
+    }
+
+    // Body
+    document.getElementById('art-loading').style.display = 'none';
+    var content = document.getElementById('art-content');
+    content.innerHTML = parseMD(art.content || '');
+    content.style.display = 'block';
+
+    // Share
+    var shareEl = document.getElementById('art-share');
+    if (shareEl) shareEl.style.display = 'flex';
+    var liLink = document.getElementById('share-linkedin');
+    if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href);
+
+    // CTA
+    var ctaEl = document.getElementById('art-cta');
+    if (ctaEl) ctaEl.style.display = 'block';
+  }
+
+  // Get slug from URL
+  var params = new URLSearchParams(window.location.search);
+  var slug = params.get('slug');
+  if (!slug) { showError('Article introuvable.'); return; }
+
+  fetch('/data/blog.json?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var posts = data.posts || [];
+      var art = posts.find(function(p) {
+        return (p.slug === slug || p.title === slug) && p.published;
+      });
+      if (!art) { showError('Cet article n\'existe pas ou n\'est pas encore publié.'); return; }
+      render(art);
+    })
+    .catch(function() { showError('Impossible de charger l\'article.'); });
+})();
+</script>
+</body>
+</html>
