@@ -6,15 +6,13 @@ backend:
   name: git-gateway
   branch: main
 
-# Langue de l'interface
 locale: fr
 
-# Dossier pour les images uploadées
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 # ─────────────────────────────────────────────────────
-# COLLECTIONS DE CONTENU
+# COLLECTIONS
 # ─────────────────────────────────────────────────────
 
 collections:
@@ -34,6 +32,7 @@ collections:
             summary: "{{fields.title}} — {{fields.category}}"
             minimize_collapsed: true
             fields:
+
               - label: "Titre"
                 name: "title"
                 widget: "string"
@@ -42,10 +41,10 @@ collections:
               - label: "Slug (URL)"
                 name: "slug"
                 widget: "string"
-                hint: "Généré depuis le titre — lettres minuscules et tirets uniquement"
-                pattern: ['^[a-z0-9-]+$', "Lettres minuscules et tirets uniquement"]
+                hint: "Ex : mes-marges-sont-trop-basses — lettres minuscules et tirets uniquement, pas d'accents"
+                pattern: ['^[a-z0-9-]+$', "Lettres minuscules, chiffres et tirets uniquement"]
 
-              - label: "Date"
+              - label: "Date de publication"
                 name: "date"
                 widget: "datetime"
                 format: "YYYY-MM-DD"
@@ -77,18 +76,37 @@ collections:
               - label: "Extrait"
                 name: "excerpt"
                 widget: "text"
-                hint: "1–2 phrases affichées dans la liste du blog"
+                hint: "1–2 phrases affichées dans la liste du blog et dans Google"
 
-              - label: "Contenu"
+              - label: "Contenu de l'article"
                 name: "content"
                 widget: "markdown"
-                hint: "Utilisez la barre d'outils pour mettre en forme"
+                hint: >
+                  TAILLE DU TEXTE → utilisez les boutons Titre (grand), Sous-titre (moyen), Petit titre (petit).
+                  LIENS → sélectionnez un mot, cliquez l'icône lien 🔗, collez l'URL.
+                  Pour un lien vers une autre page du site : /blog.html · /accompagnements.html · /podcast.html · /ressources.html.
+                  Pour un lien externe : https://www.exemple.com
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                  - heading-two
+                  - heading-three
+                  - heading-four
+                  - quote
+                  - bulleted-list
+                  - numbered-list
+                  - code
+                editor_components: []
+                modes:
+                  - rich_text
+                  - raw
 
               - label: "Publié"
                 name: "published"
                 widget: "boolean"
                 default: true
-                hint: "Décocher pour sauvegarder en brouillon"
+                hint: "Décocher = brouillon (non visible sur le site)"
 
   # ── PODCAST ───────────────────────────────────────
   - name: "podcast"
@@ -105,6 +123,7 @@ collections:
             summary: "Ep. {{fields.number}} — {{fields.title}}"
             minimize_collapsed: true
             fields:
+
               - label: "Numéro d'épisode"
                 name: "number"
                 widget: "number"
@@ -129,33 +148,50 @@ collections:
                 hint: "Ex : 28:45"
                 required: false
 
+              - label: "Lien principal de l'épisode"
+                name: "link"
+                widget: "string"
+                required: false
+                hint: "URL directe vers l'épisode (Spotify, Apple, YouTube…) — ce lien sera le bouton principal d'écoute"
+
               - label: "Description"
                 name: "description"
                 widget: "text"
                 required: false
-                hint: "Affiché sous le titre de l'épisode"
+                hint: "Affiché sous le titre — résumé de l'épisode en 2–3 phrases"
 
-              - label: "🎵 Lien Spotify"
-                name: "spotify"
-                widget: "string"
+              - label: "Liens plateformes"
+                name: "platforms"
+                widget: "object"
                 required: false
+                hint: "Remplissez uniquement les plateformes où l'épisode est disponible"
+                fields:
+                  - label: "Spotify"
+                    name: "spotify"
+                    widget: "string"
+                    required: false
+                    hint: "URL complète : https://open.spotify.com/episode/..."
 
-              - label: "🎧 Lien Apple Podcasts"
-                name: "apple"
-                widget: "string"
-                required: false
+                  - label: "Apple Podcasts"
+                    name: "apple"
+                    widget: "string"
+                    required: false
+                    hint: "URL complète : https://podcasts.apple.com/..."
 
-              - label: "▶️ Lien YouTube"
-                name: "youtube"
-                widget: "string"
-                required: false
+                  - label: "YouTube"
+                    name: "youtube"
+                    widget: "string"
+                    required: false
+                    hint: "URL complète : https://www.youtube.com/watch?v=..."
 
-              - label: "📻 Lien Deezer"
-                name: "deezer"
-                widget: "string"
-                required: false
+                  - label: "Deezer"
+                    name: "deezer"
+                    widget: "string"
+                    required: false
+                    hint: "URL complète : https://www.deezer.com/episode/..."
 
               - label: "Publié"
                 name: "published"
                 widget: "boolean"
                 default: true
+                hint: "Décocher = brouillon (non visible sur le site)"

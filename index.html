@@ -538,30 +538,20 @@ img { height:auto; }
   <div class="nav-i">
     <a class="logo" href="index.html">Upglide<span> ·</span></a>
     <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="blog.html">Blog</a></li>
       <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
-      <li class="nav-it">
-        <button class="nav-a">Ressources<svg class="chv" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></button>
-        <div class="nav-drop">
-          <div class="nd-sec">Contenu gratuit</div>
-          <a class="nd-lnk" href="blog.html">Blog &amp; guides terrain</a>
-          <a class="nd-lnk" href="podcast.html">Podcast</a>
-          <div class="nd-sec">Outils</div>
-          <a class="nd-lnk" href="ressources.html">Templates &amp; frameworks</a>
-        </div>
-      </li>
       <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
     </ul>
-    <button class="nav-cta" onclick="goTo('lm')">Guide gratuit</button>
+    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog</a></div>
     <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
-    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
-    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
     <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
-    <button class="mob-cta" onclick="goTo('lm');closeMob()">Télécharger le guide gratuit →</button>
+    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
   </div>
 </nav>
 
@@ -578,7 +568,7 @@ img { height:auto; }
     <p class="hero-note">Guide gratuit · PDF · Applicable cette semaine</p>
   </div>
   <div class="hero-r">
-    <img src="hero-dashboard.png" alt="Dashboard e-commerce — analyse de performance et marges">
+    <img src="hero-dashboard.png" alt="Dashboard e-commerce — analyse de performance et marges" width="600" height="440" loading="eager">
     <div class="hero-stats-float">
       <div class="hs-stat">
         <div class="hs-num">10 ans</div>
@@ -644,7 +634,7 @@ img { height:auto; }
   <section class="sec">
     <div class="bio-grid">
       <div class="bio-photo rv">
-        <img src="bio-photo.jpg" alt="Fondatrice Upglide" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--rxl);">
+        <img src="bio-photo.jpg" alt="Caroline, fondatrice Upglide — experte e-commerce et marketplaces" width="600" height="420" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--rxl);">
       </div>
       <div>
         <span class="tag rv">Terrain first</span>
@@ -936,40 +926,6 @@ img { height:auto; }
   </div>
 </div>
 
-<!-- TWEAKS PANEL -->
-<div id="twk-root"></div>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel">
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "heroImageScale": "cover",
-  "accentColor": "#C9A052"
-}/*EDITMODE-END*/;
-
-function TweaksApp() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-  React.useEffect(() => {
-    document.querySelector('.hero-r img').style.objectFit = t.heroImageScale;
-    document.documentElement.style.setProperty('--lion', t.accentColor);
-  }, [t]);
-
-  return (
-    <TweaksPanel>
-      <TweakSection label="Hero" />
-      <TweakRadio label="Image" value={t.heroImageScale}
-        options={['cover','contain']}
-        onChange={v => setTweak('heroImageScale', v)} />
-      <TweakSection label="Couleurs" />
-      <TweakColor label="Accent (or)" value={t.accentColor}
-        onChange={v => setTweak('accentColor', v)} />
-    </TweaksPanel>
-  );
-}
-ReactDOM.createRoot(document.getElementById('twk-root')).render(<TweaksApp />);
-</script>
 
 <script>
 /* NAV */

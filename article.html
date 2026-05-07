@@ -7,16 +7,20 @@
 <meta name="description" id="page-desc" content="Article e-commerce — Upglide">
 <link rel="canonical" id="page-canonical" href="https://upglide.fr/blog">
 <meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Upglide">
+<meta property="og:image" id="og-image" content="https://upglide.fr/hero-dashboard.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" id="tw-image" content="https://upglide.fr/hero-dashboard.png">
 <meta property="og:title" id="og-title" content="Article — Upglide">
 <meta property="og:description" id="og-desc" content="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json" id="article-jsonld">
+{"@context":"https://schema.org","@type":"Article","name":"Article — Upglide"}
+</script>
 <style>
 :root {
   --isa:   #F5F1E8;
@@ -41,6 +45,26 @@
   --shg:  0 6px 24px rgba(201,160,82,.3);
   --t: .22s ease;
 }
+
+/* ── LAYOUT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── PROGRESS BAR ── */
+.art-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--lion2), var(--lion));
+  z-index: 600;
+  transition: width .1s linear;
+  pointer-events: none;
+}
+
 /* ── NAV ── */
 nav { background:var(--wh); border-bottom:1px solid var(--bdr); position:sticky; top:0; z-index:200; transition:box-shadow var(--t); }
 nav.scrolled { box-shadow:0 2px 24px rgba(30,45,90,.1); }
@@ -51,13 +75,15 @@ nav.scrolled { box-shadow:0 2px 24px rgba(30,45,90,.1); }
 .nav-it { position:relative; }
 .nav-a { display:flex; align-items:center; gap:4px; font-size:.875rem; font-weight:500; color:var(--txt2); padding:.5rem .875rem; transition:color var(--t); cursor:pointer; border:none; background:none; font-family:var(--fb); border-radius:6px; }
 .nav-a:hover { color:var(--cad); }
-.chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); }
-.nav-it:hover .chv { transform:rotate(180deg); }
-.nav-drop { display:none; position:absolute; top:calc(100% + 10px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:220px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
-.nav-it:hover .nav-drop { display:block; }
-.nd-lnk { display:block; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
+.chv { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:2; transition:transform var(--t); flex-shrink:0; }
+.nav-drop { display:none; position:absolute; top:calc(100% + 6px); left:0; background:var(--wh); border:1px solid var(--bdr); border-radius:var(--r); min-width:230px; box-shadow:var(--shmd); z-index:300; overflow:hidden; }
+.nav-it.open .nav-drop { display:block; }
+.nav-it.open .chv { transform:rotate(180deg); }
+.nd-lnk { display:flex; align-items:center; gap:.5rem; padding:.625rem 1.25rem; font-size:.8125rem; font-weight:500; color:var(--txt2); transition:all var(--t); }
 .nd-lnk:hover { background:var(--isa); color:var(--cad); }
-.nd-sec { padding:.5rem 1.25rem .25rem; font-size:.625rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
+.nd-lnk-sub { font-size:.75rem; color:var(--txt3); padding:.5rem 1.25rem .5rem 1.75rem; }
+.nd-lnk-sub:hover { background:var(--isa); color:var(--txt2); }
+.nd-sec { padding:.5rem 1.25rem .25rem; font-size:.5625rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--txt3); border-top:1px solid var(--bdr); background:var(--isa); }
 .nd-sec:first-child { border-top:none; }
 .nav-cta { background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.8125rem; font-weight:700; padding:.65rem 1.5rem; border:none; cursor:pointer; transition:all var(--t); border-radius:100px; margin-left:.75rem; white-space:nowrap; }
 .nav-cta:hover { background:var(--cad2); transform:translateY(-1px); }
@@ -72,7 +98,6 @@ nav.scrolled { box-shadow:0 2px 24px rgba(30,45,90,.1); }
 .mob-a { display:block; padding:1rem 0; font-size:1rem; font-weight:600; color:var(--cad); }
 .mob-cta { margin-top:2rem; background:var(--cad); color:var(--wh); font-family:var(--fb); font-size:.9375rem; font-weight:700; padding:1rem; border:none; border-radius:100px; cursor:pointer; width:100%; text-align:center; }
 
-
 /* ── FOOTER ── */
 footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
 .foot { display:flex; flex-wrap:wrap; align-items:flex-start; gap:2rem; justify-content:space-between; }
@@ -83,16 +108,22 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
 .foot-link:hover { color:var(--wh); }
 .foot-copy { font-size:.6875rem; color:rgba(255,255,255,.12); width:100%; text-align:right; margin-top:.25rem; }
 
-
-/* REVEAL */
-.rv{opacity:1;transform:none;}
-
-/* ARTICLE PAGE */
+/* ── ARTICLE PAGE ── */
 .art-page { background: var(--isa); min-height: 100vh; }
+
+/* ── HERO ── */
 .art-hero {
-  background: var(--cad2);
-  padding: 4.5rem 0 3.5rem;
+  background: linear-gradient(135deg, var(--cad2) 0%, #243870 100%);
+  padding: 5rem 0 6.5rem;
   position: relative;
+  overflow: hidden;
+}
+.art-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,160,82,.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 .art-hero::after {
   content: '';
@@ -101,30 +132,34 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
   height: 80px;
   background: var(--isa);
   clip-path: ellipse(55% 100% at 50% 100%);
+  z-index: 0;
 }
+.art-hero .wrap { position: relative; z-index: 1; }
 .art-breadcrumb {
   display: flex;
   align-items: center;
   gap: .5rem;
   font-size: .75rem;
-  color: rgba(255,255,255,.35);
-  margin-bottom: 2rem;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 2.5rem;
+  font-family: var(--fb);
 }
-.art-breadcrumb a {
-  color: rgba(255,255,255,.5);
-  text-decoration: none;
-  transition: color .2s;
-}
+.art-breadcrumb a { color: rgba(255,255,255,.45); transition: color .2s; }
 .art-breadcrumb a:hover { color: var(--lion); }
-.art-breadcrumb-sep { color: rgba(255,255,255,.2); }
-.art-category {
-  display: inline-block;
+.art-breadcrumb-sep { color: rgba(255,255,255,.15); }
+.art-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
   font-size: .5625rem;
   font-weight: 700;
-  letter-spacing: .18em;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--lion);
-  margin-bottom: 1rem;
+  color: var(--cad);
+  background: var(--lion);
+  padding: .3rem .75rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
 }
 .art-h1 {
   font-family: var(--ft);
@@ -132,115 +167,166 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
   font-weight: 600;
   line-height: 1.1;
   color: var(--wh);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   letter-spacing: -.01em;
+  max-width: 760px;
 }
 .art-h1 em { font-style: italic; color: var(--lion); }
 .art-meta-bar {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   font-size: .8125rem;
   color: rgba(255,255,255,.35);
+  font-family: var(--fb);
 }
-.art-meta-dot { width: 3px; height: 3px; background: rgba(255,255,255,.2); border-radius: 50%; }
+.art-meta-sep { width: 3px; height: 3px; background: rgba(255,255,255,.2); border-radius: 50%; flex-shrink: 0; }
 
-/* ARTICLE BODY */
-.art-body-wrap {
-  max-width: 720px;
+/* ── ARTICLE BODY ── */
+.art-outer {
+  max-width: 760px;
   margin: 0 auto;
-  padding: 4rem 2rem 6rem;
+  padding: 3.5rem 2rem 6rem;
 }
-.art-body-wrap p {
-  font-size: 1.0625rem;
-  color: var(--txt2);
-  line-height: 1.85;
-  margin-bottom: 1.25rem;
-}
-.art-body-wrap h2 {
-  font-family: var(--ft);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 600;
-  color: var(--cad);
-  margin: 2.5rem 0 .875rem;
-  line-height: 1.2;
-}
-.art-body-wrap h3 {
-  font-family: var(--ft);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--cad);
-  margin: 1.75rem 0 .625rem;
-}
-.art-body-wrap ul, .art-body-wrap ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-.art-body-wrap li {
-  font-size: 1.0625rem;
-  color: var(--txt2);
-  line-height: 1.75;
-  margin-bottom: .375rem;
-}
-.art-body-wrap strong { color: var(--cad); font-weight: 700; }
-.art-body-wrap em { font-style: italic; }
-.art-body-wrap a { color: var(--lion); text-decoration: underline; }
-.art-body-wrap code {
-  font-family: monospace;
-  background: var(--isa);
-  border: 1px solid var(--bdr);
-  border-radius: 4px;
-  padding: .1em .4em;
-  font-size: .9em;
-  color: var(--cad);
-}
-.art-body-wrap hr {
-  border: none;
-  border-top: 1px solid var(--bdr);
-  margin: 2.5rem 0;
-}
-.art-body-wrap blockquote {
-  border-left: 3px solid var(--lion);
-  padding: .875rem 1.5rem;
-  margin: 1.5rem 0;
-  background: var(--isa);
-  border-radius: 0 var(--r) var(--r) 0;
-  font-style: italic;
-  color: var(--txt2);
-}
-
-/* BACK LINK */
 .art-back {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  font-size: .875rem;
+  font-size: .8125rem;
   font-weight: 600;
   color: var(--txt3);
   text-decoration: none;
-  margin-bottom: 3rem;
-  transition: color .2s;
+  margin-bottom: 2.5rem;
+  padding: .5rem .875rem .5rem .625rem;
+  border: 1px solid var(--bdr);
+  border-radius: 100px;
+  background: var(--wh);
+  transition: all .2s;
+  font-family: var(--fb);
 }
-.art-back:hover { color: var(--cad); }
-.art-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+.art-back:hover { color: var(--cad); border-color: var(--cad); background: var(--wh); }
+.art-back svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
 
-/* SHARE */
+/* White card wrapping content */
+.art-card {
+  background: var(--wh);
+  border-radius: var(--rlg);
+  box-shadow: var(--shsm);
+  border: 1px solid var(--bdr);
+  padding: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Typography */
+.art-card p {
+  font-size: 1.0625rem;
+  color: var(--txt2);
+  line-height: 1.9;
+  margin-bottom: 1.375rem;
+  font-family: var(--fb);
+}
+/* Lead paragraph */
+.art-card p:first-of-type {
+  font-size: 1.175rem;
+  color: var(--txt);
+  line-height: 1.85;
+  font-weight: 400;
+}
+.art-card h2 {
+  font-family: var(--ft);
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 600;
+  color: var(--cad);
+  margin: 3rem 0 1rem;
+  line-height: 1.15;
+  padding-left: 1rem;
+  border-left: 3px solid var(--lion);
+}
+.art-card h3 {
+  font-family: var(--ft);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cad);
+  margin: 2rem 0 .625rem;
+  line-height: 1.2;
+}
+.art-card h4 {
+  font-family: var(--fb);
+  font-size: .9375rem;
+  font-weight: 700;
+  color: var(--cad);
+  margin: 1.5rem 0 .5rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.art-card ul, .art-card ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.375rem;
+}
+.art-card li {
+  font-size: 1.0625rem;
+  color: var(--txt2);
+  line-height: 1.8;
+  margin-bottom: .5rem;
+  font-family: var(--fb);
+}
+.art-card strong { color: var(--cad); font-weight: 700; }
+.art-card em { font-style: italic; }
+.art-card a { color: var(--lion); text-decoration: underline; text-underline-offset: 3px; }
+.art-card code {
+  font-family: monospace;
+  background: var(--isa);
+  border: 1px solid var(--bdr);
+  border-radius: 4px;
+  padding: .15em .45em;
+  font-size: .875em;
+  color: var(--cad);
+}
+.art-card hr {
+  border: none;
+  border-top: 1px solid var(--bdr);
+  margin: 2.5rem 0;
+}
+.art-card blockquote {
+  border-left: 3px solid var(--lion);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  background: var(--isa);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-style: italic;
+  color: var(--txt2);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+/* ── SHARE ── */
 .art-share {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--bdr);
-  margin-top: 3rem;
+  flex-wrap: wrap;
+  background: var(--wh);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r);
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 1.5rem;
 }
-.art-share-lbl { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--txt3); }
+.art-share-lbl {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--txt3);
+  font-family: var(--fb);
+  margin-right: .25rem;
+}
 .art-share-btn {
   display: inline-flex;
   align-items: center;
   gap: .375rem;
   font-size: .8125rem;
   font-weight: 600;
-  padding: .5rem 1rem;
+  padding: .45rem .875rem;
   border: 1px solid var(--bdr);
   border-radius: 100px;
   background: var(--wh);
@@ -248,36 +334,53 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
   cursor: pointer;
   transition: all .2s;
   text-decoration: none;
+  font-family: var(--fb);
 }
 .art-share-btn:hover { background: var(--cad); color: var(--wh); border-color: var(--cad); }
 
-/* CTA */
+/* ── CTA ── */
 .art-cta {
-  background: var(--cad);
+  background: linear-gradient(135deg, var(--cad2) 0%, #243870 100%);
   border-radius: var(--rlg);
-  padding: 3rem;
+  padding: 3.5rem;
   text-align: center;
-  margin: 0 0 4rem;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.art-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 110%, rgba(201,160,82,.15) 0%, transparent 70%);
+  pointer-events: none;
 }
 .art-cta-label {
   font-size: .5625rem;
   font-weight: 700;
-  letter-spacing: .18em;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: rgba(201,160,82,.6);
-  margin-bottom: .75rem;
+  color: var(--lion);
+  margin-bottom: 1rem;
   display: block;
+  font-family: var(--fb);
+  opacity: .8;
 }
 .art-cta h3 {
   font-family: var(--ft);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.625rem, 3vw, 2.375rem);
   font-weight: 600;
   color: var(--wh);
   line-height: 1.1;
   margin-bottom: .875rem;
 }
 .art-cta h3 em { font-style: italic; color: var(--lion); }
-.art-cta p { font-size: .9375rem; color: rgba(255,255,255,.45); margin-bottom: 1.75rem; }
+.art-cta p {
+  font-size: .9375rem;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 2rem;
+  font-family: var(--fb);
+}
 .art-cta-btn {
   display: inline-block;
   background: var(--lion);
@@ -289,19 +392,21 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
   border-radius: 100px;
   text-decoration: none;
   letter-spacing: .02em;
-  transition: background .2s;
+  transition: background .2s, transform .2s;
+  box-shadow: 0 4px 20px rgba(201,160,82,.35);
 }
-.art-cta-btn:hover { background: var(--lion2); }
+.art-cta-btn:hover { background: var(--lion2); transform: translateY(-1px); }
 
-/* LOADING / ERROR */
+/* ── LOADING / ERROR ── */
 .art-loading {
   text-align: center;
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   color: var(--txt3);
+  font-family: var(--fb);
 }
 .art-loading svg {
-  width: 48px; height: 48px;
-  stroke: var(--bdr);
+  width: 40px; height: 40px;
+  stroke: var(--alm);
   fill: none;
   stroke-width: 1.5;
   margin: 0 auto 1.5rem;
@@ -310,46 +415,41 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* RESPONSIVE */
+/* ── RESPONSIVE ── */
 @media(max-width: 768px) {
   .nav-m { display: none; }
   .burger { display: flex; }
-  .art-hero { padding: 3.5rem 0 2.5rem; }
-  .art-body-wrap { padding: 3rem 1.25rem 4rem; }
-  .art-cta { padding: 2rem 1.5rem; }
+  .art-hero { padding: 3.5rem 0 3rem; }
+  .art-outer { padding: 2.5rem 1.25rem 4rem; }
+  .art-card { padding: 2rem 1.5rem; }
+  .art-cta { padding: 2.5rem 1.5rem; }
+  .art-share { padding: 1rem 1.25rem; gap: .625rem; }
 }
 </style>
 </head>
 <body class="art-page">
 
+<!-- Reading progress -->
+<div class="art-progress" id="art-progress"></div>
+
 <nav id="nav">
   <div class="nav-i">
     <a class="logo" href="index.html">Upglide<span> ·</span></a>
     <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="blog.html">Blog</a></li>
       <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
-      <li class="nav-it">
-        <button class="nav-a">Ressources<svg class="chv" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></button>
-        <div class="nav-drop">
-          <div class="nd-sec">Contenu gratuit</div>
-          <a class="nd-lnk" href="blog.html">Blog &amp; guides terrain</a>
-          <a class="nd-lnk" href="podcast.html">Podcast</a>
-          <div class="nd-sec">Outils</div>
-          <a class="nd-lnk" href="ressources.html">Templates &amp; frameworks</a>
-        </div>
-      </li>
       <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
     </ul>
-    <button class="nav-cta" onclick="goTo('lm')">Guide gratuit</button>
+    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog</a></div>
     <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
-    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog &amp; guides</a></div>
-    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
     <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
-    <button class="mob-cta" onclick="goTo('lm');closeMob()">Télécharger le guide gratuit →</button>
+    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
   </div>
 </nav>
 
@@ -363,11 +463,11 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
       <span class="art-breadcrumb-sep">›</span>
       <span id="breadcrumb-title">Article</span>
     </div>
-    <span class="art-category" id="art-cat"></span>
+    <span class="art-category-badge" id="art-cat"></span>
     <h1 class="art-h1" id="art-h1">Chargement…</h1>
     <div class="art-meta-bar">
       <span id="art-date"></span>
-      <span class="art-meta-dot" id="meta-dot" style="display:none"></span>
+      <span class="art-meta-sep" id="meta-dot" style="display:none"></span>
       <span id="art-read"></span>
     </div>
   </div>
@@ -375,31 +475,33 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
 
 <!-- BODY -->
 <div class="wrap">
-  <div class="art-body-wrap">
+  <div class="art-outer">
 
     <a href="blog.html" class="art-back">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       Retour au blog
     </a>
 
-    <!-- Loading state -->
+    <!-- Loading -->
     <div class="art-loading" id="art-loading">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       <p>Chargement de l'article…</p>
     </div>
 
     <!-- Article content -->
-    <div id="art-content" style="display:none;"></div>
+    <div class="art-card" id="art-card" style="display:none;">
+      <div id="art-content"></div>
+    </div>
 
     <!-- Share -->
     <div class="art-share" id="art-share" style="display:none;">
       <span class="art-share-lbl">Partager</span>
       <a id="share-linkedin" class="art-share-btn" href="#" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
       <button class="art-share-btn" onclick="copyLink()">
-        <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         <span id="copy-lbl">Copier le lien</span>
       </button>
     </div>
@@ -432,19 +534,55 @@ footer { background:var(--cad2); color:var(--wh); padding:3.5rem 0; }
 </footer>
 
 <script>
-const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
-if(burger&&mobnav){burger.addEventListener('click',function(){var o=mobnav.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});}
-function closeMob(){if(mobnav)mobnav.classList.remove('open');if(burger)burger.classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMob();});
-if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
+/* ── NAV ── */
+var nav = document.getElementById('nav');
+var burger = document.getElementById('burger');
+var mobnav = document.getElementById('mobnav');
 
-/* ── ARTICLE PAGE ── */
+if (nav) window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+// Click-based dropdowns
+document.querySelectorAll('.nav-a[data-drop]').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var item = btn.closest('.nav-it');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); });
+});
+
+if (burger && mobnav) {
+  burger.addEventListener('click', function() {
+    var o = mobnav.classList.toggle('open');
+    burger.classList.toggle('open', o);
+    document.body.style.overflow = o ? 'hidden' : '';
+  });
+}
+function closeMob() {
+  if (mobnav) mobnav.classList.remove('open');
+  if (burger) burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeMob(); document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); }); } });
+
+/* ── READING PROGRESS ── */
+var prog = document.getElementById('art-progress');
+if (prog) {
+  window.addEventListener('scroll', function() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (window.scrollY / h * 100) : 0) + '%';
+  }, { passive: true });
+}
+
+/* ── ARTICLE ── */
 (function() {
   function parseMD(md) {
     if (!md) return '';
-    var inList = false;
-    var html = '';
-    var lines = md.split('\n');
+    var inList = false, html = '', lines = md.split('\n');
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
       line = line
@@ -459,7 +597,11 @@ if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolle
       } else if (/^### /.test(line)) {
         if (inList) { html += '</ul>'; inList = false; }
         html += '<h3>' + line.slice(4) + '</h3>';
+      } else if (/^#### /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h4>' + line.slice(5) + '</h4>';
       } else if (/^> /.test(line)) {
+        if (inList) { html += '</ul>'; inList = false; }
         html += '<blockquote>' + line.slice(2) + '</blockquote>';
       } else if (/^- /.test(line) || /^\* /.test(line)) {
         if (!inList) { html += '<ul>'; inList = true; }
@@ -480,8 +622,7 @@ if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolle
 
   function fmtDate(d) {
     if (!d) return '';
-    var date = new Date(d + (d.length === 10 ? 'T00:00:00' : ''));
-    return date.toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+    return new Date(d + (d.length === 10 ? 'T00:00:00' : '')).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   function copyLink() {
@@ -495,23 +636,21 @@ if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolle
 
   function showError(msg) {
     document.getElementById('art-loading').innerHTML =
-      '<p style="color:var(--txt3);font-size:1rem;">' + msg + '</p>'
-      + '<a href="blog.html" style="display:inline-block;margin-top:1.5rem;color:var(--lion);font-weight:600;">← Retour au blog</a>';
+      '<p style="color:var(--txt3);font-size:1rem;font-family:var(--fb);">' + msg + '</p>'
+      + '<a href="blog.html" style="display:inline-flex;align-items:center;gap:.375rem;margin-top:1.5rem;color:var(--lion);font-weight:600;font-family:var(--fb);font-size:.875rem;">← Retour au blog</a>';
   }
 
   function render(art) {
-    // Update <head> meta
     document.title = art.title + ' — Upglide';
     var descEl = document.getElementById('page-desc');
     if (descEl && art.excerpt) descEl.setAttribute('content', art.excerpt);
     var canonEl = document.getElementById('page-canonical');
-    if (canonEl) canonEl.setAttribute('href', 'https://upglide.fr/blog/' + (art.slug || ''));
+    if (canonEl) canonEl.setAttribute('href', 'https://upglide.fr/article.html?slug=' + (art.slug || ''));
     var ogT = document.getElementById('og-title');
     if (ogT) ogT.setAttribute('content', art.title + ' — Upglide');
     var ogD = document.getElementById('og-desc');
     if (ogD && art.excerpt) ogD.setAttribute('content', art.excerpt);
 
-    // Hero
     var bc = document.getElementById('breadcrumb-title');
     if (bc) bc.textContent = art.title.length > 40 ? art.title.slice(0, 40) + '…' : art.title;
     var catEl = document.getElementById('art-cat');
@@ -527,33 +666,43 @@ if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolle
       if (dot) dot.style.display = '';
     }
 
-    // Body
-    document.getElementById('art-loading').style.display = 'none';
-    var content = document.getElementById('art-content');
-    content.innerHTML = parseMD(art.content || '');
-    content.style.display = 'block';
+    // JSON-LD Article schema
+    var jsonld = document.getElementById('article-jsonld');
+    if (jsonld) {
+      jsonld.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": art.title,
+        "description": art.excerpt || '',
+        "datePublished": art.date || '',
+        "author": {"@type": "Person", "name": "Caroline", "url": "https://upglide.fr/a-propos"},
+        "publisher": {"@type": "Organization", "name": "Upglide", "url": "https://upglide.fr/"},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://upglide.fr/article.html?slug=" + (art.slug || '')},
+        "inLanguage": "fr-FR"
+      });
+    }
 
-    // Share
+    document.getElementById('art-loading').style.display = 'none';
+    var card = document.getElementById('art-card');
+    document.getElementById('art-content').innerHTML = parseMD(art.content || '');
+    card.style.display = 'block';
+
     var shareEl = document.getElementById('art-share');
     if (shareEl) shareEl.style.display = 'flex';
     var liLink = document.getElementById('share-linkedin');
     if (liLink) liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href);
 
-    // CTA
     var ctaEl = document.getElementById('art-cta');
     if (ctaEl) ctaEl.style.display = 'block';
   }
 
-  // Get slug from URL
-  var params = new URLSearchParams(window.location.search);
-  var slug = params.get('slug');
+  var slug = new URLSearchParams(window.location.search).get('slug');
   if (!slug) { showError('Article introuvable.'); return; }
 
   fetch('/data/blog.json?_=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      var posts = data.posts || [];
-      var art = posts.find(function(p) {
+      var art = (data.posts || []).find(function(p) {
         return (p.slug === slug || p.title === slug) && p.published;
       });
       if (!art) { showError('Cet article n\'existe pas ou n\'est pas encore publié.'); return; }

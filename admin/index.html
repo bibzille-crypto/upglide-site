@@ -20,5 +20,68 @@
     <p>Chargement de l'interface…</p>
   </div>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Police
+    CMS.registerPreviewStyle(
+      'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap'
+    );
+
+    // Styles de prévisualisation — design Upglide
+    CMS.registerPreviewStyle(`
+      :root {
+        --isa: #F5F1E8; --lion: #C9A052; --cad: #1E2D5A;
+        --txt2: #4A5878; --bdr: rgba(30,45,90,.09);
+        --ft: 'Cormorant Garamond', Georgia, serif;
+        --fb: 'Manrope', system-ui, sans-serif;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        background: var(--isa);
+        font-family: var(--fb);
+        color: var(--txt2);
+        padding: 3rem 2rem;
+        max-width: 720px;
+        margin: 0 auto;
+        font-size: 1.0625rem;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 {
+        font-family: var(--ft);
+        color: var(--cad);
+        line-height: 1.15;
+        margin: 2rem 0 .75rem;
+        font-weight: 600;
+      }
+      h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0; }
+      h2 { font-size: 1.75rem; border-bottom: 1px solid var(--bdr); padding-bottom: .5rem; }
+      h3 { font-size: 1.25rem; }
+      p { margin-bottom: 1.25rem; }
+      strong { color: var(--cad); font-weight: 700; }
+      em { font-style: italic; }
+      a { color: var(--lion); text-decoration: underline; }
+      blockquote {
+        border-left: 3px solid var(--lion);
+        padding: .875rem 1.5rem;
+        margin: 1.75rem 0;
+        background: #fff;
+        border-radius: 0 12px 12px 0;
+        font-style: italic;
+      }
+      code {
+        font-family: monospace;
+        background: #fff;
+        border: 1px solid var(--bdr);
+        border-radius: 4px;
+        padding: .1em .4em;
+        font-size: .875em;
+        color: var(--cad);
+      }
+      ul, ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+      li { margin-bottom: .375rem; line-height: 1.75; }
+      hr { border: none; border-top: 1px solid var(--bdr); margin: 2.5rem 0; }
+      img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+    `, { raw: true });
+  </script>
 </body>
 </html>
