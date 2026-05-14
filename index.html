@@ -87,10 +87,15 @@
     .nav-mobile .nm-cta{margin-top:24px;background:var(--gold);color:var(--navy);text-align:center;padding:16px;border-radius:8px;border-bottom:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500}
 
     /* ── HERO ── */
-    .hero{min-height:100vh;padding:100px 5% 80px;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center}
+    .hero{min-height:100vh;padding:100px 5% 80px;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .hero-glow{position:absolute;width:700px;height:700px;top:-20%;right:-10%;background:radial-gradient(circle,rgba(200,168,112,.07) 0%,transparent 70%);pointer-events:none}
     .hero-grid-line{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.03);pointer-events:none}
-    .hero-inner{position:relative;width:100%;max-width:700px}
+    .hero-inner{position:relative;width:100%;max-width:1100px;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+    .hero-content{min-width:0}
+    .hero-photo-wrap{position:relative;flex-shrink:0}
+    .hero-photo{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:16px;display:block;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+    .hero-photo-frame{position:relative;border-radius:16px;overflow:hidden}
+    .hero-photo-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,48,80,.18) 0%,transparent 60%);pointer-events:none;border-radius:16px}
     .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:.9}
     .hero-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse-dot 2.5s ease-in-out infinite}
     @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
@@ -262,9 +267,7 @@
     .about-hl p{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300}
     .about-hl strong{color:var(--navy);font-weight:500}
     .about-visual{background:var(--navy);border-radius:var(--rl);overflow:hidden}
-    .av-bg{height:240px;background:var(--nm);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .av-bg::before{content:'';position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(200,168,112,.08) 0%,transparent 70%);top:-30%;right:-20%}
-    .av-init{font-family:'Libre Baskerville',serif;font-size:5rem;color:rgba(255,255,255,.1);font-style:italic;position:relative;z-index:1}
+    .about-photo{width:100%;height:340px;object-fit:cover;object-position:top center;display:block}
     .av-bar{height:3px;background:var(--gold)}
     .av-info{padding:20px 22px}
     .av-name{font-family:'Libre Baskerville',serif;font-size:.97rem;color:var(--w);margin-bottom:3px}
@@ -305,13 +308,15 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:960px){
-      .hero-inner{max-width:100%}
+      .hero-inner{grid-template-columns:1fr;gap:40px;max-width:100%}
+      .hero-photo-wrap{order:-1;max-width:100%}
+      .hero-photo{aspect-ratio:16/9}
       .pain-wrap,.prom-layout,.lead-inner,.about-layout,.seo-g{grid-template-columns:1fr;gap:40px}
       .pain-sticky{position:static}
       .marc-steps{grid-template-columns:1fr 1fr}
       .marc-connector{display:none}
       .mp.act{grid-template-columns:1fr;gap:24px}
-      .about-visual{display:none}
+      .about-visual{max-width:340px;margin:0 auto}
       .nv-desktop{display:none!important}
       .nav-hamburger{display:flex}
     }
@@ -364,23 +369,35 @@
   <div class="hero-glow"></div>
   <div class="hero-grid-line"></div>
   <div class="hero-inner">
-    <div class="hero-tag"><span class="hero-tag-dot"></span>E-commerce · Boutiques propres & marketplaces · CA 300K–1,5M€</div>
-    <h1 class="hero-h">
-      Pourquoi faire du CA<br>
-      sans <span class="em">vrai bénéfice ?</span>
-    </h1>
-    <p class="hero-kicker">« Ce n'est pas un problème de ventes. C'est un problème de marge. »</p>
-    <p class="hero-sub">Upglide identifie les <strong>fuites de marge</strong> qui plombent la rentabilité de votre boutique — et améliore votre <strong>marge nette et votre cashflow</strong> sans augmenter votre volume de travail.</p>
-    <div class="hero-ctas">
-      <a href="#lead" class="btn-gold">Télécharger le guide gratuit →</a>
-      <a href="#audit" class="btn-ghost">Réserver un appel audit</a>
+
+    <!-- Texte -->
+    <div class="hero-content">
+      <div class="hero-tag"><span class="hero-tag-dot"></span>E-commerce · Boutiques propres & marketplaces · CA 300K–1,5M€</div>
+      <h1 class="hero-h">
+        Pourquoi faire du CA<br>
+        sans <span class="em">vrai bénéfice ?</span>
+      </h1>
+      <p class="hero-kicker">« Ce n'est pas un problème de ventes. C'est un problème de marge. »</p>
+      <p class="hero-sub">Upglide identifie les <strong>fuites de marge</strong> qui plombent la rentabilité de votre boutique — et améliore votre <strong>marge nette et votre cashflow</strong> sans augmenter votre volume de travail.</p>
+      <div class="hero-ctas">
+        <a href="#lead" class="btn-gold">Télécharger le guide gratuit →</a>
+        <a href="#audit" class="btn-ghost">Réserver un appel audit</a>
+      </div>
+      <div class="hero-proof">
+        <div class="hpi"><strong>+2 à +5 pts</strong><span>marge nette visée</span></div>
+        <div class="hpi"><strong>10 ans</strong><span>d'expérience commerce & e-commerce</span></div>
+        <div class="hpi"><strong>MARC</strong><span>méthode propriétaire</span></div>
+      </div>
+      <p class="hero-scarcity"><span class="scarcity-dot"></span>2 places restantes ce mois-ci</p>
     </div>
-    <div class="hero-proof">
-      <div class="hpi"><strong>+2 à +5 pts</strong><span>marge nette visée</span></div>
-      <div class="hpi"><strong>10 ans</strong><span>d'expérience commerce & e-commerce</span></div>
-      <div class="hpi"><strong>MARC</strong><span>méthode propriétaire</span></div>
+
+    <!-- Visuel illustratif -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="hero-visual.jpg" alt="Audit rentabilité e-commerce — tableau de bord contribution marginale" class="hero-photo" width="560" height="420">
+      </div>
     </div>
-    <p class="hero-scarcity"><span class="scarcity-dot"></span>Seulement 4 audits disponibles ce mois-ci — 2 places restantes</p>
+
   </div>
 </header>
 
@@ -571,8 +588,8 @@
 <!-- ABOUT -->
 <section class="about" id="about" aria-labelledby="about-title">
   <div class="about-layout">
-    <div class="about-visual rv" aria-hidden="true">
-      <div class="av-bg"><div class="av-init">C.</div></div>
+    <div class="about-visual rv">
+      <img src="caroline-photo.jpg" alt="Caroline, fondatrice Upglide" class="about-photo">
       <div class="av-bar"></div>
       <div class="av-info"><p class="av-name">Caroline</p><p class="av-sub">Fondatrice d'Upglide</p></div>
     </div>
