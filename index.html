@@ -30,7 +30,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -39,6 +39,13 @@
       --bg:#F6F8FB; --w:#fff; --text:#111827; --muted:#546070; --light:#8898aa;
       --border:#dde3ef; --r:10px; --rl:16px;
       --ease:cubic-bezier(.4,0,.2,1);
+      /* Variables partagées avec accompagnements */
+      --isa:#F5F1E8; --alm:#E8D4AA; --lion:#C9A052;
+      --cad:#1E2D5A; --cad2:#131D3C; --wh:#FFFFFF;
+      --txt2:#4A5878; --bdr:rgba(30,45,90,.09);
+      --t:.22s ease;
+      --ft:'Cormorant Garamond',Georgia,serif;
+      --fb:'Manrope',system-ui,sans-serif;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;font-size:16px}
@@ -50,41 +57,35 @@
     /* ── SCROLL BAR ── */
     #sp{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:300;will-change:width}
 
-    /* ── NAV — unified across pages ── */
-    .site-nav{
-      position:fixed;top:0;left:0;right:0;z-index:200;
-      height:60px;padding:0 5%;
-      display:flex;align-items:center;justify-content:space-between;gap:32px;
-      transition:background .25s var(--ease),box-shadow .25s var(--ease);
+    /* ── NAV ── */
+    nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
+    nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
+    @media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
+    @media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
+    .logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
+    .logo span{color:var(--lion);font-style:normal;}
+    .nav-links{display:none;}
+    @media(min-width:768px){
+      .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
+      .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
+      .nav-links a:hover{color:var(--cad);background:var(--isa);}
+      .nav-links a.active{color:var(--cad);font-weight:600;}
     }
-    .site-nav.scrolled{background:rgba(246,248,251,.96);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--border)}
-    .nav-logo{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:700;color:var(--w);letter-spacing:-.02em;transition:color .25s}
-    .site-nav.scrolled .nav-logo{color:var(--navy)}
-    .nav-logo span{color:var(--gold)}
-    .nav-links{display:flex;gap:24px;list-style:none;margin:0 auto}
-    .nav-links a{font-size:.82rem;color:rgba(255,255,255,.6);transition:color .2s;padding:4px 0;position:relative}
-    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .2s var(--ease)}
-    .nav-links a:hover{color:var(--w)}
-    .nav-links a:hover::after{transform:scaleX(1)}
-    .site-nav.scrolled .nav-links a{color:var(--muted)}
-    .site-nav.scrolled .nav-links a:hover{color:var(--navy)}
-    .nav-audit{font-size:.82rem;color:var(--w);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:6px;transition:border-color .2s,color .2s;white-space:nowrap}
-    .nav-audit:hover{border-color:rgba(255,255,255,.6);color:var(--w)}
-    .site-nav.scrolled .nav-audit{color:var(--navy);border-color:var(--border)}
-    .site-nav.scrolled .nav-audit:hover{border-color:var(--navy)}
-    .nav-cta{background:var(--gold);color:var(--navy);padding:8px 18px;border-radius:6px;font-size:.82rem;font-weight:500;white-space:nowrap;transition:background .2s,transform .15s;flex-shrink:0}
-    .nav-cta:hover{background:var(--gl);transform:translateY(-1px)}
-    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none;z-index:210}
-    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:all .3s var(--ease)}
-    .site-nav.scrolled .nav-hamburger span{background:var(--navy)}
-    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .nav-mobile{display:none;position:fixed;inset:0;background:var(--nd);z-index:190;padding:80px 5% 40px;flex-direction:column;gap:0}
-    .nav-mobile.open{display:flex}
-    .nav-mobile a{font-size:1.4rem;color:rgba(255,255,255,.7);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);font-family:'Libre Baskerville',serif;transition:color .2s}
-    .nav-mobile a:hover{color:var(--gold)}
-    .nav-mobile .nm-cta{margin-top:24px;background:var(--gold);color:var(--navy);text-align:center;padding:16px;border-radius:8px;border-bottom:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500}
+    .nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
+    @media(min-width:768px){.nav-cta{display:inline-flex;}}
+    .nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
+    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
+    @media(min-width:768px){.burger{display:none;}}
+    .burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.open span:nth-child(2){opacity:0;}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
+    .mob-nav.open{display:flex;}
+    .mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
+    .mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
+    .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
 
     /* ── HERO ── */
     .hero{min-height:100vh;padding:100px 5% 80px;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -256,7 +257,7 @@
 
     /* ── ABOUT ── */
     .about{background:var(--bg);border-top:1px solid var(--border)}
-    .about-layout{max-width:880px;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+    .about-layout{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
     .founder-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid rgba(200,168,112,.3);border-radius:100px;padding:5px 14px 5px 8px;margin-bottom:20px}
     .founder-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
     .founder-lbl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
@@ -285,16 +286,15 @@
     .ctaf-secondary a:hover{color:var(--w);border-color:rgba(255,255,255,.55)}
 
     /* ── FOOTER ── */
-    footer{background:var(--nd);padding:48px 5%}
-    .ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:28px}
-    .ft-brand p{font-size:.78rem;color:rgba(255,255,255,.28);margin-top:9px;max-width:220px;line-height:1.6}
-    .ftl{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:var(--w);text-decoration:none}
-    .ftl span{color:var(--gold)}
-    .ft-col h4{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:12px;font-weight:500}
-    .ft-col a{display:block;font-size:.8rem;color:rgba(255,255,255,.38);text-decoration:none;margin-bottom:8px;transition:color .2s}
-    .ft-col a:hover{color:rgba(255,255,255,.75)}
-    .ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .ft-copy{font-size:.72rem;color:rgba(255,255,255,.22)}
+    footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
+    .foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
+    @media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
+    .foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
+    .foot-logo span{color:var(--lion);font-style:normal;}
+    .foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
+    .foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
+    .foot-link:hover{color:var(--wh);}
+    .foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
 
     /* ── ANIMATIONS ── */
     @keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
@@ -317,8 +317,6 @@
       .marc-connector{display:none}
       .mp.act{grid-template-columns:1fr;gap:24px}
       .about-visual{max-width:340px;margin:0 auto}
-      .nv-desktop{display:none!important}
-      .nav-hamburger{display:flex}
     }
     @media(max-width:600px){
       section{padding:64px 5%}
@@ -326,43 +324,41 @@
       .hero-proof{flex-wrap:wrap;gap:20px}
       .marc-steps{grid-template-columns:1fr 1fr}
       .mp-tags{grid-template-columns:1fr}
-      .ft-top{flex-direction:column}
       .seo-strip-inner{grid-template-columns:1fr 1fr}
     }
-    @media(min-width:961px){.nav-hamburger{display:none!important}}
   </style>
 </head>
 <body>
 
 <div id="sp" role="progressbar" aria-label="Progression de lecture"></div>
 
-<!-- NAV UNIFIED -->
-<nav class="site-nav" id="nav" aria-label="Navigation principale">
-  <a href="/" class="nav-logo" aria-label="Upglide">Up<span>glide</span></a>
-  <ul class="nav-links nv-desktop">
-    <li><a href="#marc">La méthode MARC</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#about">À propos</a></li>
-    <li><a href="/blog">Blog</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:10px" class="nv-desktop">
-    <a href="#audit" class="nav-audit">Réserver un audit</a>
-    <a href="#lead" class="nav-cta">Télécharger le guide</a>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Upglide<span> ·</span></a>
+    <ul class="nav-links">
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="accompagnements.html">Accompagnements</a></li>
+    </ul>
+    <a href="#lead" class="nav-cta">Guide gratuit</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<!-- MOBILE NAV -->
-<nav class="nav-mobile" id="nav-mobile" aria-label="Navigation mobile">
-  <a href="#marc">La méthode MARC</a>
-  <a href="#faq">FAQ</a>
-  <a href="#about">À propos</a>
-  <a href="/blog">Blog</a>
-  <a href="#audit" style="color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.06);padding:16px 0;font-size:1rem">Réserver un audit</a>
-  <a href="#lead" class="nm-cta">Télécharger le guide →</a>
-</nav>
+<div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
+  <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
+  </button>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="podcast.html" onclick="closeMob()">Podcast</a>
+  <a href="accompagnements.html" onclick="closeMob()">Accompagnements</a>
+  <a href="#about" onclick="closeMob()">À propos</a>
+  <a href="#lead" class="mob-nav-cta" onclick="closeMob()">Guide gratuit</a>
+</div>
 
 <!-- HERO -->
 <header class="hero" role="banner">
@@ -616,16 +612,17 @@
 </section>
 
 <!-- FOOTER -->
-<footer role="contentinfo">
-  <div class="ft-top">
-    <div class="ft-brand"><a href="/" class="ftl">Up<span>glide</span></a><p>Audit rentabilité e-commerce · Méthode MARC · Marge nette et cashflow.</p></div>
-    <nav class="ft-col" aria-label="Services"><h4>Services</h4><a href="#">Audit rentabilité</a><a href="#marc">Méthode MARC</a><a href="#">Coaching 1:1</a><a href="#lead">Guide gratuit</a></nav>
-    <nav class="ft-col" aria-label="Ressources"><h4>Ressources</h4><a href="/blog">Blog SEO</a><a href="#">Podcast</a><a href="#">Newsletter</a></nav>
-    <nav class="ft-col" aria-label="Légal"><h4>Légal</h4><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/contact">Contact</a></nav>
-  </div>
-  <div class="ft-bot">
-    <p class="ft-copy">© 2026 Upglide — Audit rentabilité e-commerce · Fuites de marge · Marge nette</p>
-    <p class="ft-copy">Méthode MARC · Marge opérationnelle · Cashflow e-commerce</p>
+<footer>
+  <div class="foot">
+    <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
+    <nav class="foot-links" aria-label="Liens secondaires">
+      <a href="podcast.html" class="foot-link">Podcast</a>
+      <a href="blog.html" class="foot-link">Blog</a>
+      <a href="ressources.html" class="foot-link">Ressources</a>
+      <a href="a-propos.html" class="foot-link">À propos</a>
+      <a href="contact.html" class="foot-link">Contact</a>
+    </nav>
+    <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
   </div>
 </footer>
 
@@ -633,25 +630,26 @@
 const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 
 /* SCROLL PROGRESS + NAV */
-const sp=document.getElementById('sp'),nav=document.getElementById('nav');
+const sp=document.getElementById('sp'),navEl=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
   sp.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-  nav.classList.toggle('scrolled',window.scrollY>56);
+  if(navEl)navEl.classList.toggle('scrolled',window.scrollY>10);
 },{passive:true});
 
-/* HAMBURGER */
-const ham=document.getElementById('hamburger'),mob=document.getElementById('nav-mobile');
-ham.addEventListener('click',()=>{
-  const open=mob.classList.toggle('open');
-  ham.classList.toggle('open',open);
-  ham.setAttribute('aria-expanded',open);
+/* BURGER */
+const burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
+burger.addEventListener('click',()=>{
+  const open=mobnav.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
   document.body.style.overflow=open?'hidden':'';
 });
-mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  mob.classList.remove('open');ham.classList.remove('open');
-  ham.setAttribute('aria-expanded','false');document.body.style.overflow='';
-}));
+function closeMob(){
+  mobnav.classList.remove('open');burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
 
 /* REVEAL */
 const ro=new IntersectionObserver(entries=>{
