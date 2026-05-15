@@ -47,6 +47,7 @@
   ]
 }
 </script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -113,8 +114,8 @@ html,body{overflow-x:hidden;}
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--fb);font-weight:700;border:none;border-radius:100px;cursor:pointer;transition:all var(--t);font-size:.9375rem;padding:.9375rem 2rem;text-decoration:none;width:100%;}
 @media(min-width:480px){.btn{width:auto;}}
-.btn-gold{background:var(--lion);color:var(--cad2);}
-.btn-gold:hover{background:var(--alm);transform:translateY(-2px);box-shadow:var(--shg);}
+.btn-gold{background:var(--lion);color:var(--cad2);box-shadow:0 4px 24px rgba(201,160,82,.3);}
+.btn-gold:hover{background:var(--alm);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,160,82,.5);}
 .btn-navy{background:var(--cad);color:var(--wh);}
 .btn-navy:hover{background:var(--cad2);transform:translateY(-2px);}
 .btn-ghost{background:transparent;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.25);}
@@ -163,28 +164,28 @@ nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
 .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
 
 /* HERO */
-.hero{background:var(--cad);padding:3.5rem 0 5rem;position:relative;overflow:hidden;}
-@media(min-width:768px){.hero{padding:5rem 0 6rem;}}
-.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,160,82,.12) 0%,transparent 65%);pointer-events:none;}
-.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:80px;background:var(--isa);clip-path:ellipse(55% 100% at 50% 100%);}
-@media(min-width:768px){.hero::after{height:120px;}}
+.hero{background:var(--cad);padding:4.5rem 0 6rem;position:relative;overflow:hidden;}
+@media(min-width:768px){.hero{padding:6rem 0 7rem;}}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:600px;height:600px;background:radial-gradient(circle,rgba(201,160,82,.1) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:96px;background:var(--isa);clip-path:ellipse(55% 100% at 50% 100%);}
+@media(min-width:768px){.hero::after{height:140px;}}
 
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:2.5rem;}
-@media(min-width:1024px){.hero-inner{grid-template-columns:1fr 340px;gap:4rem;align-items:end;}}
+@media(min-width:1024px){.hero-inner{grid-template-columns:1fr 360px;gap:4rem;align-items:end;}}
 
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.625rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,160,82,.7);margin-bottom:1.5rem;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,160,82,.65);margin-bottom:1.5rem;}
 .hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--lion);}
 
-.hero-h1{font-family:var(--ft);font-size:clamp(2.5rem,8vw,4.5rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;color:var(--wh);margin-bottom:1.25rem;}
+.hero-h1{font-family:var(--ft);font-size:clamp(2.75rem,7vw,4.75rem);font-weight:600;line-height:1.02;letter-spacing:-.01em;color:var(--wh);margin-bottom:1.5rem;}
 .hero-h1 em{font-style:italic;color:var(--lion);}
 
-.hero-sub{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;max-width:480px;}
+.hero-sub{font-size:1.0625rem;color:rgba(255,255,255,.48);line-height:1.85;margin-bottom:2.25rem;max-width:480px;}
 
-.hero-proof{display:flex;flex-wrap:wrap;gap:1.5rem;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.08);margin-top:.5rem;}
-@media(min-width:480px){.hero-proof{gap:2.5rem;}}
+.hero-proof{display:flex;flex-wrap:wrap;gap:1.5rem;padding:1.75rem 0;border-top:1px solid rgba(255,255,255,.08);margin-top:.5rem;}
+@media(min-width:480px){.hero-proof{gap:2.75rem;}}
 .hp{flex:none;}
-.hp-num{font-family:var(--ft);font-size:1.875rem;font-weight:600;font-style:italic;color:var(--lion);line-height:1;}
-.hp-lbl{font-size:.6875rem;color:rgba(255,255,255,.3);margin-top:.25rem;line-height:1.4;}
+.hp-num{font-family:var(--ft);font-size:2rem;font-weight:600;font-style:italic;color:var(--lion);line-height:1;}
+.hp-lbl{font-size:.6875rem;color:rgba(255,255,255,.28);margin-top:.3rem;line-height:1.45;}
 
 /* HERO CARD */
 .hero-card{background:var(--wh);border-radius:var(--rlg) var(--rlg) 0 0;padding:0;overflow:hidden;}
@@ -380,42 +381,25 @@ nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
 .bl-diag-title{font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:.875rem;}
 .bl-diag-item{display:flex;gap:.625rem;align-items:flex-start;font-size:.875rem;color:var(--txt2);margin-bottom:.625rem;line-height:1.5;}
 .bl-diag-item svg{width:14px;height:14px;flex-shrink:0;margin-top:3px;stroke:var(--lion);fill:none;stroke-width:2;}
-.booking-form-card{background:var(--wh);border:1px solid var(--bdr);border-radius:var(--rlg);overflow:hidden;box-shadow:var(--shlg);}
-@media(min-width:1024px){.booking-form-card{position:sticky;top:100px;}}
-.bf-head{background:var(--cad);padding:1.75rem 2rem;}
+.booking-cal-card{background:var(--wh);border:1px solid var(--bdr);border-radius:var(--rlg);overflow:hidden;box-shadow:var(--shlg);}
+@media(min-width:1024px){.booking-cal-card{position:sticky;top:100px;}}
+.bcal-head{background:var(--cad);padding:1.75rem 2rem;}
+.bcal-body{padding:1.75rem 2rem;}
+.bcal-desc{font-size:.9375rem;color:var(--txt2);line-height:1.75;margin-bottom:1.5rem;}
+.bcal-steps{display:flex;align-items:center;gap:0;margin:1.25rem 0 1.75rem;}
+.bcal-step{display:flex;flex-direction:column;align-items:center;flex:1;gap:.375rem;}
+.bcal-step-num{width:32px;height:32px;border-radius:50%;background:rgba(201,160,82,.12);border:1px solid rgba(201,160,82,.25);display:flex;align-items:center;justify-content:center;font-family:var(--ft);font-size:.875rem;font-weight:600;color:var(--lion);}
+.bcal-step-lbl{font-size:.5rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);text-align:center;}
+.bcal-step-line{flex:1;height:1px;background:rgba(201,160,82,.2);margin:0 6px;align-self:flex-start;margin-top:16px;}
 .bf-scarcity{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,160,82,.12);border:1px solid rgba(201,160,82,.2);border-radius:100px;padding:.375rem .875rem;margin-bottom:1.25rem;}
 .bf-dot{width:6px;height:6px;background:var(--lion);border-radius:50%;animation:pulse 2s infinite;}
 .bf-sc-txt{font-size:.5rem;font-weight:700;letter-spacing:.1em;color:var(--lion);}
-.bf-title{font-family:var(--ft);font-size:1.375rem;font-weight:600;color:var(--wh);line-height:1.2;margin-bottom:1.25rem;}
-.bf-steps{display:flex;gap:0;background:rgba(255,255,255,.06);border-radius:8px;overflow:hidden;}
-.bf-step{flex:1;padding:.5rem .25rem;text-align:center;font-size:.5rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.25);}
-.bf-step.active{background:var(--lion);color:var(--cad2);}
-.bf-body{padding:1.75rem 2rem;}
-.bf-urgency{display:flex;align-items:flex-start;gap:.625rem;background:#FFF8EE;border:1px solid #F0C880;border-radius:var(--r);padding:.75rem 1rem;margin-bottom:1.5rem;}
-.bf-u-icon{font-size:.875rem;flex-shrink:0;line-height:1.6;}
-.bf-u-txt{font-size:.75rem;font-weight:700;color:#7A4800;line-height:1.4;}
-.bf-u-txt span{font-weight:400;color:#9A6820;}
-.form{display:flex;flex-direction:column;gap:.875rem;}
-.fg{display:flex;flex-direction:column;gap:.375rem;}
-.fl{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);}
-.fi,.fs,.fta{border:1px solid var(--bdr);border-radius:var(--r);padding:.8125rem 1rem;font-family:var(--fb);font-size:1rem;color:var(--txt);background:var(--wh);outline:none;transition:border-color var(--t),box-shadow var(--t);width:100%;}
-.fi:focus,.fs:focus,.fta:focus{border-color:var(--cad);box-shadow:0 0 0 3px rgba(30,45,90,.07);}
-.fs{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238090B0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
-.fta{resize:vertical;min-height:72px;line-height:1.6;}
-.radio-group{display:flex;flex-direction:column;gap:.5rem;}
-.radio-label{display:flex;align-items:center;gap:.625rem;font-size:.9375rem;color:var(--txt2);cursor:pointer;line-height:1.5;padding:.25rem 0;}
-.radio-label input{accent-color:var(--cad);width:16px;height:16px;flex-shrink:0;}
-.guar-inline{background:rgba(201,160,82,.07);border:1px solid rgba(201,160,82,.18);border-radius:var(--r);padding:.875rem 1rem;display:flex;align-items:flex-start;gap:.625rem;margin-bottom:.25rem;}
+.bf-title{font-family:var(--ft);font-size:1.375rem;font-weight:600;color:var(--wh);line-height:1.2;}
+.form-reassurance{font-size:.625rem;color:var(--txt3);text-align:center;line-height:1.6;margin-top:.75rem;}
+.guar-inline{background:rgba(201,160,82,.07);border:1px solid rgba(201,160,82,.18);border-radius:var(--r);padding:.875rem 1rem;display:flex;align-items:flex-start;gap:.625rem;}
 .guar-inline svg{width:14px;height:14px;stroke:var(--lion);fill:none;stroke-width:1.75;flex-shrink:0;margin-top:2px;}
 .guar-inline-txt{font-size:.75rem;color:var(--txt2);line-height:1.5;}
 .guar-inline-txt strong{color:var(--cad);}
-.form-submit{background:var(--lion);color:var(--cad2);font-family:var(--fb);font-size:1rem;font-weight:800;padding:1.125rem;border:none;border-radius:100px;cursor:pointer;transition:all var(--t);width:100%;margin-top:.25rem;}
-.form-submit:hover{background:var(--alm);transform:translateY(-2px);}
-.form-reassurance{font-size:.625rem;color:var(--txt3);text-align:center;line-height:1.6;margin-top:.5rem;}
-#form-success{display:none;background:rgba(201,160,82,.08);border:1px solid rgba(201,160,82,.25);border-radius:var(--rlg);padding:2rem;text-align:center;}
-#form-success h3{font-family:var(--ft);font-size:1.5rem;font-weight:600;color:var(--cad);margin-bottom:.5rem;}
-#form-success p{font-size:.9375rem;color:var(--txt2);line-height:1.75;}
-#form-success .btn-navy{width:100%;display:flex;margin-top:1.25rem;}
 
 /* FAQ */
 .faq-section{background:var(--isa);}
@@ -503,7 +487,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
       <li><a href="podcast.html">Podcast</a></li>
       <li><a href="accompagnements.html" class="active">Accompagnements</a></li>
     </ul>
-    <a href="index.html#lm" class="nav-cta">Guide gratuit</a>
+    <a href="" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
       <span></span><span></span><span></span>
     </button>
@@ -521,7 +505,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
   <a href="podcast.html" onclick="closeMob()">Podcast</a>
   <a href="accompagnements.html" onclick="closeMob()">Accompagnements</a>
   <a href="a-propos.html" onclick="closeMob()">À propos</a>
-  <a href="index.html#lm" class="mob-nav-cta" onclick="closeMob()">Guide gratuit</a>
+  <a href="" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
 </div>
 
 <main>
@@ -537,13 +521,13 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
           <h1 class="hero-h1">Audit rentabilité e-commerce.<br><em>On identifie où part votre marge.</em></h1>
           <p class="hero-sub">Vous faites du chiffre. Mais la marge nette reste décevante. La méthode MARC cartographie chaque fuite — logistique, SAV, acquisition, pricing — et met en place les corrections dans les 90 jours.</p>
           <div class="cta-row">
-            <a href="#booking" class="btn btn-gold">Réserver l'appel audit →</a>
-            <a href="index.html#lm" class="btn btn-ghost">Guide gratuit</a>
+            <a href="" onclick="openDiag();return false;" class="btn btn-gold">Réserver l'appel audit →</a>
+            <a href="index.html#lead" class="btn btn-ghost">Guide gratuit</a>
           </div>
           <div class="hero-proof">
             <div class="hp">
               <div class="hp-num">+2 à +5 pts</div>
-              <div class="hp-lbl">de marge nette récupérés<br>en moyenne à 90 jours</div>
+              <div class="hp-lbl">marge nette récupérée — soit<br>10 000 à 50 000 € / an sur 1M€ de CA</div>
             </div>
             <div class="hp">
               <div class="hp-num">10 ans</div>
@@ -561,7 +545,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
           <div class="hcard-head">
             <div class="hcard-scarcity">
               <div class="hcard-dot"></div>
-              <span class="hcard-dot-txt">2 PLACES RESTANTES CE MOIS-CI</span>
+              <span class="hcard-dot-txt">PLACES LIMITÉES PAR MOIS</span>
             </div>
             <div class="hcard-title">Audit Rentabilité — Méthode MARC</div>
             <div class="hcard-sub">Appel découverte offert · 30 minutes · Sans engagement</div>
@@ -573,8 +557,8 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
             </div>
           </div>
           <div class="hcard-body">
-            <a href="#booking" class="hcard-btn">Réserver l'appel audit →</a>
-            <p class="hcard-note">Appel gratuit · Aucun engagement · 2 places restantes ce mois-ci</p>
+            <a href="" onclick="openDiag();return false;" class="hcard-btn">Réserver l'appel audit →</a>
+            <p class="hcard-note">Appel gratuit · Aucun engagement · Places limitées par mois</p>
           </div>
         </div>
 
@@ -695,7 +679,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
         </div>
       </div>
       <div class="symp-cta rv">
-        <a href="#booking" class="btn btn-gold">Identifier mes fuites de marge →</a>
+        <a href="" onclick="openDiag();return false;" class="btn btn-gold">Identifier mes fuites de marge →</a>
       </div>
     </div>
   </section>
@@ -706,7 +690,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
       <div class="stats-inner">
         <div class="stat-item rv">
           <div class="stat-num">+3,8 pts</div>
-          <div class="stat-lbl">de marge nette récupérés<br>en médiane à 90 jours</div>
+          <div class="stat-lbl">marge nette récupérée en médiane<br>soit ~19 000 € sur 500K€ de CA</div>
         </div>
         <div class="stat-item rv d1">
           <div class="stat-num">&lt; 7 j</div>
@@ -781,7 +765,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
             <li class="who-item"><span class="who-check">✓</span><span>Vous voulez passer d'une gestion intuitive à un pilotage par la contribution réelle</span></li>
             <li class="who-item"><span class="who-check">✓</span><span>Vous êtes prêt(e) à challenger vos process logistiques, SAV et acquisition</span></li>
           </ul>
-          <a href="#booking" class="who-in-cta">Je me reconnais — réserver l'appel →</a>
+          <a href="" onclick="openDiag();return false;" class="who-in-cta">Je me reconnais — réserver l'appel →</a>
         </div>
       </div>
     </div>
@@ -853,7 +837,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
       </div>
 
       <div class="mt-2h centered rv">
-        <a href="#booking" class="btn btn-gold">Démarrer la méthode MARC →</a>
+        <a href="" onclick="openDiag();return false;" class="btn btn-gold">Démarrer la méthode MARC →</a>
       </div>
     </div>
   </section>
@@ -917,7 +901,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
         </div>
       </div>
       <div class="mt-2h centered rv">
-        <a href="#booking" class="btn btn-gold">Commencer par l'appel découverte →</a>
+        <a href="" onclick="openDiag();return false;" class="btn btn-gold">Commencer par l'appel découverte →</a>
       </div>
     </div>
   </section>
@@ -930,8 +914,8 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
           <span class="guar-badge-txt">Garantie résultats</span>
         </div>
-        <h2 class="guar-h2">Si on ne trouve pas 3 optimisations<br><em>concrètes — vous ne payez rien.</em></h2>
-        <p class="guar-sub">Ce n'est pas une clause en petits caractères. Si le diagnostic ne fait pas apparaître au moins 3 optimisations concrètes et chiffrées pour rentabiliser votre boutique, vous ne payez rien. Sans condition. Parce qu'on ne facture que ce qui crée de la valeur.</p>
+        <h2 class="guar-h2">Si on ne trouve pas de levier concret<br><em>d'amélioration — vous ne payez rien.</em></h2>
+        <p class="guar-sub">Ce n'est pas une clause en petits caractères. Si l'audit ne révèle aucun levier concret d'amélioration de votre rentabilité, vous ne payez rien. Sans condition. Parce qu'on ne facture que ce qui crée de la valeur.</p>
         <div class="guar-cards">
           <div class="guar-card">
             <div class="guar-card-num">01</div>
@@ -946,7 +930,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
           <div class="guar-card">
             <div class="guar-card-num">03</div>
             <div class="guar-card-title">Zéro risque</div>
-            <p class="guar-card-txt">Si le diagnostic ne fait pas apparaître au moins 3 optimisations concrètes et rentabilisables, vous ne payez pas. Sans condition ni justification de votre côté.</p>
+            <p class="guar-card-txt">Si l'audit ne révèle aucun levier concret d'amélioration, vous ne payez pas. Sans condition ni justification de votre côté.</p>
           </div>
         </div>
         <p class="guar-fn">* La garantie s'applique aux accompagnements complets 90 jours MARC. Les boutiques dont le CA est inférieur à 300 K€ ou dont les données sont inaccessibles ne sont pas éligibles à l'accompagnement.</p>
@@ -980,21 +964,21 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
         </div>
       </div>
       <div class="whynow-cta rv">
-        <a href="#booking" class="btn btn-gold">Réserver ma place ce mois-ci →</a>
+        <a href="" onclick="openDiag();return false;" class="btn btn-gold">Réserver ma place ce mois-ci →</a>
       </div>
     </div>
   </section>
 
-  <!-- ── BOOKING FORM ── -->
+  <!-- ── BOOKING ── -->
   <section class="section booking-section" id="booking">
     <div class="wrap">
       <div class="booking-grid">
 
         <!-- Left -->
         <div>
-          <span class="bl-label">Postuler à l'accompagnement MARC</span>
-          <h2 class="h2">Réservez votre<br><em>appel découverte gratuit.</em></h2>
-          <p class="lead">30 minutes pour faire un premier diagnostic ensemble. Je vous dirai honnêtement si la méthode MARC est adaptée à votre situation — et ce qu'on peut raisonnablement cibler comme objectif de marge.</p>
+          <span class="bl-label">Réserver votre appel découverte</span>
+          <h2 class="h2">30 minutes pour savoir<br><em>ce que vous perdez.</em></h2>
+          <p class="lead">Un diagnostic honnête de vos principales zones à risque. Gratuit, sans engagement, sans relance — vous repartez avec un avis clair sur votre situation.</p>
 
           <div class="bl-diag">
             <div class="bl-diag-title">Ce qu'on couvrira pendant l'appel</div>
@@ -1008,7 +992,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
             </div>
             <div class="bl-diag-item">
               <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,4"/></svg>
-              <span>Estimation du potentiel de récupération de marge sur 90 jours</span>
+              <span>Estimation du potentiel de récupération en euros sur 90 jours</span>
             </div>
             <div class="bl-diag-item">
               <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,4"/></svg>
@@ -1016,108 +1000,44 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
             </div>
             <div class="bl-diag-item">
               <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,4"/></svg>
-              <span>Présentation du calendrier et des prochaines étapes si la suite se confirme</span>
+              <span>Présentation des prochaines étapes si la suite se confirme</span>
             </div>
           </div>
         </div>
 
-        <!-- Right: Form Card -->
-        <div class="booking-form-card rv">
-          <div class="bf-head">
+        <!-- Right: Calendly CTA Card -->
+        <div class="booking-cal-card rv">
+          <div class="bcal-head">
             <div class="bf-scarcity">
               <div class="bf-dot"></div>
-              <span class="bf-sc-txt">2 PLACES RESTANTES CE MOIS-CI</span>
+              <span class="bf-sc-txt">PLACES LIMITÉES PAR MOIS</span>
             </div>
             <div class="bf-title">Appel découverte gratuit<br>Méthode MARC — 30 min</div>
-            <div class="bf-steps">
-              <div class="bf-step active">Postuler</div>
-              <div class="bf-step">Appel</div>
-              <div class="bf-step">Audit</div>
-              <div class="bf-step">90j MARC</div>
+            <div class="bcal-steps">
+              <div class="bcal-step">
+                <div class="bcal-step-num">1</div>
+                <span class="bcal-step-lbl">Choisir<br>un créneau</span>
+              </div>
+              <div class="bcal-step-line"></div>
+              <div class="bcal-step">
+                <div class="bcal-step-num">2</div>
+                <span class="bcal-step-lbl">Appel<br>diagnostic</span>
+              </div>
+              <div class="bcal-step-line"></div>
+              <div class="bcal-step">
+                <div class="bcal-step-num">3</div>
+                <span class="bcal-step-lbl">Avis<br>honnête</span>
+              </div>
             </div>
           </div>
-          <div class="bf-body">
-            <div class="bf-urgency">
-              <div class="bf-u-icon">⚡</div>
-              <div class="bf-u-txt">
-                <span>Réponse sous 24h après envoi du formulaire</span>
-              </div>
+          <div class="bcal-body">
+            <p class="bcal-desc">Choisissez directement le créneau qui vous convient. Vous recevez une confirmation immédiate par email — aucun formulaire, aucune attente.</p>
+            <a href="" onclick="openDiag();return false;" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:.75rem;">Choisir mon créneau →</a>
+            <p class="form-reassurance">Gratuit · Sans engagement · Confirmation immédiate</p>
+            <div class="guar-inline" style="margin-top:1.25rem;">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+              <p class="guar-inline-txt"><strong>Garantie :</strong> Si on ne trouve pas de levier concret d'amélioration — vous ne payez rien.</p>
             </div>
-
-            <form class="form" id="contact-form" name="accompagnement" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-              <input type="hidden" name="form-name" value="accompagnement">
-              <div style="display:none;">
-                <label>Ne pas remplir si vous êtes humain : <input name="bot-field"></label>
-              </div>
-
-              <div class="fg">
-                <label class="fl" for="name">Prénom et Nom</label>
-                <input class="fi" type="text" id="name" name="name" placeholder="Marie Dupont" required autocomplete="name">
-              </div>
-
-              <div class="fg">
-                <label class="fl" for="email">Email professionnel</label>
-                <input class="fi" type="email" id="email" name="email" placeholder="marie@maboutique.fr" required autocomplete="email">
-              </div>
-
-              <div class="fg">
-                <label class="fl" for="ca">Chiffre d'affaires annuel</label>
-                <select class="fs" id="ca" name="ca" required>
-                  <option value="" disabled selected>Sélectionner votre CA</option>
-                  <option value="300k-500k">300 K€ – 500 K€</option>
-                  <option value="500k-1m">500 K€ – 1 M€</option>
-                  <option value="1m-3m">1 M€ – 3 M€</option>
-                  <option value="3m-10m">3 M€ – 10 M€</option>
-                  <option value="10m+">+ 10 M€</option>
-                </select>
-              </div>
-
-              <div class="fg">
-                <label class="fl">Principal blocage rentabilité</label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input type="radio" name="blocage" value="logistique" required>
-                    Coûts logistiques hors de contrôle
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="blocage" value="retours">
-                    Taux de retour élevé et coûteux
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="blocage" value="acquisition">
-                    Coûts d'acquisition opaques / acquisition non rentable
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="blocage" value="pricing">
-                    Pricing instinctif, marge structurelle inconnue
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="blocage" value="global">
-                    Marge nette globalement décevante sans cause évidente
-                  </label>
-                </div>
-              </div>
-
-              <div class="fg">
-                <label class="fl" for="context">Contexte en quelques mots (optionnel)</label>
-                <textarea class="fta" id="context" name="context" placeholder="Votre secteur, votre défi principal, ce que vous avez déjà essayé…"></textarea>
-              </div>
-
-              <div class="guar-inline">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
-                <p class="guar-inline-txt"><strong>Garantie :</strong> Si on ne trouve pas 3 optimisations concrètes pour rentabiliser votre boutique — vous ne payez rien. Appel découverte 100 % gratuit et sans engagement.</p>
-              </div>
-
-              <button type="submit" class="form-submit">Réserver mon appel découverte →</button>
-              <p class="form-reassurance">Gratuit · Sans engagement · Réponse sous 24h · Vos données ne sont jamais revendues</p>
-            </form>
-
-            <div id="form-success">
-              <h3>Demande reçue ✓</h3>
-              <p>Je reviens vers vous sous 24h pour confirmer le créneau. En attendant, vous pouvez télécharger le guide gratuit sur les fuites de marge les plus fréquentes.</p>
-              <a href="index.html#lm" class="btn btn-navy">Télécharger le guide gratuit →</a>
-            </div>
-
           </div>
         </div>
 
@@ -1156,7 +1076,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
             La garantie remboursement fonctionne-t-elle vraiment ?
             <div class="faq-icon" aria-hidden="true"><svg viewBox="0 0 9 9"><line x1="4.5" y1="1" x2="4.5" y2="8"/><line x1="1" y1="4.5" x2="8" y2="4.5"/></svg></div>
           </button>
-          <div class="faq-answer">Oui. Si le diagnostic ne fait pas apparaître au moins 3 optimisations concrètes et chiffrées pour améliorer votre rentabilité, vous ne payez rien — sans condition ni justification. Parce qu'on ne facture que ce qui crée de la valeur.</div>
+          <div class="faq-answer">Oui. Si l'audit ne révèle aucun levier concret d'amélioration de votre rentabilité, vous ne payez rien — sans condition ni justification. Parce qu'on ne facture que ce qui crée de la valeur.</div>
         </div>
 
         <div class="faq-item">
@@ -1194,7 +1114,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
       </div>
 
       <p style="margin-top:2rem;font-size:.9375rem;color:var(--txt2);line-height:1.75;">
-        D'autres questions sur la méthode MARC ? Consultez <a href="blog.html" style="color:var(--lion);text-decoration:underline;">les articles du blog</a> sur la rentabilité e-commerce ou <a href="#booking" style="color:var(--lion);text-decoration:underline;">postulez directement</a> — on en parlera pendant l'appel.
+        D'autres questions sur la méthode MARC ? Consultez <a href="blog.html" style="color:var(--lion);text-decoration:underline;">les articles du blog</a> sur la rentabilité e-commerce ou <a href="" onclick="openDiag();return false;" style="color:var(--lion);text-decoration:underline;">postulez directement</a> — on en parlera pendant l'appel.
       </p>
     </div>
   </section>
@@ -1203,7 +1123,7 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
   <section class="section seo-block">
     <div class="wrap--tight">
       <h2>Audit rentabilité e-commerce : identifier et stopper les fuites de marge</h2>
-      <p>La rentabilité e-commerce ne se lit pas dans le chiffre d'affaires. Elle se construit dans les marges opérationnelles réelles — après logistique, retours, SAV, acquisition et pricing. La plupart des boutiques entre 500 K€ et 5 M€ de CA disposent de 2 à 5 points de marge latents qu'elles n'ont jamais identifiés, faute d'un audit structuré de leurs coûts réels.</p>
+      <p>La rentabilité e-commerce ne se lit pas dans le chiffre d'affaires. Elle se construit dans les marges opérationnelles réelles — après logistique, retours, SAV, acquisition et pricing. La plupart des boutiques entre 500 K€ et 5 M€ de CA disposent de 2 à 5 points de marge latents qu'elles n'ont jamais identifiés, faute d'un audit structuré de leurs coûts réels. Sur 1 million d'euros de CA, 3 points de marge non récupérés représentent <strong>30 000 € qui ne se réinvestissent pas</strong> — en stock, en équipe, en développement.</p>
       <p>La <strong>méthode MARC</strong> (Mesurer, Assainir, Rentabiliser, Croître) est un protocole d'audit en 4 phases conçu spécifiquement pour les boutiques e-commerce en croissance. Elle commence par cartographier l'intégralité des fuites — contribution marginale négative sur certains SKUs, coûts logistiques non benchmarkés, coûts d'acquisition sous-estimés, politique retour non optimisée — avant de mettre en œuvre les corrections dans un ordre d'impact décroissant.</p>
       <p>Contrairement aux audits traditionnels qui livrent un rapport et s'arrêtent là, la méthode MARC inclut 90 jours d'implémentation opérationnelle. Le diagnostic est utile. La transformation, elle, exige du suivi. C'est pourquoi chaque accompagnement inclut des sessions de travail hebdomadaires, des outils de pilotage sur-mesure et un support asynchrone jusqu'à ce que les corrections soient opérationnelles et les habitudes de pilotage installées dans l'équipe. Pour aller plus loin, consultez <a href="blog.html">les ressources du blog Upglide</a> sur la rentabilité e-commerce.</p>
     </div>
@@ -1215,14 +1135,14 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
       <div class="final-inner rv">
         <span class="final-tag">Dernière chance ce mois-ci</span>
         <h2 class="final-h">Votre marge mérite<br><em>un diagnostic réel.</em></h2>
-        <p class="final-sub">Places limitées. Appel découverte gratuit. Si on ne trouve pas 3 optimisations concrètes — vous ne payez rien. Il n'y a aucun risque à postuler — seulement le risque de laisser vos fuites de marge courir encore un mois.</p>
+        <p class="final-sub">Places limitées par mois. Appel découverte gratuit. Si on ne trouve pas de levier concret d'amélioration — vous ne payez rien. Il n'y a aucun risque à réserver — seulement le risque de laisser vos fuites de marge courir encore un mois.</p>
         <div class="cta-row" style="justify-content:center;">
-          <a href="#booking" class="btn btn-gold">Réserver mon appel audit →</a>
-          <a href="index.html#lm" class="btn btn-ghost">Commencer par le guide gratuit</a>
+          <a href="" onclick="openDiag();return false;" class="btn btn-gold">Réserver mon appel audit →</a>
+          <a href="index.html#lead" class="btn btn-ghost">Commencer par le guide gratuit</a>
         </div>
         <div class="final-guar">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
-          3 optimisations concrètes identifiées — ou vous ne payez rien
+          Levier concret identifié — ou vous ne payez rien
         </div>
       </div>
     </div>
@@ -1249,13 +1169,13 @@ hr.div{border:none;border-top:1px solid var(--bdr);}
 
 <!-- ── STICKY MOBILE BAR ── -->
 <div class="sticky-mob" aria-hidden="true">
-  <p><strong>2 places restantes</strong>Appel audit gratuit — 30 min</p>
-  <button class="sticky-mob-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Réserver →</button>
+  <p><strong>Places limitées</strong>Diagnostic offert — 30 min</p>
+  <button class="sticky-mob-btn" onclick="openDiag();return false;">Réserver →</button>
 </div>
 
 <!-- ── STICKY DESKTOP CTA ── -->
 <div id="sticky-desk" aria-hidden="true">
-  <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Réserver l'audit →</button>
+  <button onclick="openDiag();return false;">Réserver l'audit →</button>
 </div>
 
 <script>
@@ -1314,24 +1234,10 @@ window.addEventListener('scroll', () => {
   if(sd) sd.classList.toggle('on', window.scrollY > 400);
 }, {passive:true});
 
-// Netlify form
-const form = document.getElementById('contact-form');
-if(form) {
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetch('/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(() => {
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    })
-    .catch(() => form.submit());
-  });
-}
+/* CALENDLY */
+function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}
 </script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
 </body>
 </html>
