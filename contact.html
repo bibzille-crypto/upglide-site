@@ -22,6 +22,7 @@
   {"@type":"ListItem","position":2,"name":"Contact","item":"https://upglide.fr/contact"}
 ]}
 </script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,20 +200,26 @@ footer{background:var(--marine);padding:2.5rem 0;}
   <div class="nav-i">
     <a class="logo" href="index.html">Upglide<span> ·</span></a>
     <ul class="nav-m">
+      <li class="nav-it"><a class="nav-a" href="index.html">Accueil</a></li>
+      <li class="nav-it"><a class="nav-a" href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
+      <li class="nav-it"><a class="nav-a" href="methode-marc.html">Méthode MARC</a></li>
+      <li class="nav-it"><a class="nav-a" href="ressources.html">Ressources</a></li>
       <li class="nav-it"><a class="nav-a" href="blog.html">Blog</a></li>
-      <li class="nav-it"><a class="nav-a" href="podcast.html">Podcast</a></li>
-      <li class="nav-it"><a class="nav-a" href="accompagnements.html">Accompagnements</a></li>
+      <li class="nav-it"><a class="nav-a" href="a-propos.html">À propos</a></li>
     </ul>
-    <button class="nav-cta" onclick="window.location.href='index.html#lm'">Guide gratuit</button>
+    <a href="" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="mob-nav" id="mobnav">
+    <div class="mob-it"><a class="mob-a" href="index.html" onclick="closeMob()">Accueil</a></div>
+    <div class="mob-it"><a class="mob-a" href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a></div>
+    <div class="mob-it"><a class="mob-a" href="methode-marc.html" onclick="closeMob()">Méthode MARC</a></div>
+    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
     <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog</a></div>
-    <div class="mob-it"><a class="mob-a" href="podcast.html" onclick="closeMob()">Podcast</a></div>
-    <div class="mob-it"><a class="mob-a" href="accompagnements.html" onclick="closeMob()">Accompagnements</a></div>
-    <button class="mob-cta" onclick="window.location.href='index.html#lm';closeMob()">Télécharger le guide gratuit →</button>
+    <div class="mob-it"><a class="mob-a" href="a-propos.html" onclick="closeMob()">À propos</a></div>
+    <a href="" onclick="closeMob();openDiag();return false;" class="mob-cta">Diagnostic offert →</a>
   </div>
 </nav>
 
@@ -375,5 +382,7 @@ function handleContact(e){
   document.getElementById('form-success').style.display='block';
 }
 </script>
+<script>function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
