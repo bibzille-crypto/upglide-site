@@ -2,11 +2,11 @@
 #marc-widget {
   position: fixed;
   bottom: 1.5rem;
-  left: 1.5rem;
+  right: 1.5rem;
   z-index: 9990;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: .75rem;
   pointer-events: none;
 }
@@ -15,11 +15,11 @@
 .marc-bubble {
   background: #FFFFFF;
   border: 1px solid rgba(30,45,90,.1);
-  border-radius: 16px 16px 16px 4px;
+  border-radius: 16px 16px 4px 16px; /* pointe en bas à droite */
   box-shadow: 0 8px 40px rgba(30,45,90,.18), 0 2px 8px rgba(30,45,90,.08);
   padding: 1.125rem 1.25rem 1rem;
-  max-width: 280px;
-  min-width: 240px;
+  max-width: 290px;
+  min-width: 250px;
   pointer-events: auto;
   position: relative;
   transform: translateY(12px);
@@ -30,26 +30,71 @@
   transform: translateY(0);
   opacity: 1;
 }
-.marc-bubble-top {
+
+/* Header de la bulle */
+.marc-bubble-header {
   display: flex;
   align-items: center;
-  gap: .5rem;
-  margin-bottom: .625rem;
+  gap: .625rem;
+  padding-bottom: .75rem;
+  margin-bottom: .75rem;
+  border-bottom: 1px solid rgba(30,45,90,.07);
+}
+.marc-bubble-avatar-mini {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid #C9A052;
+  flex-shrink: 0;
+  background: #131D3C;
+}
+.marc-bubble-avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.marc-bubble-id {
+  flex: 1;
+  min-width: 0;
 }
 .marc-bubble-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1rem;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: .8125rem;
   font-weight: 700;
   color: #1E2D5A;
-  font-style: italic;
+  line-height: 1.2;
 }
 .marc-bubble-role {
   font-size: .625rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #C9A052;
+  font-weight: 500;
+  color: #8090B0;
+  margin-top: 1px;
 }
+.marc-live-dot {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .6rem;
+  font-weight: 600;
+  color: #3BAA70;
+  flex-shrink: 0;
+}
+.marc-live-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3BAA70;
+  animation: marc-blink 2s ease-in-out infinite;
+}
+@keyframes marc-blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+
+/* Message */
 .marc-msg {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: .8125rem;
@@ -58,28 +103,50 @@
   margin: 0 0 .875rem;
   font-weight: 400;
 }
+
+/* CTA */
 .marc-cta-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
-  background: #1E2D5A;
-  color: #FFFFFF;
+  background: #C9A052;
+  color: #131D3C;
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: .75rem;
-  font-weight: 700;
-  padding: .5625rem 1rem;
+  font-weight: 800;
+  padding: .625rem 1rem;
   border-radius: 100px;
   text-decoration: none;
-  transition: background .2s ease, transform .2s ease;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
   width: 100%;
-  justify-content: center;
   cursor: pointer;
   border: none;
+  box-shadow: 0 3px 12px rgba(201,160,82,.35);
+  margin-bottom: .5rem;
 }
 .marc-cta-btn:hover {
-  background: #131D3C;
+  background: #B8902A;
   transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(201,160,82,.45);
 }
+
+/* Note rassurante "pas un bot" */
+.marc-human-note {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: .625rem;
+  color: #8090B0;
+  justify-content: center;
+}
+.marc-human-note::before {
+  content: '📞';
+  font-size: .7rem;
+}
+
+/* Bouton fermer */
 .marc-close {
   position: absolute;
   top: .625rem;
@@ -87,18 +154,18 @@
   background: none;
   border: none;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #8090B0;
-  font-size: 1rem;
-  line-height: 1;
+  font-size: .9rem;
   border-radius: 50%;
   transition: background .15s, color .15s;
   padding: 0;
   font-family: system-ui, sans-serif;
+  line-height: 1;
 }
 .marc-close:hover {
   background: rgba(30,45,90,.07);
@@ -141,16 +208,17 @@
 }
 .marc-label {
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: .625rem;
+  font-size: .5625rem;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: #1E2D5A;
+  color: #4A5878;
   background: #FFFFFF;
   border: 1px solid rgba(201,160,82,.35);
   border-radius: 100px;
   padding: 2px 8px;
   box-shadow: 0 1px 6px rgba(30,45,90,.1);
+  white-space: nowrap;
 }
 .marc-notif {
   position: absolute;
@@ -170,15 +238,13 @@
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   animation: marc-pulse-notif 2s ease-in-out infinite;
 }
-.marc-notif.marc-hidden {
-  display: none;
-}
+.marc-notif.marc-hidden { display: none; }
 
-/* ── PULSE on avatar (initial attention) ── */
+/* ── ANIMATIONS ── */
 @keyframes marc-pulse-ring {
-  0%   { box-shadow: 0 4px 20px rgba(30,45,90,.25), 0 0 0 0 rgba(201,160,82,.5); }
+  0%   { box-shadow: 0 4px 20px rgba(30,45,90,.25), 0 0 0 0   rgba(201,160,82,.5); }
   60%  { box-shadow: 0 4px 20px rgba(30,45,90,.25), 0 0 0 10px rgba(201,160,82,0); }
-  100% { box-shadow: 0 4px 20px rgba(30,45,90,.25), 0 0 0 0 rgba(201,160,82,0); }
+  100% { box-shadow: 0 4px 20px rgba(30,45,90,.25), 0 0 0 0   rgba(201,160,82,0); }
 }
 @keyframes marc-pulse-notif {
   0%,100% { transform: scale(1); }
@@ -191,8 +257,8 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   #marc-widget {
-    bottom: 5rem; /* above mobile sticky bar */
-    left: 1rem;
+    bottom: 5rem; /* au-dessus de la sticky mobile bar */
+    right: 1rem;
   }
   .marc-bubble {
     max-width: calc(100vw - 5rem);

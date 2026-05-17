@@ -1,31 +1,45 @@
 (function() {
   'use strict';
 
-  /* ── Messages contextuels par page ── */
+  /* ── Messages contextuels par page ──
+     Ton : humain, direct, ancré dans le problème du visiteur.
+     Pas un bot qui "répond" — une vraie invitation à un appel avec Caroline. */
   var MESSAGES = {
-    'index.html':                        'Votre marge nette vous préoccupe ? En 30 min, j\'identifie vos principales fuites — gratuitement.',
-    'audit-rentabilite-ecommerce.html':  'Des questions sur l\'audit ? Je peux analyser votre situation et estimer l\'impact en euros dès maintenant.',
-    'methode-marc.html':                 'Vous voulez voir comment la méthode MARC s\'applique concrètement à votre boutique ?',
-    'guide-fuites-marge.html':           'Le guide vous donne la direction — le diagnostic va plus loin et chiffre l\'impact réel sur votre situation.',
-    'blog.html':                         'Cet article vous parle ? Je peux faire un diagnostic rapide de votre situation — 30 min, sans engagement.',
-    'article.html':                      'Ce sujet vous concerne ? Je peux analyser votre situation précise en 30 minutes.',
-    'podcast.html':                      'Vous écoutez, vous apprenez — prêt à passer à l\'action ? Un diagnostic offert pour aller plus loin.',
-    'ressources.html':                   'Une ressource vous a interpellé ? Je peux vous aider à identifier ce qui s\'applique à votre boutique.',
-    'a-propos.html':                     'Vous voulez savoir si la méthode MARC est adaptée à votre situation ? Un appel de 30 min suffit.',
-    'contact.html':                      'Bonjour ! Je suis Marc. Préférez-vous réserver directement un créneau de diagnostic plutôt que de remplir le formulaire ?',
-    'accompagnements.html':              'Prêt à savoir combien vous perdez réellement en marge ? Je peux faire un premier diagnostic gratuit.',
-    'default':                           'Bonjour ! Je suis Marc. Je peux identifier vos principales fuites de marge en 30 min — gratuitement, sans engagement.'
+    'index.html':
+      'Votre CA progresse mais la marge nette reste décevante ? Caroline peut identifier vos fuites en 30 min — gratuitement.',
+    'audit-rentabilite-ecommerce.html':
+      'Vous lisez cette page parce que quelque chose ne tourne pas rond avec votre rentabilité. Caroline peut regarder votre situation concrète en 30 min.',
+    'methode-marc.html':
+      'Vous voulez savoir ce que MARC donnerait sur votre boutique ? Un appel de 30 min suffit pour le savoir.',
+    'guide-fuites-marge.html':
+      'Le guide vous montre quoi chercher. Le diagnostic, lui, vous dit combien ça vous coûte — en euros, sur votre boutique.',
+    'blog.html':
+      'Cet article vous parle ? Caroline peut analyser votre situation précise et chiffrer l\'impact réel en 30 minutes.',
+    'article.html':
+      'Si ce sujet vous concerne, un diagnostic de 30 min peut quantifier exactement ce que ça représente pour votre boutique.',
+    'podcast.html':
+      'Vous écoutez parce que vous cherchez des réponses. Caroline peut vous en donner sur votre situation — en 30 min chrono.',
+    'ressources.html':
+      'Une ressource vous a intéressé ? Caroline peut vous aider à identifier ce qui s\'applique concrètement à votre cas.',
+    'a-propos.html':
+      'Vous voulez savoir si Upglide est fait pour vous ? Un appel de 30 min vous donnera une réponse honnête.',
+    'contact.html':
+      'Plutôt que de remplir un formulaire, réservez directement un créneau de 30 min avec Caroline.',
+    'accompagnements.html':
+      'Vous hésitez encore ? Un appel de 30 min avec Caroline vous donnera un avis honnête sur votre situation — sans engagement.',
+    'default':
+      'Caroline peut analyser votre rentabilité en 30 min et identifier vos principales fuites de marge — gratuitement, sans engagement.'
   };
 
-  /* ── Get message for current page ── */
   function getMessage() {
     var page = window.location.pathname.split('/').pop() || 'index.html';
+    if (!page || page === '') page = 'index.html';
     return MESSAGES[page] || MESSAGES['default'];
   }
 
-  /* ── Open Calendly ── */
+  /* ── Calendly ── */
   function marcDiag(e) {
-    if (e) e.preventDefault();
+    if (e) { e.preventDefault(); e.stopPropagation(); }
     if (typeof Calendly !== 'undefined') {
       Calendly.initPopupWidget({ url: 'https://calendly.com/contact-upglide/30min' });
     } else {
@@ -33,31 +47,48 @@
     }
   }
 
-  /* ── Build widget HTML ── */
+  /* ── Build widget DOM ──
+     Framing : "Diagnostic offert · Appel avec Caroline"
+     La note "Vrai appel téléphonique" dissipe toute ambiguïté avec un chatbot. */
   function buildWidget() {
     var el = document.createElement('div');
     el.id = 'marc-widget';
     el.setAttribute('role', 'complementary');
-    el.setAttribute('aria-label', 'Assistant Marc — Diagnostic rentabilité');
+    el.setAttribute('aria-label', 'Diagnostic gratuit — réserver un appel avec Caroline');
+
     el.innerHTML =
+      /* Bulle */
       '<div class="marc-bubble" id="marc-bubble" aria-live="polite" hidden>' +
-        '<button class="marc-close" id="marc-close" aria-label="Fermer le message de Marc">×</button>' +
-        '<div class="marc-bubble-top">' +
-          '<div>' +
-            '<div class="marc-bubble-name">Marc</div>' +
-            '<div class="marc-bubble-role">Assistant diagnostic</div>' +
+        '<button class="marc-close" id="marc-close" aria-label="Fermer">×</button>' +
+
+        '<div class="marc-bubble-header">' +
+          '<div class="marc-bubble-avatar-mini">' +
+            '<img src="marc-avatar.svg" alt="" aria-hidden="true" width="36" height="36">' +
           '</div>' +
+          '<div class="marc-bubble-id">' +
+            '<div class="marc-bubble-name">Diagnostic offert</div>' +
+            '<div class="marc-bubble-role">Avec Caroline · 30 min · Gratuit</div>' +
+          '</div>' +
+          '<span class="marc-live-dot" aria-hidden="true">Dispo</span>' +
         '</div>' +
+
         '<p class="marc-msg" id="marc-msg"></p>' +
-        '<button class="marc-cta-btn" id="marc-cta">Démarrer le diagnostic gratuit →</button>' +
+
+        '<button class="marc-cta-btn" id="marc-cta">Réserver l\'appel avec Caroline →</button>' +
+        '<p class="marc-human-note">Vrai appel téléphonique · Sans engagement</p>' +
       '</div>' +
-      '<button class="marc-avatar-btn" id="marc-toggle" aria-label="Parler à Marc — assistant diagnostic" aria-expanded="false">' +
+
+      /* Avatar */
+      '<button class="marc-avatar-btn" id="marc-toggle" ' +
+              'aria-label="Réserver un diagnostic gratuit avec Caroline" ' +
+              'aria-expanded="false">' +
         '<div class="marc-avatar-ring" id="marc-ring">' +
-          '<img class="marc-avatar-img" src="marc-avatar.svg" alt="Marc, assistant Upglide" width="60" height="60">' +
+          '<img class="marc-avatar-img" src="marc-avatar.svg" alt="Caroline — diagnostic gratuit" width="60" height="60">' +
         '</div>' +
-        '<span class="marc-label">Marc</span>' +
+        '<span class="marc-label">Diagnostic offert</span>' +
         '<span class="marc-notif marc-hidden" id="marc-notif" aria-hidden="true">1</span>' +
       '</button>';
+
     document.body.appendChild(el);
   }
 
@@ -69,13 +100,11 @@
     if (isOpen) return;
     isOpen = true;
     bubble.hidden = false;
-    // Force reflow then add class
-    void bubble.offsetHeight;
+    void bubble.offsetHeight; // reflow
     bubble.classList.add('marc-visible');
     toggle.setAttribute('aria-expanded', 'true');
     notif.classList.add('marc-hidden');
     ring.classList.remove('marc-pulsing');
-    // Save shown in session
     try { sessionStorage.setItem('marc-shown', '1'); } catch(e) {}
   }
 
@@ -92,47 +121,40 @@
     if (isOpen) { closeBubble(); } else { openBubble(); }
   }
 
-  /* ── Auto show logic ── */
+  /* ── Auto-show : dot d'abord, bulle ensuite ── */
   function autoShow() {
-    try {
-      if (sessionStorage.getItem('marc-dismissed')) return;
-    } catch(e) {}
+    try { if (sessionStorage.getItem('marc-dismissed')) return; } catch(e) {}
 
-    // Show notification dot first
+    // Dot + pulse pour attirer l'œil
     notif.classList.remove('marc-hidden');
     ring.classList.add('marc-pulsing');
 
-    // Then open bubble after delay
-    setTimeout(function() {
-      if (!isOpen) openBubble();
-    }, 3500);
+    // Bulle 3.5s plus tard
+    setTimeout(function() { if (!isOpen) openBubble(); }, 3500);
   }
 
   /* ── Init ── */
   function init() {
     buildWidget();
 
-    bubble  = document.getElementById('marc-bubble');
-    toggle  = document.getElementById('marc-toggle');
+    bubble   = document.getElementById('marc-bubble');
+    toggle   = document.getElementById('marc-toggle');
     closeBtn = document.getElementById('marc-close');
-    ctaBtn  = document.getElementById('marc-cta');
-    notif   = document.getElementById('marc-notif');
-    ring    = document.getElementById('marc-ring');
+    ctaBtn   = document.getElementById('marc-cta');
+    notif    = document.getElementById('marc-notif');
+    ring     = document.getElementById('marc-ring');
 
-    // Set contextual message
     document.getElementById('marc-msg').textContent = getMessage();
 
-    // Events
     toggle.addEventListener('click', toggleBubble);
     closeBtn.addEventListener('click', closeBubble);
     ctaBtn.addEventListener('click', marcDiag);
 
-    // Keyboard: close on Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && isOpen) closeBubble();
     });
 
-    // Auto-show: after 8s OR after 40% scroll
+    /* Auto-show après 8s ou 40% de scroll */
     var shown = false;
     function triggerShow() {
       if (shown) return;
@@ -143,8 +165,8 @@
     var autoTimer = setTimeout(triggerShow, 8000);
 
     window.addEventListener('scroll', function onScroll() {
-      var scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      if (scrollPct >= 0.4) {
+      var pct = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+      if (pct >= 0.4) {
         clearTimeout(autoTimer);
         triggerShow();
         window.removeEventListener('scroll', onScroll);
@@ -152,7 +174,6 @@
     }, { passive: true });
   }
 
-  /* ── Run after DOM ready ── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
