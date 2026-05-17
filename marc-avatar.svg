@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <clipPath id="marc-clip"><circle cx="50" cy="50" r="50"/></clipPath>
+    <radialGradient id="bg-g" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#243466"/>
+      <stop offset="100%" stop-color="#131D3C"/>
+    </radialGradient>
+    <radialGradient id="skin-g" cx="40%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#E8B990"/>
+      <stop offset="100%" stop-color="#D49870"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg-g)" clip-path="url(#marc-clip)"/>
+
+  <!-- Body — navy suit -->
+  <path d="M0 100 Q0 68 18 58 L50 68 L82 58 Q100 68 100 100Z" fill="#0F1A30" clip-path="url(#marc-clip)"/>
+
+  <!-- White shirt -->
+  <path d="M44 59 L50 68 L56 59" fill="#F0EEE8"/>
+  <!-- Gold tie -->
+  <path d="M47.5 59 L50 66 L52.5 59 L50 61.5Z" fill="#C9A052"/>
+
+  <!-- Neck -->
+  <ellipse cx="50" cy="56" rx="7" ry="5" fill="url(#skin-g)"/>
+
+  <!-- Head -->
+  <ellipse cx="50" cy="38" rx="18" ry="20" fill="url(#skin-g)" clip-path="url(#marc-clip)"/>
+
+  <!-- Hair -->
+  <path d="M32 35 C32 18 68 18 68 35 C67 22 33 22 32 35Z" fill="#231208"/>
+  <!-- Side hair -->
+  <path d="M32 35 C31 30 32 24 35 20 C33 24 32 30 32 35Z" fill="#231208"/>
+  <path d="M68 35 C69 30 68 24 65 20 C67 24 68 30 68 35Z" fill="#231208"/>
+
+  <!-- Ears -->
+  <ellipse cx="32" cy="39" rx="3.5" ry="4.5" fill="#D49870"/>
+  <ellipse cx="68" cy="39" rx="3.5" ry="4.5" fill="#D49870"/>
+  <!-- Ear inner -->
+  <ellipse cx="32" cy="39" rx="2" ry="2.8" fill="#C0896A" opacity="0.5"/>
+  <ellipse cx="68" cy="39" rx="2" ry="2.8" fill="#C0896A" opacity="0.5"/>
+
+  <!-- Eyes — whites -->
+  <ellipse cx="42" cy="38" rx="5" ry="5.5" fill="white"/>
+  <ellipse cx="58" cy="38" rx="5" ry="5.5" fill="white"/>
+  <!-- Iris -->
+  <circle cx="43" cy="38.5" r="3.5" fill="#3A2210"/>
+  <circle cx="59" cy="38.5" r="3.5" fill="#3A2210"/>
+  <!-- Pupil -->
+  <circle cx="43.5" cy="38.8" r="2" fill="#0A0500"/>
+  <circle cx="59.5" cy="38.8" r="2" fill="#0A0500"/>
+  <!-- Catchlight -->
+  <circle cx="44.5" cy="37.5" r="1.1" fill="white" opacity="0.9"/>
+  <circle cx="60.5" cy="37.5" r="1.1" fill="white" opacity="0.9"/>
+
+  <!-- Eyebrows -->
+  <path d="M37 32 Q42 29.5 47 31.5" stroke="#231208" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M53 31.5 Q58 29.5 63 32" stroke="#231208" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <path d="M50 42 L48 47 L52 47" stroke="#C0896A" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="50" cy="47.5" rx="3.5" ry="1.5" fill="#C0896A" opacity="0.18"/>
+
+  <!-- Smile -->
+  <path d="M43 52 Q50 57.5 57 52" stroke="#B07555" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Mouth fill hint -->
+  <path d="M43 52 Q50 57.5 57 52 Q55 55 50 55.5 Q45 55 43 52Z" fill="#C07560" opacity="0.3"/>
+
+  <!-- Slight cheek blush -->
+  <ellipse cx="37" cy="46" rx="5" ry="3" fill="#E09070" opacity="0.18"/>
+  <ellipse cx="63" cy="46" rx="5" ry="3" fill="#E09070" opacity="0.18"/>
+
+  <!-- Gold bottom strip -->
+  <rect x="0" y="95" width="100" height="5" fill="#C9A052" opacity="0.6" clip-path="url(#marc-clip)"/>
+</svg>
