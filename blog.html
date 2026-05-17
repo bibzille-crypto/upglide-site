@@ -89,38 +89,28 @@ hr.divider { border: none; border-top: 1px solid var(--border); }
 /* ── NAV ── */
 nav { background: var(--wh); border-bottom: 1px solid var(--bdr); position: sticky; top: 0; z-index: 200; transition: box-shadow var(--t); }
 nav.scrolled { box-shadow: 0 2px 24px rgba(30,45,90,.1); }
-.nav-i { display: flex; align-items: center; justify-content: space-between; padding: 1.125rem clamp(1.5rem,5vw,4rem); gap: 1rem; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.125rem clamp(1.5rem,5vw,4rem); gap: 1rem; }
 .logo { font-family: var(--ft); font-size: 1.625rem; font-weight: 700; color: var(--cad); letter-spacing: -.01em; font-style: italic; }
 .logo span { color: var(--lion); font-style: normal; }
-.nav-m { display: flex; align-items: center; list-style: none; gap: .25rem; }
-.nav-it { position: relative; }
-.nav-a { display: flex; align-items: center; gap: 4px; font-size: .875rem; font-weight: 500; color: var(--txt2); padding: .5rem .875rem; transition: color var(--t); cursor: pointer; border: none; background: none; font-family: var(--fb); border-radius: 6px; white-space: nowrap; }
-.nav-a:hover, .nav-a.active-page { color: var(--cad); }
-.nav-a.active-page { font-weight: 600; }
-.chv { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform var(--t); flex-shrink: 0; }
-/* Dropdown — click-based */
-.nav-drop { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--wh); border: 1px solid var(--bdr); border-radius: var(--r); min-width: 230px; box-shadow: var(--shmd); z-index: 300; overflow: hidden; }
-.nav-it.open .nav-drop { display: block; }
-.nav-it.open .chv { transform: rotate(180deg); }
-.nd-lnk { display: flex; align-items: center; gap: .625rem; padding: .625rem 1.25rem; font-size: .8125rem; font-weight: 500; color: var(--txt2); transition: all var(--t); }
-.nd-lnk:hover { background: var(--isa); color: var(--cad); }
-.nd-lnk-sub { font-size: .75rem; color: var(--txt3); padding: .5rem 1.25rem .5rem 1.75rem; }
-.nd-lnk-sub:hover { background: var(--isa); color: var(--txt2); }
-.nd-sec { padding: .5rem 1.25rem .25rem; font-size: .5625rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--txt3); border-top: 1px solid var(--bdr); background: var(--isa); }
-.nd-sec:first-child { border-top: none; }
+.nav-links { display: none; }
+@media (min-width: 900px) {
+  .nav-links { display: flex; align-items: center; list-style: none; gap: .25rem; }
+  .nav-links a { font-size: .875rem; font-weight: 500; color: var(--txt2); padding: .5rem .875rem; border-radius: 8px; transition: color var(--t), background var(--t); }
+  .nav-links a:hover { color: var(--cad); background: var(--isa); }
+  .nav-links a.active { color: var(--cad); font-weight: 600; }
+}
 .nav-cta { background: var(--cad); color: var(--wh); font-family: var(--fb); font-size: .8125rem; font-weight: 700; padding: .65rem 1.5rem; border: none; cursor: pointer; transition: all var(--t); border-radius: 100px; margin-left: .5rem; white-space: nowrap; }
 .nav-cta:hover { background: var(--cad2); transform: translateY(-1px); }
-.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: .5rem; }
-.burger span { display: block; width: 22px; height: 2px; background: var(--cad); transition: transform .3s, opacity .3s; border-radius: 2px; }
-.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mob-nav { display: none; position: fixed; inset: 0; background: var(--isa); z-index: 300; padding: 5rem 2rem 2rem; flex-direction: column; overflow-y: auto; }
+.burger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: .5rem; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--cad); border-radius: 2px; transition: all var(--t); }
+@media (min-width: 900px) { .burger { display: none; } }
+/* ── MOBILE NAV ── */
+.mob-nav { display: none; position: fixed; inset: 0; background: var(--isa); z-index: 300; padding: 5rem 1.5rem 2rem; flex-direction: column; }
 .mob-nav.open { display: flex; }
-.mob-it { border-bottom: 1px solid var(--bdr); }
-.mob-a { display: block; padding: 1rem 0; font-size: 1rem; font-weight: 600; color: var(--cad); }
-.mob-a-sub { display: block; padding: .75rem 0 .75rem 1rem; font-size: .875rem; font-weight: 500; color: var(--txt2); border-bottom: 1px solid var(--bdr); }
-.mob-cta { margin-top: 2rem; background: var(--cad); color: var(--wh); font-family: var(--fb); font-size: .9375rem; font-weight: 700; padding: 1rem; border: none; border-radius: 100px; cursor: pointer; width: 100%; text-align: center; }
+.mob-nav-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; cursor: pointer; padding: .5rem; }
+.mob-nav a { display: block; padding: 1rem 0; font-size: 1.125rem; font-weight: 600; color: var(--cad); border-bottom: 1px solid var(--bdr); }
+.mob-nav-cta { margin-top: 2rem; background: var(--cad); color: var(--wh) !important; font-family: var(--fb); font-size: 1rem; font-weight: 700; padding: 1rem; border: none; border-radius: 100px; cursor: pointer; width: 100%; text-align: center; display: block; border-bottom: none !important; }
+.mob-nav-cta:hover { background: var(--cad2); }
 
 /* ── FOOTER ── */
 footer { background: var(--cad2); color: var(--wh); padding: 3.5rem 0; }
@@ -189,23 +179,35 @@ footer { background: var(--cad2); color: var(--wh); padding: 3.5rem 0; }
 <body>
 
 <nav id="nav">
-  <div class="nav-i">
+  <div class="nav-inner">
     <a class="logo" href="index.html">Upglide<span> ·</span></a>
-    <ul class="nav-m">
-      <li class="nav-it"><a class="nav-a" href="index.html">Accueil</a></li>
-      <li class="nav-it"><a class="nav-a" href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
-      <li class="nav-it"><a class="nav-a" href="methode-marc.html">Méthode MARC</a></li>
-      <li class="nav-it"><a class="nav-a" href="ressources.html">Ressources</a></li>
-      <li class="nav-it"><a class="nav-a" href="blog.html">Blog</a></li>
-      <li class="nav-it"><a class="nav-a" href="a-propos.html">À propos</a></li>
+        <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
+      <li><a href="methode-marc.html">Méthode MARC</a></li>
+      <li><a href="ressources.html">Ressources</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
     </ul>
     <a href="" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="mob-nav" id="mobnav">
-    <div class="mob-it"><a class="mob-a" href="index.html" onclick="closeMob()">Accueil</a></div>
+  <div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
+    <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+      </svg>
+    </button>
+    <a href="index.html" onclick="closeMob()">Accueil</a>
+    <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
+    <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
+    <a href="ressources.html" onclick="closeMob()">Ressources</a>
+    <a href="blog.html" onclick="closeMob()">Blog</a>
+    <a href="a-propos.html" onclick="closeMob()">À propos</a>
+    <a href="" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
+  </div>
     <div class="mob-it"><a class="mob-a" href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a></div>
     <div class="mob-it"><a class="mob-a" href="methode-marc.html" onclick="closeMob()">Méthode MARC</a></div>
     <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
@@ -266,15 +268,14 @@ footer { background: var(--cad2); color: var(--wh); padding: 3.5rem 0; }
 <footer>
   <div class="wrap">
     <div class="foot">
-      <span class="foot-logo">Upglide<span> ·</span></span>
-      <div class="foot-links">
-        <a class="foot-link" href="blog.html">Blog</a>
-        <a class="foot-link" href="podcast.html">Podcast</a>
-        <a class="foot-link" href="ressources.html">Ressources</a>
-        <a class="foot-link" href="accompagnements.html">Accompagnements</a>
-        <a class="foot-link" href="a-propos.html">À propos</a>
-        <a class="foot-link" href="contact.html">Contact</a>
-      </div>
+      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
+      <nav class="foot-links" aria-label="Liens secondaires">
+        <a href="podcast.html" class="foot-link">Podcast</a>
+        <a href="blog.html" class="foot-link">Blog</a>
+        <a href="ressources.html" class="foot-link">Ressources</a>
+        <a href="a-propos.html" class="foot-link">À propos</a>
+        <a href="contact.html" class="foot-link">Contact</a>
+      </nav>
       <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
     </div>
   </div>
