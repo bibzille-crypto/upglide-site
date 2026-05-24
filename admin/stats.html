@@ -282,6 +282,14 @@ body { background: var(--isa); font-family: var(--fb); color: var(--txt); -webki
       </div>
     </div>
 
+    <!-- Page views table -->
+    <h2 style="font-family:var(--ft);font-size:1.25rem;font-weight:700;font-style:italic;color:var(--cad);margin-bottom:1rem;">Visites par page</h2>
+    <div id="pageviews-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Chargement…</p>
+    </div>
+
+    <h2 style="font-family:var(--ft);font-size:1.25rem;font-weight:700;font-style:italic;color:var(--cad);margin:2.5rem 0 1rem;">Lecture des articles</h2>
     <!-- Stats table -->
     <div id="table-container">
       <div class="spinner"></div>
@@ -300,6 +308,50 @@ function fmtTime(secs) {
 function fmtDate(iso) {
   if (!iso) return '—';
   return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function loadPageViews() {
+  fetch('/.netlify/functions/pageviews-stats?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var PAGE_LABELS = {
+        '/': 'Accueil',
+        '/blog': 'Blog',
+        '/podcast': 'Podcast',
+        '/ressources': 'Ressources',
+        '/a-propos': 'À propos',
+        '/contact': 'Contact',
+        '/audit-rentabilite-ecommerce': 'Audit Rentabilité',
+        '/methode-marc': 'Méthode MARC',
+        '/guide-fuites-marge': 'Guide fuites de marge',
+      };
+      var entries = Object.entries(data).sort(function(a,b) { return b[1].views - a[1].views; });
+      if (!entries.length) {
+        document.getElementById('pageviews-container').innerHTML =
+          '<p style="color:var(--txt3);font-size:.875rem;padding:1.5rem 0;">Aucune visite enregistrée pour l\'instant.</p>';
+        return;
+      }
+      var rows = entries.map(function(e) {
+        var path = e[0], d = e[1];
+        var label = PAGE_LABELS[path] || (path.startsWith('/blog/') ? 'Article : ' + path.replace('/blog/', '') : path);
+        return '<tr>' +
+          '<td><strong style="color:var(--cad);font-size:.9375rem;">' + label + '</strong><span style="display:block;font-size:.6875rem;color:var(--txt3);">' + path + '</span></td>' +
+          '<td><span class="stat-num">' + d.views + '</span><span class="stat-unit">vue' + (d.views > 1 ? 's' : '') + '</span></td>' +
+          '<td><span class="badge-date">' + fmtDate(d.lastSeen) + '</span></td>' +
+        '</tr>';
+      }).join('');
+      document.getElementById('pageviews-container').innerHTML =
+        '<div class="stats-table-wrap">' +
+          '<table class="stats-table">' +
+            '<thead><tr><th>Page</th><th>Vues</th><th>Dernière visite</th></tr></thead>' +
+            '<tbody>' + rows + '</tbody>' +
+          '</table>' +
+        '</div>';
+    })
+    .catch(function() {
+      document.getElementById('pageviews-container').innerHTML =
+        '<p style="color:var(--txt3);font-size:.875rem;padding:1.5rem 0;">Erreur de chargement des vues par page.</p>';
+    });
 }
 
 function loadStats() {
@@ -397,6 +449,7 @@ function loadStats() {
   });
 }
 
+loadPageViews();
 loadStats();
 </script>
 </body>
