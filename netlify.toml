@@ -6,11 +6,37 @@
   publish = "."
 
 # ── REDIRECTS (pretty URLs sans .html) ──────────────────────────────────
+
+# Ancienne page accompagnements → nouvelle URL canonique (301 permanent)
 [[redirects]]
   from = "/accompagnements"
-  to   = "/accompagnements.html"
+  to   = "/audit-rentabilite-ecommerce"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/accompagnements.html"
+  to   = "/audit-rentabilite-ecommerce"
+  status = 301
+  force = true
+
+# Nouvelles pages
+[[redirects]]
+  from = "/audit-rentabilite-ecommerce"
+  to   = "/audit-rentabilite-ecommerce.html"
   status = 200
 
+[[redirects]]
+  from = "/methode-marc"
+  to   = "/methode-marc.html"
+  status = 200
+
+[[redirects]]
+  from = "/guide-fuites-marge"
+  to   = "/guide-fuites-marge.html"
+  status = 200
+
+# Pages existantes
 [[redirects]]
   from = "/blog"
   to   = "/blog.html"
@@ -20,8 +46,6 @@
   from = "/blog/:slug"
   to   = "/article.html?slug=:slug"
   status = 200
-
-
 
 [[redirects]]
   from = "/podcast"
