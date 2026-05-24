@@ -94,9 +94,10 @@ collections:
                 name: "content"
                 widget: "markdown"
                 hint: >
-                  TAILLE DU TEXTE → Titre (##), Sous-titre (###), Petit titre (####).
-                  IMAGES → bouton Image dans la barre d'outils pour insérer une photo.
-                  TABLEAUX → en mode "Raw" : | Col 1 | Col 2 | sur une ligne, puis |---|---| sur la suivante, puis les lignes de données.
+                  TITRE (H2) → apparaît dans le sommaire à gauche de l'article.
+                  SOUS-TITRE (H3) → structure interne, ne s'affiche pas dans le sommaire.
+                  IMAGES → bouton Image dans la barre d'outils.
+                  TABLEAUX → passer en mode "Raw" : | Col 1 | Col 2 | puis |---|---| puis les données.
                   LIENS → sélectionnez un mot, cliquez 🔗, collez l'URL.
                 buttons:
                   - bold
@@ -104,7 +105,6 @@ collections:
                   - link
                   - heading-two
                   - heading-three
-                  - heading-four
                   - quote
                   - bulleted-list
                   - numbered-list

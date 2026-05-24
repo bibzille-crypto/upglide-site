@@ -1130,13 +1130,11 @@ function loadSidebarArticles(currentSlug) {
     var ctaEl = document.getElementById('art-cta');
     if (ctaEl) ctaEl.style.display = 'block';
 
-    // Generate TOC from top-level headings (H2 → H3 → H4 fallback)
+    // Generate TOC from H2 headings only (= "Titre" dans l'admin)
     var tocNav = document.getElementById('art-toc');
     var tocSection = document.getElementById('toc-section');
     var artContent = document.getElementById('art-content');
     var headings = artContent.querySelectorAll('h2');
-    if (!headings.length) headings = artContent.querySelectorAll('h3');
-    if (!headings.length) headings = artContent.querySelectorAll('h4');
     if (tocNav && headings.length > 0) {
       headings.forEach(function(h, i) {
         var id = 'section-' + i;
