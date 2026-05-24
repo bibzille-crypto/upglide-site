@@ -1,0 +1,9 @@
+{
+  "name": "upglide-site",
+  "version": "1.0.0",
+  "description": "Upglide — site e-commerce consulting",
+  "license": "ISC",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.8"
+  }
+}
