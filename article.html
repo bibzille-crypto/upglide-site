@@ -635,8 +635,8 @@ a { color: inherit; text-decoration: none; }
 
 <nav id="nav">
   <div class="nav-inner">
-    <a class="logo" href="index.html">Upglide<span> ·</span></a>
-        <ul class="nav-links">
+    <a href="index.html" class="logo">Upglide<span> ·</span></a>
+    <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
       <li><a href="methode-marc.html">Méthode MARC</a></li>
@@ -645,7 +645,7 @@ a { color: inherit; text-decoration: none; }
       <li><a href="a-propos.html">À propos</a></li>
     </ul>
     <a href="" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
-    <button class="burger" id="burger" aria-label="Menu">
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -662,13 +662,6 @@ a { color: inherit; text-decoration: none; }
     <a href="blog.html" onclick="closeMob()">Blog</a>
     <a href="a-propos.html" onclick="closeMob()">À propos</a>
     <a href="" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
-  </div>
-    <div class="mob-it"><a class="mob-a" href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a></div>
-    <div class="mob-it"><a class="mob-a" href="methode-marc.html" onclick="closeMob()">Méthode MARC</a></div>
-    <div class="mob-it"><a class="mob-a" href="ressources.html" onclick="closeMob()">Ressources</a></div>
-    <div class="mob-it"><a class="mob-a" href="blog.html" onclick="closeMob()">Blog</a></div>
-    <div class="mob-it"><a class="mob-a" href="a-propos.html" onclick="closeMob()">À propos</a></div>
-    <a href="" onclick="closeMob();openDiag();return false;" class="mob-cta">Diagnostic offert →</a>
   </div>
 </nav>
 
