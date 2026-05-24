@@ -78,14 +78,26 @@ collections:
                 widget: "text"
                 hint: "1–2 phrases affichées dans la liste du blog et dans Google"
 
+              - label: "Image de couverture (optionnelle)"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Image affichée en haut de l'article. Formats recommandés : JPG ou PNG, largeur min. 1200 px."
+
+              - label: "Encart résumé (optionnel)"
+                name: "summary"
+                widget: "text"
+                required: false
+                hint: "Points clés affichés dans un encart doré au début de l'article. Écrivez 2 à 4 points, un par ligne (touche Entrée entre chaque)."
+
               - label: "Contenu de l'article"
                 name: "content"
                 widget: "markdown"
                 hint: >
-                  TAILLE DU TEXTE → utilisez les boutons Titre (grand), Sous-titre (moyen), Petit titre (petit).
-                  LIENS → sélectionnez un mot, cliquez l'icône lien 🔗, collez l'URL.
-                  Pour un lien vers une autre page du site : /blog.html · /accompagnements.html · /podcast.html · /ressources.html.
-                  Pour un lien externe : https://www.exemple.com
+                  TAILLE DU TEXTE → Titre (##), Sous-titre (###), Petit titre (####).
+                  IMAGES → bouton Image dans la barre d'outils pour insérer une photo.
+                  TABLEAUX → en mode "Raw" : | Col 1 | Col 2 | sur une ligne, puis |---|---| sur la suivante, puis les lignes de données.
+                  LIENS → sélectionnez un mot, cliquez 🔗, collez l'URL.
                 buttons:
                   - bold
                   - italic
@@ -97,7 +109,8 @@ collections:
                   - bulleted-list
                   - numbered-list
                   - code
-                editor_components: []
+                editor_components:
+                  - image
                 modes:
                   - rich_text
                   - raw

@@ -72,6 +72,11 @@
   to   = "/admin/index.html"
   status = 200
 
+[[redirects]]
+  from = "/admin/stats"
+  to   = "/admin/stats.html"
+  status = 200
+
 # ── HEADERS ─────────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"

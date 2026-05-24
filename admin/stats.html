@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistiques de lecture — Upglide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --isa:  #F5F1E8;
+  --lion: #C9A052;
+  --lion2:#A8802E;
+  --cad:  #1E2D5A;
+  --cad2: #131D3C;
+  --wh:   #FFFFFF;
+  --txt:  #1E2D5A;
+  --txt2: #4A5878;
+  --txt3: #8090B0;
+  --bdr:  rgba(30,45,90,.09);
+  --ft:   'Georgia', serif;
+  --fb:   system-ui, -apple-system, sans-serif;
+  --t:    .2s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--isa); font-family: var(--fb); color: var(--txt); -webkit-font-smoothing: antialiased; }
+
+/* ── HEADER ── */
+.topbar {
+  background: var(--cad2);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.topbar-logo {
+  font-family: var(--ft);
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--wh);
+  text-decoration: none;
+}
+.topbar-logo span { color: var(--lion); font-style: normal; }
+.topbar-links { display: flex; gap: 1rem; align-items: center; }
+.topbar-link {
+  font-size: .8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  padding: .375rem .75rem;
+  border-radius: 6px;
+  transition: background var(--t), color var(--t);
+}
+.topbar-link:hover { background: rgba(255,255,255,.08); color: var(--wh); }
+.topbar-link.active { color: var(--lion); }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.page { padding: 3rem 0 6rem; }
+
+/* ── PAGE TITLE ── */
+.page-title {
+  font-family: var(--ft);
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cad);
+  margin-bottom: .375rem;
+}
+.page-subtitle {
+  font-size: .875rem;
+  color: var(--txt3);
+  margin-bottom: 2.5rem;
+}
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--txt2);
+  background: var(--wh);
+  border: 1px solid var(--bdr);
+  border-radius: 100px;
+  padding: .45rem 1rem;
+  cursor: pointer;
+  transition: all var(--t);
+  margin-bottom: 1.5rem;
+}
+.refresh-btn:hover { border-color: var(--cad); color: var(--cad); }
+.refresh-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── KPI CARDS ── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.kpi-card {
+  background: var(--wh);
+  border: 1px solid var(--bdr);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+.kpi-label {
+  font-size: .5625rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--txt3);
+  margin-bottom: .5rem;
+}
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--ft);
+  color: var(--cad);
+  line-height: 1;
+}
+.kpi-value span { font-size: 1rem; color: var(--txt3); font-weight: 400; font-family: var(--fb); }
+
+/* ── TABLE ── */
+.stats-table-wrap {
+  background: var(--wh);
+  border: 1px solid var(--bdr);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(30,45,90,.06);
+}
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.stats-table th {
+  background: var(--cad);
+  color: rgba(255,255,255,.7);
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .875rem 1.25rem;
+  text-align: left;
+}
+.stats-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--bdr);
+  vertical-align: middle;
+}
+.stats-table tr:last-child td { border-bottom: none; }
+.stats-table tr:hover td { background: rgba(245,241,232,.5); }
+
+.art-title {
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--cad);
+  line-height: 1.3;
+  display: block;
+  text-decoration: none;
+}
+.art-slug {
+  font-size: .6875rem;
+  color: var(--txt3);
+  margin-top: .2rem;
+  display: block;
+}
+.stat-num {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cad);
+  font-family: var(--ft);
+}
+.stat-unit {
+  font-size: .6875rem;
+  color: var(--txt3);
+  display: block;
+}
+
+/* ── DEPTH BAR ── */
+.depth-bar {
+  width: 120px;
+  background: var(--isa);
+  border-radius: 100px;
+  height: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.depth-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--lion2), var(--lion));
+  border-radius: 100px;
+  transition: width .6s ease;
+}
+.depth-wrap { display: flex; align-items: center; gap: .625rem; }
+.depth-pct { font-size: .8125rem; font-weight: 600; color: var(--txt2); min-width: 2.5rem; }
+
+/* ── BADGES ── */
+.badge-date {
+  font-size: .75rem;
+  color: var(--txt3);
+}
+
+/* ── EMPTY / LOADING ── */
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--txt3);
+}
+.empty-state svg {
+  width: 48px; height: 48px;
+  stroke: var(--bdr);
+  fill: none;
+  stroke-width: 1.5;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+.empty-title { font-size: 1.125rem; font-weight: 600; color: var(--txt2); margin-bottom: .375rem; }
+.empty-desc  { font-size: .875rem; }
+
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--bdr);
+  border-top-color: var(--lion);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 5rem auto 1rem;
+  display: block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { text-align: center; color: var(--txt3); font-size: .875rem; }
+
+@media(max-width: 640px) {
+  .topbar { padding: 1rem; }
+  .page { padding: 2rem 0 4rem; }
+  .stats-table th:nth-child(3),
+  .stats-table td:nth-child(3),
+  .stats-table th:nth-child(5),
+  .stats-table td:nth-child(5) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../index.html" class="topbar-logo">Upglide<span> ·</span></a>
+  <div class="topbar-links">
+    <a href="index.html" class="topbar-link">← CMS</a>
+    <a href="../blog.html" class="topbar-link" target="_blank">Voir le blog</a>
+    <span class="topbar-link active">Statistiques</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="wrap">
+    <h1 class="page-title">Statistiques de lecture</h1>
+    <p class="page-subtitle">Données agrégées sur les articles lus — temps passé et profondeur de lecture.</p>
+
+    <button class="refresh-btn" onclick="loadStats()">
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Actualiser
+    </button>
+
+    <!-- KPI summary -->
+    <div class="kpi-row" id="kpi-row" style="display:none">
+      <div class="kpi-card">
+        <div class="kpi-label">Total lectures</div>
+        <div class="kpi-value" id="kpi-views">—</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Temps moyen</div>
+        <div class="kpi-value" id="kpi-time">—</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Profondeur moy.</div>
+        <div class="kpi-value" id="kpi-depth">—</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Articles publiés</div>
+        <div class="kpi-value" id="kpi-articles">—</div>
+      </div>
+    </div>
+
+    <!-- Stats table -->
+    <div id="table-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Chargement des statistiques…</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function fmtTime(secs) {
+  if (!secs || secs === 0) return '—';
+  var m = Math.floor(secs / 60), s = secs % 60;
+  return m > 0 ? m + 'min ' + (s > 0 ? s + 's' : '') : s + 's';
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function loadStats() {
+  document.getElementById('table-container').innerHTML =
+    '<div class="spinner"></div><p class="loading-text">Chargement…</p>';
+  document.getElementById('kpi-row').style.display = 'none';
+
+  // Load both blog.json (for titles) and stats API in parallel
+  Promise.all([
+    fetch('/.netlify/functions/stats?_=' + Date.now()).then(function(r) { return r.json(); }),
+    fetch('/data/blog.json?_=' + Date.now()).then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    var stats = results[0];
+    var blog  = results[1];
+
+    // Build slug → title / excerpt map
+    var posts = {};
+    (blog.posts || []).forEach(function(p) {
+      posts[p.slug] = { title: p.title, category: p.category, readTime: p.readTime };
+    });
+
+    var entries = Object.entries(stats).sort(function(a, b) { return b[1].views - a[1].views; });
+
+    // Update KPIs
+    var totalViews = entries.reduce(function(s, e) { return s + e[1].views; }, 0);
+    var avgTimes   = entries.filter(function(e) { return e[1].avgTime > 0; });
+    var globalAvgTime  = avgTimes.length ? Math.round(avgTimes.reduce(function(s,e){ return s + e[1].avgTime; }, 0) / avgTimes.length) : 0;
+    var avgDepths  = entries.filter(function(e) { return e[1].avgDepth > 0; });
+    var globalAvgDepth = avgDepths.length ? Math.round(avgDepths.reduce(function(s,e){ return s + e[1].avgDepth; }, 0) / avgDepths.length) : 0;
+
+    document.getElementById('kpi-views').innerHTML    = totalViews + '<span> vues</span>';
+    document.getElementById('kpi-time').innerHTML     = fmtTime(globalAvgTime);
+    document.getElementById('kpi-depth').innerHTML    = globalAvgDepth + '<span>%</span>';
+    document.getElementById('kpi-articles').innerHTML = Object.keys(posts).length + '<span> articles</span>';
+    document.getElementById('kpi-row').style.display  = '';
+
+    if (entries.length === 0) {
+      document.getElementById('table-container').innerHTML =
+        '<div class="empty-state">' +
+          '<svg viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4"/><path d="M12 20V10"/><path d="M17 20V4"/><path d="M22 20h.01"/></svg>' +
+          '<p class="empty-title">Pas encore de données</p>' +
+          '<p class="empty-desc">Les statistiques apparaîtront dès que des articles auront été lus sur le site.</p>' +
+        '</div>';
+      return;
+    }
+
+    var rows = entries.map(function(entry) {
+      var slug = entry[0], s = entry[1];
+      var post = posts[slug] || {};
+      var depthColor = s.avgDepth >= 75 ? '#22c55e' : s.avgDepth >= 40 ? '#C9A052' : '#8090B0';
+      return '<tr>' +
+        '<td>' +
+          '<a class="art-title" href="../article.html?slug=' + slug + '" target="_blank">' + (post.title || slug) + '</a>' +
+          '<span class="art-slug">/blog/' + slug + '</span>' +
+        '</td>' +
+        '<td>' +
+          '<span class="stat-num">' + s.views + '</span>' +
+          '<span class="stat-unit">lecture' + (s.views > 1 ? 's' : '') + '</span>' +
+        '</td>' +
+        '<td>' +
+          '<span class="stat-num">' + fmtTime(s.avgTime) + '</span>' +
+          '<span class="stat-unit">en moyenne</span>' +
+        '</td>' +
+        '<td>' +
+          '<div class="depth-wrap">' +
+            '<div class="depth-bar"><div class="depth-fill" style="width:' + s.avgDepth + '%;background:' + depthColor + '"></div></div>' +
+            '<span class="depth-pct">' + s.avgDepth + '%</span>' +
+          '</div>' +
+        '</td>' +
+        '<td><span class="badge-date">' + fmtDate(s.lastSeen) + '</span></td>' +
+      '</tr>';
+    }).join('');
+
+    document.getElementById('table-container').innerHTML =
+      '<div class="stats-table-wrap">' +
+        '<table class="stats-table">' +
+          '<thead><tr>' +
+            '<th>Article</th>' +
+            '<th>Lectures</th>' +
+            '<th>Temps moyen</th>' +
+            '<th>Lu jusqu\'à</th>' +
+            '<th>Dernière vue</th>' +
+          '</tr></thead>' +
+          '<tbody>' + rows + '</tbody>' +
+        '</table>' +
+      '</div>';
+
+  }).catch(function(err) {
+    document.getElementById('table-container').innerHTML =
+      '<div class="empty-state">' +
+        '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+        '<p class="empty-title">Erreur de chargement</p>' +
+        '<p class="empty-desc">Vérifiez que le site est bien déployé sur Netlify.<br><small style="color:#ccc">' + err.message + '</small></p>' +
+      '</div>';
+  });
+}
+
+loadStats();
+</script>
+</body>
+</html>

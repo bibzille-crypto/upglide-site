@@ -475,6 +475,99 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.8;
 }
 
+/* ── COVER IMAGE ── */
+.art-cover-img {
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+/* ── INLINE IMAGES ── */
+.art-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 1.75rem auto;
+  box-shadow: var(--shsm);
+}
+
+/* ── SUMMARY ENCART ── */
+.art-summary {
+  background: rgba(201,160,82,.06);
+  border: 1px solid rgba(201,160,82,.28);
+  border-left: 4px solid var(--lion);
+  border-radius: 0 12px 12px 0;
+  padding: 1.375rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+.art-summary-label {
+  font-size: .5625rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--lion2);
+  margin-bottom: .875rem;
+  font-family: var(--fb);
+}
+.art-summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.art-summary-list li {
+  font-size: .9375rem;
+  color: var(--txt);
+  line-height: 1.65;
+  padding: .25rem 0 .25rem 1.375rem;
+  position: relative;
+  font-family: var(--fb);
+}
+.art-summary-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--lion);
+  font-weight: 600;
+}
+
+/* ── TABLES ── */
+.art-table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: var(--shsm);
+  border: 1px solid var(--bdr);
+}
+.art-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--fb);
+  font-size: .9375rem;
+}
+.art-table th {
+  background: var(--cad);
+  color: rgba(255,255,255,.85);
+  font-weight: 700;
+  padding: .75rem 1.125rem;
+  text-align: left;
+  font-size: .8125rem;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+.art-table td {
+  padding: .75rem 1.125rem;
+  color: var(--txt2);
+  border-bottom: 1px solid var(--bdr);
+  line-height: 1.5;
+  vertical-align: top;
+}
+.art-table tr:last-child td { border-bottom: none; }
+.art-table tr:nth-child(even) td { background: rgba(245,241,232,.45); }
+
 /* ── SHARE ── */
 .art-share {
   display: flex;
@@ -838,41 +931,92 @@ function loadSidebarArticles(currentSlug) {
 (function() {
   function parseMD(md) {
     if (!md) return '';
-    var inList = false, html = '', lines = md.split('\n');
-    for (var i = 0; i < lines.length; i++) {
-      var line = lines[i];
-      line = line
+
+    function fmt(s) {
+      return s
         .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/`(.+?)`/g, '<code>$1</code>')
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="art-img" loading="lazy">')
         .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-      if (/^## /.test(line)) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<h2>' + line.slice(3) + '</h2>';
-      } else if (/^### /.test(line)) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<h3>' + line.slice(4) + '</h3>';
-      } else if (/^#### /.test(line)) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<h4>' + line.slice(5) + '</h4>';
-      } else if (/^> /.test(line)) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<blockquote>' + line.slice(2) + '</blockquote>';
-      } else if (/^- /.test(line) || /^\* /.test(line)) {
-        if (!inList) { html += '<ul>'; inList = true; }
-        html += '<li>' + line.slice(2) + '</li>';
-      } else if (/^---/.test(line)) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<hr>';
-      } else if (line.trim() === '') {
-        if (inList) { html += '</ul>'; inList = false; }
-      } else {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += '<p>' + line + '</p>';
+    }
+
+    var html = '', inList = false, inTable = false, tableHeaderDone = false, tableHtml = '';
+    var lines = md.split('\n');
+
+    function closeTable() {
+      if (inTable) {
+        tableHtml += '</tbody></table></div>';
+        html += tableHtml;
+        tableHtml = ''; inTable = false; tableHeaderDone = false;
       }
     }
-    if (inList) html += '</ul>';
+
+    for (var i = 0; i < lines.length; i++) {
+      var raw = lines[i];
+
+      /* ── TABLE rows ── */
+      if (/^\s*\|/.test(raw)) {
+        var isSep = /^\s*\|[\s\-:|]+\|/.test(raw) && /---/.test(raw);
+        var cells = raw.split('|').filter(function(c, j, a) { return j > 0 && j < a.length - 1; })
+                       .map(function(c) { return fmt(c.trim()); });
+        if (!inTable) {
+          if (inList) { html += '</ul>'; inList = false; }
+          inTable = true; tableHeaderDone = false;
+          tableHtml = '<div class="art-table-wrap"><table class="art-table"><thead><tr>' +
+            cells.map(function(c) { return '<th>' + c + '</th>'; }).join('') +
+            '</tr></thead><tbody>';
+        } else if (!tableHeaderDone && isSep) {
+          tableHeaderDone = true; // skip separator row
+        } else if (!isSep) {
+          tableHtml += '<tr>' + cells.map(function(c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+        }
+        continue;
+      }
+      closeTable();
+
+      /* ── STRUCTURAL blocks ── */
+      if (/^###### /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h4>' + fmt(raw.slice(7)) + '</h4>';
+      } else if (/^##### /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h4>' + fmt(raw.slice(6)) + '</h4>';
+      } else if (/^#### /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h4>' + fmt(raw.slice(5)) + '</h4>';
+      } else if (/^### /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h3>' + fmt(raw.slice(4)) + '</h3>';
+      } else if (/^## /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h2>' + fmt(raw.slice(3)) + '</h2>';
+      } else if (/^# /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<h2>' + fmt(raw.slice(2)) + '</h2>'; // treat lone # as h2
+      } else if (/^> /.test(raw)) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<blockquote>' + fmt(raw.slice(2)) + '</blockquote>';
+      } else if (/^[-*] /.test(raw)) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += '<li>' + fmt(raw.slice(2)) + '</li>';
+      } else if (/^\d+\. /.test(raw)) {
+        if (!inList) { html += '<ol>'; inList = 'ol'; }
+        html += '<li>' + fmt(raw.replace(/^\d+\. /, '')) + '</li>';
+      } else if (/^---/.test(raw)) {
+        if (inList) { html += inList === 'ol' ? '</ol>' : '</ul>'; inList = false; }
+        html += '<hr>';
+      } else if (raw.trim() === '') {
+        if (inList) { html += inList === 'ol' ? '</ol>' : '</ul>'; inList = false; }
+      } else {
+        if (inList) { html += inList === 'ol' ? '</ol>' : '</ul>'; inList = false; }
+        html += '<p>' + fmt(raw) + '</p>';
+      }
+    }
+
+    closeTable();
+    if (inList) html += inList === 'ol' ? '</ol>' : '</ul>';
     return html;
   }
 
@@ -955,7 +1099,27 @@ function loadSidebarArticles(currentSlug) {
 
     document.getElementById('art-loading').style.display = 'none';
     var card = document.getElementById('art-card');
-    document.getElementById('art-content').innerHTML = parseMD(art.content || '');
+
+    // Build content: optional cover image, optional summary encart, then body
+    var contentHTML = '';
+
+    if (art.image) {
+      contentHTML += '<img src="' + art.image + '" alt="' + (art.title || '') + '" class="art-cover-img" loading="eager">';
+    }
+
+    if (art.summary && art.summary.trim()) {
+      var summaryLines = art.summary.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+      if (summaryLines.length) {
+        contentHTML += '<div class="art-summary">' +
+          '<div class="art-summary-label">En résumé</div>' +
+          '<ul class="art-summary-list">' +
+          summaryLines.map(function(l) { return '<li>' + l + '</li>'; }).join('') +
+          '</ul></div>';
+      }
+    }
+
+    contentHTML += parseMD(art.content || '');
+    document.getElementById('art-content').innerHTML = contentHTML;
     card.style.display = 'block';
 
     var shareEl = document.getElementById('art-share');
@@ -966,10 +1130,13 @@ function loadSidebarArticles(currentSlug) {
     var ctaEl = document.getElementById('art-cta');
     if (ctaEl) ctaEl.style.display = 'block';
 
-    // Generate TOC from H2 headings
+    // Generate TOC from top-level headings (H2 → H3 → H4 fallback)
     var tocNav = document.getElementById('art-toc');
     var tocSection = document.getElementById('toc-section');
-    var headings = document.getElementById('art-content').querySelectorAll('h2');
+    var artContent = document.getElementById('art-content');
+    var headings = artContent.querySelectorAll('h2');
+    if (!headings.length) headings = artContent.querySelectorAll('h3');
+    if (!headings.length) headings = artContent.querySelectorAll('h4');
     if (tocNav && headings.length > 0) {
       headings.forEach(function(h, i) {
         var id = 'section-' + i;
@@ -999,6 +1166,37 @@ function loadSidebarArticles(currentSlug) {
 
   var slug = new URLSearchParams(window.location.search).get('slug');
   if (!slug) { showError('Article introuvable.'); return; }
+
+  /* ── READING STATS TRACKING ──
+     Track time on page + max scroll depth. Send via beacon on page hide.
+     Only fires if user spent ≥ 5 seconds (filters out bounces). */
+  (function() {
+    var startTime = Date.now();
+    var maxDepth  = 0;
+    var statsSent = false;
+
+    window.addEventListener('scroll', function() {
+      var h = document.body.scrollHeight - window.innerHeight;
+      if (h > 0) {
+        var d = Math.round(window.scrollY / h * 100);
+        if (d > maxDepth) maxDepth = d;
+      }
+    }, { passive: true });
+
+    function sendStats() {
+      if (statsSent) return;
+      statsSent = true;
+      var time = Math.round((Date.now() - startTime) / 1000);
+      if (time < 5) return; // ignore accidental opens
+      var body = new URLSearchParams({ slug: slug, time: time, depth: maxDepth });
+      navigator.sendBeacon('/.netlify/functions/track', body.toString());
+    }
+
+    window.addEventListener('pagehide', sendStats);
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') sendStats();
+    });
+  })();
 
   // Load sidebar articles
   loadSidebarArticles(slug);
