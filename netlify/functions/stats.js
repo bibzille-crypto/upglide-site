@@ -19,7 +19,7 @@ exports.handler = async function(event) {
   }
 
   try {
-    if (!process.env.NETLIFY_TOKEN) return { statusCode: 500, headers: {'Content-Type':'application/json'}, body: JSON.stringify({ error: 'NETLIFY_TOKEN manquant — voir les variables d'environnement Netlify' }) };
+    if (!process.env.NETLIFY_TOKEN) return { statusCode: 500, headers: {'Content-Type':'application/json'}, body: JSON.stringify({ error: 'NETLIFY_TOKEN manquant dans les variables Netlify' }) };
     const store = getStore({ name: 'blog-stats', siteID: process.env.SITE_ID, token: process.env.NETLIFY_TOKEN });
     const { blobs } = await store.list();
 
