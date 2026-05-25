@@ -15,7 +15,8 @@ exports.handler = async function(event) {
   }
 
   try {
-    const store = getStore('page-views');
+    if (!process.env.NETLIFY_TOKEN) return { statusCode: 500, headers: {'Content-Type':'application/json','Access-Control-Allow-Origin':'*'}, body: JSON.stringify({ error: 'NETLIFY_TOKEN manquant — voir les variables d'environnement Netlify' }) };
+    const store = getStore({ name: 'page-views', siteID: process.env.SITE_ID, token: process.env.NETLIFY_TOKEN });
     const { blobs } = await store.list();
 
     const result = {};

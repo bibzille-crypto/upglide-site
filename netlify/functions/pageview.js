@@ -29,7 +29,8 @@ exports.handler = async function(event) {
     const isValid = VALID_PATHS.includes(path) || /^\/blog\/[a-z0-9-]+$/.test(path);
     if (!isValid) return { statusCode: 400, body: 'Invalid path' };
 
-    const store = getStore('page-views');
+    if (!process.env.NETLIFY_TOKEN) return { statusCode: 204, body: '' };
+    const store = getStore({ name: 'page-views', siteID: process.env.SITE_ID, token: process.env.NETLIFY_TOKEN });
     const key = path.replace(/\//g, '_').replace(/^_/, '') || 'home';
 
     let stats = { views: 0, lastSeen: null };

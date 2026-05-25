@@ -21,7 +21,8 @@ exports.handler = async function(event) {
       return { statusCode: 400, body: 'Invalid slug' };
     }
 
-    const store = getStore('blog-stats');
+    if (!process.env.NETLIFY_TOKEN) return { statusCode: 204, body: '' };
+    const store = getStore({ name: 'blog-stats', siteID: process.env.SITE_ID, token: process.env.NETLIFY_TOKEN });
 
     // Read existing aggregate
     let stats = { views: 0, totalTime: 0, totalDepth: 0, lastSeen: null };
