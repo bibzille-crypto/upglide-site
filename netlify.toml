@@ -6,6 +6,12 @@
   publish = "."
   command = "npm install"
 
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  node_bundler = "nft"
+
 # ── REDIRECTS (pretty URLs sans .html) ──────────────────────────────────
 
 # Ancienne page accompagnements → nouvelle URL canonique (301 permanent)

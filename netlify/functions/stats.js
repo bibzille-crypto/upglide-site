@@ -42,6 +42,6 @@ exports.handler = async function(event) {
     return { statusCode: 200, headers, body: JSON.stringify(result) };
   } catch (e) {
     console.error('[stats]', e);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Could not load stats' }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: e.message || 'Could not load stats', type: e.constructor ? e.constructor.name : 'Error' }) };
   }
 };

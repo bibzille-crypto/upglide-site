@@ -349,9 +349,9 @@ function loadPageViews() {
           '</table>' +
         '</div>';
     })
-    .catch(function() {
+    .catch(function(err) {
       document.getElementById('pageviews-container').innerHTML =
-        '<p style="color:var(--txt3);font-size:.875rem;padding:1.5rem 0;">Erreur de chargement des vues par page.</p>';
+        '<p style="color:#e53e3e;font-size:.875rem;padding:1.5rem 0;font-family:monospace;">⚠ ' + err.message + '</p>';
     });
 }
 
