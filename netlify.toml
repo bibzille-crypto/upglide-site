@@ -4,6 +4,7 @@
 
 [build]
   publish = "."
+  command = "npm install"
 
 # ── REDIRECTS (pretty URLs sans .html) ──────────────────────────────────
 
