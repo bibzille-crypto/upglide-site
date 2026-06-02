@@ -5,8 +5,12 @@
   <url><loc>https://upglide.fr/methode-marc</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://upglide.fr/guide-fuites-marge</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://upglide.fr/blog</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://upglide.fr/blog/augmenter-panier-moyen-ecommerce</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://upglide.fr/podcast</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://upglide.fr/ressources</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://upglide.fr/calculateur-cout-produit</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://upglide.fr/calculateur-marge-unitaire</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://upglide.fr/a-propos</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://upglide.fr/contact</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
 </urlset>

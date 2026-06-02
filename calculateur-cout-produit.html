@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur Coût Produit Réel — Impact Retours | Upglide</title>
+<meta name="description" content="Calculez le vrai coût unitaire de vos produits en intégrant l'impact réel des retours. Marge unitaire réelle, perte mensuelle estimée, simulation de réduction des retours.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://upglide.fr/calculateur-cout-produit">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" content="Calculateur Coût Produit Réel — Impact Retours | Upglide">
+<meta property="og:description" content="Calculez le vrai coût unitaire de vos produits en intégrant l'impact réel des retours.">
+<meta property="og:url" content="https://upglide.fr/calculateur-cout-produit">
+<meta property="og:image" content="https://upglide.fr/hero-dashboard.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},
+  {"@type":"ListItem","position":2,"name":"Ressources","item":"https://upglide.fr/ressources"},
+  {"@type":"ListItem","position":3,"name":"Calculateur Coût Produit Réel","item":"https://upglide.fr/calculateur-cout-produit"}
+]}
+</script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --isa:   #F5F1E8;
+  --lion:  #C9A052;
+  --lion2: #A8802E;
+  --cad:   #1E2D5A;
+  --cad2:  #131D3C;
+  --dusk:  #4E6898;
+  --wh:    #FFFFFF;
+  --txt:   #1E2D5A;
+  --txt2:  #4A5878;
+  --txt3:  #8090B0;
+  --bdr:   rgba(30,45,90,.09);
+  --fond:  #F4F7FB;
+  --fond2: #EBF0F8;
+  --border:#D0DCE8;
+  --ft: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --r: 12px; --rlg: 20px;
+  --shsm: 0 2px 12px rgba(30,45,90,.08);
+  --shmd: 0 8px 32px rgba(30,45,90,.12);
+  --t: .22s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
+nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
+@media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
+@media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
+.logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
+.logo span{color:var(--lion);font-style:normal;}
+.nav-links{display:none;}
+@media(min-width:768px){
+  .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
+  .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
+  .nav-links a:hover{color:var(--cad);background:var(--isa);}
+  .nav-links a.active{color:var(--cad);font-weight:600;}
+}
+.nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
+@media(min-width:768px){.nav-cta{display:inline-flex;}}
+.nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
+@media(min-width:768px){.burger{display:none;}}
+.burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
+.mob-nav.open{display:flex;}
+.mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
+.mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
+.mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
+
+/* FOOTER */
+footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
+.foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
+@media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
+.foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
+.foot-logo span{color:var(--lion);font-style:normal;}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
+.foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
+.foot-link:hover{color:var(--wh);}
+.foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
+
+/* LAYOUT */
+.wrap{max-width:860px;margin:0 auto;padding:0 2rem;}
+@media(max-width:640px){.wrap{padding:0 1.25rem;}}
+
+/* HERO */
+.page-hero{padding:3.5rem 0 2rem;background:var(--wh);border-bottom:1px solid var(--bdr);}
+.page-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dusk);margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;}
+.page-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--dusk);}
+.page-h1{font-family:var(--ft);font-size:clamp(1.875rem,4vw,2.875rem);font-weight:400;line-height:1.15;letter-spacing:-.01em;color:var(--cad);margin-bottom:1rem;}
+.page-h1 em{font-style:italic;color:var(--lion);}
+.page-sub{font-size:1rem;color:var(--txt2);line-height:1.8;font-weight:300;max-width:540px;}
+
+/* MODE TABS */
+.calc-main{padding:2.5rem 0 4rem;}
+.mode-tabs{display:flex;gap:.5rem;background:var(--fond2);border-radius:12px;padding:4px;margin-bottom:1.75rem;width:fit-content;}
+.mode-tab{font-family:var(--fb);font-size:.875rem;font-weight:600;padding:.625rem 1.5rem;border-radius:9px;border:none;cursor:pointer;transition:all var(--t);color:var(--txt2);background:transparent;}
+.mode-tab.active{background:var(--wh);color:var(--cad);box-shadow:var(--shsm);}
+
+/* CALC CARD */
+.calc-card{background:var(--wh);border:1px solid var(--bdr);border-radius:var(--rlg);padding:2rem 2.5rem;box-shadow:var(--shsm);}
+@media(max-width:640px){.calc-card{padding:1.5rem;}}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2rem;}
+@media(max-width:580px){.calc-grid{grid-template-columns:1fr;}}
+
+.field-group{display:flex;flex-direction:column;gap:.375rem;}
+.field-group.span2{grid-column:span 2;}
+@media(max-width:580px){.field-group.span2{grid-column:span 1;}}
+.field-label{font-size:.875rem;font-weight:600;color:var(--cad);}
+.field-hint{font-size:.75rem;color:var(--txt3);font-weight:400;margin-top:.1rem;}
+.field-row{display:flex;align-items:center;gap:.5rem;}
+.field-input{width:100%;padding:.625rem .875rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.9375rem;color:var(--cad);background:var(--fond);transition:border-color var(--t),box-shadow var(--t);outline:none;}
+.field-input:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.field-unit{font-size:.875rem;font-weight:600;color:var(--txt2);white-space:nowrap;min-width:20px;}
+.field-input-sm{width:80px;padding:.625rem .75rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.9375rem;color:var(--cad);background:var(--fond);transition:border-color var(--t);outline:none;text-align:center;}
+.field-input-sm:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.section-divider{grid-column:span 2;border:none;border-top:1px solid var(--bdr);margin:.125rem 0;}
+@media(max-width:580px){.section-divider{grid-column:span 1;}}
+.section-label{grid-column:span 2;font-size:.6875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);}
+@media(max-width:580px){.section-label{grid-column:span 1;}}
+
+/* CALC BUTTON */
+.btn-calc{margin-top:1.75rem;width:100%;padding:1rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;border:none;border-radius:100px;cursor:pointer;transition:all var(--t);}
+.btn-calc:hover{background:var(--cad2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(30,45,90,.2);}
+
+/* RESULTS */
+.results-card{background:var(--cad);color:var(--wh);border-radius:var(--rlg);padding:2rem 2.5rem;margin-top:1.5rem;display:none;}
+@media(max-width:640px){.results-card{padding:1.5rem;}}
+.results-card.show{display:block;}
+.results-title{font-family:var(--ft);font-size:1.375rem;font-weight:400;margin-bottom:1.75rem;}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem;}
+@media(max-width:520px){.results-grid{grid-template-columns:1fr;}}
+.result-item{background:rgba(255,255,255,.06);border-radius:12px;padding:1.125rem 1.25rem;border:1px solid rgba(255,255,255,.08);}
+.result-label{font-size:.75rem;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.375rem;}
+.result-value{font-family:var(--ft);font-size:1.75rem;font-weight:400;line-height:1.1;color:var(--wh);}
+.result-value.highlight{color:var(--lion);}
+.result-value.neg{color:#F87171;}
+.result-sub{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.25rem;}
+.verdict-bar{background:rgba(255,255,255,.06);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-top:.5rem;}
+.verdict-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.verdict-dot.green{background:#4ADE80;}
+.verdict-dot.orange{background:#FBBF24;}
+.verdict-dot.red{background:#F87171;}
+.verdict-text{font-size:.9375rem;font-weight:500;color:var(--wh);}
+.verdict-label{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.2rem;}
+.breakdown{background:rgba(255,255,255,.04);border-radius:12px;padding:1.25rem 1.5rem;margin-top:1rem;}
+.breakdown-title{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.875rem;}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:.375rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-row.total{padding-top:.625rem;margin-top:.25rem;border-top:1px solid rgba(255,255,255,.15);border-bottom:none;font-weight:700;}
+.breakdown-name{font-size:.875rem;color:rgba(255,255,255,.65);}
+.breakdown-name.total{color:var(--wh);}
+.breakdown-val{font-size:.875rem;font-weight:600;color:rgba(255,255,255,.8);}
+.breakdown-val.total{color:var(--lion);}
+
+/* SIMULATION */
+.simulation-card{background:var(--wh);border:1.5px solid var(--lion);border-radius:var(--rlg);padding:2rem 2.5rem;margin-top:1.5rem;display:none;}
+@media(max-width:640px){.simulation-card{padding:1.5rem;}}
+.simulation-card.show{display:block;}
+.sim-title{font-family:var(--ft);font-size:1.25rem;font-weight:600;color:var(--cad);margin-bottom:.375rem;}
+.sim-sub{font-size:.875rem;color:var(--txt2);margin-bottom:1.5rem;font-weight:300;}
+.sim-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.sim-label{font-size:.875rem;font-weight:600;color:var(--cad);white-space:nowrap;}
+.sim-slider{flex:1;min-width:140px;accent-color:var(--lion);cursor:pointer;}
+.sim-val-display{font-family:var(--ft);font-size:1.25rem;font-weight:600;color:var(--lion);min-width:48px;text-align:right;}
+.sim-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:460px){.sim-compare{grid-template-columns:1fr;}}
+.sim-col{border-radius:12px;padding:1.25rem;text-align:center;}
+.sim-col.before{background:var(--fond2);border:1px solid var(--border);}
+.sim-col.after{background:linear-gradient(135deg,rgba(201,160,82,.08),rgba(201,160,82,.04));border:1.5px solid rgba(201,160,82,.3);}
+.sim-col-label{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:.625rem;}
+.sim-col-marge{font-family:var(--ft);font-size:2rem;font-weight:400;line-height:1;color:var(--cad);}
+.sim-col-marge.after-val{color:var(--lion2);}
+.sim-col-sub{font-size:.8125rem;color:var(--txt2);margin-top:.375rem;}
+.sim-gain{text-align:center;margin-top:1.25rem;padding:1rem;background:rgba(74,222,128,.08);border-radius:10px;border:1px solid rgba(74,222,128,.2);}
+.sim-gain-val{font-family:var(--ft);font-size:1.5rem;font-weight:600;color:#16A34A;}
+.sim-gain-label{font-size:.8125rem;color:var(--txt2);margin-top:.25rem;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Upglide<span> ·</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
+      <li><a href="methode-marc.html">Méthode MARC</a></li>
+      <li><a href="ressources.html" class="active">Ressources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+    <a href="javascript:void(0)" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
+  <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
+  </button>
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
+  <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
+  <a href="ressources.html" onclick="closeMob()">Ressources</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="a-propos.html" onclick="closeMob()">À propos</a>
+  <a href="javascript:void(0)" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="wrap">
+    <p class="page-eyebrow"><a href="ressources.html" style="color:inherit;">Ressources</a> / Calculateur</p>
+    <h1 class="page-h1">Coût produit réel<br>avec <em>impact retours.</em></h1>
+    <p class="page-sub">Calculez votre vraie marge unitaire en intégrant le taux de retour — la variable que la plupart des e-commerçants sous-estiment ou ignorent complètement.</p>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="calc-main">
+  <div class="wrap">
+
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tab-simple" onclick="switchMode('simple')">Mode Simple</button>
+      <button class="mode-tab" id="tab-precis" onclick="switchMode('precis')">Mode Précis</button>
+    </div>
+
+    <!-- ══ FORMULAIRE SIMPLE ══ -->
+    <div class="calc-card" id="form-simple">
+      <div class="calc-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="s_prix">Prix de vente</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_prix" placeholder="49" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+          <p class="field-hint">Le prix affiché sur votre boutique</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_achat">Prix d'achat du produit</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_achat" placeholder="18" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+          <p class="field-hint">Ce que vous payez à votre fournisseur</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_livraison">Frais de livraison &amp; emballage</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_livraison" placeholder="6.70" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+          <p class="field-hint">Coût moyen par commande (transport + boîte)</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_paiement">Commission de paiement</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_paiement" placeholder="2" min="0" max="20" step="0.1">
+            <span class="field-unit">%</span>
+          </div>
+          <p class="field-hint">Prélevé par Stripe, PayPal, etc. (environ 1,5 à 3%)</p>
+        </div>
+
+        <hr class="section-divider">
+        <div class="section-label">Retours</div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_taux">Sur 100 ventes, combien de retours ?</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_taux" placeholder="8" min="0" max="100" step="1">
+            <span class="field-unit">retours</span>
+          </div>
+          <p class="field-hint">Exemple : entrez 8 si vous avez environ 8% de retours</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_cout_retour">Combien coûte un retour ?</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_cout_retour" placeholder="7.50" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+          <p class="field-hint">Frais retour + temps de gestion + perte sur le produit</p>
+        </div>
+
+        <hr class="section-divider">
+        <div class="section-label">Optionnel</div>
+
+        <div class="field-group">
+          <label class="field-label" for="s_ventes_mois">Combien en vendez-vous par mois ?</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="s_ventes_mois" placeholder="300" min="0" step="1">
+            <span class="field-unit">unités</span>
+          </div>
+          <p class="field-hint">Permet d'estimer la perte mensuelle due aux retours</p>
+        </div>
+
+      </div>
+      <button class="btn-calc" onclick="calculate()">Calculer ma marge réelle →</button>
+    </div>
+
+    <!-- ══ FORMULAIRE PRÉCIS ══ -->
+    <div class="calc-card" id="form-precis" style="display:none;">
+      <div class="calc-grid">
+
+        <div class="section-label">Prix &amp; coûts détaillés</div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_prix">Prix de vente TTC</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_prix" placeholder="49" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_cogs">Coût d'achat (COGS)</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_cogs" placeholder="18" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_emb">Emballage &amp; préparation</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_emb" placeholder="1.80" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_port">Frais de port sortants</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_port" placeholder="4.90" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+        </div>
+
+        <div class="field-group span2">
+          <label class="field-label">Frais de paiement</label>
+          <div class="field-row" style="flex-wrap:wrap;gap:.75rem;">
+            <div class="field-row" style="gap:.375rem;">
+              <input class="field-input-sm" type="number" id="p_pct" placeholder="1.5" min="0" step="0.01">
+              <span class="field-unit">%</span>
+            </div>
+            <span style="color:var(--txt3);font-size:.875rem;">+</span>
+            <div class="field-row" style="gap:.375rem;">
+              <input class="field-input-sm" type="number" id="p_fixe" placeholder="0.25" min="0" step="0.01">
+              <span class="field-unit">€</span>
+            </div>
+          </div>
+          <p class="field-hint">Stripe Europe : 1,5% + 0,25€ · International : 2,9% + 0,30€</p>
+        </div>
+
+        <hr class="section-divider">
+        <div class="section-label">Retours — chiffres réels</div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_ventes">Unités vendues sur la période</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_ventes" placeholder="200" min="0" step="1" oninput="calcTauxPrecis()">
+            <span class="field-unit">unités</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_retours">Unités retournées</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_retours" placeholder="16" min="0" step="1" oninput="calcTauxPrecis()">
+            <span class="field-unit">unités</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <p class="field-label">Taux de retour calculé</p>
+          <p style="font-family:var(--ft);font-size:1.5rem;font-weight:600;color:var(--lion);margin-top:.25rem;" id="taux-calcule-val">—</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_cout_retour">Coût moyen d'un retour</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_cout_retour" placeholder="7.50" min="0" step="0.01">
+            <span class="field-unit">€</span>
+          </div>
+          <p class="field-hint">Frais retour + restockage + dépréciation produit</p>
+        </div>
+
+        <hr class="section-divider">
+        <div class="section-label">Optionnel</div>
+
+        <div class="field-group">
+          <label class="field-label" for="p_ventes_mois">Ventes / mois</label>
+          <div class="field-row">
+            <input class="field-input" type="number" id="p_ventes_mois" placeholder="300" min="0" step="1">
+            <span class="field-unit">unités</span>
+          </div>
+        </div>
+
+      </div>
+      <button class="btn-calc" onclick="calculate()">Calculer ma marge réelle →</button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-card" id="results-card">
+      <p class="results-title">Résultats pour ce produit</p>
+      <div class="results-grid">
+        <div class="result-item">
+          <p class="result-label">Coût réel (avec retours)</p>
+          <p class="result-value highlight" id="res-cout-reel">—</p>
+          <p class="result-sub" id="res-cout-sans">Sans retours : —</p>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Marge unitaire réelle</p>
+          <p class="result-value" id="res-marge-eur">—</p>
+          <p class="result-sub" id="res-marge-pct">— du prix de vente</p>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Impact retours / unité vendue</p>
+          <p class="result-value neg" id="res-impact-retours">—</p>
+          <p class="result-sub" id="res-taux-affiche">Taux de retour : —</p>
+        </div>
+        <div class="result-item" id="res-perte-bloc" style="display:none;">
+          <p class="result-label">Perte mensuelle (retours)</p>
+          <p class="result-value neg" id="res-perte-mois">—</p>
+          <p class="result-sub">Sur <span id="res-nb-ventes-mois">—</span> ventes/mois</p>
+        </div>
+      </div>
+      <div class="verdict-bar">
+        <div class="verdict-dot" id="verdict-dot"></div>
+        <div>
+          <p class="verdict-text" id="verdict-text"></p>
+          <p class="verdict-label" id="verdict-label"></p>
+        </div>
+      </div>
+      <div class="breakdown">
+        <p class="breakdown-title">Décomposition du coût réel</p>
+        <div class="breakdown-row"><span class="breakdown-name">Prix d'achat produit</span><span class="breakdown-val" id="bd-cogs">—</span></div>
+        <div class="breakdown-row" id="bd-emb-row"><span class="breakdown-name">Emballage &amp; préparation</span><span class="breakdown-val" id="bd-emb">—</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Livraison</span><span class="breakdown-val" id="bd-port">—</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Commission de paiement</span><span class="breakdown-val" id="bd-paiement">—</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Impact retours</span><span class="breakdown-val" id="bd-retours">—</span></div>
+        <div class="breakdown-row total"><span class="breakdown-name total">Coût total réel</span><span class="breakdown-val total" id="bd-total">—</span></div>
+      </div>
+    </div>
+
+    <!-- SIMULATION -->
+    <div class="simulation-card" id="simulation-card">
+      <p class="sim-title">Et si vous réduisiez vos retours ?</p>
+      <p class="sim-sub">Bougez le curseur pour voir l'impact immédiat sur votre marge.</p>
+      <div class="sim-row">
+        <span class="sim-label">Taux cible :</span>
+        <input type="range" class="sim-slider" id="sim-slider" min="0" max="30" step="0.5" value="4" oninput="updateSimulation()">
+        <span class="sim-val-display" id="sim-slider-val">4%</span>
+      </div>
+      <div class="sim-compare">
+        <div class="sim-col before">
+          <p class="sim-col-label">Situation actuelle</p>
+          <p class="sim-col-marge" id="sim-before-marge">—</p>
+          <p class="sim-col-sub" id="sim-before-label">—</p>
+        </div>
+        <div class="sim-col after">
+          <p class="sim-col-label">Avec retours réduits</p>
+          <p class="sim-col-marge after-val" id="sim-after-marge">—</p>
+          <p class="sim-col-sub" id="sim-after-label">—</p>
+        </div>
+      </div>
+      <div class="sim-gain">
+        <p class="sim-gain-val" id="sim-gain-val">+0,00 €</p>
+        <p class="sim-gain-label" id="sim-gain-label">de marge unitaire récupérée</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
+      <nav class="foot-links" aria-label="Liens secondaires">
+        <a href="podcast.html" class="foot-link">Podcast</a>
+        <a href="blog.html" class="foot-link">Blog</a>
+        <a href="ressources.html" class="foot-link">Ressources</a>
+        <a href="a-propos.html" class="foot-link">À propos</a>
+        <a href="contact.html" class="foot-link">Contact</a>
+      </nav>
+      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+var currentMode = 'simple';
+var lastCalc = null;
+
+function fmt(n, dec) {
+  if (dec === undefined) dec = 2;
+  return n.toFixed(dec).replace('.', ',');
+}
+
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('tab-simple').classList.toggle('active', mode === 'simple');
+  document.getElementById('tab-precis').classList.toggle('active', mode === 'precis');
+  document.getElementById('form-simple').style.display = mode === 'simple' ? 'block' : 'none';
+  document.getElementById('form-precis').style.display = mode === 'precis' ? 'block' : 'none';
+  document.getElementById('results-card').classList.remove('show');
+  document.getElementById('simulation-card').classList.remove('show');
+}
+
+function calcTauxPrecis() {
+  var v = parseFloat(document.getElementById('p_ventes').value) || 0;
+  var r = parseFloat(document.getElementById('p_retours').value) || 0;
+  document.getElementById('taux-calcule-val').textContent = v > 0 ? fmt(r / v * 100, 1) + '%' : '—';
+}
+
+function getInputs() {
+  if (currentMode === 'simple') {
+    var prix      = parseFloat(document.getElementById('s_prix').value)         || 0;
+    var achat     = parseFloat(document.getElementById('s_achat').value)         || 0;
+    var livraison = parseFloat(document.getElementById('s_livraison').value)     || 0;
+    var pctPmt    = parseFloat(document.getElementById('s_paiement').value)      || 0;
+    var taux      = parseFloat(document.getElementById('s_taux').value)          || 0;
+    var coutRet   = parseFloat(document.getElementById('s_cout_retour').value)   || 0;
+    var vMois     = parseFloat(document.getElementById('s_ventes_mois').value)   || 0;
+    return { prix: prix, cogs: achat, emb: 0, port: livraison,
+             fraisPaiement: prix * pctPmt / 100,
+             taux: taux, coutRet: coutRet, ventesMois: vMois, isSimple: true };
+  } else {
+    var prix  = parseFloat(document.getElementById('p_prix').value)   || 0;
+    var cogs  = parseFloat(document.getElementById('p_cogs').value)   || 0;
+    var emb   = parseFloat(document.getElementById('p_emb').value)    || 0;
+    var port  = parseFloat(document.getElementById('p_port').value)   || 0;
+    var pct   = parseFloat(document.getElementById('p_pct').value)    || 0;
+    var fixe  = parseFloat(document.getElementById('p_fixe').value)   || 0;
+    var vt    = parseFloat(document.getElementById('p_ventes').value) || 0;
+    var rt    = parseFloat(document.getElementById('p_retours').value)|| 0;
+    var taux  = vt > 0 ? (rt / vt * 100) : 0;
+    var coutRet = parseFloat(document.getElementById('p_cout_retour').value) || 0;
+    var vMois   = parseFloat(document.getElementById('p_ventes_mois').value) || 0;
+    return { prix: prix, cogs: cogs, emb: emb, port: port,
+             fraisPaiement: (prix * pct / 100) + fixe,
+             taux: taux, coutRet: coutRet, ventesMois: vMois, isSimple: false };
+  }
+}
+
+function calculate() {
+  var d = getInputs();
+  if (d.prix === 0) { alert('Veuillez entrer un prix de vente.'); return; }
+
+  var impactRetours = (d.taux / 100) * d.coutRet;
+  var coutSansRet   = d.cogs + d.emb + d.port + d.fraisPaiement;
+  var coutTotal     = coutSansRet + impactRetours;
+  var margeEur      = d.prix - coutTotal;
+  var margePct      = d.prix > 0 ? (margeEur / d.prix * 100) : 0;
+  var perteMois     = d.ventesMois > 0 ? impactRetours * d.ventesMois : 0;
+
+  lastCalc = { prix: d.prix, taux: d.taux, coutRet: d.coutRet,
+               coutSansRet: coutSansRet, coutTotal: coutTotal,
+               margeEur: margeEur, margePct: margePct, impactRetours: impactRetours };
+
+  document.getElementById('res-cout-reel').textContent = fmt(coutTotal) + ' €';
+  document.getElementById('res-cout-sans').textContent = 'Sans retours : ' + fmt(coutSansRet) + ' €';
+  document.getElementById('res-marge-eur').textContent = fmt(margeEur) + ' €';
+  document.getElementById('res-marge-eur').className   = 'result-value' + (margeEur < 0 ? ' neg' : ' highlight');
+  document.getElementById('res-marge-pct').textContent = fmt(margePct, 1) + '% du prix de vente';
+  document.getElementById('res-impact-retours').textContent = '−' + fmt(impactRetours) + ' €';
+  document.getElementById('res-taux-affiche').textContent   = 'Taux de retour : ' + fmt(d.taux, 1) + '%';
+
+  if (d.ventesMois > 0) {
+    document.getElementById('res-perte-bloc').style.display = 'block';
+    document.getElementById('res-perte-mois').textContent = '−' + fmt(perteMois) + ' €';
+    document.getElementById('res-nb-ventes-mois').textContent = Math.round(d.ventesMois);
+  } else {
+    document.getElementById('res-perte-bloc').style.display = 'none';
+  }
+
+  var dot = document.getElementById('verdict-dot');
+  dot.className = 'verdict-dot';
+  if (margePct >= 30) {
+    dot.classList.add('green');
+    document.getElementById('verdict-text').textContent = 'Produit très rentable';
+    document.getElementById('verdict-label').textContent = 'Marge réelle supérieure à 30% — continuez à surveiller les retours.';
+  } else if (margePct >= 15) {
+    dot.classList.add('orange');
+    document.getElementById('verdict-text').textContent = 'Produit à surveiller';
+    document.getElementById('verdict-label').textContent = 'Marge entre 15% et 30% — toute hausse du taux de retour peut fragiliser ce produit.';
+  } else if (margePct >= 0) {
+    dot.classList.add('red');
+    document.getElementById('verdict-text').textContent = 'Marge dangereusement basse';
+    document.getElementById('verdict-label').textContent = 'Moins de 15% de marge réelle — ce produit est vulnérable. Revoyez les coûts ou le pricing.';
+  } else {
+    dot.classList.add('red');
+    document.getElementById('verdict-text').textContent = 'Produit destructeur de marge';
+    document.getElementById('verdict-label').textContent = 'Marge négative — vous perdez de l\'argent à chaque vente.';
+  }
+
+  document.getElementById('bd-cogs').textContent     = fmt(d.cogs) + ' €';
+  document.getElementById('bd-emb-row').style.display = d.isSimple ? 'none' : 'flex';
+  document.getElementById('bd-emb').textContent      = fmt(d.emb) + ' €';
+  document.getElementById('bd-port').textContent     = fmt(d.port) + ' €';
+  document.getElementById('bd-paiement').textContent = fmt(d.fraisPaiement) + ' €';
+  document.getElementById('bd-retours').textContent  = fmt(impactRetours) + ' €';
+  document.getElementById('bd-total').textContent    = fmt(coutTotal) + ' €';
+
+  document.getElementById('results-card').classList.add('show');
+
+  var slider = document.getElementById('sim-slider');
+  slider.max   = Math.max(Math.ceil(d.taux * 1.5), 20);
+  slider.value = Math.max(0, Math.round(d.taux / 2 * 2) / 2);
+  updateSimulation();
+  document.getElementById('simulation-card').classList.add('show');
+
+  document.getElementById('results-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateSimulation() {
+  if (!lastCalc) return;
+  var tauxCible = parseFloat(document.getElementById('sim-slider').value);
+  document.getElementById('sim-slider-val').textContent = fmt(tauxCible, 1) + '%';
+
+  var margeApres    = lastCalc.prix - (lastCalc.coutSansRet + (tauxCible / 100) * lastCalc.coutRet);
+  var margePctApres = lastCalc.prix > 0 ? (margeApres / lastCalc.prix * 100) : 0;
+  var gain          = margeApres - lastCalc.margeEur;
+
+  document.getElementById('sim-before-marge').textContent = fmt(lastCalc.margeEur) + ' €';
+  document.getElementById('sim-before-label').textContent = fmt(lastCalc.margePct, 1) + '% — taux ' + fmt(lastCalc.taux, 1) + '%';
+  document.getElementById('sim-after-marge').textContent  = fmt(margeApres) + ' €';
+  document.getElementById('sim-after-label').textContent  = fmt(margePctApres, 1) + '% — taux ' + fmt(tauxCible, 1) + '%';
+
+  var gainEl = document.getElementById('sim-gain-val');
+  gainEl.textContent = (gain >= 0 ? '+' : '') + fmt(gain) + ' €';
+  gainEl.style.color = gain >= 0 ? '#16A34A' : '#DC2626';
+  document.getElementById('sim-gain-label').textContent = gain >= 0
+    ? 'de marge unitaire récupérée par rapport à la situation actuelle'
+    : 'de marge unitaire perdue par rapport à la situation actuelle';
+}
+
+var nav = document.getElementById('nav');
+var burger = document.getElementById('burger');
+var mobnav = document.getElementById('mobnav');
+if (burger && mobnav) {
+  burger.addEventListener('click', function() {
+    var o = mobnav.classList.toggle('open');
+    burger.classList.toggle('open', o);
+    document.body.style.overflow = o ? 'hidden' : '';
+  });
+}
+function closeMob() {
+  if (mobnav) mobnav.classList.remove('open');
+  if (burger) burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMob(); });
+if (nav) window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+</script>
+<script>function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script src="analytics.js"></script>
+</body>
+</html>

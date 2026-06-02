@@ -4,13 +4,20 @@
 
 [build]
   publish = "."
-  command = "npm install && cd netlify/functions && npm install && cd ../.."
+  command = "npm install && node generate-sitemap.js && cd netlify/functions && npm install && cd ../.."
 
 [build.environment]
   NODE_VERSION = "18"
 
 [functions]
   node_bundler = "nft"
+
+# ── REDIRECT www → sans-www (consolidation canonique) ──────────────────
+[[redirects]]
+  from = "https://www.upglide.fr/*"
+  to   = "https://upglide.fr/:splat"
+  status = 301
+  force  = true
 
 # ── REDIRECTS (pretty URLs sans .html) ──────────────────────────────────
 
@@ -72,6 +79,16 @@
 [[redirects]]
   from = "/contact"
   to   = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/calculateur-cout-produit"
+  to   = "/calculateur-cout-produit.html"
+  status = 200
+
+[[redirects]]
+  from = "/calculateur-marge-unitaire"
+  to   = "/calculateur-marge-unitaire.html"
   status = 200
 
 [[redirects]]

@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur Marge Unitaire Réelle E-commerce | Upglide</title>
+<meta name="description" content="Calculez précisément votre marge unitaire réelle par produit : TVA, frais logistiques, commissions de paiement, retours et charges indirectes. Outil gratuit pour e-commerçants.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://upglide.fr/calculateur-marge-unitaire">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Upglide">
+<meta property="og:title" content="Calculateur Marge Unitaire Réelle E-commerce | Upglide">
+<meta property="og:description" content="Calculez précisément votre marge unitaire réelle par produit : TVA, frais logistiques, commissions de paiement, retours et charges indirectes.">
+<meta property="og:url" content="https://upglide.fr/calculateur-marge-unitaire">
+<meta property="og:image" content="https://upglide.fr/hero-dashboard.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur Marge Unitaire Réelle","description":"Calculez précisément votre marge unitaire réelle par produit pour votre boutique e-commerce.","url":"https://upglide.fr/calculateur-marge-unitaire","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"provider":{"@type":"Organization","name":"Upglide","url":"https://upglide.fr"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},
+  {"@type":"ListItem","position":2,"name":"Ressources","item":"https://upglide.fr/ressources"},
+  {"@type":"ListItem","position":3,"name":"Calculateur Marge Unitaire Réelle","item":"https://upglide.fr/calculateur-marge-unitaire"}
+]}
+</script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --isa:   #F5F1E8;
+  --lion:  #C9A052;
+  --lion2: #A8802E;
+  --cad:   #1E2D5A;
+  --cad2:  #131D3C;
+  --dusk:  #4E6898;
+  --wh:    #FFFFFF;
+  --txt:   #1E2D5A;
+  --txt2:  #4A5878;
+  --txt3:  #8090B0;
+  --bdr:   rgba(30,45,90,.09);
+  --fond:  #F4F7FB;
+  --fond2: #EBF0F8;
+  --border:#D0DCE8;
+  --ft: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --r: 12px; --rlg: 20px;
+  --shsm: 0 2px 12px rgba(30,45,90,.08);
+  --shmd: 0 8px 32px rgba(30,45,90,.12);
+  --t: .22s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
+nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
+@media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
+@media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
+.logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
+.logo span{color:var(--lion);font-style:normal;}
+.nav-links{display:none;}
+@media(min-width:768px){
+  .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
+  .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
+  .nav-links a:hover{color:var(--cad);background:var(--isa);}
+  .nav-links a.active{color:var(--cad);font-weight:600;}
+}
+.nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
+@media(min-width:768px){.nav-cta{display:inline-flex;}}
+.nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
+@media(min-width:768px){.burger{display:none;}}
+.burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
+.mob-nav.open{display:flex;}
+.mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
+.mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
+.mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
+
+/* FOOTER */
+footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
+.foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
+@media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
+.foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
+.foot-logo span{color:var(--lion);font-style:normal;}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
+.foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
+.foot-link:hover{color:var(--wh);}
+.foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
+
+/* LAYOUT */
+.wrap{max-width:860px;margin:0 auto;padding:0 2rem;}
+@media(max-width:640px){.wrap{padding:0 1.25rem;}}
+
+/* HERO */
+.page-hero{padding:3.5rem 0 2rem;background:var(--wh);border-bottom:1px solid var(--bdr);}
+.page-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dusk);margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;}
+.page-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--dusk);}
+.page-h1{font-family:var(--ft);font-size:clamp(1.875rem,4vw,2.875rem);font-weight:400;line-height:1.15;letter-spacing:-.01em;color:var(--cad);margin-bottom:1rem;}
+.page-h1 em{font-style:italic;color:var(--lion);}
+.page-sub{font-size:1rem;color:var(--txt2);line-height:1.8;font-weight:300;max-width:540px;}
+
+/* MODE TOGGLE */
+.calc-main{padding:2.5rem 0 5rem;}
+.mode-tabs{display:flex;gap:.5rem;background:var(--fond2);border-radius:12px;padding:4px;margin-bottom:1.75rem;width:fit-content;}
+.mode-tab{font-family:var(--fb);font-size:.875rem;font-weight:600;padding:.625rem 1.5rem;border-radius:9px;border:none;cursor:pointer;transition:all var(--t);color:var(--txt2);background:transparent;}
+.mode-tab.active{background:var(--wh);color:var(--cad);box-shadow:var(--shsm);}
+
+/* CALC CARD */
+.calc-card{background:var(--wh);border:1px solid var(--bdr);border-radius:var(--rlg);padding:2rem 2.5rem;box-shadow:var(--shsm);margin-bottom:1.25rem;}
+@media(max-width:640px){.calc-card{padding:1.5rem;}}
+
+/* CALC SECTIONS */
+.calc-section{margin-bottom:2rem;}
+.calc-section:last-child{margin-bottom:0;}
+.calc-section-header{font-size:.6875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);padding-bottom:.75rem;border-bottom:2px solid var(--lion);display:inline-block;margin-bottom:1.25rem;}
+.calc-section-header .section-num{color:var(--lion);}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2rem;}
+@media(max-width:580px){.calc-grid{grid-template-columns:1fr;}}
+
+.field-group{display:flex;flex-direction:column;gap:.375rem;}
+.field-group.span2{grid-column:span 2;}
+@media(max-width:580px){.field-group.span2{grid-column:span 1;}}
+.field-label{font-size:.875rem;font-weight:600;color:var(--cad);}
+.field-label .opt{font-size:.75rem;font-weight:400;color:var(--txt3);margin-left:.375rem;}
+.field-hint{font-size:.75rem;color:var(--txt3);font-weight:400;margin-top:.1rem;}
+.field-row{display:flex;align-items:center;gap:.5rem;}
+.field-input{width:100%;padding:.625rem .875rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.9375rem;color:var(--cad);background:var(--fond);transition:border-color var(--t),box-shadow var(--t);outline:none;}
+.field-input:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.field-input.error{border-color:#F87171;}
+.field-unit{font-size:.875rem;font-weight:600;color:var(--txt2);white-space:nowrap;min-width:16px;}
+
+/* EUR/PCT TOGGLE */
+.unit-toggle{display:flex;border:1.5px solid var(--border);border-radius:7px;overflow:hidden;flex-shrink:0;}
+.unit-btn{font-family:var(--fb);font-size:.75rem;font-weight:700;padding:.375rem .6rem;border:none;cursor:pointer;transition:all var(--t);background:var(--fond);color:var(--txt3);line-height:1;}
+.unit-btn.active{background:var(--cad);color:var(--wh);}
+
+/* DYNAMIC ROWS */
+.dynamic-rows{display:flex;flex-direction:column;gap:.625rem;margin-top:.5rem;}
+.dyn-row{display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;}
+.dyn-row .field-input-name{flex:1;min-width:120px;padding:.5625rem .75rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.875rem;color:var(--cad);background:var(--fond);outline:none;transition:border-color var(--t);}
+.dyn-row .field-input-name:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.dyn-row .field-input-amt{width:90px;padding:.5625rem .625rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.875rem;color:var(--cad);background:var(--fond);outline:none;transition:border-color var(--t);text-align:right;}
+.dyn-row .field-input-amt:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.dyn-row .field-input-util{width:72px;padding:.5625rem .5rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.875rem;color:var(--cad);background:var(--fond);outline:none;transition:border-color var(--t);text-align:right;}
+.dyn-row .field-input-util:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.dyn-row-util-label{font-size:.75rem;color:var(--txt3);white-space:nowrap;}
+.btn-add-row{display:inline-flex;align-items:center;gap:.375rem;font-family:var(--fb);font-size:.8125rem;font-weight:600;color:var(--dusk);background:none;border:1.5px dashed var(--border);border-radius:8px;padding:.5rem 1rem;cursor:pointer;transition:all var(--t);margin-top:.375rem;}
+.btn-add-row:hover{border-color:var(--dusk);background:var(--fond2);}
+.btn-remove-row{background:none;border:none;cursor:pointer;color:var(--txt3);font-size:1rem;line-height:1;padding:.25rem;transition:color var(--t);flex-shrink:0;}
+.btn-remove-row:hover{color:#F87171;}
+
+/* TEMPS PASSE TOGGLE */
+.temps-toggle{display:flex;gap:.375rem;margin-bottom:.625rem;}
+.temps-toggle-btn{font-family:var(--fb);font-size:.75rem;font-weight:600;padding:.3rem .75rem;border-radius:6px;border:1.5px solid var(--border);cursor:pointer;transition:all var(--t);background:var(--fond);color:var(--txt3);}
+.temps-toggle-btn.active{background:var(--cad);color:var(--wh);border-color:var(--cad);}
+.temps-subfields{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.375rem;}
+.temps-subfields .field-input-sub{width:80px;padding:.5rem .625rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.875rem;color:var(--cad);background:var(--fond);outline:none;transition:border-color var(--t);text-align:right;}
+.temps-subfields .field-input-sub:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.temps-calc-result{font-size:.8125rem;font-weight:600;color:var(--dusk);margin-top:.25rem;}
+
+/* CALC BUTTON */
+.btn-calc{margin-top:1.75rem;width:100%;padding:1rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;border:none;border-radius:100px;cursor:pointer;transition:all var(--t);}
+.btn-calc:hover{background:var(--cad2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(30,45,90,.2);}
+
+/* MOBILE STICKY CALC BTN */
+.btn-calc-sticky{display:none;position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);z-index:100;padding:.9375rem 2.5rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.9375rem;font-weight:700;border:none;border-radius:100px;cursor:pointer;box-shadow:0 8px 32px rgba(30,45,90,.28);white-space:nowrap;transition:all var(--t);}
+.btn-calc-sticky:hover{background:var(--cad2);}
+@media(max-width:640px){.btn-calc-sticky{display:block;}}
+
+/* RESULTS */
+.results-section{margin-top:1.75rem;display:none;}
+.results-section.show{display:block;}
+
+/* METRIC CARDS */
+.metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.25rem;}
+@media(max-width:520px){.metrics-grid{grid-template-columns:1fr;}}
+.metric-card{background:var(--wh);border:1px solid var(--border);border-radius:14px;padding:1.125rem 1.25rem;box-shadow:var(--shsm);}
+.metric-card.highlight-card{background:var(--cad);border-color:var(--cad);grid-column:span 2;}
+@media(max-width:520px){.metric-card.highlight-card{grid-column:span 1;}}
+.metric-label{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:.375rem;}
+.metric-sublabel{font-size:.6875rem;color:var(--txt3);margin-top:.125rem;font-weight:400;}
+.metric-card.highlight-card .metric-label{color:rgba(255,255,255,.5);}
+.metric-card.highlight-card .metric-sublabel{color:rgba(255,255,255,.3);}
+.metric-value{font-family:var(--ft);font-size:1.875rem;font-weight:400;line-height:1.1;color:var(--cad);}
+.metric-value.neg{color:#DC2626;}
+.metric-card.highlight-card .metric-value{font-size:2.5rem;color:var(--lion);}
+.metric-pct{font-size:.8125rem;font-weight:500;color:var(--txt3);margin-top:.25rem;}
+.metric-card.highlight-card .metric-pct{color:rgba(255,255,255,.4);}
+
+/* BREAKDOWN TABLE */
+.breakdown-card{background:var(--wh);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem;box-shadow:var(--shsm);}
+.breakdown-card-title{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);padding:1rem 1.5rem .75rem;border-bottom:1px solid var(--border);}
+.bk-row{display:flex;justify-content:space-between;align-items:center;padding:.625rem 1.5rem;border-bottom:1px solid var(--fond2);}
+.bk-row:last-child{border-bottom:none;}
+.bk-row.bk-subtotal{background:var(--fond);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.bk-row.bk-total{background:var(--cad2);padding:.875rem 1.5rem;}
+.bk-row.bk-indent .bk-name{padding-left:1.25rem;font-size:.8125rem;}
+.bk-name{font-size:.875rem;color:var(--txt2);}
+.bk-row.bk-subtotal .bk-name{font-weight:700;color:var(--cad);}
+.bk-row.bk-total .bk-name{font-weight:700;color:var(--wh);font-size:.9375rem;}
+.bk-amounts{display:flex;gap:.75rem;align-items:center;}
+.bk-val{font-size:.875rem;font-weight:600;color:var(--cad);text-align:right;min-width:72px;}
+.bk-pct{font-size:.75rem;font-weight:500;color:var(--txt3);text-align:right;min-width:52px;}
+.bk-row.bk-subtotal .bk-val{color:var(--cad);}
+.bk-row.bk-total .bk-val{color:var(--lion);font-size:.9375rem;}
+.bk-row.bk-total .bk-pct{color:rgba(255,255,255,.35);}
+.bk-row.bk-neg .bk-val{color:#DC2626;}
+
+/* BAR CHART */
+.chart-card{background:var(--wh);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;box-shadow:var(--shsm);}
+.chart-title{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:1rem;}
+.chart-bar{height:40px;border-radius:8px;overflow:hidden;display:flex;width:100%;margin-bottom:1.25rem;}
+.chart-seg{height:100%;transition:width .4s ease;display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:700;color:rgba(255,255,255,.85);overflow:hidden;white-space:nowrap;}
+.chart-legend{display:flex;flex-wrap:wrap;gap:.625rem 1.25rem;}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;color:var(--txt2);}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+
+/* ACTION BUTTONS */
+.action-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.btn-action{font-family:var(--fb);font-size:.8125rem;font-weight:600;padding:.625rem 1.125rem;border-radius:100px;cursor:pointer;transition:all var(--t);white-space:nowrap;}
+.btn-action.primary{background:var(--cad);color:var(--wh);border:2px solid var(--cad);}
+.btn-action.primary:hover{background:var(--cad2);border-color:var(--cad2);}
+.btn-action.secondary{background:var(--wh);color:var(--cad);border:2px solid var(--border);}
+.btn-action.secondary:hover{border-color:var(--cad);background:var(--fond2);}
+.btn-action.ghost{background:transparent;color:var(--txt2);border:2px solid var(--border);}
+.btn-action.ghost:hover{background:var(--fond2);color:var(--cad);}
+
+/* SAVE INLINE */
+.save-inline{display:none;background:var(--fond2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;flex-wrap:wrap;gap:.75rem;align-items:center;}
+.save-inline.open{display:flex;}
+.save-inline input{flex:1;min-width:200px;padding:.5625rem .875rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--fb);font-size:.875rem;color:var(--cad);background:var(--wh);outline:none;transition:border-color var(--t);}
+.save-inline input:focus{border-color:var(--lion);box-shadow:0 0 0 3px rgba(201,160,82,.12);}
+.save-confirm{font-size:.8125rem;color:#16A34A;font-weight:600;display:none;}
+.save-confirm.show{display:block;}
+
+/* DISCLAIMER */
+.disclaimer{font-size:.8125rem;color:var(--txt3);background:var(--fond2);border-radius:10px;padding:.875rem 1.125rem;border-left:3px solid var(--border);font-style:italic;margin-top:.75rem;}
+
+/* ADV ONLY */
+.adv-only{display:none;}
+body.mode-avance .adv-only{display:block;}
+body.mode-avance .simple-only{display:none;}
+
+/* PRINT */
+@media print {
+  .print-header{display:block !important;}
+  nav#nav, .mob-nav, .btn-calc-sticky, .mode-tabs, .action-row, .save-inline, footer, .btn-add-row, .btn-remove-row{display:none !important;}
+  body{background:white;}
+  .calc-card, .results-section, .metrics-grid, .breakdown-card, .chart-card{box-shadow:none !important;}
+  .results-section{display:block !important;}
+  .calc-main{padding:1rem 0;}
+}
+.print-header{display:none;font-family:var(--fb);font-size:.8125rem;font-weight:600;color:var(--txt3);border-bottom:1px solid var(--border);padding-bottom:.75rem;margin-bottom:1.5rem;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Upglide<span> ·</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
+      <li><a href="methode-marc.html">Méthode MARC</a></li>
+      <li><a href="ressources.html" class="active">Ressources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+    </ul>
+    <a href="javascript:void(0)" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
+  <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
+  </button>
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
+  <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
+  <a href="ressources.html" onclick="closeMob()">Ressources</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="a-propos.html" onclick="closeMob()">À propos</a>
+  <a href="javascript:void(0)" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="wrap">
+    <p class="page-eyebrow"><a href="ressources.html" style="color:inherit;">Ressources</a> / Calculateur</p>
+    <h1 class="page-h1">Marge unitaire réelle<br>par <em>produit e-commerce.</em></h1>
+    <p class="page-sub">Intégrez TVA, logistique, commissions de paiement, coûts indirects et retours pour connaître votre vraie marge — pas celle que vous croyez avoir.</p>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="calc-main">
+  <div class="wrap">
+
+    <div class="print-header">Upglide — upglide.fr — Calculateur Marge Unitaire Réelle</div>
+
+    <!-- MODE TOGGLE -->
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tab-simple" onclick="switchMode('simple')">Mode Simple</button>
+      <button class="mode-tab" id="tab-avance" onclick="switchMode('avance')">Mode Avancé</button>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="calc-card">
+
+      <!-- SECTION 1 : PRODUIT -->
+      <div class="calc-section">
+        <div class="calc-section-header"><span class="section-num">SECTION 1</span> — PRODUIT</div>
+        <div class="calc-grid">
+
+          <div class="field-group span2">
+            <label class="field-label" for="f_nom">Nom du produit <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="text" id="f_nom" placeholder="Ex. : T-shirt premium blanc">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f_pvttc">Prix de vente TTC <span style="color:#DC2626;font-size:.75rem;margin-left:.25rem;">*</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_pvttc" placeholder="49,90" min="0" step="0.01">
+              <span class="field-unit">€</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f_tva">Taux de TVA <span style="color:#DC2626;font-size:.75rem;margin-left:.25rem;">*</span></label>
+            <div class="field-row">
+              <select class="field-input" id="f_tva" style="cursor:pointer;">
+                <option value="0.20">20 %</option>
+                <option value="0.10">10 %</option>
+                <option value="0.055">5,5 %</option>
+                <option value="0">0 %</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f_achat">Coût d'achat HT <span style="color:#DC2626;font-size:.75rem;margin-left:.25rem;">*</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_achat" placeholder="18,00" min="0" step="0.01">
+              <span class="field-unit">€</span>
+            </div>
+            <p class="field-hint">Prix fournisseur hors taxes, sans frais de transport</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 2 : FRAIS D'ACHAT -->
+      <div class="calc-section">
+        <div class="calc-section-header"><span class="section-num">SECTION 2</span> — FRAIS D'ACHAT</div>
+        <p class="field-hint" style="margin-bottom:1rem;">Coûts engagés lors de l'achat du produit (transport fournisseur, douanes…). Les % sont calculés sur le coût d'achat HT.</p>
+
+        <div class="calc-grid" style="margin-bottom:1rem;">
+          <div class="field-group">
+            <label class="field-label" for="f_transport_fourn">Frais de transport fournisseur <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_transport_fourn" placeholder="3,50" min="0" step="0.01">
+              <div class="unit-toggle" id="tog_f_transport_fourn">
+                <button type="button" class="unit-btn active" onclick="setUnit('f_transport_fourn','eur')" data-unit="eur">€</button>
+                <button type="button" class="unit-btn" onclick="setUnit('f_transport_fourn','pct')" data-unit="pct">%</button>
+              </div>
+            </div>
+            <p class="field-hint" id="hint_f_transport_fourn">Montant en euros par unité</p>
+          </div>
+        </div>
+
+        <!-- Advanced: autres frais d'achat dynamiques -->
+        <div class="adv-only">
+          <label class="field-label" style="margin-bottom:.5rem;display:block;">Autres frais d'achat <span class="opt">(Douanes, contrôle qualité…)</span></label>
+          <div class="dynamic-rows" id="rows_frais_achat"></div>
+          <button type="button" class="btn-add-row" onclick="addFraisAchatRow()">+ Ajouter un frais d'achat</button>
+        </div>
+      </div>
+
+      <!-- SECTION 3 : FRAIS DE VENTE -->
+      <div class="calc-section">
+        <div class="calc-section-header"><span class="section-num">SECTION 3</span> — FRAIS DE VENTE</div>
+        <p class="field-hint" style="margin-bottom:1rem;">Coûts engagés lors de la vente. Les % sont calculés sur le prix de vente TTC.</p>
+
+        <div class="calc-grid" style="margin-bottom:1.25rem;">
+          <div class="field-group">
+            <label class="field-label" for="f_livraison_client">Livraison au client <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_livraison_client" placeholder="5,00" min="0" step="0.01">
+              <div class="unit-toggle" id="tog_f_livraison_client">
+                <button type="button" class="unit-btn active" onclick="setUnit('f_livraison_client','eur')" data-unit="eur">€</button>
+                <button type="button" class="unit-btn" onclick="setUnit('f_livraison_client','pct')" data-unit="pct">%</button>
+              </div>
+            </div>
+            <p class="field-hint" id="hint_f_livraison_client">Montant en euros par unité</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f_emballage">Emballage &amp; préparation <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_emballage" placeholder="1,00" min="0" step="0.01">
+              <div class="unit-toggle" id="tog_f_emballage">
+                <button type="button" class="unit-btn active" onclick="setUnit('f_emballage','eur')" data-unit="eur">€</button>
+                <button type="button" class="unit-btn" onclick="setUnit('f_emballage','pct')" data-unit="pct">%</button>
+              </div>
+            </div>
+            <p class="field-hint" id="hint_f_emballage">Montant en euros par unité</p>
+          </div>
+        </div>
+
+        <!-- COMMISSION DE PAIEMENT — présente en mode simple ET avancé -->
+        <div style="margin-bottom:1rem;">
+          <label class="field-label" style="margin-bottom:.625rem;display:block;">Commission de paiement</label>
+
+          <!-- Simple: rows sans colonne utilisation -->
+          <div class="simple-only">
+            <div class="dynamic-rows" id="rows_paiement_simple"></div>
+            <button type="button" class="btn-add-row" onclick="addPaiementSimpleRow()">+ Ajouter un moyen de paiement</button>
+            <p class="field-hint" style="margin-top:.5rem;">Stripe, PayPal, CB… — % du prix TTC.</p>
+          </div>
+
+          <!-- Advanced: rows avec colonne utilisation -->
+          <div class="adv-only">
+            <div class="dynamic-rows" id="rows_paiement_avance"></div>
+            <button type="button" class="btn-add-row" onclick="addPaiementAvanceRow()">+ Ajouter un moyen de paiement</button>
+            <p class="field-hint" style="margin-top:.5rem;">Laissez "% utilisation" vide pour une moyenne arithmétique entre les moyens renseignés.</p>
+          </div>
+        </div>
+
+        <!-- Frais marketplace (avancé seulement) -->
+        <div class="adv-only">
+          <label class="field-label" style="margin-bottom:.5rem;display:block;">Frais marketplace <span class="opt">(Optionnel)</span></label>
+          <div class="dynamic-rows" id="rows_marketplace"></div>
+          <button type="button" class="btn-add-row" onclick="addMarketplaceRow()">+ Ajouter une marketplace</button>
+        </div>
+      </div>
+
+      <!-- SECTION 4 : COÛTS INDIRECTS (avancé seulement) -->
+      <div class="calc-section adv-only">
+        <div class="calc-section-header"><span class="section-num">SECTION 4</span> — COÛTS INDIRECTS</div>
+        <p class="field-hint" style="margin-bottom:1rem;">Charges indirectes imputées par commande. Les % sont calculés sur le prix de vente HT.</p>
+
+        <div class="dynamic-rows" id="rows_indirects"></div>
+        <button type="button" class="btn-add-row" onclick="addIndirectRow()" style="margin-top:.375rem;">+ Ajouter un coût indirect</button>
+      </div>
+
+      <!-- SECTION 5 : RETOURS -->
+      <div class="calc-section">
+        <div class="calc-section-header" id="section_retours_header"><span class="section-num">SECTION 4</span> — RETOURS</div>
+        <div class="calc-grid">
+
+          <div class="field-group">
+            <label class="field-label" for="f_taux_retour">Taux de retour</label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_taux_retour" placeholder="0" min="0" max="100" step="0.1">
+              <span class="field-unit">%</span>
+            </div>
+            <p class="field-hint">Ex. : 8 si 8 retours pour 100 commandes</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f_cout_retour">Coût moyen par retour <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="f_cout_retour" placeholder="7,50" min="0" step="0.01">
+              <span class="field-unit">€</span>
+            </div>
+            <p class="field-hint">Transport retour + gestion</p>
+          </div>
+
+          <div class="field-group adv-only">
+            <label class="field-label" for="a_taux_perte">Taux de perte de valeur sur retours <span class="opt">(Optionnel)</span></label>
+            <div class="field-row">
+              <input class="field-input" type="number" id="a_taux_perte" placeholder="0" min="0" max="100" step="1">
+              <span class="field-unit">%</span>
+            </div>
+            <p class="field-hint">% de la marge brute perdue sur les produits retournés</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CALCULATE -->
+      <button class="btn-calc" onclick="calculate()">Calculer ma marge unitaire réelle →</button>
+    </div>
+
+    <!-- STICKY MOBILE BTN -->
+    <button class="btn-calc-sticky" onclick="calculate()">Calculer →</button>
+
+    <!-- RESULTS SECTION -->
+    <div class="results-section" id="results-section">
+
+      <!-- METRIC CARDS -->
+      <div class="metrics-grid" id="metrics-grid">
+        <div class="metric-card">
+          <p class="metric-label">Prix HT</p>
+          <p class="metric-value" id="m_pvht">—</p>
+          <p class="metric-sublabel" id="m_tva_sublabel">dont TVA —</p>
+          <p class="metric-pct" id="m_pvht_pct">— % du TTC</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Marge Brute HT</p>
+          <p class="metric-value" id="m_brute">—</p>
+          <p class="metric-pct" id="m_brute_pct">— % du TTC</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Marge commerciale</p>
+          <p class="metric-value" id="m_commerciale">—</p>
+          <p class="metric-pct" id="m_commerciale_pct">— % du TTC</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Marge nette avant retours</p>
+          <p class="metric-value" id="m_nette">—</p>
+          <p class="metric-pct" id="m_nette_pct">— % du TTC</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Impact retours</p>
+          <p class="metric-value" id="m_impact_ret">—</p>
+          <p class="metric-pct" id="m_impact_ret_pct">— % du TTC</p>
+        </div>
+        <div class="metric-card highlight-card">
+          <p class="metric-label">Marge Unitaire Réelle</p>
+          <p class="metric-value" id="m_reelle">—</p>
+          <p class="metric-pct" id="m_reelle_pct">— % du prix TTC</p>
+        </div>
+      </div>
+
+      <!-- BREAKDOWN TABLE -->
+      <div class="breakdown-card">
+        <p class="breakdown-card-title">Décomposition détaillée</p>
+        <!-- TTC → HT -->
+        <div class="bk-row"><span class="bk-name">Prix de vente TTC</span><div class="bk-amounts"><span class="bk-pct" id="bk_pvttc_pct"></span><span class="bk-val" id="bk_pvttc">—</span></div></div>
+        <div class="bk-row bk-indent bk-neg"><span class="bk-name" id="bk_tva_name">− TVA (20%)</span><div class="bk-amounts"><span class="bk-pct" id="bk_tva_pct"></span><span class="bk-val" id="bk_tva">—</span></div></div>
+        <div class="bk-row bk-subtotal"><span class="bk-name">= Prix de vente HT</span><div class="bk-amounts"><span class="bk-pct" id="bk_pvht_pct"></span><span class="bk-val" id="bk_pvht">—</span></div></div>
+        <!-- Achat → Marge Brute -->
+        <div class="bk-row bk-indent bk-neg"><span class="bk-name">− Coût d'achat HT</span><div class="bk-amounts"><span class="bk-pct" id="bk_achat_pct"></span><span class="bk-val" id="bk_achat">—</span></div></div>
+        <div class="bk-row bk-indent bk-neg" id="bk_frais_achat_row"><span class="bk-name">− Frais d'achat</span><div class="bk-amounts"><span class="bk-pct" id="bk_frais_achat_pct"></span><span class="bk-val" id="bk_frais_achat">—</span></div></div>
+        <div class="bk-row bk-subtotal"><span class="bk-name">= Marge Brute HT</span><div class="bk-amounts"><span class="bk-pct" id="bk_brute_pct"></span><span class="bk-val" id="bk_brute">—</span></div></div>
+        <!-- Vente → Marge Commerciale -->
+        <div class="bk-row bk-indent bk-neg" id="bk_livraison_row"><span class="bk-name">− Livraison client</span><div class="bk-amounts"><span class="bk-pct" id="bk_livraison_pct"></span><span class="bk-val" id="bk_livraison">—</span></div></div>
+        <div class="bk-row bk-indent bk-neg" id="bk_emballage_row"><span class="bk-name">− Emballage &amp; préparation</span><div class="bk-amounts"><span class="bk-pct" id="bk_emballage_pct"></span><span class="bk-val" id="bk_emballage">—</span></div></div>
+        <div class="bk-row bk-indent bk-neg"><span class="bk-name">− Commission paiement</span><div class="bk-amounts"><span class="bk-pct" id="bk_pmt_pct"></span><span class="bk-val" id="bk_pmt">—</span></div></div>
+        <div class="bk-row bk-indent bk-neg" id="bk_marketplace_row" style="display:none;"><span class="bk-name">− Frais marketplace</span><div class="bk-amounts"><span class="bk-pct" id="bk_marketplace_pct"></span><span class="bk-val" id="bk_marketplace">—</span></div></div>
+        <div class="bk-row bk-subtotal"><span class="bk-name">= Marge commerciale</span><div class="bk-amounts"><span class="bk-pct" id="bk_commerciale_pct"></span><span class="bk-val" id="bk_commerciale">—</span></div></div>
+        <!-- Indirects → Marge nette (always shown) -->
+        <div class="bk-row bk-indent bk-neg" id="bk_indirects_row" style="display:none;"><span class="bk-name">− Coûts indirects</span><div class="bk-amounts"><span class="bk-pct" id="bk_indirects_pct"></span><span class="bk-val" id="bk_indirects">—</span></div></div>
+        <div class="bk-row bk-subtotal"><span class="bk-name">= Marge nette avant retours</span><div class="bk-amounts"><span class="bk-pct" id="bk_nette_pct"></span><span class="bk-val" id="bk_nette">—</span></div></div>
+        <!-- Retours → Marge réelle -->
+        <div class="bk-row bk-indent bk-neg"><span class="bk-name">− Impact retours</span><div class="bk-amounts"><span class="bk-pct" id="bk_ret_pct"></span><span class="bk-val" id="bk_ret">—</span></div></div>
+        <div class="bk-row bk-total"><span class="bk-name">= MARGE UNITAIRE RÉELLE</span><div class="bk-amounts"><span class="bk-pct" id="bk_reelle_pct"></span><span class="bk-val" id="bk_reelle">—</span></div></div>
+      </div>
+
+      <!-- BAR CHART -->
+      <div class="chart-card">
+        <p class="chart-title">Répartition du prix TTC</p>
+        <div class="chart-bar" id="chart-bar"></div>
+        <div class="chart-legend" id="chart-legend"></div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="action-row">
+        <button class="btn-action primary" onclick="window.print()">Imprimer / Exporter PDF</button>
+        <button class="btn-action secondary" id="btn-save" onclick="toggleSave()">Enregistrer ce calcul</button>
+        <button class="btn-action ghost" onclick="resetForm()">Nouvelle simulation</button>
+      </div>
+
+      <!-- SAVE INLINE -->
+      <div class="save-inline" id="save-inline">
+        <input type="email" id="save-email" placeholder="votre@email.com">
+        <button class="btn-action primary" onclick="saveCalc()">Enregistrer</button>
+        <span class="save-confirm" id="save-confirm">Calcul enregistré localement.</span>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <p class="disclaimer">Ces résultats sont basés sur les informations que vous avez fournies. Ils constituent une estimation et ne remplacent pas un audit comptable.</p>
+
+    </div><!-- /results-section -->
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
+      <nav class="foot-links" aria-label="Liens secondaires">
+        <a href="podcast.html" class="foot-link">Podcast</a>
+        <a href="blog.html" class="foot-link">Blog</a>
+        <a href="ressources.html" class="foot-link">Ressources</a>
+        <a href="a-propos.html" class="foot-link">À propos</a>
+        <a href="contact.html" class="foot-link">Contact</a>
+      </nav>
+      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   STATE
+   ============================================================ */
+var currentMode = 'simple';
+var unitStates = {};
+var lastResult = null;
+
+/* ============================================================
+   UTILS
+   ============================================================ */
+function fmtEur(n) {
+  return n.toFixed(2).replace('.', ',') + '\u00a0€';
+}
+function fmtPct(n, dec) {
+  dec = (dec === undefined) ? 1 : dec;
+  return n.toFixed(dec).replace('.', ',') + '\u00a0%';
+}
+function v(id) {
+  var el = document.getElementById(id);
+  if (!el) return 0;
+  return parseFloat(el.value) || 0;
+}
+function val(id) {
+  var el = document.getElementById(id);
+  if (!el) return '';
+  return el.value || '';
+}
+function pctOf(amount, pvTTC) {
+  return pvTTC > 0 ? (amount / pvTTC * 100) : 0;
+}
+/* Convert amount: if isEur return as-is, else treat as % of ref */
+function toEur(amount, isEur, ref) {
+  return isEur ? amount : (ref * amount / 100);
+}
+
+/* ============================================================
+   MODE TOGGLE
+   ============================================================ */
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('tab-simple').classList.toggle('active', mode === 'simple');
+  document.getElementById('tab-avance').classList.toggle('active', mode === 'avance');
+  if (mode === 'avance') {
+    document.body.classList.add('mode-avance');
+    document.getElementById('section_retours_header').innerHTML = '<span class="section-num">SECTION 5</span> — RETOURS';
+    // Init default payment row (avance) if empty
+    var rows = document.getElementById('rows_paiement_avance');
+    if (rows && rows.children.length === 0) {
+      addPaiementAvanceRow('Carte bancaire', 1.5, 'pct', '');
+    }
+    // Init default indirect rows if empty
+    var indRows = document.getElementById('rows_indirects');
+    if (indRows && indRows.children.length === 0) {
+      addIndirectRow('Temps passé par commande', '', 'eur', 'temps');
+      addIndirectRow('Dépréciation du produit', '', 'eur', 'normal');
+      addIndirectRow('Outils & SaaS', '', 'eur', 'normal');
+    }
+  } else {
+    document.body.classList.remove('mode-avance');
+    document.getElementById('section_retours_header').innerHTML = '<span class="section-num">SECTION 4</span> — RETOURS';
+    // Init default payment row (simple) if empty
+    var sRows = document.getElementById('rows_paiement_simple');
+    if (sRows && sRows.children.length === 0) {
+      addPaiementSimpleRow('Carte bancaire', 1.5);
+    }
+  }
+  document.getElementById('results-section').classList.remove('show');
+  saveState();
+}
+
+/* ============================================================
+   UNIT TOGGLE
+   ============================================================ */
+function setUnit(fieldId, unit) {
+  unitStates[fieldId] = unit;
+  var tog = document.getElementById('tog_' + fieldId);
+  if (tog) {
+    tog.querySelectorAll('.unit-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.unit === unit);
+    });
+  }
+  updateHint(fieldId, unit);
+  saveState();
+}
+function getUnit(fieldId) {
+  return unitStates[fieldId] || 'eur';
+}
+function updateHint(fieldId, unit) {
+  var hint = document.getElementById('hint_' + fieldId);
+  if (!hint) return;
+  // Achat fields: % base = coutAchatHT; vente fields: % base = pvTTC
+  var achatFields = ['f_transport_fourn'];
+  var isAchat = achatFields.indexOf(fieldId) >= 0;
+  if (unit === 'pct') {
+    hint.textContent = isAchat ? '% du coût d\'achat HT' : '% du prix TTC';
+  } else {
+    hint.textContent = 'Montant en euros par unité';
+  }
+}
+
+/* ============================================================
+   DYNAMIC ROWS — PAYMENT SIMPLE (name + % only)
+   ============================================================ */
+function addPaiementSimpleRow(name, amount) {
+  var container = document.getElementById('rows_paiement_simple');
+  var div = document.createElement('div');
+  div.className = 'dyn-row';
+  div.innerHTML =
+    '<input type="text" class="field-input-name" placeholder="Moyen de paiement" value="' + (name || '') + '" style="max-width:160px;">' +
+    '<input type="number" class="field-input-amt" placeholder="1,5" min="0" step="0.01" value="' + (amount !== undefined ? amount : '') + '">' +
+    '<span class="dyn-row-util-label" style="color:var(--txt3);font-size:.75rem;">%</span>' +
+    '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer">×</button>';
+  div.querySelector('.field-input-amt').addEventListener('input', saveState);
+  div.querySelector('.field-input-name').addEventListener('input', saveState);
+  container.appendChild(div);
+}
+
+/* ============================================================
+   DYNAMIC ROWS — PAYMENT AVANCE (name + amt + €/% + utilisation%)
+   ============================================================ */
+function addPaiementAvanceRow(name, amount, unit, util) {
+  var container = document.getElementById('rows_paiement_avance');
+  var div = document.createElement('div');
+  div.className = 'dyn-row';
+  var u = unit || 'pct';
+  div.innerHTML =
+    '<input type="text" class="field-input-name" placeholder="Moyen de paiement" value="' + (name || '') + '" style="max-width:140px;">' +
+    '<input type="number" class="field-input-amt" placeholder="1,5" min="0" step="0.01" value="' + (amount !== undefined ? amount : '') + '">' +
+    '<div class="unit-toggle">' +
+      '<button type="button" class="unit-btn' + (u === 'eur' ? ' active' : '') + '" data-unit="eur" onclick="dynUnit(this,\'eur\')">€</button>' +
+      '<button type="button" class="unit-btn' + (u === 'pct' ? ' active' : '') + '" data-unit="pct" onclick="dynUnit(this,\'pct\')">%</button>' +
+    '</div>' +
+    '<input type="number" class="field-input-util" placeholder="%" min="0" max="100" step="1" value="' + (util !== undefined ? util : '') + '" title="% utilisation (optionnel)">' +
+    '<span class="dyn-row-util-label">% util.</span>' +
+    '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer">×</button>';
+  div.querySelector('.field-input-amt').addEventListener('input', saveState);
+  div.querySelector('.field-input-name').addEventListener('input', saveState);
+  div.querySelector('.field-input-util').addEventListener('input', saveState);
+  container.appendChild(div);
+}
+
+/* ============================================================
+   DYNAMIC ROWS — FRAIS D'ACHAT (avancé)
+   ============================================================ */
+function addFraisAchatRow(label, amount, unit) {
+  var container = document.getElementById('rows_frais_achat');
+  var div = document.createElement('div');
+  div.className = 'dyn-row';
+  var u = unit || 'eur';
+  div.innerHTML =
+    '<input type="text" class="field-input-name" placeholder="Libellé (ex. Douanes)" value="' + (label || '') + '">' +
+    '<input type="number" class="field-input-amt" placeholder="0,00" min="0" step="0.01" value="' + (amount || '') + '">' +
+    '<div class="unit-toggle">' +
+      '<button type="button" class="unit-btn' + (u === 'eur' ? ' active' : '') + '" data-unit="eur" onclick="dynUnit(this,\'eur\')">€</button>' +
+      '<button type="button" class="unit-btn' + (u === 'pct' ? ' active' : '') + '" data-unit="pct" onclick="dynUnit(this,\'pct\')">%</button>' +
+    '</div>' +
+    '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer">×</button>';
+  div.querySelector('.field-input-amt').addEventListener('input', saveState);
+  div.querySelector('.field-input-name').addEventListener('input', saveState);
+  container.appendChild(div);
+}
+
+/* ============================================================
+   DYNAMIC ROWS — MARKETPLACE (avancé)
+   ============================================================ */
+function addMarketplaceRow(label, amount, unit) {
+  var container = document.getElementById('rows_marketplace');
+  var div = document.createElement('div');
+  div.className = 'dyn-row';
+  var u = unit || 'pct';
+  div.innerHTML =
+    '<input type="text" class="field-input-name" placeholder="Amazon, Cdiscount…" value="' + (label || '') + '" style="max-width:150px;">' +
+    '<input type="number" class="field-input-amt" placeholder="15" min="0" step="0.01" value="' + (amount || '') + '">' +
+    '<div class="unit-toggle">' +
+      '<button type="button" class="unit-btn' + (u === 'eur' ? ' active' : '') + '" data-unit="eur" onclick="dynUnit(this,\'eur\')">€</button>' +
+      '<button type="button" class="unit-btn' + (u === 'pct' ? ' active' : '') + '" data-unit="pct" onclick="dynUnit(this,\'pct\')">%</button>' +
+    '</div>' +
+    '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer">×</button>';
+  div.querySelector('.field-input-amt').addEventListener('input', saveState);
+  div.querySelector('.field-input-name').addEventListener('input', saveState);
+  container.appendChild(div);
+}
+
+/* ============================================================
+   DYNAMIC ROWS — COÛTS INDIRECTS (avancé)
+   type: 'temps' | 'normal'
+   ============================================================ */
+function addIndirectRow(label, amount, unit, type) {
+  var container = document.getElementById('rows_indirects');
+  var div = document.createElement('div');
+  div.className = 'dyn-row';
+  div.style.flexDirection = 'column';
+  div.style.alignItems = 'flex-start';
+  div.style.padding = '.625rem';
+  div.style.background = 'var(--fond2)';
+  div.style.borderRadius = '8px';
+  div.style.border = '1px solid var(--border)';
+  var u = unit || 'eur';
+  var rowType = type || 'normal';
+
+  if (rowType === 'temps') {
+    // Temps passé row with mode toggle
+    div.dataset.type = 'temps';
+    div.innerHTML =
+      '<div style="display:flex;align-items:center;gap:.625rem;width:100%;flex-wrap:wrap;">' +
+        '<input type="text" class="field-input-name" placeholder="Libellé" value="' + (label || 'Temps passé par commande') + '" style="flex:1;min-width:140px;">' +
+        '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer" style="margin-left:auto;">×</button>' +
+      '</div>' +
+      '<div class="temps-toggle" style="margin-top:.5rem;">' +
+        '<button type="button" class="temps-toggle-btn active" data-temps-mode="direct" onclick="switchTempsMode(this,\'direct\')">€ direct</button>' +
+        '<button type="button" class="temps-toggle-btn" data-temps-mode="calc" onclick="switchTempsMode(this,\'calc\')">h × taux</button>' +
+      '</div>' +
+      '<div class="temps-direct-field" style="display:flex;align-items:center;gap:.5rem;margin-top:.375rem;">' +
+        '<input type="number" class="field-input-amt" placeholder="0,00" min="0" step="0.01" value="' + (amount || '') + '" style="width:100px;">' +
+        '<span style="font-size:.75rem;color:var(--txt3);">€ / commande</span>' +
+      '</div>' +
+      '<div class="temps-calc-field" style="display:none;margin-top:.375rem;">' +
+        '<div class="temps-subfields">' +
+          '<input type="number" class="field-input-sub field-input-heures" placeholder="0" min="0" step="0.1" style="width:70px;">' +
+          '<span style="font-size:.75rem;color:var(--txt3);">h ×</span>' +
+          '<input type="number" class="field-input-sub field-input-taux" placeholder="0" min="0" step="0.5" style="width:80px;">' +
+          '<span style="font-size:.75rem;color:var(--txt3);">€/h</span>' +
+        '</div>' +
+        '<div class="temps-calc-result" id="temps_calc_result_' + Date.now() + '">= 0,00 €</div>' +
+      '</div>';
+
+    // Bind calc events
+    setTimeout(function() {
+      var heuresEl = div.querySelector('.field-input-heures');
+      var tauxEl = div.querySelector('.field-input-taux');
+      var resultEl = div.querySelector('.temps-calc-result');
+      function updateTempsCalc() {
+        var h = parseFloat(heuresEl.value) || 0;
+        var t = parseFloat(tauxEl.value) || 0;
+        var total = h * t;
+        resultEl.textContent = '= ' + total.toFixed(2).replace('.', ',') + ' €';
+        saveState();
+      }
+      heuresEl.addEventListener('input', updateTempsCalc);
+      tauxEl.addEventListener('input', updateTempsCalc);
+      div.querySelector('.field-input-amt').addEventListener('input', saveState);
+      div.querySelector('.field-input-name').addEventListener('input', saveState);
+    }, 0);
+
+  } else {
+    // Normal indirect row
+    div.dataset.type = 'normal';
+    div.innerHTML =
+      '<div style="display:flex;align-items:center;gap:.625rem;width:100%;flex-wrap:wrap;">' +
+        '<input type="text" class="field-input-name" placeholder="Libellé" value="' + (label || '') + '" style="flex:1;min-width:140px;">' +
+        '<input type="number" class="field-input-amt" placeholder="0,00" min="0" step="0.01" value="' + (amount || '') + '" style="width:90px;">' +
+        '<div class="unit-toggle">' +
+          '<button type="button" class="unit-btn' + (u === 'eur' ? ' active' : '') + '" data-unit="eur" onclick="dynUnit(this,\'eur\')">€</button>' +
+          '<button type="button" class="unit-btn' + (u === 'pct' ? ' active' : '') + '" data-unit="pct" onclick="dynUnit(this,\'pct\')">%</button>' +
+        '</div>' +
+        '<button type="button" class="btn-remove-row" onclick="removeRow(this)" title="Supprimer">×</button>' +
+      '</div>';
+    setTimeout(function() {
+      div.querySelector('.field-input-amt').addEventListener('input', saveState);
+      div.querySelector('.field-input-name').addEventListener('input', saveState);
+    }, 0);
+  }
+
+  container.appendChild(div);
+}
+
+function switchTempsMode(btn, mode) {
+  var row = btn.closest('.dyn-row');
+  row.querySelectorAll('.temps-toggle-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.tempsMode === mode);
+  });
+  var directField = row.querySelector('.temps-direct-field');
+  var calcField = row.querySelector('.temps-calc-field');
+  if (mode === 'direct') {
+    directField.style.display = 'flex';
+    calcField.style.display = 'none';
+  } else {
+    directField.style.display = 'none';
+    calcField.style.display = 'block';
+  }
+  saveState();
+}
+
+function dynUnit(btn, unit) {
+  var tog = btn.closest('.unit-toggle');
+  tog.querySelectorAll('.unit-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.unit === unit);
+  });
+  saveState();
+}
+
+function removeRow(btn) {
+  btn.closest('.dyn-row').remove();
+  saveState();
+}
+
+function getDynUnit(tog) {
+  var active = tog.querySelector('.unit-btn.active');
+  return active ? active.dataset.unit : 'eur';
+}
+
+/* ============================================================
+   READ DYNAMIC ROWS
+   ============================================================ */
+
+/* Payment simple: arithmetic mean of all rows (% of pvTTC) */
+function readPaiementSimpleRows(pvTTC) {
+  var rows = document.getElementById('rows_paiement_simple').querySelectorAll('.dyn-row');
+  if (rows.length === 0) return 0;
+  var sum = 0;
+  var count = 0;
+  rows.forEach(function(row) {
+    var amt = parseFloat(row.querySelector('.field-input-amt').value) || 0;
+    // Simple rows are always % of pvTTC
+    sum += pvTTC * amt / 100;
+    count++;
+  });
+  return count > 0 ? sum / count : 0;
+}
+
+/* Payment avancé: weighted average if util% provided, else arithmetic mean */
+function readPaiementAvanceRows(pvTTC) {
+  var rows = document.getElementById('rows_paiement_avance').querySelectorAll('.dyn-row');
+  if (rows.length === 0) return 0;
+  var items = [];
+  var totalUtil = 0;
+  var hasUtil = false;
+  rows.forEach(function(row) {
+    var amt = parseFloat(row.querySelector('.field-input-amt').value) || 0;
+    var tog = row.querySelector('.unit-toggle');
+    var unit = tog ? getDynUnit(tog) : 'pct';
+    var amtEur = toEur(amt, unit === 'eur', pvTTC);
+    var utilEl = row.querySelector('.field-input-util');
+    var util = utilEl ? (parseFloat(utilEl.value) || 0) : 0;
+    if (util > 0) hasUtil = true;
+    items.push({ amtEur: amtEur, util: util });
+    totalUtil += util;
+  });
+  if (hasUtil && totalUtil > 0) {
+    var weighted = 0;
+    items.forEach(function(it) {
+      weighted += it.amtEur * (it.util / totalUtil);
+    });
+    return weighted;
+  } else {
+    var sum = 0;
+    items.forEach(function(it) { sum += it.amtEur; });
+    return sum / items.length;
+  }
+}
+
+/* Frais d'achat (avancé): % base = coutAchatHT */
+function readFraisAchatRows(coutAchatHT) {
+  var total = 0;
+  document.getElementById('rows_frais_achat').querySelectorAll('.dyn-row').forEach(function(row) {
+    var amt = parseFloat(row.querySelector('.field-input-amt').value) || 0;
+    var tog = row.querySelector('.unit-toggle');
+    var unit = tog ? getDynUnit(tog) : 'eur';
+    total += toEur(amt, unit === 'eur', coutAchatHT);
+  });
+  return total;
+}
+
+/* Marketplace: % base = pvTTC */
+function readMarketplaceRows(pvTTC) {
+  var total = 0;
+  document.getElementById('rows_marketplace').querySelectorAll('.dyn-row').forEach(function(row) {
+    var amt = parseFloat(row.querySelector('.field-input-amt').value) || 0;
+    var tog = row.querySelector('.unit-toggle');
+    var unit = tog ? getDynUnit(tog) : 'pct';
+    total += toEur(amt, unit === 'eur', pvTTC);
+  });
+  return total;
+}
+
+/* Coûts indirects: % base = pvHT */
+function readIndirectsRows(pvHT) {
+  var total = 0;
+  document.getElementById('rows_indirects').querySelectorAll('.dyn-row').forEach(function(row) {
+    var rowType = row.dataset.type || 'normal';
+    if (rowType === 'temps') {
+      var activeMode = 'direct';
+      var calcField = row.querySelector('.temps-calc-field');
+      if (calcField && calcField.style.display !== 'none') {
+        activeMode = 'calc';
+      }
+      if (activeMode === 'direct') {
+        var amt = parseFloat(row.querySelector('.field-input-amt').value) || 0;
+        total += amt;
+      } else {
+        var heures = parseFloat(row.querySelector('.field-input-heures') ? row.querySelector('.field-input-heures').value : 0) || 0;
+        var taux = parseFloat(row.querySelector('.field-input-taux') ? row.querySelector('.field-input-taux').value : 0) || 0;
+        total += heures * taux;
+      }
+    } else {
+      var amtEl = row.querySelector('.field-input-amt');
+      var amt = amtEl ? (parseFloat(amtEl.value) || 0) : 0;
+      var tog = row.querySelector('.unit-toggle');
+      var unit = tog ? getDynUnit(tog) : 'eur';
+      total += toEur(amt, unit === 'eur', pvHT);
+    }
+  });
+  return total;
+}
+
+/* ============================================================
+   CALCULATE
+   ============================================================ */
+function calculate() {
+  var pvTTC = v('f_pvttc');
+  var tvaRate = parseFloat(document.getElementById('f_tva').value) || 0;
+  var coutAchatHT = v('f_achat');
+
+  if (pvTTC <= 0) {
+    document.getElementById('f_pvttc').classList.add('error');
+    document.getElementById('f_pvttc').focus();
+    return;
+  }
+  document.getElementById('f_pvttc').classList.remove('error');
+  if (coutAchatHT <= 0) {
+    document.getElementById('f_achat').classList.add('error');
+    document.getElementById('f_achat').focus();
+    return;
+  }
+  document.getElementById('f_achat').classList.remove('error');
+
+  // Step 1: TVA
+  var pvHT = pvTTC / (1 + tvaRate);
+  var montantTVA = pvTTC - pvHT;
+
+  // Step 2: Frais d'achat (% of coutAchatHT)
+  var transportFourn = v('f_transport_fourn');
+  var transportFournEur = toEur(transportFourn, getUnit('f_transport_fourn') === 'eur', coutAchatHT);
+  var autresFraisAchat = 0;
+  if (currentMode === 'avance') {
+    autresFraisAchat = readFraisAchatRows(coutAchatHT);
+  }
+  var fraisAchatTotal = transportFournEur + autresFraisAchat;
+
+  // Step 3: Coût d'achat complet
+  var coutAchatComplet = coutAchatHT + fraisAchatTotal;
+
+  // Step 4: Marge Brute HT
+  var margeBrute = pvHT - coutAchatComplet;
+
+  // Step 5: Frais de vente (% of pvTTC)
+  var livraisonVal = v('f_livraison_client');
+  var fraisLivraison = toEur(livraisonVal, getUnit('f_livraison_client') === 'eur', pvTTC);
+
+  var emballageVal = v('f_emballage');
+  var fraisEmballage = toEur(emballageVal, getUnit('f_emballage') === 'eur', pvTTC);
+
+  var fraisPaiement = 0;
+  if (currentMode === 'simple') {
+    fraisPaiement = readPaiementSimpleRows(pvTTC);
+  } else {
+    fraisPaiement = readPaiementAvanceRows(pvTTC);
+  }
+
+  var fraisMarketplace = 0;
+  if (currentMode === 'avance') {
+    fraisMarketplace = readMarketplaceRows(pvTTC);
+  }
+
+  var fraisVenteTotal = fraisLivraison + fraisEmballage + fraisPaiement + fraisMarketplace;
+
+  // Step 6: Marge commerciale
+  var margeCommerciale = margeBrute - fraisVenteTotal;
+
+  // Step 7: Coûts indirects (advanced only, % of pvHT)
+  var coutsIndirectsTotal = 0;
+  if (currentMode === 'avance') {
+    coutsIndirectsTotal = readIndirectsRows(pvHT);
+  }
+
+  // Step 8: Marge nette avant retours
+  var margeNette = margeCommerciale - coutsIndirectsTotal;
+
+  // Step 9: Retours
+  var tauxRetour = v('f_taux_retour') / 100;
+  var coutRetour = v('f_cout_retour');
+  var tauxPerte = currentMode === 'avance' ? (v('a_taux_perte') / 100) : 0;
+  var impactRetours = tauxRetour * (coutRetour + margeBrute * tauxPerte);
+  var margeReelle = margeNette * (1 - tauxRetour) - impactRetours;
+
+  lastResult = {
+    pvTTC: pvTTC,
+    pvHT: pvHT,
+    montantTVA: montantTVA,
+    tvaRate: tvaRate,
+    coutAchatHT: coutAchatHT,
+    fraisAchatTotal: fraisAchatTotal,
+    coutAchatComplet: coutAchatComplet,
+    margeBrute: margeBrute,
+    fraisLivraison: fraisLivraison,
+    fraisEmballage: fraisEmballage,
+    fraisPaiement: fraisPaiement,
+    fraisMarketplace: fraisMarketplace,
+    fraisVenteTotal: fraisVenteTotal,
+    margeCommerciale: margeCommerciale,
+    coutsIndirectsTotal: coutsIndirectsTotal,
+    margeNette: margeNette,
+    impactRetours: impactRetours,
+    margeReelle: margeReelle,
+    tauxRetour: tauxRetour,
+    nomProduit: val('f_nom')
+  };
+
+  renderResults(lastResult);
+  saveState();
+
+  var rs = document.getElementById('results-section');
+  rs.classList.add('show');
+  setTimeout(function() {
+    rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+/* ============================================================
+   RENDER RESULTS
+   ============================================================ */
+function renderResults(r) {
+  var pvTTC = r.pvTTC;
+
+  function setMetric(id, val, pctId) {
+    var el = document.getElementById(id);
+    var pEl = document.getElementById(pctId);
+    if (el) {
+      el.textContent = fmtEur(val);
+      el.classList.remove('neg');
+      if (val < 0) el.classList.add('neg');
+    }
+    if (pEl) pEl.textContent = fmtPct(pctOf(val, pvTTC)) + ' du TTC';
+  }
+
+  function setBk(id, val, pctId) {
+    var el = document.getElementById(id);
+    var pEl = document.getElementById(pctId);
+    if (el) el.textContent = fmtEur(val);
+    if (pEl) pEl.textContent = fmtPct(pctOf(Math.abs(val), pvTTC));
+  }
+
+  // TVA label
+  var tvaPct = Math.round(r.tvaRate * 1000) / 10;
+  var tvaLabel = tvaPct > 0 ? ('− TVA (' + tvaPct.toString().replace('.', ',') + '%)') : '− TVA (0%)';
+  var tvaNameEl = document.getElementById('bk_tva_name');
+  if (tvaNameEl) tvaNameEl.textContent = tvaLabel;
+
+  // Metric cards
+  setMetric('m_pvht', r.pvHT, 'm_pvht_pct');
+  var tvaSubEl = document.getElementById('m_tva_sublabel');
+  if (tvaSubEl) tvaSubEl.textContent = 'TVA collectée : ' + fmtEur(r.montantTVA);
+  setMetric('m_brute', r.margeBrute, 'm_brute_pct');
+  setMetric('m_commerciale', r.margeCommerciale, 'm_commerciale_pct');
+  setMetric('m_nette', r.margeNette, 'm_nette_pct');
+  setMetric('m_impact_ret', -r.impactRetours, 'm_impact_ret_pct');
+  setMetric('m_reelle', r.margeReelle, 'm_reelle_pct');
+  var reellePctEl = document.getElementById('m_reelle_pct');
+  if (reellePctEl) reellePctEl.textContent = fmtPct(pctOf(r.margeReelle, pvTTC)) + ' du prix TTC';
+
+  // Breakdown table
+  setBk('bk_pvttc', pvTTC, 'bk_pvttc_pct');
+  setBk('bk_tva', r.montantTVA, 'bk_tva_pct');
+  setBk('bk_pvht', r.pvHT, 'bk_pvht_pct');
+  setBk('bk_achat', r.coutAchatHT, 'bk_achat_pct');
+
+  // Frais d'achat row
+  var fraisAchatRow = document.getElementById('bk_frais_achat_row');
+  if (r.fraisAchatTotal > 0) {
+    fraisAchatRow.style.display = 'flex';
+    setBk('bk_frais_achat', r.fraisAchatTotal, 'bk_frais_achat_pct');
+  } else {
+    fraisAchatRow.style.display = 'none';
+  }
+
+  setBk('bk_brute', r.margeBrute, 'bk_brute_pct');
+
+  // Livraison row
+  var livraisonRow = document.getElementById('bk_livraison_row');
+  if (r.fraisLivraison > 0) {
+    livraisonRow.style.display = 'flex';
+    setBk('bk_livraison', r.fraisLivraison, 'bk_livraison_pct');
+  } else {
+    livraisonRow.style.display = 'none';
+  }
+
+  // Emballage row
+  var emballageRow = document.getElementById('bk_emballage_row');
+  if (r.fraisEmballage > 0) {
+    emballageRow.style.display = 'flex';
+    setBk('bk_emballage', r.fraisEmballage, 'bk_emballage_pct');
+  } else {
+    emballageRow.style.display = 'none';
+  }
+
+  setBk('bk_pmt', r.fraisPaiement, 'bk_pmt_pct');
+
+  // Marketplace row
+  var mktRow = document.getElementById('bk_marketplace_row');
+  if (r.fraisMarketplace > 0) {
+    mktRow.style.display = 'flex';
+    setBk('bk_marketplace', r.fraisMarketplace, 'bk_marketplace_pct');
+  } else {
+    mktRow.style.display = 'none';
+  }
+
+  setBk('bk_commerciale', r.margeCommerciale, 'bk_commerciale_pct');
+
+  // Indirects row
+  var indRow = document.getElementById('bk_indirects_row');
+  if (r.coutsIndirectsTotal > 0) {
+    indRow.style.display = 'flex';
+    setBk('bk_indirects', r.coutsIndirectsTotal, 'bk_indirects_pct');
+  } else {
+    indRow.style.display = 'none';
+  }
+
+  setBk('bk_nette', r.margeNette, 'bk_nette_pct');
+  setBk('bk_ret', r.impactRetours, 'bk_ret_pct');
+  setBk('bk_reelle', r.margeReelle, 'bk_reelle_pct');
+
+  // Render chart
+  renderChart(r);
+}
+
+/* ============================================================
+   BAR CHART — 100% base = pvTTC
+   Segments: TVA (grey), Achat+fraisAchat (--cad2), Vente (--dusk),
+             Indirects (purple), Retours (orange), Marge (--lion / red)
+   ============================================================ */
+function renderChart(r) {
+  var pvTTC = r.pvTTC;
+  if (pvTTC <= 0) return;
+
+  var segments = [
+    { label: 'TVA',             value: r.montantTVA,          color: '#8090B0' },
+    { label: 'Achat',           value: r.coutAchatComplet,    color: '#131D3C' },
+    { label: 'Frais de vente',  value: r.fraisVenteTotal,     color: '#4E6898' },
+    { label: 'Coûts indirects', value: r.coutsIndirectsTotal, color: '#7C5CBF' },
+    { label: 'Retours',         value: r.impactRetours,       color: '#E07340' },
+    { label: 'Marge',           value: r.margeReelle,         color: r.margeReelle >= 0 ? '#C9A052' : '#DC2626' }
+  ];
+
+  var bar = document.getElementById('chart-bar');
+  var legend = document.getElementById('chart-legend');
+  bar.innerHTML = '';
+  legend.innerHTML = '';
+
+  segments.forEach(function(s) {
+    if (s.value <= 0) return;
+    var pct = (s.value / pvTTC) * 100;
+    if (pct < 0.3) return;
+
+    var seg = document.createElement('div');
+    seg.className = 'chart-seg';
+    seg.style.width = pct + '%';
+    seg.style.background = s.color;
+    if (pct > 5) seg.textContent = Math.round(pct) + '%';
+    bar.appendChild(seg);
+
+    var li = document.createElement('div');
+    li.className = 'legend-item';
+    li.innerHTML = '<span class="legend-dot" style="background:' + s.color + '"></span>' +
+      s.label + ' (' + fmtEur(s.value) + ')';
+    legend.appendChild(li);
+  });
+
+  // If marge is negative, show a red overflow
+  if (r.margeReelle < 0) {
+    var negPct = Math.min(Math.abs(r.margeReelle) / pvTTC * 100, 15);
+    var neg = document.createElement('div');
+    neg.className = 'chart-seg';
+    neg.style.width = negPct + '%';
+    neg.style.background = '#DC2626';
+    neg.style.opacity = '0.7';
+    bar.appendChild(neg);
+
+    var liNeg = document.createElement('div');
+    liNeg.className = 'legend-item';
+    liNeg.innerHTML = '<span class="legend-dot" style="background:#DC2626"></span>Marge (' + fmtEur(r.margeReelle) + ')';
+    legend.appendChild(liNeg);
+  }
+}
+
+/* ============================================================
+   SAVE / LOAD STATE
+   ============================================================ */
+function getFormState() {
+  return {
+    mode: currentMode,
+    unitStates: unitStates,
+    f_nom: val('f_nom'),
+    f_pvttc: val('f_pvttc'),
+    f_tva: val('f_tva'),
+    f_achat: val('f_achat'),
+    f_transport_fourn: val('f_transport_fourn'),
+    f_livraison_client: val('f_livraison_client'),
+    f_emballage: val('f_emballage'),
+    a_taux_perte: val('a_taux_perte'),
+    f_taux_retour: val('f_taux_retour'),
+    f_cout_retour: val('f_cout_retour'),
+    rows_paiement_simple: readPaiementSimpleData(),
+    rows_paiement_avance: readPaiementAvanceData(),
+    rows_frais_achat: readBasicRowsData('rows_frais_achat'),
+    rows_marketplace: readBasicRowsData('rows_marketplace'),
+    rows_indirects: readIndirectsData()
+  };
+}
+
+function readBasicRowsData(containerId) {
+  var data = [];
+  var container = document.getElementById(containerId);
+  if (!container) return data;
+  container.querySelectorAll('.dyn-row').forEach(function(row) {
+    var name = row.querySelector('.field-input-name') ? row.querySelector('.field-input-name').value : '';
+    var amt = row.querySelector('.field-input-amt') ? row.querySelector('.field-input-amt').value : '';
+    var tog = row.querySelector('.unit-toggle');
+    var unit = tog ? getDynUnit(tog) : 'eur';
+    data.push({ name: name, amt: amt, unit: unit });
+  });
+  return data;
+}
+
+function readPaiementSimpleData() {
+  var data = [];
+  document.getElementById('rows_paiement_simple').querySelectorAll('.dyn-row').forEach(function(row) {
+    var name = row.querySelector('.field-input-name') ? row.querySelector('.field-input-name').value : '';
+    var amt = row.querySelector('.field-input-amt') ? row.querySelector('.field-input-amt').value : '';
+    data.push({ name: name, amt: amt });
+  });
+  return data;
+}
+
+function readPaiementAvanceData() {
+  var data = [];
+  document.getElementById('rows_paiement_avance').querySelectorAll('.dyn-row').forEach(function(row) {
+    var name = row.querySelector('.field-input-name') ? row.querySelector('.field-input-name').value : '';
+    var amt = row.querySelector('.field-input-amt') ? row.querySelector('.field-input-amt').value : '';
+    var tog = row.querySelector('.unit-toggle');
+    var unit = tog ? getDynUnit(tog) : 'pct';
+    var utilEl = row.querySelector('.field-input-util');
+    var util = utilEl ? utilEl.value : '';
+    data.push({ name: name, amt: amt, unit: unit, util: util });
+  });
+  return data;
+}
+
+function readIndirectsData() {
+  var data = [];
+  document.getElementById('rows_indirects').querySelectorAll('.dyn-row').forEach(function(row) {
+    var rowType = row.dataset.type || 'normal';
+    var name = row.querySelector('.field-input-name') ? row.querySelector('.field-input-name').value : '';
+    var entry = { type: rowType, name: name };
+    if (rowType === 'temps') {
+      var calcField = row.querySelector('.temps-calc-field');
+      var mode = (calcField && calcField.style.display !== 'none') ? 'calc' : 'direct';
+      entry.tempsMode = mode;
+      entry.amt = row.querySelector('.field-input-amt') ? row.querySelector('.field-input-amt').value : '';
+      entry.heures = row.querySelector('.field-input-heures') ? row.querySelector('.field-input-heures').value : '';
+      entry.taux = row.querySelector('.field-input-taux') ? row.querySelector('.field-input-taux').value : '';
+    } else {
+      entry.amt = row.querySelector('.field-input-amt') ? row.querySelector('.field-input-amt').value : '';
+      var tog = row.querySelector('.unit-toggle');
+      entry.unit = tog ? getDynUnit(tog) : 'eur';
+    }
+    data.push(entry);
+  });
+  return data;
+}
+
+function saveState() {
+  try {
+    localStorage.setItem('upglide_calc_marge_v2', JSON.stringify(getFormState()));
+  } catch(e) {}
+}
+
+function restoreState() {
+  try {
+    var raw = localStorage.getItem('upglide_calc_marge_v2');
+    if (!raw) return;
+    var s = JSON.parse(raw);
+    if (!s) return;
+
+    if (s.mode) {
+      currentMode = s.mode;
+      // Apply body class before rendering mode-dependent sections
+      if (s.mode === 'avance') document.body.classList.add('mode-avance');
+      document.getElementById('tab-simple').classList.toggle('active', s.mode === 'simple');
+      document.getElementById('tab-avance').classList.toggle('active', s.mode === 'avance');
+      if (s.mode === 'avance') {
+        document.getElementById('section_retours_header').innerHTML = '<span class="section-num">SECTION 5</span> — RETOURS';
+      }
+    }
+
+    // Restore unit states
+    if (s.unitStates) {
+      unitStates = s.unitStates;
+      Object.keys(unitStates).forEach(function(k) { setUnit(k, unitStates[k]); });
+    }
+
+    // Simple fields
+    var fields = ['f_nom','f_pvttc','f_tva','f_achat','f_transport_fourn',
+                  'f_livraison_client','f_emballage','a_taux_perte','f_taux_retour','f_cout_retour'];
+    fields.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && s[id] !== undefined) el.value = s[id];
+    });
+
+    // Dynamic rows
+    if (s.rows_paiement_simple && s.rows_paiement_simple.length > 0) {
+      s.rows_paiement_simple.forEach(function(r) { addPaiementSimpleRow(r.name, r.amt); });
+    }
+    if (s.rows_paiement_avance && s.rows_paiement_avance.length > 0) {
+      s.rows_paiement_avance.forEach(function(r) { addPaiementAvanceRow(r.name, r.amt, r.unit, r.util); });
+    }
+    if (s.rows_frais_achat && s.rows_frais_achat.length > 0) {
+      s.rows_frais_achat.forEach(function(r) { addFraisAchatRow(r.name, r.amt, r.unit); });
+    }
+    if (s.rows_marketplace && s.rows_marketplace.length > 0) {
+      s.rows_marketplace.forEach(function(r) { addMarketplaceRow(r.name, r.amt, r.unit); });
+    }
+    if (s.rows_indirects && s.rows_indirects.length > 0) {
+      s.rows_indirects.forEach(function(r) {
+        addIndirectRow(r.name, r.amt, r.unit, r.type);
+        // Restore temps mode and values after DOM is ready
+        if (r.type === 'temps') {
+          setTimeout(function() {
+            var container = document.getElementById('rows_indirects');
+            var rows = container.querySelectorAll('.dyn-row[data-type="temps"]');
+            var lastRow = rows[rows.length - 1];
+            if (!lastRow) return;
+            if (r.tempsMode === 'calc') {
+              var calcBtn = lastRow.querySelector('[data-temps-mode="calc"]');
+              if (calcBtn) switchTempsMode(calcBtn, 'calc');
+              var heuresEl = lastRow.querySelector('.field-input-heures');
+              var tauxEl = lastRow.querySelector('.field-input-taux');
+              if (heuresEl && r.heures) heuresEl.value = r.heures;
+              if (tauxEl && r.taux) tauxEl.value = r.taux;
+              // Trigger calc update
+              if (heuresEl) heuresEl.dispatchEvent(new Event('input'));
+            } else {
+              var amtEl = lastRow.querySelector('.field-input-amt');
+              if (amtEl && r.amt) amtEl.value = r.amt;
+            }
+          }, 0);
+        }
+      });
+    }
+  } catch(e) {}
+}
+
+/* ============================================================
+   SAVE CALCULATION
+   ============================================================ */
+function toggleSave() {
+  var el = document.getElementById('save-inline');
+  el.classList.toggle('open');
+  if (el.classList.contains('open')) {
+    document.getElementById('save-confirm').classList.remove('show');
+    document.getElementById('save-email').focus();
+  }
+}
+
+function saveCalc() {
+  if (!lastResult) return;
+  var email = document.getElementById('save-email').value.trim();
+  var saved = [];
+  try { saved = JSON.parse(localStorage.getItem('upglide_saved_calcs') || '[]'); } catch(e) {}
+  saved.push({
+    email: email,
+    nom: lastResult.nomProduit || 'Produit sans nom',
+    data: lastResult,
+    timestamp: new Date().toISOString()
+  });
+  try { localStorage.setItem('upglide_saved_calcs', JSON.stringify(saved)); } catch(e) {}
+  document.getElementById('save-confirm').classList.add('show');
+  document.getElementById('save-email').value = '';
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+function resetForm() {
+  var inputs = ['f_nom','f_pvttc','f_achat','f_transport_fourn',
+                'f_livraison_client','f_emballage','a_taux_perte',
+                'f_taux_retour','f_cout_retour'];
+  inputs.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('f_tva').value = '0.20';
+
+  ['rows_paiement_simple','rows_paiement_avance','rows_frais_achat',
+   'rows_marketplace','rows_indirects'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = '';
+  });
+
+  unitStates = {};
+
+  // Re-init defaults
+  if (currentMode === 'simple') {
+    addPaiementSimpleRow('Carte bancaire', 1.5);
+  } else {
+    addPaiementAvanceRow('Carte bancaire', 1.5, 'pct', '');
+    addIndirectRow('Temps passé par commande', '', 'eur', 'temps');
+    addIndirectRow('Dépréciation du produit', '', 'eur', 'normal');
+    addIndirectRow('Outils & SaaS', '', 'eur', 'normal');
+  }
+
+  document.getElementById('results-section').classList.remove('show');
+  lastResult = null;
+  try { localStorage.removeItem('upglide_calc_marge_v2'); } catch(e) {}
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+var nav = document.getElementById('nav');
+var burger = document.getElementById('burger');
+var mobnav = document.getElementById('mobnav');
+if (burger && mobnav) {
+  burger.addEventListener('click', function() {
+    var o = mobnav.classList.toggle('open');
+    burger.classList.toggle('open', o);
+    burger.setAttribute('aria-expanded', o ? 'true' : 'false');
+    document.body.style.overflow = o ? 'hidden' : '';
+  });
+}
+function closeMob() {
+  if (mobnav) mobnav.classList.remove('open');
+  if (burger) { burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMob(); });
+if (nav) window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+/* ============================================================
+   AUTO-SAVE ON INPUT
+   ============================================================ */
+document.querySelectorAll('.field-input, .calc-card select').forEach(function(el) {
+  el.addEventListener('input', saveState);
+  el.addEventListener('change', saveState);
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function init() {
+  restoreState();
+  // Ensure default payment rows exist if no saved state
+  if (currentMode === 'simple') {
+    var sRows = document.getElementById('rows_paiement_simple');
+    if (sRows && sRows.children.length === 0) {
+      addPaiementSimpleRow('Carte bancaire', 1.5);
+    }
+  } else {
+    var aRows = document.getElementById('rows_paiement_avance');
+    if (aRows && aRows.children.length === 0) {
+      addPaiementAvanceRow('Carte bancaire', 1.5, 'pct', '');
+    }
+    var iRows = document.getElementById('rows_indirects');
+    if (iRows && iRows.children.length === 0) {
+      addIndirectRow('Temps passé par commande', '', 'eur', 'temps');
+      addIndirectRow('Dépréciation du produit', '', 'eur', 'normal');
+      addIndirectRow('Outils & SaaS', '', 'eur', 'normal');
+    }
+  }
+})();
+</script>
+<script>function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script src="analytics.js"></script>
+</body>
+</html>

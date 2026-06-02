@@ -1,6 +1,7 @@
 {
   "name": "upglide-site",
   "version": "1.0.0",
+  "type": "module",
   "description": "Upglide — site e-commerce consulting",
   "license": "ISC",
   "dependencies": {
