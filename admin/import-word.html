@@ -45,8 +45,17 @@
   /* Warnings */
   .warn{background:#FFF3CD;border-left:4px solid #C9A052;padding:.75rem 1rem;border-radius:0 8px 8px 0;font-size:.85rem;color:#7a5c00;margin-top:.75rem}
 
+  /* Toolbar */
+  .editor-toolbar{display:flex;gap:.35rem;flex-wrap:wrap;padding:.5rem .75rem;background:#f4f6fb;border-radius:8px;border:1px solid #e8eaf0;margin-bottom:.75rem}
+  .tb-btn{padding:.3rem .7rem;border:1.5px solid #ddd;background:#fff;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:700;color:#333;line-height:1.2;transition:all .15s}
+  .tb-btn:hover{background:#1E2D5A;color:#fff;border-color:#1E2D5A}
+  .tb-sep{width:1px;background:#ddd;margin:0 .2rem}
+  .tb-btn-cta{background:#1E2D5A;color:#fff;border-color:#1E2D5A;font-weight:700}
+  .tb-btn-cta:hover{background:#C9A052;border-color:#C9A052}
+
   /* Preview */
-  #preview-area{line-height:1.75;color:#1a1a2e;font-size:.95rem}
+  #preview-area{line-height:1.75;color:#1a1a2e;font-size:.95rem;min-height:200px;outline:none;border-radius:8px;padding:.75rem;border:1.5px solid transparent;transition:border-color .2s}
+  #preview-area:focus{border-color:#C9A052;background:#FFFDF9}
   #preview-area h2{font-size:1.4rem;margin:1.5rem 0 .5rem;color:#1E2D5A}
   #preview-area h3{font-size:1.15rem;margin:1.25rem 0 .4rem;color:#1E2D5A}
   #preview-area h4{font-size:1rem;margin:1rem 0 .35rem;color:#333}
@@ -62,7 +71,12 @@
   #preview-area hr{border:none;border-top:2px solid #eee;margin:1.5rem 0}
   #preview-area strong{font-weight:700}
   #preview-area em{font-style:italic}
-  #preview-area a{color:#1E2D5A;text-decoration:underline}
+  #preview-area a:not(.preview-cta){color:#1E2D5A;text-decoration:underline}
+  /* CTA button rendered in preview */
+  .preview-cta{display:inline-block;padding:.55rem 1.4rem;background:#1E2D5A;color:#fff!important;border-radius:8px;text-decoration:none!important;font-weight:700;font-size:.9rem;margin:.5rem 0;cursor:text;border:2px solid transparent}
+  .preview-cta:hover{background:#C9A052!important}
+  /* Sync indicator */
+  #sync-badge{font-size:.72rem;color:#888;margin-left:auto;align-self:center;font-style:italic}
 
   /* JSON output */
   #json-output{background:#1a1a2e;color:#a8d8a8;padding:1.25rem;border-radius:8px;font-size:.75rem;line-height:1.6;overflow:auto;max-height:400px;white-space:pre-wrap;word-break:break-all}
@@ -186,14 +200,36 @@
 
     <!-- Step 4: Content -->
     <div class="card">
-      <h2>Contenu (Markdown)</h2>
-      <div style="display:flex;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap">
-        <button class="copy-btn" id="btn-preview" onclick="togglePreview()">Aperçu</button>
-        <button class="copy-btn" style="background:#555" onclick="toggleEdit()">Éditer le Markdown</button>
-        <button class="copy-btn" style="background:#d63384" onclick="refreshFromEdit()">↺ Mettre à jour</button>
+      <h2>Contenu</h2>
+      <p style="font-size:.8rem;color:#888;margin-bottom:.75rem">Clique directement dans l'aperçu pour éditer. La toolbar formate la sélection. Le Markdown se synchronise automatiquement.</p>
+
+      <!-- Formatting toolbar -->
+      <div class="editor-toolbar" id="editor-toolbar">
+        <button class="tb-btn" title="Gras" onclick="tb('bold')"><b>B</b></button>
+        <button class="tb-btn" title="Italique" onclick="tb('italic')"><i>I</i></button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" title="Titre H2" onclick="tb('h2')">H2</button>
+        <button class="tb-btn" title="Titre H3" onclick="tb('h3')">H3</button>
+        <button class="tb-btn" title="Titre H4" onclick="tb('h4')">H4</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" title="Liste à puces" onclick="tb('ul')">— Liste</button>
+        <button class="tb-btn" title="Citation / encart" onclick="tb('blockquote')">" Citation</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" title="Lien hypertexte" onclick="tb('link')">🔗 Lien</button>
+        <button class="tb-btn tb-btn-cta" title="Insérer un bouton CTA" onclick="tb('cta')">+ Bouton CTA</button>
+        <div class="tb-sep"></div>
+        <button class="tb-btn" title="Afficher le Markdown brut" onclick="toggleMdPanel()" id="btn-md-raw" style="font-family:monospace">{ }</button>
+        <span id="sync-badge"></span>
       </div>
-      <textarea id="md-editor" rows="20" style="display:none" oninput="refreshFromEdit()"></textarea>
-      <div id="preview-area"></div>
+
+      <!-- Editable preview -->
+      <div id="preview-area" contenteditable="true" spellcheck="true"></div>
+
+      <!-- Raw Markdown panel (hidden by default) -->
+      <div id="md-panel" style="display:none;margin-top:.75rem">
+        <label style="font-size:.75rem;color:#888;margin-bottom:.25rem;display:block">Markdown brut (éditable — se synchronise avec l'aperçu)</label>
+        <textarea id="md-editor" rows="16" oninput="onMdEdit()"></textarea>
+      </div>
     </div>
 
     <!-- Step 5: JSON -->
@@ -215,7 +251,8 @@
 // ─── State ──────────────────────────────────────────────────────────────────
 var rawMarkdown = '';
 var extractedImages = []; // [{id, dataUrl, ext, name, placeholder}]
-var previewVisible = false;
+var _syncLock = false; // prevent infinite loops between preview ↔ textarea
+var _syncTimer = null;
 
 // ─── Drag & Drop ──────────────────────────────────────────────────────────
 var dz = document.getElementById('drop-zone');
@@ -322,6 +359,9 @@ function nodeToMd(node) {
     case 'blockquote': return '\n> ' + inner.trim().replace(/\n/g, '\n> ') + '\n';
     case 'a':
       var href = node.getAttribute('href') || '';
+      if (node.getAttribute('data-cta') === '1' || node.classList.contains('preview-cta')) {
+        return '[BOUTON: ' + inner + '](' + href + ')';
+      }
       return '[' + inner + '](' + href + ')';
     case 'img':
       var src = node.getAttribute('src') || '';
@@ -423,6 +463,11 @@ function buildUI(filename) {
   document.getElementById('md-editor').value = rawMarkdown;
   renderPreview(rawMarkdown);
 
+  // Wire up editable preview → sync
+  var pa = document.getElementById('preview-area');
+  pa.removeEventListener('input', onPreviewEdit);
+  pa.addEventListener('input', onPreviewEdit);
+
   // Show result
   document.getElementById('zone-result').classList.remove('hidden');
   setStep(2);
@@ -441,41 +486,127 @@ function buildUI(filename) {
   setStep(5);
 }
 
-// ─── Markdown / Preview ─────────────────────────────────────────────────
+// ─── Markdown / Preview sync ─────────────────────────────────────────────
+
+/* Render markdown → editable preview */
 function renderPreview(md) {
-  // Replace image placeholders with actual data URLs for preview
+  if (_syncLock) return;
   var previewMd = md;
   extractedImages.forEach(function(img) {
-    var nameInput = document.getElementById('imgname-' + img.index);
-    var name = nameInput ? nameInput.value : img.name;
-    var slug = document.getElementById('meta-slug').value || 'article';
-    var finalPath = 'images/articles/' + slug + '/' + name;
     previewMd = previewMd.split(img.placeholder).join(img.dataUrl);
   });
-  document.getElementById('preview-area').innerHTML = parseMD(previewMd);
-}
-
-function togglePreview() {
-  previewVisible = !previewVisible;
   var pa = document.getElementById('preview-area');
-  var btn = document.getElementById('btn-preview');
-  pa.style.display = previewVisible ? 'block' : 'none';
-  btn.textContent = previewVisible ? 'Masquer l\'aperçu' : 'Aperçu';
-  if (previewVisible) renderPreview(document.getElementById('md-editor').value || rawMarkdown);
+  pa.innerHTML = parseMD(previewMd);
 }
 
-function toggleEdit() {
-  var ed = document.getElementById('md-editor');
-  ed.style.display = ed.style.display === 'none' ? 'block' : 'none';
+/* Called when user types in the editable preview */
+function onPreviewEdit() {
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(function() {
+    _syncLock = true;
+    var md = previewToMd();
+    document.getElementById('md-editor').value = md;
+    setSyncBadge('✓ Markdown synchronisé');
+    refreshJSON();
+    _syncLock = false;
+  }, 350);
 }
 
-function refreshFromEdit() {
-  var md = document.getElementById('md-editor').value;
-  if (previewVisible) renderPreview(md);
-  refreshJSON();
+/* Called when user edits the raw markdown textarea */
+function onMdEdit() {
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(function() {
+    _syncLock = true;
+    var md = document.getElementById('md-editor').value;
+    renderPreview(md);
+    setSyncBadge('✓ Aperçu synchronisé');
+    refreshJSON();
+    _syncLock = false;
+  }, 350);
 }
 
-// ─── parseMD (same as article.html) ─────────────────────────────────────
+function setSyncBadge(msg) {
+  var b = document.getElementById('sync-badge');
+  b.textContent = msg;
+  setTimeout(function(){ b.textContent = ''; }, 2000);
+}
+
+function toggleMdPanel() {
+  var panel = document.getElementById('md-panel');
+  var btn = document.getElementById('btn-md-raw');
+  var shown = panel.style.display !== 'none';
+  panel.style.display = shown ? 'none' : 'block';
+  btn.style.background = shown ? '' : '#1E2D5A';
+  btn.style.color = shown ? '' : '#fff';
+}
+
+/* Convert preview DOM → markdown string */
+function previewToMd() {
+  var pa = document.getElementById('preview-area');
+  return nodeToMd(pa).trim();
+}
+
+// ─── Toolbar ─────────────────────────────────────────────────────────────
+function tb(cmd) {
+  var pa = document.getElementById('preview-area');
+  pa.focus();
+
+  if (cmd === 'bold') {
+    document.execCommand('bold', false, null);
+  } else if (cmd === 'italic') {
+    document.execCommand('italic', false, null);
+  } else if (cmd === 'h2' || cmd === 'h3' || cmd === 'h4') {
+    document.execCommand('formatBlock', false, cmd);
+  } else if (cmd === 'ul') {
+    document.execCommand('insertUnorderedList', false, null);
+  } else if (cmd === 'blockquote') {
+    document.execCommand('formatBlock', false, 'blockquote');
+  } else if (cmd === 'link') {
+    var sel = window.getSelection();
+    var selText = sel && sel.toString().trim() ? sel.toString().trim() : '';
+    var text = selText || prompt('Texte du lien :', '');
+    if (!text) return;
+    var url = prompt('URL du lien :', 'https://');
+    if (!url) return;
+    if (selText) {
+      document.execCommand('createLink', false, url);
+    } else {
+      var a = document.createElement('a');
+      a.href = url;
+      a.textContent = text;
+      insertNodeAtCursor(a);
+    }
+  } else if (cmd === 'cta') {
+    var text = prompt('Texte du bouton CTA :', 'Prendre rendez-vous');
+    if (!text) return;
+    var url = prompt('URL du bouton :', 'https://');
+    if (!url) return;
+    var a = document.createElement('a');
+    a.href = url;
+    a.textContent = text;
+    a.className = 'preview-cta';
+    a.setAttribute('data-cta', '1');
+    a.contentEditable = 'false'; // treat as atomic
+    var wrapper = document.createElement('p');
+    wrapper.appendChild(a);
+    insertNodeAtCursor(wrapper);
+  }
+  onPreviewEdit();
+}
+
+function insertNodeAtCursor(node) {
+  var sel = window.getSelection();
+  if (!sel.rangeCount) return;
+  var range = sel.getRangeAt(0);
+  range.collapse(true);
+  range.insertNode(node);
+  range.setStartAfter(node);
+  range.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+// ─── parseMD (same as article.html + CTA button support) ────────────────
 function parseMD(md) {
   if (!md) return '';
   function fmt(s) {
@@ -485,6 +616,8 @@ function parseMD(md) {
       .replace(/\*(.+?)\*/g,'<em>$1</em>')
       .replace(/`(.+?)`/g,'<code>$1</code>')
       .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" style="max-width:100%">')
+      // CTA button: [BOUTON: text](url) → styled button
+      .replace(/\[BOUTON:\s*(.+?)\]\((.+?)\)/g,'<a class="preview-cta" data-cta="1" href="$2" contenteditable="false">$1</a>')
       .replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
   }
   var html='', inList=false, inTable=false, tableHeaderDone=false, tableHtml='';
@@ -523,6 +656,9 @@ function parseMD(md) {
   closeTable();
   return html;
 }
+
+// ─── refreshFromEdit (compat alias) ──────────────────────────────────────
+function refreshFromEdit() { onMdEdit(); }
 
 // ─── JSON Output ──────────────────────────────────────────────────────────
 function refreshJSON() {

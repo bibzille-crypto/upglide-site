@@ -496,6 +496,19 @@ a { color: inherit; text-decoration: none; }
   margin: 1.75rem auto;
   box-shadow: var(--shsm);
 }
+.art-cta-btn {
+  display: inline-block;
+  padding: .65rem 1.5rem;
+  background: var(--cad);
+  color: #fff !important;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: .95rem;
+  margin: .75rem 0;
+  transition: background .2s;
+}
+.art-cta-btn:hover { background: var(--lion) !important; }
 
 /* ── SUMMARY ENCART ── */
 .art-summary {
@@ -941,6 +954,7 @@ function loadSidebarArticles(currentSlug) {
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/`(.+?)`/g, '<code>$1</code>')
         .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="art-img" loading="lazy">')
+        .replace(/\[BOUTON:\s*(.+?)\]\((.+?)\)/g, '<a class="art-cta-btn" href="$2">$1</a>')
         .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
     }
 
