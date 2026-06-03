@@ -232,15 +232,40 @@
       </div>
     </div>
 
-    <!-- Step 5: JSON -->
+    <!-- Step 5: Publish -->
     <div class="card">
-      <h2>JSON prêt à coller dans data/blog.json</h2>
-      <p style="font-size:.85rem;color:#666;margin-bottom:1rem">Copie ce bloc et colle-le dans le tableau <code>"posts"</code> de <strong>data/blog.json</strong>. Ajoute une virgule après le dernier article existant avant de coller.</p>
-      <pre id="json-output"></pre>
-      <div class="action-bar">
-        <button class="copy-btn" id="copy-json-btn" onclick="copyJSON()">Copier le JSON</button>
-        <span id="copy-feedback" style="font-size:.85rem;color:#2d7a2d;display:none">✓ Copié !</span>
+      <h2>Publier l'article</h2>
+
+      <!-- GitHub token (one-time setup) -->
+      <div id="gh-setup" style="margin-bottom:1.25rem">
+        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
+          <label style="margin:0;white-space:nowrap">Token GitHub</label>
+          <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="flex:1;min-width:220px" oninput="saveToken()">
+          <span id="token-status" style="font-size:.8rem"></span>
+        </div>
+        <p style="font-size:.75rem;color:#999;margin-top:.4rem">
+          Ton token GitHub (<a href="https://github.com/settings/tokens/new?scopes=repo&description=Upglide+blog+publish" target="_blank" style="color:#1E2D5A">créer ici</a> — scope <code>repo</code>). Stocké uniquement dans ton navigateur.
+        </p>
       </div>
+
+      <!-- Publish button -->
+      <div class="action-bar" style="margin-top:0">
+        <button class="copy-btn" id="btn-publish" onclick="publishToGitHub()" style="background:#1E2D5A;font-size:1rem;padding:.7rem 2rem">
+          Publier l'article sur le site
+        </button>
+        <span id="publish-status" style="font-size:.875rem"></span>
+      </div>
+
+      <!-- Fallback: raw JSON -->
+      <details style="margin-top:1.25rem">
+        <summary style="font-size:.8rem;color:#999;cursor:pointer">Accès manuel au JSON (fallback)</summary>
+        <div style="margin-top:.75rem">
+          <p style="font-size:.8rem;color:#888;margin-bottom:.5rem">Si la publication directe ne fonctionne pas, copie ce bloc dans <code>data/blog.json</code>.</p>
+          <pre id="json-output" style="font-size:.7rem"></pre>
+          <button class="copy-btn" id="copy-json-btn" onclick="copyJSON()" style="margin-top:.5rem;font-size:.8rem;padding:.4rem 1rem">Copier le JSON</button>
+          <span id="copy-feedback" style="font-size:.85rem;color:#2d7a2d;display:none;margin-left:.5rem">✓ Copié !</span>
+        </div>
+      </details>
     </div>
 
   </div><!-- /zone-result -->
@@ -662,33 +687,7 @@ function refreshFromEdit() { onMdEdit(); }
 
 // ─── JSON Output ──────────────────────────────────────────────────────────
 function refreshJSON() {
-  var slug = document.getElementById('meta-slug').value;
-  var md = document.getElementById('md-editor').value || rawMarkdown;
-
-  // Replace placeholders with final image paths
-  var finalMd = md;
-  extractedImages.forEach(function(img) {
-    var nameInput = document.getElementById('imgname-' + img.index);
-    var name = nameInput ? nameInput.value : img.name;
-    var finalPath = 'images/articles/' + slug + '/' + name;
-    finalMd = finalMd.split(img.placeholder).join(finalPath);
-  });
-
-  var obj = {
-    title: document.getElementById('meta-title').value,
-    slug: slug,
-    date: document.getElementById('meta-date').value,
-    category: document.getElementById('meta-cat').value,
-    readTime: parseInt(document.getElementById('meta-read').value) || 5,
-    published: document.getElementById('meta-pub').value === 'true',
-    excerpt: document.getElementById('meta-excerpt').value,
-    content: finalMd.trim()
-  };
-
-  var imgVal = document.getElementById('meta-image').value.trim();
-  if (imgVal) obj.image = imgVal;
-
-  document.getElementById('json-output').textContent = JSON.stringify(obj, null, 2);
+  document.getElementById('json-output').textContent = JSON.stringify(buildArticleObject(), null, 2);
 }
 
 function copyJSON() {
@@ -705,6 +704,116 @@ function copyJSON() {
       btn.textContent = 'Copier le JSON';
     }, 2500);
   });
+}
+
+// ─── GitHub token persistence ────────────────────────────────────────────
+function saveToken() {
+  var t = document.getElementById('gh-token').value.trim();
+  if (t) localStorage.setItem('upglide_gh_token', t);
+  updateTokenStatus(t);
+}
+function loadToken() {
+  var t = localStorage.getItem('upglide_gh_token') || '';
+  if (t) document.getElementById('gh-token').value = t;
+  updateTokenStatus(t);
+}
+function updateTokenStatus(t) {
+  var el = document.getElementById('token-status');
+  el.textContent = t ? '✓ Token enregistré' : '';
+  el.style.color = '#2d7a2d';
+}
+loadToken();
+
+// ─── Publish to GitHub ────────────────────────────────────────────────────
+var GH_REPO  = 'bibzille-crypto/upglide-site';
+var GH_FILE  = 'data/blog.json';
+var GH_API   = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
+
+async function publishToGitHub() {
+  var token = document.getElementById('gh-token').value.trim();
+  if (!token) { setPublishStatus('⚠️ Entre ton token GitHub.', 'warn'); return; }
+
+  var articleObj = buildArticleObject();
+  if (!articleObj.title || !articleObj.slug) {
+    setPublishStatus('⚠️ Remplis le titre et le slug avant de publier.', 'warn'); return;
+  }
+
+  setPublishStatus('<span class="spinner"></span> Récupération de blog.json…', '');
+  document.getElementById('btn-publish').disabled = true;
+
+  try {
+    // 1. Fetch current blog.json from GitHub
+    var getRes = await fetch(GH_API, {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!getRes.ok) throw new Error('Impossible de lire blog.json (statut ' + getRes.status + ')');
+    var ghData = await getRes.json();
+    var currentContent = JSON.parse(atob(ghData.content.replace(/\n/g, '')));
+    var sha = ghData.sha;
+
+    // 2. Prepend new article (most recent first)
+    var posts = currentContent.posts || [];
+    // Remove existing entry with same slug if any (update case)
+    posts = posts.filter(function(p) { return p.slug !== articleObj.slug; });
+    posts.unshift(articleObj);
+    currentContent.posts = posts;
+
+    // 3. Commit updated blog.json
+    setPublishStatus('<span class="spinner"></span> Publication en cours…', '');
+    var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentContent, null, 2))));
+    var putRes = await fetch(GH_API, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'article: ' + articleObj.title.slice(0, 72),
+        content: newContent,
+        sha: sha
+      })
+    });
+    if (!putRes.ok) {
+      var err = await putRes.json();
+      throw new Error(err.message || 'Erreur lors du commit');
+    }
+
+    setPublishStatus('✓ Article publié ! Netlify déploie dans ~30 secondes.', 'ok');
+  } catch(e) {
+    setPublishStatus('❌ ' + e.message, 'err');
+  }
+  document.getElementById('btn-publish').disabled = false;
+}
+
+function buildArticleObject() {
+  var slug = document.getElementById('meta-slug').value;
+  var md = document.getElementById('md-editor').value || rawMarkdown;
+  var finalMd = md;
+  extractedImages.forEach(function(img) {
+    var nameInput = document.getElementById('imgname-' + img.index);
+    var name = nameInput ? nameInput.value : img.name;
+    finalMd = finalMd.split(img.placeholder).join('images/articles/' + slug + '/' + name);
+  });
+  var obj = {
+    title: document.getElementById('meta-title').value,
+    slug: slug,
+    date: document.getElementById('meta-date').value,
+    category: document.getElementById('meta-cat').value,
+    readTime: parseInt(document.getElementById('meta-read').value) || 5,
+    published: document.getElementById('meta-pub').value === 'true',
+    excerpt: document.getElementById('meta-excerpt').value,
+    content: finalMd.trim()
+  };
+  var img = document.getElementById('meta-image').value.trim();
+  if (img) obj.image = img;
+  return obj;
+}
+
+function setPublishStatus(msg, type) {
+  var el = document.getElementById('publish-status');
+  el.innerHTML = msg;
+  el.style.color = type === 'ok' ? '#2d7a2d' : type === 'err' ? '#c0392b' : type === 'warn' ? '#7a5c00' : '#555';
 }
 
 // ─── Image Download ───────────────────────────────────────────────────────
