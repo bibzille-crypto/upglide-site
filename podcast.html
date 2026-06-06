@@ -45,7 +45,7 @@
   --wh:    #FFFFFF;
   --txt:   #1E2D5A;
   --txt2:  #4A5878;
-  --txt3:  #8090B0;
+  --txt3:  #5A6A8A;
   --bdr:   rgba(30,45,90,.09);
   --ft: 'Cormorant Garamond', Georgia, serif;
   --fb: 'Manrope', system-ui, sans-serif;
@@ -74,7 +74,7 @@
   --shadow-lg: 0 20px 64px rgba(26,48,80,.18);
   --transition: .2s ease;
   --txt-2: #4A6078;
-  --txt-3: #8090B0;
+  --txt-3: #5A6A8A;
 }
 /* NAV */
 /* ── NAV ── */
@@ -248,7 +248,7 @@ hr.divider{border:none;border-top:1px solid var(--border);}
       <li><a href="blog.html">Blog</a></li>
       <li><a href="a-propos.html">À propos</a></li>
     </ul>
-    <a href="javascript:void(0)" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
+    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
       <span></span><span></span><span></span>
     </button>
@@ -265,7 +265,7 @@ hr.divider{border:none;border-top:1px solid var(--border);}
     <a href="ressources.html" onclick="closeMob()">Ressources</a>
     <a href="blog.html" onclick="closeMob()">Blog</a>
     <a href="a-propos.html" onclick="closeMob()">À propos</a>
-    <a href="javascript:void(0)" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
+    <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
   </div>
 </nav>
 
@@ -307,7 +307,7 @@ hr.divider{border:none;border-top:1px solid var(--border);}
 
       <!-- Grille dynamique chargée depuis /data/podcast.json -->
       <div id="episodes-grid" style="margin-top:2rem;">
-        <div style="text-align:center;padding:3rem;color:var(--txt-3,#8090B0);font-style:italic;">
+        <div style="text-align:center;padding:3rem;color:var(--txt-3,#5A6A8A);font-style:italic;">
           Chargement des épisodes…
         </div>
       </div>
@@ -395,7 +395,7 @@ document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';e
     }
 
     if(!pub.length){
-      grid.innerHTML = '<div style="text-align:center;padding:4rem;color:var(--txt-3,#8090B0);font-style:italic;">'
+      grid.innerHTML = '<div style="text-align:center;padding:4rem;color:var(--txt-3,#5A6A8A);font-style:italic;">'
         + (currentCat==='all' ? 'Les épisodes arrivent bientôt.' : 'Aucun épisode dans cette catégorie.')
         + '</div>';
       return;
@@ -427,7 +427,7 @@ document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';e
     })
     .catch(function(){
       var g = document.getElementById('episodes-grid');
-      if(g) g.innerHTML = '<div style="text-align:center;padding:4rem;color:var(--txt-3,#8090B0);">Épisodes bientôt disponibles.</div>';
+      if(g) g.innerHTML = '<div style="text-align:center;padding:4rem;color:var(--txt-3,#5A6A8A);">Épisodes bientôt disponibles.</div>';
     });
 })();
 </script>

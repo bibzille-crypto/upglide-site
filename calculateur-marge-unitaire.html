@@ -40,7 +40,7 @@
   --wh:    #FFFFFF;
   --txt:   #1E2D5A;
   --txt2:  #4A5878;
-  --txt3:  #8090B0;
+  --txt3:  #5A6A8A;
   --bdr:   rgba(30,45,90,.09);
   --fond:  #F4F7FB;
   --fond2: #EBF0F8;
@@ -278,7 +278,7 @@ body.mode-avance .simple-only{display:none;}
       <li><a href="blog.html">Blog</a></li>
       <li><a href="a-propos.html">À propos</a></li>
     </ul>
-    <a href="javascript:void(0)" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
+    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
       <span></span><span></span><span></span>
     </button>
@@ -297,7 +297,7 @@ body.mode-avance .simple-only{display:none;}
   <a href="ressources.html" onclick="closeMob()">Ressources</a>
   <a href="blog.html" onclick="closeMob()">Blog</a>
   <a href="a-propos.html" onclick="closeMob()">À propos</a>
-  <a href="javascript:void(0)" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
+  <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
 </div>
 
 <!-- HERO -->
@@ -1248,7 +1248,7 @@ function renderChart(r) {
   if (pvTTC <= 0) return;
 
   var segments = [
-    { label: 'TVA',             value: r.montantTVA,          color: '#8090B0' },
+    { label: 'TVA',             value: r.montantTVA,          color: '#5A6A8A' },
     { label: 'Achat',           value: r.coutAchatComplet,    color: '#131D3C' },
     { label: 'Frais de vente',  value: r.fraisVenteTotal,     color: '#4E6898' },
     { label: 'Coûts indirects', value: r.coutsIndirectsTotal, color: '#7C5CBF' },
