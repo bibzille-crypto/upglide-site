@@ -748,7 +748,10 @@ async function publishToGitHub() {
     });
     if (!getRes.ok) throw new Error('Impossible de lire blog.json (statut ' + getRes.status + ')');
     var ghData = await getRes.json();
-    var currentContent = JSON.parse(atob(ghData.content.replace(/\n/g, '')));
+    // Decode base64 → UTF-8 correctly (atob() returns Latin-1 bytes, must re-decode)
+    var binary = atob(ghData.content.replace(/\n/g, ''));
+    var utf8 = decodeURIComponent(escape(binary));
+    var currentContent = JSON.parse(utf8);
     var sha = ghData.sha;
 
     // 2. Prepend new article (most recent first)
