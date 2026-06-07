@@ -6,29 +6,29 @@
      Pas un bot qui "répond" — une vraie invitation à un appel avec Caroline. */
   var MESSAGES = {
     'index.html':
-      'Votre CA progresse mais la marge nette reste décevante ? Un diagnostic de 30 min identifie vos fuites — gratuitement.',
+      'Je vends, mais je ne fais pas de marge. En 30 min, on comprend ensemble pourquoi — et ce que ça représente en euros.',
     'audit-rentabilite-ecommerce.html':
-      'Quelque chose ne tourne pas rond avec votre rentabilité. En 30 min, on chiffre exactement ce que vous perdez — et pourquoi.',
+      'Vous sentez que quelque chose fuit, mais vous ne savez pas quoi exactement. C\'est précisément ce qu\'on creuse en 30 min.',
     'methode-marc.html':
-      'Vous voulez savoir ce que MARC donnerait sur votre boutique ? 30 min suffisent pour le découvrir concrètement.',
+      'Vous faites du CA mais pas de bénéfice. En 30 min, on identifie les 2-3 leviers qui changent vraiment la donne sur votre boutique.',
     'guide-fuites-marge.html':
-      'Le guide vous montre quoi chercher. Le diagnostic, lui, vous dit combien ça vous coûte — en euros, sur votre boutique.',
+      'Vous avez identifié les fuites théoriques. Maintenant : combien ça vous coûte concrètement, sur votre boutique, en ce moment ?',
     'blog.html':
-      'Ce sujet vous concerne ? Un diagnostic de 30 min peut chiffrer l\'impact réel sur votre boutique — gratuitement.',
+      'Vous lisez des articles sur la rentabilité parce que quelque chose cloche. En 30 min, on met le doigt dessus — gratuitement.',
     'article.html':
-      'Si ce sujet vous concerne, un diagnostic de 30 min quantifie exactement ce que ça représente pour votre boutique.',
+      'Ce sujet résonne parce que vous le vivez. En 30 min de diagnostic, on chiffre exactement ce que ça vous coûte.',
     'podcast.html':
-      'Vous cherchez des réponses sur votre situation précise ? Un diagnostic de 30 min peut les apporter — sans engagement.',
+      'Vous écoutez parce que vous cherchez à comprendre pourquoi vous ne faites pas de marge. On peut vous répondre en 30 min.',
     'ressources.html':
-      'Une ressource vous a intéressé ? Un diagnostic permet d\'identifier ce qui s\'applique concrètement à votre cas.',
+      'Vous cherchez des outils parce que les chiffres ne s\'expliquent pas. Un diagnostic de 30 min donne les vraies réponses.',
     'a-propos.html':
-      'Vous voulez savoir si Upglide est fait pour vous ? 30 min suffisent pour une réponse honnête et sans engagement.',
+      'Vous voulez savoir si Upglide peut résoudre votre problème de marge spécifiquement. 30 min pour une réponse franche.',
     'contact.html':
-      'Plutôt que de remplir un formulaire, réservez directement un créneau de 30 min pour un diagnostic offert.',
+      'Vous avez des questions sur votre rentabilité. Plutôt qu\'un formulaire, réservez 30 min pour des réponses concrètes.',
     'accompagnements.html':
-      'Vous hésitez encore ? 30 min de diagnostic offert vous donnera un avis honnête sur votre situation — sans engagement.',
+      'Vous ne comprenez pas pourquoi votre boutique ne dégage pas plus. C\'est exactement ce qu\'on diagnostique en 30 min.',
     'default':
-      'Un diagnostic de 30 min pour identifier vos principales fuites de marge et leur impact réel — gratuitement, sans engagement.'
+      'Je vends mais je ne fais pas de marge — et je ne comprends pas pourquoi. C\'est ce qu\'on résout en 30 min, gratuitement.'
   };
 
   function getMessage() {
