@@ -6,29 +6,29 @@
      Pas un bot qui "répond" — une vraie invitation à un appel avec Caroline. */
   var MESSAGES = {
     'index.html':
-      'Je vends, mais je ne fais pas de marge. En 30 min, on comprend ensemble pourquoi — et ce que ça représente en euros.',
+      'Votre boutique tourne mais la marge ne suit pas. On trouve pourquoi en 30 min.',
     'audit-rentabilite-ecommerce.html':
-      'Vous sentez que quelque chose fuit, mais vous ne savez pas quoi exactement. C\'est précisément ce qu\'on creuse en 30 min.',
+      'Quelque chose fuit dans votre rentabilité. En 30 min, on met le doigt dessus et on chiffre.',
     'methode-marc.html':
-      'Vous faites du CA mais pas de bénéfice. En 30 min, on identifie les 2-3 leviers qui changent vraiment la donne sur votre boutique.',
+      'Du chiffre, mais pas de bénéfice. En 30 min, on identifie les 2-3 leviers qui changent vraiment la donne.',
     'guide-fuites-marge.html':
-      'Vous avez identifié les fuites théoriques. Maintenant : combien ça vous coûte concrètement, sur votre boutique, en ce moment ?',
+      'Vous savez que ça fuit. En 30 min, on vous dit combien — en euros, sur votre boutique.',
     'blog.html':
-      'Vous lisez des articles sur la rentabilité parce que quelque chose cloche. En 30 min, on met le doigt dessus — gratuitement.',
+      'Vous lisez sur la rentabilité parce que quelque chose cloche. En 30 min, on met le doigt dessus.',
     'article.html':
-      'Ce sujet résonne parce que vous le vivez. En 30 min de diagnostic, on chiffre exactement ce que ça vous coûte.',
+      'Ce sujet vous concerne. En 30 min, on chiffre exactement ce que ça représente pour votre boutique.',
     'podcast.html':
-      'Vous écoutez parce que vous cherchez à comprendre pourquoi vous ne faites pas de marge. On peut vous répondre en 30 min.',
+      'Vous cherchez à comprendre pourquoi la marge n\'est pas au rendez-vous. On peut vous répondre en 30 min.',
     'ressources.html':
-      'Vous cherchez des outils parce que les chiffres ne s\'expliquent pas. Un diagnostic de 30 min donne les vraies réponses.',
+      'Les outils vous aident à voir. Un diagnostic vous dit combien ça vous coûte concrètement.',
     'a-propos.html':
-      'Vous voulez savoir si Upglide peut résoudre votre problème de marge spécifiquement. 30 min pour une réponse franche.',
+      'Vous voulez savoir si c\'est fait pour vous. 30 min pour une réponse franche, sans engagement.',
     'contact.html':
-      'Vous avez des questions sur votre rentabilité. Plutôt qu\'un formulaire, réservez 30 min pour des réponses concrètes.',
+      'Plutôt qu\'un formulaire : 30 min pour comprendre précisément où votre marge se perd.',
     'accompagnements.html':
-      'Vous ne comprenez pas pourquoi votre boutique ne dégage pas plus. C\'est exactement ce qu\'on diagnostique en 30 min.',
+      'Vous ne savez pas encore pourquoi votre boutique ne dégage pas plus. C\'est ce qu\'on creuse en 30 min.',
     'default':
-      'Je vends mais je ne fais pas de marge — et je ne comprends pas pourquoi. C\'est ce qu\'on résout en 30 min, gratuitement.'
+      'Votre marge ne reflète pas votre volume. En 30 min, on comprend pourquoi — gratuitement.'
   };
 
   function getMessage() {
@@ -72,13 +72,9 @@
           '<span class="marc-live-dot" aria-hidden="true">Dispo</span>' +
         '</div>' +
 
-        '<div class="marc-thought-wrap">' +
-          '<span class="marc-thought-label">Vous vous dites peut-être…</span>' +
-          '<p class="marc-msg" id="marc-msg"></p>' +
-        '</div>' +
+        '<p class="marc-msg" id="marc-msg"></p>' +
 
         '<button class="marc-cta-btn" id="marc-cta">Réserver le diagnostic gratuit →</button>' +
-        '<p class="marc-human-note">Vrai appel téléphonique · Sans engagement</p>' +
       '</div>' +
 
       /* Avatar */
