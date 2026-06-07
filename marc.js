@@ -6,29 +6,29 @@
      Pas un bot qui "répond" — une vraie invitation à un appel avec Caroline. */
   var MESSAGES = {
     'index.html':
-      'Votre CA progresse mais la marge nette reste décevante ? Caroline peut identifier vos fuites en 30 min — gratuitement.',
+      'Votre CA progresse mais la marge nette reste décevante ? Un diagnostic de 30 min identifie vos fuites — gratuitement.',
     'audit-rentabilite-ecommerce.html':
-      'Vous lisez cette page parce que quelque chose ne tourne pas rond avec votre rentabilité. Caroline peut regarder votre situation concrète en 30 min.',
+      'Quelque chose ne tourne pas rond avec votre rentabilité. En 30 min, on chiffre exactement ce que vous perdez — et pourquoi.',
     'methode-marc.html':
-      'Vous voulez savoir ce que MARC donnerait sur votre boutique ? Un appel de 30 min suffit pour le savoir.',
+      'Vous voulez savoir ce que MARC donnerait sur votre boutique ? 30 min suffisent pour le découvrir concrètement.',
     'guide-fuites-marge.html':
       'Le guide vous montre quoi chercher. Le diagnostic, lui, vous dit combien ça vous coûte — en euros, sur votre boutique.',
     'blog.html':
-      'Cet article vous parle ? Caroline peut analyser votre situation précise et chiffrer l\'impact réel en 30 minutes.',
+      'Ce sujet vous concerne ? Un diagnostic de 30 min peut chiffrer l\'impact réel sur votre boutique — gratuitement.',
     'article.html':
-      'Si ce sujet vous concerne, un diagnostic de 30 min peut quantifier exactement ce que ça représente pour votre boutique.',
+      'Si ce sujet vous concerne, un diagnostic de 30 min quantifie exactement ce que ça représente pour votre boutique.',
     'podcast.html':
-      'Vous écoutez parce que vous cherchez des réponses. Caroline peut vous en donner sur votre situation — en 30 min chrono.',
+      'Vous cherchez des réponses sur votre situation précise ? Un diagnostic de 30 min peut les apporter — sans engagement.',
     'ressources.html':
-      'Une ressource vous a intéressé ? Caroline peut vous aider à identifier ce qui s\'applique concrètement à votre cas.',
+      'Une ressource vous a intéressé ? Un diagnostic permet d\'identifier ce qui s\'applique concrètement à votre cas.',
     'a-propos.html':
-      'Vous voulez savoir si Upglide est fait pour vous ? Un appel de 30 min vous donnera une réponse honnête.',
+      'Vous voulez savoir si Upglide est fait pour vous ? 30 min suffisent pour une réponse honnête et sans engagement.',
     'contact.html':
-      'Plutôt que de remplir un formulaire, réservez directement un créneau de 30 min avec Caroline.',
+      'Plutôt que de remplir un formulaire, réservez directement un créneau de 30 min pour un diagnostic offert.',
     'accompagnements.html':
-      'Vous hésitez encore ? Un appel de 30 min avec Caroline vous donnera un avis honnête sur votre situation — sans engagement.',
+      'Vous hésitez encore ? 30 min de diagnostic offert vous donnera un avis honnête sur votre situation — sans engagement.',
     'default':
-      'Caroline peut analyser votre rentabilité en 30 min et identifier vos principales fuites de marge — gratuitement, sans engagement.'
+      'Un diagnostic de 30 min pour identifier vos principales fuites de marge et leur impact réel — gratuitement, sans engagement.'
   };
 
   function getMessage() {
@@ -67,14 +67,14 @@
           '</div>' +
           '<div class="marc-bubble-id">' +
             '<div class="marc-bubble-name">Diagnostic offert</div>' +
-            '<div class="marc-bubble-role">Avec Caroline · 30 min · Gratuit</div>' +
+            '<div class="marc-bubble-role">Upglide · 30 min · 100% gratuit</div>' +
           '</div>' +
           '<span class="marc-live-dot" aria-hidden="true">Dispo</span>' +
         '</div>' +
 
         '<p class="marc-msg" id="marc-msg"></p>' +
 
-        '<button class="marc-cta-btn" id="marc-cta">Réserver l\'appel avec Caroline →</button>' +
+        '<button class="marc-cta-btn" id="marc-cta">Réserver le diagnostic gratuit →</button>' +
         '<p class="marc-human-note">Vrai appel téléphonique · Sans engagement</p>' +
       '</div>' +
 
