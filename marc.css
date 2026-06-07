@@ -94,14 +94,34 @@
   50%      { opacity: .35; }
 }
 
+/* Thought wrapper */
+.marc-thought-wrap {
+  background: #F5F1E8;
+  border-radius: 8px;
+  padding: .75rem .875rem;
+  margin-bottom: .875rem;
+  position: relative;
+}
+.marc-thought-label {
+  display: block;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #8090B0;
+  margin-bottom: .375rem;
+}
+
 /* Message */
 .marc-msg {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: .8125rem;
-  color: #4A5878;
+  color: #1E2D5A;
   line-height: 1.65;
-  margin: 0 0 .875rem;
-  font-weight: 400;
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
 }
 
 /* CTA */

@@ -72,7 +72,10 @@
           '<span class="marc-live-dot" aria-hidden="true">Dispo</span>' +
         '</div>' +
 
-        '<p class="marc-msg" id="marc-msg"></p>' +
+        '<div class="marc-thought-wrap">' +
+          '<span class="marc-thought-label">Vous vous dites peut-être…</span>' +
+          '<p class="marc-msg" id="marc-msg"></p>' +
+        '</div>' +
 
         '<button class="marc-cta-btn" id="marc-cta">Réserver le diagnostic gratuit →</button>' +
         '<p class="marc-human-note">Vrai appel téléphonique · Sans engagement</p>' +
