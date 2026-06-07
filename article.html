@@ -256,6 +256,17 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   background: rgba(201,160,82,0.06);
 }
+.toc-link.toc-h3 {
+  padding-left: 1.5rem;
+  font-size: .75rem;
+  color: var(--txt3);
+  border-left-color: transparent;
+}
+.toc-link.toc-h3.active {
+  border-left-color: rgba(201,160,82,.5);
+  color: var(--txt2);
+  font-weight: 500;
+}
 
 /* Article list section */
 #all-articles-section {
@@ -510,14 +521,81 @@ a { color: inherit; text-decoration: none; }
 }
 .art-cta-btn:hover { background: var(--lion) !important; }
 
-/* ── SUMMARY ENCART ── */
+/* ── À RETENIR ENCART ── */
+.art-retenir {
+  background: var(--wh);
+  border: 1.5px solid rgba(201,160,82,.35);
+  border-radius: 14px;
+  padding: 0;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(30,45,90,.07);
+}
+.art-retenir-header {
+  background: var(--cad);
+  padding: .875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+}
+.art-retenir-icon {
+  width: 22px;
+  height: 22px;
+  background: rgba(201,160,82,.25);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  flex-shrink: 0;
+}
+.art-retenir-title {
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--lion);
+  font-family: var(--fb);
+}
+.art-retenir-body {
+  padding: 1.25rem 1.5rem;
+}
+.art-retenir-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.art-retenir-list li {
+  font-size: .9rem;
+  color: var(--txt);
+  line-height: 1.65;
+  padding: .35rem 0 .35rem 1.5rem;
+  position: relative;
+  font-family: var(--fb);
+  border-bottom: 1px solid rgba(30,45,90,.05);
+}
+.art-retenir-list li:last-child { border-bottom: none; }
+.art-retenir-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .65rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lion);
+  opacity: .7;
+}
+
+/* Keep art-summary as alias for backward compat */
 .art-summary {
-  background: rgba(201,160,82,.06);
-  border: 1px solid rgba(201,160,82,.28);
-  border-left: 4px solid var(--lion);
-  border-radius: 0 12px 12px 0;
+  background: var(--wh);
+  border: 1.5px solid rgba(201,160,82,.35);
+  border-radius: 14px;
   padding: 1.375rem 1.75rem;
   margin-bottom: 2.5rem;
+  border-left: 4px solid var(--lion);
+  box-shadow: 0 2px 16px rgba(30,45,90,.07);
 }
 .art-summary-label {
   font-size: .5625rem;
@@ -1116,27 +1194,77 @@ function loadSidebarArticles(currentSlug) {
     document.getElementById('art-loading').style.display = 'none';
     var card = document.getElementById('art-card');
 
-    // Build content: optional cover image, optional summary encart, then body
+    // Build content: optional cover image, body, then inject À retenir
     var contentHTML = '';
 
     if (art.image) {
       contentHTML += '<img src="' + art.image + '" alt="' + (art.title || '') + '" class="art-cover-img" loading="eager">';
     }
 
+    // Inject À retenir from summary field if present
     if (art.summary && art.summary.trim()) {
       var summaryLines = art.summary.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
       if (summaryLines.length) {
-        contentHTML += '<div class="art-summary">' +
-          '<div class="art-summary-label">En résumé</div>' +
-          '<ul class="art-summary-list">' +
+        contentHTML += '<div class="art-retenir">' +
+          '<div class="art-retenir-header">' +
+          '<div class="art-retenir-icon">✦</div>' +
+          '<div class="art-retenir-title">À retenir</div>' +
+          '</div>' +
+          '<div class="art-retenir-body"><ul class="art-retenir-list">' +
           summaryLines.map(function(l) { return '<li>' + l + '</li>'; }).join('') +
-          '</ul></div>';
+          '</ul></div></div>';
       }
     }
 
     contentHTML += parseMD(art.content || '');
-    document.getElementById('art-content').innerHTML = contentHTML;
+    var artContent = document.getElementById('art-content');
+    artContent.innerHTML = contentHTML;
     card.style.display = 'block';
+
+    // Auto-extract "À retenir" from ## À retenir heading in content (if no summary field)
+    if (!art.summary || !art.summary.trim()) {
+      var headingsAll = artContent.querySelectorAll('h2, h3');
+      var retenirH = null;
+      headingsAll.forEach(function(h) {
+        if (/à retenir|en résumé|résumé|conclusion rapide/i.test(h.textContent)) {
+          retenirH = h;
+        }
+      });
+      if (retenirH) {
+        var retenirItems = [];
+        var sibling = retenirH.nextElementSibling;
+        while (sibling && !['H2','H3'].includes(sibling.tagName)) {
+          if (sibling.tagName === 'UL') {
+            sibling.querySelectorAll('li').forEach(function(li) { retenirItems.push(li.innerHTML); });
+          } else if (sibling.tagName === 'BLOCKQUOTE') {
+            // extract bold items from blockquote
+            sibling.querySelectorAll('p, li').forEach(function(el) {
+              var t = el.textContent.trim();
+              if (t) retenirItems.push(el.innerHTML);
+            });
+          }
+          sibling = sibling.nextElementSibling;
+        }
+        if (retenirItems.length) {
+          var encart = document.createElement('div');
+          encart.className = 'art-retenir';
+          encart.innerHTML = '<div class="art-retenir-header">' +
+            '<div class="art-retenir-icon">✦</div>' +
+            '<div class="art-retenir-title">À retenir</div>' +
+            '</div>' +
+            '<div class="art-retenir-body"><ul class="art-retenir-list">' +
+            retenirItems.map(function(item) { return '<li>' + item + '</li>'; }).join('') +
+            '</ul></div>';
+          // Insert after cover image if present, otherwise at start
+          var firstChild = artContent.firstChild;
+          if (firstChild && firstChild.tagName === 'IMG') {
+            firstChild.after(encart);
+          } else {
+            artContent.insertBefore(encart, firstChild);
+          }
+        }
+      }
+    }
 
     var shareEl = document.getElementById('art-share');
     if (shareEl) shareEl.style.display = 'flex';
@@ -1146,18 +1274,21 @@ function loadSidebarArticles(currentSlug) {
     var ctaEl = document.getElementById('art-cta');
     if (ctaEl) ctaEl.style.display = 'block';
 
-    // Generate TOC from H2 headings only (= "Titre" dans l'admin)
+    // Generate TOC from H2 + H3 headings
     var tocNav = document.getElementById('art-toc');
     var tocSection = document.getElementById('toc-section');
-    var artContent = document.getElementById('art-content');
-    var headings = artContent.querySelectorAll('h2');
-    if (tocNav && headings.length > 0) {
-      headings.forEach(function(h, i) {
-        var id = 'section-' + i;
-        h.id = id;
+    var tocHeadings = artContent.querySelectorAll('h2, h3');
+    // Filter out "À retenir" headings from TOC
+    var filteredHeadings = Array.from(tocHeadings).filter(function(h) {
+      return !/à retenir|en résumé|résumé|conclusion rapide/i.test(h.textContent);
+    });
+    if (tocNav && filteredHeadings.length > 0) {
+      filteredHeadings.forEach(function(h, i) {
+        if (!h.id) h.id = 'section-' + i;
+        var id = h.id;
         var a = document.createElement('a');
         a.href = '#' + id;
-        a.className = 'toc-link';
+        a.className = 'toc-link' + (h.tagName === 'H3' ? ' toc-h3' : '');
         a.textContent = h.textContent;
         a.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1173,8 +1304,8 @@ function loadSidebarArticles(currentSlug) {
           var link = tocNav.querySelector('a[href="#' + entry.target.id + '"]');
           if (link) link.classList.toggle('active', entry.isIntersecting);
         });
-      }, {threshold: 0.3});
-      headings.forEach(function(h) { observer.observe(h); });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      filteredHeadings.forEach(function(h) { observer.observe(h); });
     }
   }
 
