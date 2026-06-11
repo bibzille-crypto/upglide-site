@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition — Upglide</title>
+  <meta name="description" content="Vous faites des ventes mais votre marge unitaire reste très faible ? Découvrez 3 leviers concrets pour augmenter ce que chaque client dépense chez vous, sans avoir besoin de dépenser un euro de plus en publicité.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">
+  <meta property="og:type"        content="article">
+  <meta property="og:locale"      content="fr_FR">
+  <meta property="og:site_name"   content="Upglide">
+  <meta property="og:title"       content="Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition — Upglide">
+  <meta property="og:description" content="Vous faites des ventes mais votre marge unitaire reste très faible ? Découvrez 3 leviers concrets pour augmenter ce que chaque client dépense chez vous, sans avoir besoin de dépenser un euro de plus en publicité.">
+  <meta property="og:url"         content="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">
+  <meta property="og:image"       content="https://upglide.fr/hero-dashboard.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:image"      content="https://upglide.fr/hero-dashboard.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition","description":"Vous faites des ventes mais votre marge unitaire reste très faible ? Découvrez 3 leviers concrets pour augmenter ce que chaque client dépense chez vous, sans avoir besoin de dépenser un euro de plus en publicité.","datePublished":"2026-05-20","author":{"@type":"Person","name":"Caroline","url":"https://upglide.fr/a-propos"},"publisher":{"@type":"Organization","name":"Upglide","url":"https://upglide.fr/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://upglide.fr/blog/augmenter-panier-moyen-ecommerce"},"inLanguage":"fr-FR"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://upglide.fr/blog"},{"@type":"ListItem","position":3,"name":"Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition","item":"https://upglide.fr/blog/augmenter-panier-moyen-ecommerce"}]}</script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+  <link rel="preload" href="/marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/marc.css"></noscript>
+  <style>
+    /* Local variable remapping to Codex palette */
+    :root {
+      --cad:  #151515;
+      --cad2: #1c1c1c;
+      --lion: #5f3ee8;
+      --lion2: #33206f;
+      --alm:  #ece8ff;
+      --isa:  var(--cream);
+      --wh:   var(--white);
+      --txt:  var(--ink);
+      --txt2: var(--ink-soft);
+      --txt3: var(--ink-soft);
+      --bdr:  var(--line);
+      --ft:   Inter, "Helvetica Neue", Arial, sans-serif;
+      --fb:   Inter, "Helvetica Neue", Arial, sans-serif;
+      --r:    16px;
+      --rlg:  22px;
+      --rxl:  32px;
+      --shsm: 0 4px 16px rgba(21,21,21,0.07);
+      --shmd: 0 12px 40px rgba(21,21,21,0.10);
+      --shlg: 0 24px 70px rgba(21,21,21,0.15);
+      --shg:  0 6px 24px rgba(95,62,232,0.25);
+      --t:    0.18s ease;
+    }
+
+    /* ── READING PROGRESS ── */
+    .art-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--lion2), var(--lion));
+      z-index: 600;
+      transition: width .1s linear;
+      pointer-events: none;
+    }
+
+    /* ── ARTICLE PAGE ── */
+    .art-page { background: var(--cream); min-height: 100vh; }
+
+    /* ── HERO ── */
+    .art-hero {
+      background: var(--cad2);
+      padding: 5rem 0 6.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .art-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 40%, rgba(95,62,232,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .art-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 80px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+      z-index: 0;
+    }
+    .art-hero .shell { position: relative; z-index: 1; }
+
+    .art-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 2.5rem;
+    }
+    .art-breadcrumb a { color: rgba(255,255,255,.45); transition: color .2s; }
+    .art-breadcrumb a:hover { color: var(--lime); }
+    .art-breadcrumb-sep { color: rgba(255,255,255,.15); }
+
+    .art-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--lime);
+      padding: .3rem .875rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .art-h1 {
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+    .art-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: .8125rem;
+      color: rgba(255,255,255,.35);
+    }
+    .art-meta-sep {
+      width: 3px; height: 3px;
+      background: rgba(255,255,255,.2);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── 2-COLUMN LAYOUT ── */
+    .art-page-body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .art-sidebar {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .art-sidebar::-webkit-scrollbar { display: none; }
+    .sidebar-heading {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    #toc-section { display: none; margin-bottom: 1.75rem; }
+    .art-read-time { font-size: 0.7rem; color: var(--ink-soft); margin-bottom: 0.75rem; opacity: 0.7; }
+    .toc-link {
+      display: block;
+      padding: 0.375rem 0.625rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      border-radius: 8px;
+      transition: all var(--t);
+      border-left: 2px solid transparent;
+      line-height: 1.4;
+    }
+    .toc-link:hover { background: var(--cream); color: var(--ink); }
+    .toc-link.active {
+      border-left-color: var(--violet);
+      color: var(--ink);
+      font-weight: 700;
+      background: var(--violet-pale);
+    }
+    .toc-link.toc-h3 { padding-left: 1.5rem; font-size: .75rem; color: var(--ink-soft); border-left-color: transparent; }
+    .toc-link.toc-h3.active { border-left-color: rgba(95,62,232,.4); color: var(--ink-soft); font-weight: 600; }
+    #all-articles-section { margin-bottom: 0; }
+    .art-list-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.625rem 0.75rem;
+      border-radius: 10px;
+      margin-bottom: 0.25rem;
+      transition: all var(--t);
+      border-left: 2px solid transparent;
+    }
+    .art-list-link:hover { background: var(--cream); }
+    .art-list-link.active {
+      background: var(--violet-pale);
+      border-left: 2px solid var(--violet);
+      padding-left: calc(0.75rem - 2px);
+    }
+    .art-list-title { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); line-height: 1.35; }
+    .art-list-cat {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--violet);
+    }
+    .sidebar-cta {
+      display: block;
+      background: var(--violet);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 1.5rem;
+      transition: all var(--t);
+    }
+    .sidebar-cta:hover { background: var(--violet-dark); transform: translateY(-2px); }
+
+    /* ── MAIN CONTENT ── */
+    .art-main { min-width: 0; }
+
+    /* ── MOBILE NAV STRIP ── */
+    .art-mobile-nav {
+      display: none;
+      align-items: center;
+      gap: 0.625rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+    .art-mobile-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      padding: 0.4rem 0.875rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      white-space: nowrap;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+    .art-mobile-nav a:hover { color: var(--ink); border-color: var(--ink); }
+    .art-mobile-cat {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--lime);
+      padding: 0.35rem 0.875rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── BACK BUTTON ── */
+    .art-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      padding: .5rem .875rem .5rem .625rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      transition: all .2s;
+    }
+    .art-back:hover { color: var(--ink); border-color: var(--ink); }
+    .art-back svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── WHITE CARD ── */
+    .art-card {
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: var(--shsm);
+      border: 1px solid var(--line);
+      padding: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Typography */
+    .art-card p { font-size: 1.0625rem; color: var(--ink-soft); line-height: 1.9; margin-bottom: 1.375rem; }
+    .art-card p:first-of-type { font-size: 1.15rem; color: var(--ink); line-height: 1.85; font-weight: 400; }
+    .art-card h2 {
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--ink);
+      margin: 3rem 0 1rem;
+      line-height: 1.15;
+      padding-left: 1rem;
+      border-left: 3px solid var(--violet);
+      letter-spacing: -0.04em;
+    }
+    .art-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 2rem 0 .625rem; line-height: 1.2; letter-spacing: -0.03em; }
+    .art-card h4 { font-size: .9375rem; font-weight: 800; color: var(--ink); margin: 1.5rem 0 .5rem; text-transform: uppercase; letter-spacing: .06em; }
+    .art-card ul, .art-card ol { padding-left: 1.5rem; margin-bottom: 1.375rem; }
+    .art-card li { font-size: 1.0625rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: .5rem; }
+    .art-card strong { color: var(--ink); font-weight: 700; }
+    .art-card em { font-style: italic; }
+    .art-card a { color: var(--violet); text-decoration: underline; text-underline-offset: 3px; }
+    .art-card code {
+      font-family: monospace;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: .15em .45em;
+      font-size: .875em;
+      color: var(--ink);
+    }
+    .art-card hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+    .art-card blockquote {
+      border-left: 3px solid var(--violet);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--violet-pale);
+      border-radius: 0 16px 16px 0;
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+    }
+
+    /* ── COVER IMAGE ── */
+    .art-cover-img {
+      width: 100%;
+      max-height: 460px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── INLINE IMAGES ── */
+    .art-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      margin: 1.75rem auto;
+      box-shadow: var(--shsm);
+    }
+    .art-cta-btn {
+      display: inline-block;
+      padding: .65rem 1.5rem;
+      background: var(--violet);
+      color: var(--white) !important;
+      border-radius: 999px;
+      text-decoration: none !important;
+      font-weight: 700;
+      font-size: .95rem;
+      margin: .75rem 0;
+      transition: background .18s;
+    }
+    .art-cta-btn:hover { background: var(--violet-dark) !important; }
+
+    /* ── À RETENIR ENCART ── */
+    .art-retenir {
+      background: var(--white);
+      border: 1.5px solid rgba(95,62,232,.2);
+      border-radius: 18px;
+      padding: 0;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(21,21,21,0.06);
+    }
+    .art-retenir-header {
+      background: var(--ink);
+      padding: .875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+    }
+    .art-retenir-icon {
+      width: 22px; height: 22px;
+      background: rgba(95,62,232,.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+    .art-retenir-title {
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+    .art-retenir-body { padding: 1.25rem 1.5rem; }
+    .art-retenir-list { list-style: none; padding: 0; margin: 0; }
+    .art-retenir-list li {
+      font-size: .9rem;
+      color: var(--ink);
+      line-height: 1.65;
+      padding: .35rem 0 .35rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(21,21,21,0.05);
+    }
+    .art-retenir-list li:last-child { border-bottom: none; }
+    .art-retenir-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .65rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--violet);
+      opacity: .6;
+    }
+
+    /* Backward compat alias */
+    .art-summary {
+      background: var(--white);
+      border: 1.5px solid rgba(95,62,232,.2);
+      border-radius: 16px;
+      padding: 1.375rem 1.75rem;
+      margin-bottom: 2.5rem;
+      border-left: 4px solid var(--violet);
+      box-shadow: 0 2px 16px rgba(21,21,21,0.06);
+    }
+    .art-summary-label { font-size: .6rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--violet-dark); margin-bottom: .875rem; }
+    .art-summary-list { list-style: none; padding: 0; margin: 0; }
+    .art-summary-list li { font-size: .9375rem; color: var(--ink); line-height: 1.65; padding: .25rem 0 .25rem 1.375rem; position: relative; }
+    .art-summary-list li::before { content: '→'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
+
+    /* ── TABLES ── */
+    .art-table-wrap { overflow-x: auto; margin: 2rem 0; border-radius: 14px; box-shadow: var(--shsm); border: 1px solid var(--line); }
+    .art-table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
+    .art-table th { background: var(--ink); color: rgba(255,255,255,.85); font-weight: 800; padding: .75rem 1.125rem; text-align: left; font-size: .82rem; letter-spacing: .03em; white-space: nowrap; }
+    .art-table td { padding: .75rem 1.125rem; color: var(--ink-soft); border-bottom: 1px solid var(--line); line-height: 1.5; vertical-align: top; }
+    .art-table tr:last-child td { border-bottom: none; }
+    .art-table tr:nth-child(even) td { background: var(--cream); }
+
+    /* ── SHARE ── */
+    .art-share {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .art-share-lbl { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-right: .25rem; }
+    .art-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      font-size: .82rem;
+      font-weight: 700;
+      padding: .45rem .875rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .art-share-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    /* ── CTA ── */
+    .art-cta {
+      background: var(--ink);
+      border-radius: 24px;
+      padding: 3.5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .art-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 110%, rgba(95,62,232,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .art-cta-label {
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 1rem;
+      display: block;
+      opacity: .85;
+    }
+    .art-cta h3 {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: .875rem;
+      letter-spacing: -0.04em;
+    }
+    .art-cta p { font-size: .9375rem; color: rgba(255,255,255,.4); margin-bottom: 2rem; }
+    .art-cta-link {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--ink);
+      font-size: .9375rem;
+      font-weight: 800;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: background .18s, transform .18s;
+      box-shadow: 0 4px 20px rgba(221,255,82,.25);
+    }
+    .art-cta-link:hover { background: #e8ff82; transform: translateY(-2px); }
+
+    /* ── LOADING / ERROR ── */
+    .art-loading {
+      text-align: center;
+      padding: 6rem 2rem;
+      color: var(--ink-soft);
+    }
+    .art-loading svg {
+      width: 40px; height: 40px;
+      stroke: var(--violet-pale);
+      fill: none;
+      stroke-width: 1.5;
+      margin: 0 auto 1.5rem;
+      display: block;
+      animation: spin 1.5s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 768px) {
+      .art-hero { padding: 3.5rem 0 3rem; }
+      .art-card { padding: 2rem 1.5rem; }
+      .art-cta { padding: 2.5rem 1.5rem; }
+      .art-share { padding: 1rem 1.25rem; gap: .625rem; }
+      .art-page-body { grid-template-columns: 1fr; padding: 1.75rem 1.25rem 4rem; gap: 0; }
+      .art-sidebar { display: none; }
+      .art-mobile-nav { display: flex; }
+    }
+  </style>
+</head>
+<body class="art-page">
+
+<div class="art-progress" id="art-progress"></div>
+
+<header class="site-header" data-header>
+  <div class="shell nav-wrap">
+    <a class="brand" href="/" aria-label="Upglide, accueil">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>UPGLIDE</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+      <span class="sr-only">Ouvrir le menu</span>
+      <span></span><span></span>
+    </button>
+    <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+      <a href="/diagnostic">Diagnostic 360</a>
+      <a href="/methode-marc">Méthode MARC</a>
+      <a href="/ressources">Ressources</a>
+      <a href="/blog">Blog</a>
+      <a href="/a-propos">À propos</a>
+      <a class="nav-contact" href="/contact">Parler de mon e-commerce</a>
+    </nav>
+  </div>
+</header>
+
+<div class="art-hero" id="art-hero">
+  <div class="shell">
+    <div class="art-breadcrumb">
+      <a href="/">Accueil</a>
+      <span class="art-breadcrumb-sep">›</span>
+      <a href="/blog">Blog</a>
+      <span class="art-breadcrumb-sep">›</span>
+      <span>Panier moyen e-commerce : comment l’augm…</span>
+    </div>
+    <span class="art-category-badge">Marges</span>
+    <h1 class="art-h1">Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition</h1>
+    <div class="art-meta-bar">
+      <span>20 mai 2026</span>
+      <span class="art-meta-sep"></span>
+      <span>5 min de lecture</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-page-body">
+
+  <aside class="art-sidebar" id="art-sidebar">
+    <div id="toc-section" style="display:none;">
+      <div class="sidebar-heading">Dans cet article</div>
+      <div class="art-read-time">5 min de lecture</div>
+      <nav id="art-toc"></nav>
+    </div>
+    <div id="all-articles-section">
+      <div class="sidebar-heading">Tous les articles</div>
+      <nav id="sidebar-articles">
+      <a href="/blog/structurer-ses-campagnes-e-commerce" class="art-list-link">
+        <span class="art-list-cat">Stratégie</span>
+        <span class="art-list-title">Stratégie d'acquisition e-commerce : comment structurer ses campagnes (méthode en 6 étapes)</span>
+      </a>
+      <a href="/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-" class="art-list-link">
+        <span class="art-list-cat">Stratégie</span>
+        <span class="art-list-title">Rentabilité e-commerce : analyser votre parcours client pour comprendre pourquoi vos marges diminuent</span>
+      </a>
+      <a href="/blog/augmenter-panier-moyen-ecommerce" class="art-list-link active">
+        <span class="art-list-cat">Marges</span>
+        <span class="art-list-title">Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition</span>
+      </a>
+      <a href="/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque" class="art-list-link">
+        <span class="art-list-cat">Stratégie</span>
+        <span class="art-list-title">Fidélisation e-commerce : 5 leviers pour transformer chaque client satisfait en ambassadeur de marque</span>
+      </a>
+      </nav>
+    </div>
+    <a href="/diagnostic" class="sidebar-cta">Réserver l'appel →</a>
+  </aside>
+
+  <main class="art-main">
+    <div class="art-mobile-nav" id="art-mobile-nav">
+      <a href="/blog">
+        <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Blog
+      </a>
+      <span class="art-mobile-cat">Marges</span>
+    </div>
+
+    <a href="/blog" class="art-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour au blog
+    </a>
+
+    <div class="art-card" id="art-card">
+      <div id="art-content">
+        
+        
+        <p>Vos ventes progressent, vos commandes s'enchaînent, et pourtant votre chiffre d'affaires n'avance pas aussi vite que vous le voudriez. Si cette situation vous parle, il y a de fortes chances que le problème ne soit pas votre trafic. Il est dans votre panier moyen.</p><p>Le panier moyen, c'est le montant moyen dépensé par chaque client lors d'une commande. Et c'est probablement le KPI le plus sous-optimisé de l'e-commerce. Pendant que la majorité des marchands injectent du budget dans leurs campagnes publicitaires pour attirer plus de visiteurs, ils laissent de l'argent sur la table à chaque commande passée sur leur boutique.</p><p>Dans cet article, nous allons voir ensemble comment changer tout cela, avec des réglages que vous pourrez mettre en place dès cette semaine.</p><h2>Pourquoi le panier moyen est le levier le plus rentable de votre e-commerce</h2><p>Prenons un exemple simple. Vous réalisez 30 000 € de chiffre d'affaires par mois avec 600 commandes. Votre panier moyen est de 50 €. Si vous parvenez à le porter à 55 €, vous atteignez 33 000 € — soit 3 000 € supplémentaires par mois, sans avoir acquis un seul nouveau client et sans augmenter votre budget publicitaire.</p><p>Mais ce n'est pas tout. Quand votre panier moyen augmente, le retour sur investissement de l'ensemble de vos campagnes marketing augmente mécaniquement avec lui. Chaque euro dépensé en acquisition vous rapporte davantage. C'est ce qu'on appelle un effet de levier, et c'est exactement ce que la plupart des e-commerçants négligent.</p><p>La bonne nouvelle, c'est qu'augmenter son panier moyen ne nécessite pas de refondre sa boutique ni de relancer une campagne coûteuse. Cela passe par trois leviers précis.</p><h2>Levier 1 — Travailler l'offre pour vendre mieux, sans forcément vendre plus</h2><h3>L'upsell : guider le client vers la version supérieure</h3><p>La majorité des boutiques en ligne présentent leurs gammes de produits côte à côte, sans argument, sans direction. Résultat : le client choisit systématiquement la version la moins chère, non pas parce qu'elle lui convient mieux, mais parce que personne ne lui a expliqué la différence.</p><p>Amazon a résolu ce problème depuis longtemps en affichant des tableaux comparatifs clairs entre les versions standard et premium. Quand l'écart de prix est de cinq ou dix euros et que les avantages sont bien explicités, une grande partie des clients choisit naturellement la gamme supérieure. La règle est simple : un upsell sans argument, c'est juste un prix plus élevé. Un upsell avec un argument, c'est une aide à la décision.</p><h3>Les bundles : créer de la valeur perçue</h3><p>Packager plusieurs produits complémentaires dans une offre unique est l'une des techniques les plus efficaces pour augmenter le panier moyen. Bien conçu, un bundle donne au client l'impression de faire une bonne affaire, tandis que vous vendez trois produits au lieu d'un — sans dépenser un centime supplémentaire en acquisition.</p><p>La clé d'un bundle réussi : il doit répondre à un besoin complet, pas simplement regrouper des articles au hasard. Un client qui achète une machine à café a besoin de café, de filtres, peut-être d'un produit détartrant. Un pack "Démarrage parfait" qui rassemble tout ça crée de la valeur réelle, et ça se ressent dans le taux de conversion.</p><h3>Le cross-sell : ne pas laisser le client incomplet</h3><p>Le cross-sell, c'est proposer le produit complémentaire au bon moment. Le client achète une perceuse ? Proposez les mèches. Il achète un sac à dos ? Proposez l'imperméabilisant. La suggestion doit être tellement évidente que le client se dit "ah oui, j'allais oublier ça."</p><p>À l'inverse, une suggestion sans rapport avec le produit principal n'augmente pas le panier, et c'est même contre productif, et le client risque d'abandonner plus vite sa commande.</p><h3>Les services additionnels et la personnalisation</h3><p>Gravure, emballage cadeau, garantie étendue, installation… Ces options ont un double avantage : elles augmentent le panier moyen et la satisfaction client simultanément. La personnalisation est une tendance forte : les consommateurs veulent du sur-mesure et sont prêts à payer pour ça. C'est de la marge quasi pure, puisqu'elle génère presque aucun coût d'acquisition supplémentaire.</p><h3>Une hausse de prix mesurée</h3><p>Augmenter légèrement ses prix fait peur. Et pourtant, c'est souvent la décision la plus impactante. Un produit vendu à 47 € au lieu de 43 €, multiplié par 500 commandes par mois, représente 2 000 € de chiffre d'affaires supplémentaire.</p><p>Et même si vous perdez quelques commandes au passage — imaginons que vous passiez de 500 à 480 commandes — le calcul reste gagnant : 480 commandes à 47 € génèrent 22 560 €, contre 21 500 € avec 500 commandes à 43 €. Vous avez perdu 20 commandes, gagné plus de 1 000 € de chiffre d'affaires, et géré moins de logistique. La condition : s'assurer que la valeur perçue justifie le nouveau prix Mon conseil : faites des tests avec plusieurs prix différents afin de voir ce qui vous rapporte le plus en termes de marge.</p><h2>Levier 2 — Jouer avec la psychologie du prix</h2><h3>Le seuil de livraison gratuite : visible au bon moment</h3><p>C'est le levier le plus connu, et pourtant le plus souvent mal exploité. Afficher "livraison gratuite à partir de 60 €" dans le header de votre site ne suffit pas. Le client l'oublie dès qu'il se retrouve dans son panier.</p><p>La bonne pratique : une barre de progression en temps réel dans le panier. "Plus que 8 € pour bénéficier de la livraison gratuite." Ce petit message change tout. 8 €, c'est rien. Le client retourne sur votre boutique, trouve un article qui lui manquait, et son panier passe de 52 € à 63 €.</p><p>Pour fixer le bon seuil, regardez votre panier moyen actuel et positionnez-vous 10 à 20 % au-dessus. Assez incitatif pour déclencher l'action, pas assez haut pour décourager.</p><h3>Le paiement en plusieurs fois : l'arme la plus sous-estimée</h3><p>Le paiement en 3 ou 4 fois sans frais est probablement le levier le plus puissant de cette liste — et paradoxalement, l'un des moins utilisés. Les chiffres parlent d'eux-mêmes : Selon Oney, le panier moyen des achats réglés en 3x ou 4x est supérieur de 10 à 30 % à celui des achats payés en une seule fois. Selon une étude Alma (2025), les sites proposant le paiement fractionné enregistrent en moyenne une augmentation de 15 % du taux de conversion et de 35 % du panier moyen sur les articles à prix élevé. </p><p>La raison est simple : le client ne raisonne plus en prix total, mais en mensualité. Un produit à 150 € devient "50 € par mois." La barrière psychologique qui lui faisait hésiter s'effondre. Si vous vendez des produits au-dessus de 80 à 100 € et que vous n'avez pas encore activé le paiement fractionné sur votre boutique, vous laissez de l'argent sur la table à chaque commande.</p><h2>Levier 3 — Configurer votre boutique comme un vrai outil de vente</h2><h3>Le merchandising : mettre en scène pour mieux vendre</h3><p>Vos pages catégories sont votre espace de vente. La plupart des marchands les laissent triées par défaut — par date de mise en ligne ou par ordre alphabétique. C'est une erreur. Un supermarché ne range pas ses produits dans l'ordre alphabétique : il positionne ses produits à forte marge en tête de gondole, bien visibles.</p><p>Faites pareil. Mettez vos bundles, vos meilleures offres et vos produits à meilleure marge en premier. L'œil de votre client doit tomber sur ce que vous voulez vendre, pas sur ce que l'algorithme de votre plateforme a décidé pour vous.</p><h3>Le copywriting et les visuels : la désirabilité avant le prix</h3><p>On achète ce qu'on voit et ce qu'on ressent. Un visuel de mauvaise qualité tue la désirabilité d'un produit, quelle que soit sa qualité réelle. Et les mots ont autant d'importance. "T-shirt coton" ne vend pas autant que "T-shirt 100 % coton bio, coupe oversize, doux au toucher." L'un décrit. L'autre crée le désir, justifie le prix, et donne envie d'acheter avant même que le client ait vu le tarif.</p><p>La différence entre un panier à 40 € et un panier à 65 € se joue souvent là : des photos qui permettent de se projeter et des mots qui donnent envie. L'idée est d'aller toucher les sentiments du prospects afin que celui-ci soit touché par votre produit.</p><h3>Les recommandations personnalisées : le vendeur qui ne dort jamais</h3><p>"Les clients ont aussi acheté", "Vous aimerez peut-être"… On cite souvent le chiffre de 35 % du CA d'Amazon généré par ses recommandations. Des outils comme Klaviyo ou les plugins natifs de Shopify et PrestaShop vous donnent accès à cette mécanique sans budget pharaonique. La règle : plus la suggestion est pertinente et personnalisée, plus elle convertit.</p><h2>Par où commencer : le plan d'action concret</h2><p>Vous avez maintenant les trois leviers. Voici comment les prioriser pour un impact maximal et rapide.</p><p><strong>Quick win n°1 — La barre de progression vers la livraison gratuite.</strong> C'est 30 minutes à configurer sur n'importe quelle plateforme e-commerce, et le retour est quasi immédiat. Commencez par là.</p><p><strong>Quick win n°2 — Le paiement en 3 fois.</strong> Si vous vendez des produits au-dessus de 80 €, c'est non-négociable. Activez-le cette semaine.</p><p><strong>Ensuite — Les bundles.</strong> Identifiez deux ou trois associations de produits qui font sens dans votre catalogue et créez vos premières offres packagées.</p><p><strong>En continu — Les fiches produits.</strong> Revoyez vos photos et vos descriptions. C'est un travail de fond, mais c'est ce qui fera la différence sur le long terme.</p><p>La méthode : un levier à la fois. Vous mesurez, vous ajustez, et vous passez au suivant. C'est comme ça qu'on construit une rentabilité solide.</p><h4>Questions fréquentes sur le panier moyen en e-commerce</h4><p><strong>Comment calculer son panier moyen ?</strong> La formule est simple : chiffre d'affaires total sur une période donnée divisé par le nombre de commandes sur cette même période.</p><p><strong>À quel seuil fixer la livraison gratuite ?</strong> Regardez votre panier moyen actuel et fixez le seuil entre 10 et 20 % au-dessus. Si votre panier moyen est à 50 €, visez un seuil autour de 58 à 60 €.</p><p><strong>Si j'augmente mes prix, mes clients achèteront plutôt à la concurrence ?</strong> Pas nécessairement. Une hausse légère sur des produits bien positionnés est souvent imperceptible pour le client, mais très significative pour vos marges. L'essentiel est que la valeur perçue soit au rendez-vous. Un client n'achète pas forcément le produit le moins cher, il achète ce qui le met le plus en confiance et ce qui représente, pour lui, le produit qui répondra le plus à son besoin.</p><p><strong>Quels outils pour mettre en place des recommandations personnalisées ?</strong>Klaviyo, les apps natives Shopify comme LimeSpot ou Also Bought, ou les modules PrestaShop dédiés sont de bons points de départ selon votre plateforme et votre budget.</p><p><em>Vous voulez aller plus loin et identifier concrètement où votre e-commerce laisse de l'argent sur la table ? Upglide propose un diagnostic gratuit de 30 minutes pour votre e-commerce.</em> <em><a href="https://www.upglide.fr/audit-rentabilite-ecommerce" target="_blank" rel="noopener">Le lien est juste ici.</a><strong></em>Mots-clés secondaires :</strong> panier moyen boutique en ligne, GMV e-commerce, upsell cross-sell e-commerce, livraison gratuite seuil panier</p>
+      </div>
+    </div>
+
+    <div class="art-share" id="art-share">
+      <span class="art-share-lbl">Partager</span>
+      <a class="art-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fupglide.fr%2Fblog%2Faugmenter-panier-moyen-ecommerce" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <button class="art-share-btn" onclick="copyLink()">
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span id="copy-lbl">Copier le lien</span>
+      </button>
+    </div>
+
+    <div class="art-cta" id="art-cta">
+      <span class="art-cta-label">Accompagnement 1:1</span>
+      <h3>Votre boutique mérite<br>un regard extérieur.</h3>
+      <p>30 minutes. Gratuit. On voit si on peut travailler ensemble.</p>
+      <a href="/diagnostic" class="art-cta-link">Réserver l'appel découverte →</a>
+    </div>
+  </main>
+
+</div>
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="brand brand-footer" href="/">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>UPGLIDE</span>
+      </a>
+      <p>Le profit comme boussole.<br>La croissance comme conséquence.</p>
+    </div>
+    <div>
+      <strong>Explorer</strong>
+      <a href="/diagnostic">Diagnostic 360</a>
+      <a href="/methode-marc">Méthode MARC</a>
+      <a href="/ressources">Ressources</a>
+      <a href="/blog">Blog</a>
+    </div>
+    <div>
+      <strong>Upglide</strong>
+      <a href="/a-propos">À propos</a>
+      <a href="/contact">Contact</a>
+      <a href="/scorecard">Score rentabilité</a>
+    </div>
+    <div class="footer-cta">
+      <strong>Par où commencer ?</strong>
+      <p>Obtenez une première lecture de votre rentabilité en 5 minutes.</p>
+      <a href="/scorecard">Faire le score →</a>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <span>© <span data-year></span> Upglide</span>
+    <span>Rentabilité · Cash · Pilotage</span>
+  </div>
+</footer>
+
+<script>
+/* READING PROGRESS */
+var prog = document.getElementById('art-progress');
+if (prog) window.addEventListener('scroll', function() {
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? (window.scrollY / h * 100) : 0) + '%';
+}, { passive: true });
+
+/* COPY LINK */
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var lbl = document.getElementById('copy-lbl');
+    lbl.textContent = 'Copié !';
+    setTimeout(function() { lbl.textContent = 'Copier le lien'; }, 2000);
+  });
+}
+
+/* TOC */
+(function() {
+  var content = document.getElementById('art-content');
+  var tocNav  = document.getElementById('art-toc');
+  var tocSect = document.getElementById('toc-section');
+  if (!content || !tocNav) return;
+  var headings = Array.from(content.querySelectorAll('h2, h3')).filter(function(h) {
+    return !/à retenir|en résumé|résumé|conclusion rapide/i.test(h.textContent);
+  });
+  if (!headings.length) return;
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'section-' + i;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'toc-link' + (h.tagName === 'H3' ? ' toc-h3' : '');
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    tocNav.appendChild(a);
+  });
+  if (tocSect) tocSect.style.display = 'block';
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var link = tocNav.querySelector('a[href="#' + entry.target.id + '"]');
+      if (link) link.classList.toggle('active', entry.isIntersecting);
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+  headings.forEach(function(h) { obs.observe(h); });
+})();
+
+/* READING STATS */
+(function() {
+  var slug = 'augmenter-panier-moyen-ecommerce';
+  var startTime = Date.now(), maxDepth = 0, statsSent = false;
+  window.addEventListener('scroll', function() {
+    var h = document.body.scrollHeight - window.innerHeight;
+    if (h > 0) { var d = Math.round(window.scrollY / h * 100); if (d > maxDepth) maxDepth = d; }
+  }, { passive: true });
+  function sendStats() {
+    if (statsSent) return; statsSent = true;
+    var time = Math.round((Date.now() - startTime) / 1000);
+    if (time < 5) return;
+    navigator.sendBeacon('/.netlify/functions/track',
+      new URLSearchParams({ slug: slug, time: time, depth: maxDepth }).toString());
+  }
+  window.addEventListener('pagehide', sendStats);
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') sendStats();
+  });
+})();
+</script>
+<script src="/marc.js" defer></script>
+<script src="/analytics.js" defer></script>
+</body>
+</html>
