@@ -1,875 +1,456 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Méthode MARC — Rentabiliser son E-commerce | Upglide</title>
-  <meta name="description" content="La méthode MARC pour la rentabilité e-commerce — une séquence opérationnelle en 4 phases : Mesurer, Assainir, Rentabiliser, Croître. Audit rentabilité e-commerce structuré."/>
-  <link rel="canonical" href="https://upglide.fr/methode-marc"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Méthode MARC — Rentabiliser son E-commerce | Upglide"/>
-  <meta property="og:description" content="La méthode MARC pour la rentabilité e-commerce — une séquence opérationnelle en 4 phases. Pas une checklist — une logique financière qui interdit de croître sur une structure de coûts non assainie."/>
-  <meta property="og:url" content="https://upglide.fr/methode-marc"/>
-  <meta property="og:locale" content="fr_FR"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"WebPage","@id":"https://upglide.fr/methode-marc","url":"https://upglide.fr/methode-marc","name":"Méthode MARC — Mesurer, Assainir, Rentabiliser, Croître","description":"La méthode MARC pour la rentabilité e-commerce : séquence opérationnelle en 4 phases.","inLanguage":"fr-FR","isPartOf":{"@id":"https://www.upglide.fr/#website"}},
-    {"@type":"HowTo","name":"Méthode MARC — Améliorer la rentabilité e-commerce en 4 phases","description":"Séquence opérationnelle pour transformer un e-commerce en structure rentable et pilotable.","step":[
-      {"@type":"HowToStep","name":"Mesurer","text":"Analyser la vraie contribution marginale par SKU, le CAC réel par canal, le cash conversion cycle, et l'audit stock.","position":1},
-      {"@type":"HowToStep","name":"Assainir","text":"Éliminer les pertes silencieuses : audit logistique, renégociation transporteur, nettoyage catalogue, coûts fixes.","position":2},
-      {"@type":"HowToStep","name":"Rentabiliser","text":"Augmenter la marge sans augmenter le volume : pricing, mix produit, upsell, politique de remise.","position":3},
-      {"@type":"HowToStep","name":"Croître","text":"Scaler sur des fondations saines avec dashboards de pilotage, prévisions cashflow et plan de croissance par canal.","position":4}
-    ]}
-  ]}
-  </script>
-
-  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
-
-  <style>
-    :root {
-      --isa:#F5F1E8; --alm:#E8D4AA;
-      --lion:#C9A052; --lion2:#A8802E;
-      --cad:#1E2D5A; --cad2:#131D3C;
-      --wh:#FFFFFF;
-      --txt:#1E2D5A; --txt2:#4A5878; --txt3:#5A6A8A;
-      --bdr:rgba(30,45,90,.09);
-      --ft:'Cormorant Garamond',Georgia,serif;
-      --fb:'Manrope',system-ui,sans-serif;
-      --r:12px; --rlg:20px;
-      --shsm:0 2px 12px rgba(30,45,90,.08);
-      --shmd:0 8px 32px rgba(30,45,90,.12);
-      --shlg:0 20px 64px rgba(30,45,90,.18);
-      --shg:0 6px 24px rgba(201,160,82,.3);
-      --t:.22s ease;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:var(--fb);background:var(--isa);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    h1,h2,h3{font-family:var(--ft);line-height:1.1;letter-spacing:-.01em}
-    a{text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* ── PROGRESS BAR ── */
-    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lion);z-index:400;will-change:width;transition:width .1s linear}
-
-    /* ── NAV ── */
-    nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t)}
-    nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem}
-    @media(min-width:768px){.nav-inner{padding:1rem 2rem}}
-    @media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem)}}
-    .logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic}
-    .logo span{color:var(--lion);font-style:normal}
-    .nav-links{display:none}
-    @media(min-width:768px){
-      .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none}
-      .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t)}
-      .nav-links a:hover{color:var(--cad);background:var(--isa)}
-    }
-    .nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none}
-    @media(min-width:768px){.nav-cta{display:inline-flex}}
-    .nav-cta:hover{background:var(--cad2);transform:translateY(-1px)}
-    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
-    @media(min-width:768px){.burger{display:none}}
-    .burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s}
-    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .burger.open span:nth-child(2){opacity:0}
-    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column}
-    .mob-nav.open{display:flex}
-    .mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr)}
-    .mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem}
-    .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block}
-
-    /* ── LAYOUT ── */
-    .wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
-    @media(min-width:640px){.wrap{padding:0 2rem}}
-    @media(min-width:1024px){.wrap{padding:0 clamp(1.5rem,4vw,3rem)}}
-    .wrap--tight{max-width:720px;margin:0 auto;padding:0 1.25rem}
-    @media(min-width:640px){.wrap--tight{padding:0 2rem}}
-    .section{padding:5rem 0}
-    @media(min-width:768px){.section{padding:6rem 0}}
-
-    /* ── BUTTONS ── */
-    .btn-gold{background:var(--lion);color:var(--cad2);padding:.9375rem 2rem;border-radius:100px;font-family:var(--fb);font-size:.9375rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:all var(--t);text-decoration:none;box-shadow:var(--shg);border:none;cursor:pointer}
-    .btn-gold:hover{background:var(--lion2);transform:translateY(-2px);box-shadow:0 10px 32px rgba(201,160,82,.45)}
-    .btn-ghost{background:transparent;color:rgba(255,255,255,.72);border:1.5px solid rgba(255,255,255,.22);border-radius:100px;padding:.9375rem 2rem;font-family:var(--fb);font-size:.9375rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:all var(--t);text-decoration:none;cursor:pointer}
-    .btn-ghost:hover{color:var(--wh);border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.06)}
-    .btn-navy{background:var(--cad);color:var(--wh);padding:.9375rem 2rem;border-radius:100px;font-family:var(--fb);font-size:.9375rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:all var(--t);text-decoration:none;border:none;cursor:pointer}
-    .btn-navy:hover{background:var(--cad2);transform:translateY(-2px);box-shadow:var(--shmd)}
-
-    /* ── TAG / EYEBROW ── */
-    .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lion);margin-bottom:1.25rem}
-    .tag::before{content:'';width:20px;height:1.5px;background:var(--lion);flex-shrink:0}
-    .tag--light{color:rgba(255,255,255,.45)}
-    .tag--light::before{background:rgba(255,255,255,.35)}
-
-    /* ── HEADINGS ── */
-    .h1{font-family:var(--ft);font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.05;font-weight:600;letter-spacing:-.02em}
-    .h2{font-family:var(--ft);font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;color:var(--cad)}
-    .h2--light{color:var(--wh)}
-    .h3{font-family:var(--ft);font-size:1.4rem;line-height:1.15;font-weight:600;color:var(--cad)}
-    .lead{font-size:1.0625rem;color:var(--txt2);line-height:1.85;font-weight:400}
-    .lead--light{color:rgba(255,255,255,.6)}
-
-    /* ── REVEAL ANIMATION ── */
-    .rv{opacity:0;transform:translateY(22px);transition:opacity .62s cubic-bezier(.4,0,.2,1),transform .62s cubic-bezier(.4,0,.2,1)}
-    .rv.on{opacity:1;transform:none}
-    .d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.26s}.d4{transition-delay:.34s}.d5{transition-delay:.42s}
-
-    /* ════════════════════════════
-       HERO
-    ════════════════════════════ */
-    .hero{background:var(--cad);padding:6rem 0 5rem;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;top:-20%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(201,160,82,.08) 0%,transparent 65%);pointer-events:none}
-    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
-    .hero-inner{position:relative;z-index:1}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:.6875rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lion);margin-bottom:1.5rem}
-    .hero-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--lion)}
-    .hero h1{color:var(--wh);max-width:780px;margin-bottom:1.5rem}
-    .hero h1 em{color:var(--lion);font-style:italic}
-    .hero-sub{font-size:1.0625rem;color:rgba(255,255,255,.55);max-width:620px;line-height:1.85;margin-bottom:2.5rem;font-weight:400}
-    .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:3.5rem}
-    .hero-letters{display:flex;gap:1.5rem;flex-wrap:wrap}
-    .marc-letter{background:rgba(201,160,82,.1);border:1px solid rgba(201,160,82,.25);border-radius:var(--r);padding:1.25rem 1.75rem;text-align:center;min-width:100px;transition:all var(--t)}
-    .marc-letter:hover{background:rgba(201,160,82,.18);border-color:rgba(201,160,82,.45);transform:translateY(-3px)}
-    .marc-letter-char{font-family:var(--ft);font-size:2.5rem;font-weight:700;color:var(--lion);line-height:1;margin-bottom:.4rem;font-style:italic}
-    .marc-letter-word{font-family:var(--fb);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-    @media(max-width:600px){
-      .hero{padding:4rem 0 3.5rem}
-      .hero-ctas{flex-direction:column;align-items:stretch}
-      .hero-letters{gap:1rem}
-      .marc-letter{min-width:calc(50% - .5rem);flex:1}
-    }
-
-    /* ════════════════════════════
-       SECTION: POURQUOI UNE SÉQUENCE
-    ════════════════════════════ */
-    .philosophie{background:var(--wh);border-top:1px solid var(--bdr)}
-    .philo-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-    .philo-principles{display:flex;flex-direction:column;gap:0}
-    .principle{padding:1.75rem 0;border-bottom:1px solid var(--bdr);display:grid;grid-template-columns:48px 1fr;gap:1.25rem;align-items:start}
-    .principle:first-child{border-top:1px solid var(--bdr)}
-    .principle-num{font-family:var(--ft);font-size:2rem;color:rgba(201,160,82,.2);font-weight:700;line-height:1;padding-top:.125rem;transition:color var(--t)}
-    .principle:hover .principle-num{color:rgba(201,160,82,.55)}
-    .principle h3{font-family:var(--fb);font-size:.9375rem;font-weight:600;color:var(--cad);margin-bottom:.375rem;line-height:1.4}
-    .principle p{font-size:.875rem;color:var(--txt2);line-height:1.7}
-    .philo-quote{background:var(--isa);border-radius:var(--rlg);padding:2.25rem;border-left:3px solid var(--lion);margin-top:2rem}
-    .philo-quote blockquote{font-family:var(--ft);font-size:1.3rem;color:var(--cad);line-height:1.45;font-style:italic;font-weight:600;margin-bottom:1rem}
-    .philo-quote cite{font-family:var(--fb);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lion)}
-    .philo-flow{background:var(--isa);border-radius:var(--rlg);padding:2rem;border:1px solid var(--bdr)}
-    .flow-title{font-family:var(--fb);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:1.5rem}
-    .flow-steps{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-    .flow-step{display:flex;flex-direction:column;align-items:center;gap:.375rem;flex:1;min-width:60px}
-    .flow-step-char{width:48px;height:48px;border-radius:50%;background:var(--wh);border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-family:var(--ft);font-size:1.375rem;font-weight:700;color:var(--lion);font-style:italic;box-shadow:var(--shsm);transition:all var(--t)}
-    .flow-step:hover .flow-step-char{background:var(--lion);color:var(--wh);border-color:var(--lion);transform:scale(1.08)}
-    .flow-step-label{font-family:var(--fb);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3)}
-    .flow-arrow{color:var(--lion);font-size:1.1rem;opacity:.45;flex-shrink:0;align-self:flex-start;padding-top:.65rem}
-    .flow-caption{margin-top:1.25rem;font-family:var(--fb);font-size:.75rem;color:var(--txt3);text-align:center;font-style:italic}
-    @media(max-width:768px){.philo-grid{grid-template-columns:1fr;gap:2.5rem}}
-
-    /* ════════════════════════════
-       PHASE SECTIONS (shared)
-    ════════════════════════════ */
-    .phase-section{position:relative;overflow:hidden}
-    .phase-section--isa{background:var(--isa);border-top:1px solid var(--bdr)}
-    .phase-section--wh{background:var(--wh);border-top:1px solid var(--bdr)}
-    .phase-deco{position:absolute;top:-1rem;right:-1rem;font-family:var(--ft);font-size:clamp(8rem,18vw,16rem);font-weight:700;color:var(--lion);opacity:.04;line-height:1;pointer-events:none;user-select:none;font-style:italic}
-    .phase-inner{position:relative;z-index:1}
-    .phase-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fb);font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lion);margin-bottom:1.25rem;background:rgba(201,160,82,.1);border:1px solid rgba(201,160,82,.2);padding:.375rem 1rem;border-radius:100px}
-    .phase-layout{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
-    .phase-h2{font-family:var(--ft);font-size:clamp(1.875rem,3.5vw,2.75rem);color:var(--cad);margin-bottom:1.25rem;font-weight:600;line-height:1.08}
-    .phase-h2 em{color:var(--lion);font-style:italic}
-    .phase-lead{font-size:.9875rem;color:var(--txt2);line-height:1.85;margin-bottom:2rem}
-    .phase-quote{background:var(--wh);border-left:3px solid var(--lion);padding:1.125rem 1.25rem;border-radius:0 var(--r) var(--r) 0;margin-top:1.75rem;box-shadow:var(--shsm)}
-    .phase-section--wh .phase-quote{background:var(--isa)}
-    .phase-quote p{font-family:var(--ft);font-size:1.0625rem;color:var(--cad);line-height:1.55;font-style:italic}
-    .phase-items{display:flex;flex-direction:column;gap:0}
-    .phase-item{display:grid;grid-template-columns:28px 1fr;gap:1rem;padding:1.125rem 0;border-bottom:1px solid var(--bdr);align-items:start;transition:all var(--t);cursor:default}
-    .phase-item:first-child{border-top:1px solid var(--bdr);padding-top:1.25rem}
-    .phase-item:hover .pi-dot{background:var(--lion);transform:scale(1.2)}
-    .pi-dot{width:8px;height:8px;border-radius:50%;background:rgba(201,160,82,.35);margin-top:.45rem;flex-shrink:0;transition:all var(--t)}
-    .phase-item-text{font-size:.875rem;color:var(--txt2);line-height:1.65}
-    .phase-item-text strong{color:var(--cad);font-weight:600;display:block;margin-bottom:.2rem;font-size:.9rem}
-    .phase-deliverable{background:var(--cad);border-radius:var(--rlg);padding:2rem;margin-top:2.25rem;position:relative;overflow:hidden}
-    .phase-deliverable::before{content:'';position:absolute;top:-30%;right:-10%;width:200px;height:200px;background:radial-gradient(circle,rgba(201,160,82,.12) 0%,transparent 65%);pointer-events:none}
-    .phase-deliverable-label{font-family:var(--fb);font-size:.625rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,160,82,.7);margin-bottom:.75rem}
-    .phase-deliverable p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.7;position:relative;z-index:1}
-    .phase-deliverable p strong{color:var(--lion);font-weight:600}
-    @media(max-width:768px){.phase-layout{grid-template-columns:1fr;gap:2.25rem}}
-    @media(max-width:600px){.phase-deco{font-size:7rem;top:auto;bottom:-1rem}}
-
-    /* ════════════════════════════
-       COMPARISON TABLE
-    ════════════════════════════ */
-    .comparison{background:var(--isa);border-top:1px solid var(--bdr)}
-    .comp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2.5rem}
-    .comp-table{width:100%;border-collapse:collapse;min-width:600px}
-    .comp-table th{font-family:var(--fb);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.25rem;text-align:left;border-bottom:2px solid var(--bdr)}
-    .comp-table th:first-child{color:var(--txt3);width:200px}
-    .comp-table th:nth-child(2){color:var(--txt3)}
-    .comp-table th:nth-child(3){color:var(--txt3)}
-    .comp-table th:nth-child(4){color:var(--lion);background:rgba(201,160,82,.06);border-radius:var(--r) var(--r) 0 0;border-bottom-color:var(--lion)}
-    .comp-table td{padding:.9375rem 1.25rem;font-size:.875rem;color:var(--txt2);border-bottom:1px solid var(--bdr);line-height:1.55;vertical-align:top}
-    .comp-table td:first-child{font-weight:600;color:var(--cad);font-size:.8125rem;letter-spacing:.03em;text-transform:uppercase}
-    .comp-table td:nth-child(4){background:rgba(201,160,82,.04);color:var(--cad);font-weight:500}
-    .comp-table tr:last-child td:nth-child(4){border-radius:0 0 var(--r) var(--r)}
-    .comp-table tr:hover td{background:rgba(30,45,90,.02)}
-    .comp-table tr:hover td:nth-child(4){background:rgba(201,160,82,.08)}
-    .check{color:var(--lion);font-weight:700}
-    .cross{color:var(--txt3)}
-
-    /* ════════════════════════════
-       CTA FINAL
-    ════════════════════════════ */
-    .cta-final{background:var(--cad);padding:6rem 0;text-align:center;position:relative;overflow:hidden}
-    .cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(201,160,82,.07) 0%,transparent 65%);pointer-events:none}
-    .cta-final-inner{position:relative;z-index:1}
-    .cta-final .tag{justify-content:center}
-    .cta-final h2{color:var(--wh);max-width:540px;margin:0 auto 1.25rem}
-    .cta-final .lead{color:rgba(255,255,255,.5);max-width:480px;margin:0 auto 2.5rem}
-    .cta-final-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-    @media(max-width:500px){.cta-final-btns{flex-direction:column;align-items:stretch}.cta-final-btns .btn-gold,.cta-final-btns .btn-ghost{justify-content:center}}
-
-    /* ════════════════════════════
-       SEO PARAGRAPH
-    ════════════════════════════ */
-    .seo-paragraph{background:var(--wh);border-top:1px solid var(--bdr)}
-    .seo-paragraph p{font-size:.875rem;color:var(--txt2);line-height:1.9;font-weight:300}
-    .seo-paragraph strong{color:var(--cad);font-weight:500}
-
-    /* ════════════════════════════
-       FOOTER
-    ════════════════════════════ */
-    footer{background:var(--cad2);padding:3rem 0}
-    .foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem}
-    @media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem}}
-    .foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh)}
-    .foot-logo span{color:var(--lion);font-style:normal}
-    .foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem}
-    .foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t)}
-    .foot-link:hover{color:var(--wh)}
-    .foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%}
-  </style>
-<link rel="preload" href="marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="marc.css"></noscript>
-</head>
-<body>
-
-<div id="progress"></div>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">Upglide<span> ·</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
-      <li><a href="methode-marc.html" class="active">Méthode MARC</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
-    </ul>
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
-  <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
-      <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
-    </svg>
-  </button>
-  <a href="index.html" onclick="closeMob()">Accueil</a>
-  <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
-  <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
-  <a href="ressources.html" onclick="closeMob()">Ressources</a>
-  <a href="blog.html" onclick="closeMob()">Blog</a>
-  <a href="a-propos.html" onclick="closeMob()">À propos</a>
-  <a href="a-propos.html" onclick="closeMob()">À propos</a>
-  <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
-</div>
-
-<!-- ════════════════════════════
-     HERO
-════════════════════════════ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-inner">
-      <div class="hero-eyebrow rv">La Méthode</div>
-      <h1 class="h1 rv d1">MARC — La séquence qui transforme une boutique rentable en e-commerce <em>pilotable.</em></h1>
-      <p class="hero-sub rv d2">Quatre phases. Un ordre précis. La logique financière qui interdit de croître sur une structure de coûts non assainie.</p>
-      <div class="hero-ctas rv d3">
-        <a href="#mesurer" class="btn-ghost">Voir comment MARC s'applique →</a>
-        <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold">Réserver le diagnostic →</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Méthode de rentabilité e-commerce en 4 étapes : Mesurer, Assainir, Rentabiliser et Croître. Identifiez les bons leviers pour transformer le chiffre d’affaires en marge, cash et profit."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://upglide.fr/methode-marc.html" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Upglide" />
+    <meta property="og:title" content="Méthode MARC : piloter la rentabilité e-commerce | Upglide" />
+    <meta property="og:description" content="Une méthode en quatre étapes pour comprendre pourquoi le profit ne suit pas les ventes, prioriser les bons leviers et accélérer dans le bon ordre." />
+    <meta property="og:url" content="https://upglide.fr/methode-marc.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Méthode MARC : piloter la rentabilité e-commerce | Upglide</title>
+    <link rel="stylesheet" href="styles.css?v=13" />
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://upglide.fr/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Méthode MARC",
+                "item": "https://upglide.fr/methode-marc.html"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "name": "Méthode MARC pour piloter la rentabilité e-commerce",
+            "description": "Une méthode en quatre étapes pour transformer le chiffre d'affaires en marge, cash et profit.",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Mesurer",
+                "text": "Relier chiffre d'affaires, marge réelle, coûts variables, cash et indicateurs opérationnels."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Assainir",
+                "text": "Corriger les mécanismes qui absorbent la marge ou immobilisent le cash."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Rentabiliser",
+                "text": "Renforcer les produits, canaux, offres et segments clients qui créent réellement de la valeur."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "Croître",
+                "text": "Accélérer lorsque le modèle est capable de transformer davantage de ventes en davantage de profit."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Qu'est-ce que la méthode MARC en e-commerce ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MARC signifie Mesurer, Assainir, Rentabiliser et Croître. La méthode aide à comprendre pourquoi les ventes ne se transforment pas suffisamment en marge, cash et profit, puis à agir dans le bon ordre."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Pourquoi mesurer avant de chercher à vendre plus ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sans lecture fiable de la marge réelle, des coûts variables et du cash, davantage de ventes peut amplifier un problème existant au lieu d'améliorer le résultat."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quels KPI sont utilisés dans la méthode MARC ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Les KPI dépendent du modèle, mais peuvent inclure la marge contributive, le coût d'acquisition, la conversion, l'abandon panier, le panier moyen, les retours, la rotation du stock, le cash et le réachat."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "La méthode MARC remplace-t-elle un audit rentabilité e-commerce ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non. MARC est la logique de décision utilisée par Upglide. Le Diagnostic Rentabilité 360 est la prestation payante qui applique cette méthode aux données et aux opérations de votre boutique."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Par où commencer avec la méthode MARC ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La Scorecard Rentabilité constitue le premier niveau. Elle aide à repérer un levier prioritaire, des leviers secondaires et les zones à surveiller avant un éventuel Débrief Rentabilité."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header" data-header>
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Upglide, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>UPGLIDE</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+          <span class="sr-only">Ouvrir le menu</span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+          <a href="scorecard.html">Scorecard</a>
+          <a href="diagnostic.html">Diagnostic 360</a>
+          <a href="methode-marc.html" aria-current="page">Méthode MARC</a>
+          <a href="blog.html">Blog</a>
+          <a href="a-propos.html">À propos</a>
+          <a class="nav-contact" href="contact.html">Parler de mon e-commerce</a>
+        </nav>
       </div>
-      <div class="hero-letters rv d4">
-        <div class="marc-letter">
-          <div class="marc-letter-char">M</div>
-          <div class="marc-letter-word">Mesurer</div>
-        </div>
-        <div class="marc-letter">
-          <div class="marc-letter-char">A</div>
-          <div class="marc-letter-word">Assainir</div>
-        </div>
-        <div class="marc-letter">
-          <div class="marc-letter-char">R</div>
-          <div class="marc-letter-word">Rentabiliser</div>
-        </div>
-        <div class="marc-letter">
-          <div class="marc-letter-char">C</div>
-          <div class="marc-letter-word">Croître</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<!-- ════════════════════════════
-     POURQUOI UNE SÉQUENCE
-════════════════════════════ -->
-<section class="section philosophie">
-  <div class="wrap">
-    <div class="philo-grid">
-      <div>
-        <div class="tag rv">La philosophie</div>
-        <h2 class="h2 rv d1">Pourquoi une séquence, pas une checklist</h2>
-        <p class="lead rv d2" style="margin-top:1rem;margin-bottom:2rem">La majorité des consultants appliquent la même liste d'actions à tous leurs clients. Même si le diagnostic est bon, l'ordre d'exécution est souvent mauvais — et un bon levier appliqué au mauvais moment peut aggraver la situation.</p>
-        <p class="rv d3" style="font-size:.9375rem;color:var(--txt2);line-height:1.85;margin-bottom:2rem">MARC est différent. C'est une séquence causale : chaque phase débloque la suivante. On ne peut pas sauter une étape sans compromettre les résultats de la suivante. Cette logique n'est pas arbitraire — elle découle directement de la structure financière d'un e-commerce.</p>
+    <main id="contenu">
+      <section class="page-hero marc-page-hero">
+        <div class="shell page-hero-grid">
+          <div>
+            <p class="eyebrow eyebrow-light"><span></span> Méthode de rentabilité e-commerce</p>
+            <h1>Ne cherchez pas à vendre plus <span>avant de savoir ce qui rapporte vraiment.</span></h1>
+            <p class="diagnostic-hero-lead">
+              La méthode MARC aide les e-commerçants à comprendre pourquoi le chiffre d’affaires ne se
+              transforme pas suffisamment en marge, cash et profit, puis à travailler les bons leviers
+              dans le bon ordre.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="scorecard.html">
+                Identifier mon levier prioritaire <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href="#methode-en-detail">
+                Comprendre les 4 étapes <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p class="diagnostic-microcopy">
+              Scorecard gratuite · Première carte de priorisation · Résultat immédiat
+            </p>
+          </div>
+          <aside>
+            <strong>M · A · R · C</strong>
+            <ul class="diagnostic-hero-list">
+              <li>Mesurer ce qui se passe vraiment</li>
+              <li>Assainir avant d’accélérer</li>
+              <li>Rentabiliser les bons leviers</li>
+              <li>Croître sans fragiliser le cash</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
 
-        <div class="philo-principles rv d4">
-          <div class="principle">
-            <div class="principle-num">01</div>
+      <section class="proof-strip" aria-label="Les quatre étapes de la méthode MARC">
+        <div class="shell marc-proof-grid">
+          <div><strong>M</strong><span>Mesurer</span></div>
+          <div><strong>A</strong><span>Assainir</span></div>
+          <div><strong>R</strong><span>Rentabiliser</span></div>
+          <div><strong>C</strong><span>Croître</span></div>
+        </div>
+      </section>
+
+      <section class="page-section paper">
+        <div class="shell">
+          <div class="page-lead">
             <div>
-              <h3>On ne peut pas améliorer ce qu'on n'a pas mesuré</h3>
-              <p>M vient toujours en premier. Sans mesure précise de la contribution marginale réelle, toute décision d'optimisation repose sur des hypothèses — et les hypothèses coûtent cher en e-commerce.</p>
+              <p class="eyebrow"><span></span> Le piège de la croissance</p>
+              <h2>Plus de ventes ne corrige pas un modèle qui transforme mal le CA en profit.</h2>
             </div>
+            <p>
+              Une boutique peut augmenter son trafic, ses commandes ou son panier moyen tout en
+              dégradant sa marge et son cash. Si le problème vient des retours, du stock, des coûts
+              variables ou du réachat, accélérer l’acquisition peut simplement amplifier la tension.
+            </p>
           </div>
-          <div class="principle">
-            <div class="principle-num">02</div>
+          <div class="signal-list">
+            <article><span>01</span><div><h3>Vous investissez dans l’acquisition</h3><p>Mais vous ne reliez pas encore chaque campagne à la marge réellement disponible après la vente.</p></div></article>
+            <article><span>02</span><div><h3>Vous optimisez la conversion</h3><p>Mais certains produits convertissent bien tout en générant peu de profit ou beaucoup de retours.</p></div></article>
+            <article><span>03</span><div><h3>Vous augmentez le stock</h3><p>Mais la rotation, les références lentes et les délais fournisseurs immobilisent davantage de cash.</p></div></article>
+            <article><span>04</span><div><h3>Vous multipliez les actions</h3><p>Mais sans ordre de priorité, l’équipe travaille sur plusieurs sujets sans savoir lequel changera vraiment le résultat.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section marc-overview">
+        <div class="shell">
+          <div class="page-lead">
             <div>
-              <h3>On ne rentabilise pas ce qui n'est pas assaini</h3>
-              <p>A avant R. Travailler le pricing ou le mix produit sur une structure de coûts trouée revient à remplir un seau percé. Les fuites doivent être stoppées avant d'optimiser les flux.</p>
+              <p class="eyebrow"><span></span> Le principe MARC</p>
+              <h2>Quatre étapes. Une seule logique : décider avant d’accélérer.</h2>
             </div>
+            <p>
+              On ne peut pas rentabiliser ce que l’on ne mesure pas. On ne peut pas croître sainement
+              tant que les blocages principaux ne sont pas corrigés. MARC impose cet ordre pour éviter
+              de traiter le mauvais problème.
+            </p>
           </div>
-          <div class="principle">
-            <div class="principle-num">03</div>
+          <div class="marc-grid">
+            <article class="marc-card marc-one"><span>M</span><h3>Mesurer</h3><p>Comprendre où le chiffre d’affaires se transforme — ou ne se transforme pas — en marge, cash et profit.</p></article>
+            <article class="marc-card marc-two"><span>A</span><h3>Assainir</h3><p>Corriger ce qui empêche le profit de suivre : retours, remises, coûts variables, stock, litiges ou produits peu rentables.</p></article>
+            <article class="marc-card marc-three"><span>R</span><h3>Rentabiliser</h3><p>Renforcer les produits, canaux, offres et segments clients qui créent réellement de la valeur.</p></article>
+            <article class="marc-card marc-four"><span>C</span><h3>Croître</h3><p>Accélérer lorsque le modèle est capable de transformer davantage de ventes en davantage de profit.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section paper" id="methode-en-detail">
+        <div class="shell">
+          <div class="page-lead">
             <div>
-              <h3>On ne fait pas croître une structure de coûts défaillante</h3>
-              <p>C en dernier. La croissance amplifie ce qui existe. Sur une structure saine, elle multiplie la marge. Sur une structure défaillante, elle multiplie les pertes — et détruit le cashflow.</p>
+              <p class="eyebrow"><span></span> La méthode en détail</p>
+              <h2>À chaque étape, une question précise doit être tranchée.</h2>
             </div>
+            <p>
+              MARC ne consiste pas à suivre davantage de KPI. La méthode sélectionne les indicateurs
+              utiles en fonction de la décision à prendre et du niveau de maturité du modèle.
+            </p>
+          </div>
+          <div class="marc-detail-list">
+            <article class="marc-detail-card">
+              <div class="marc-detail-letter">M</div>
+              <div>
+                <p class="marc-detail-label">Étape 1 · Mesurer</p>
+                <h3>Où le chiffre d’affaires devient-il réellement du profit ?</h3>
+                <p>Relier les données commerciales, marketing, logistiques et financières pour obtenir une lecture exploitable du modèle.</p>
+                <ul>
+                  <li><strong>On observe :</strong> marge réelle, CAC, conversion, panier moyen, retours, rotation du stock, cash et réachat.</li>
+                  <li><strong>On décide :</strong> quels indicateurs sont fiables et quel levier semble limiter le plus la rentabilité.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="marc-detail-card">
+              <div class="marc-detail-letter">A</div>
+              <div>
+                <p class="marc-detail-label">Étape 2 · Assainir</p>
+                <h3>Qu’est-ce qui doit être corrigé avant d’investir davantage ?</h3>
+                <p>Traiter les mécanismes qui absorbent la marge, immobilisent le cash ou ajoutent une complexité inutile.</p>
+                <ul>
+                  <li><strong>On observe :</strong> remises, remboursements, coûts variables, litiges, produits peu rentables et stock lent.</li>
+                  <li><strong>On décide :</strong> ce qu’il faut stopper, simplifier, renégocier ou fiabiliser en premier.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="marc-detail-card">
+              <div class="marc-detail-letter">R</div>
+              <div>
+                <p class="marc-detail-label">Étape 3 · Rentabiliser</p>
+                <h3>Quels produits, canaux et clients méritent davantage de ressources ?</h3>
+                <p>Concentrer les efforts sur les mécanismes qui contribuent réellement au profit, et pas uniquement au volume de ventes.</p>
+                <ul>
+                  <li><strong>On observe :</strong> contribution par produit, canal, offre, campagne et segment client.</li>
+                  <li><strong>On décide :</strong> quoi renforcer, repositionner, packager ou fidéliser pour créer plus de valeur.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="marc-detail-card">
+              <div class="marc-detail-letter">C</div>
+              <div>
+                <p class="marc-detail-label">Étape 4 · Croître</p>
+                <h3>Le modèle peut-il absorber davantage de ventes sans fragiliser le cash ?</h3>
+                <p>Accélérer avec des règles de pilotage qui protègent la trésorerie, la marge et la capacité opérationnelle.</p>
+                <ul>
+                  <li><strong>On observe :</strong> capacité de stock, besoin en cash, rentabilité d’acquisition, charge opérationnelle et réachat.</li>
+                  <li><strong>On décide :</strong> où accélérer, à quel rythme et avec quels seuils d’alerte.</li>
+                </ul>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <div class="philo-quote rv d2">
-          <blockquote>"La croissance sans fondations détruit la rentabilité. Avec MARC, elle la multiplie."</blockquote>
-          <cite>— Caroline, fondatrice Upglide</cite>
-        </div>
-
-        <div class="philo-flow rv d3" style="margin-top:2rem">
-          <div class="flow-title">Chaque étape débloque la suivante</div>
-          <div class="flow-steps">
-            <div class="flow-step">
-              <div class="flow-step-char">M</div>
-              <div class="flow-step-label">Mesurer</div>
+      <section class="page-section dark">
+        <div class="shell">
+          <div class="page-lead">
+            <div>
+              <p class="eyebrow eyebrow-light"><span></span> Le changement de pilotage</p>
+              <h2>Du “combien avons-nous vendu ?” au “qu’est-ce qui nous rapporte ?”</h2>
             </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="flow-step-char">A</div>
-              <div class="flow-step-label">Assainir</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="flow-step-char">R</div>
-              <div class="flow-step-label">Rentabiliser</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="flow-step-char">C</div>
-              <div class="flow-step-label">Croître</div>
-            </div>
+            <p>
+              MARC change les questions posées chaque semaine. Le volume, le ROAS et les commandes
+              restent utiles, mais ils sont remis dans le contexte de la marge, du cash et de la valeur
+              créée dans le temps.
+            </p>
           </div>
-          <div class="flow-caption">Un ordre non négociable — pour des résultats mesurables dès J30.</div>
-        </div>
-
-        <div class="rv d4" style="margin-top:2rem;background:var(--isa);border-radius:var(--rlg);padding:1.75rem;border:1px solid var(--bdr)">
-          <div class="tag" style="margin-bottom:1rem">Ce que MARC n'est pas</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem">
-            <li style="display:flex;gap:.75rem;align-items:flex-start"><span style="color:var(--lion);font-weight:700;flex-shrink:0;margin-top:.05rem">×</span><span style="font-size:.875rem;color:var(--txt2)">Un rapport stratégique sans implémentation</span></li>
-            <li style="display:flex;gap:.75rem;align-items:flex-start"><span style="color:var(--lion);font-weight:700;flex-shrink:0;margin-top:.05rem">×</span><span style="font-size:.875rem;color:var(--txt2)">Une mission de conseil longue durée à facturation mensuelle</span></li>
-            <li style="display:flex;gap:.75rem;align-items:flex-start"><span style="color:var(--lion);font-weight:700;flex-shrink:0;margin-top:.05rem">×</span><span style="font-size:.875rem;color:var(--txt2)">Une checklist générique applicable à n'importe quel business</span></li>
-            <li style="display:flex;gap:.75rem;align-items:flex-start"><span style="color:var(--lion);font-weight:700;flex-shrink:0;margin-top:.05rem">×</span><span style="font-size:.875rem;color:var(--txt2)">Une approche centrée sur le trafic ou l'acquisition</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     M — MESURER
-════════════════════════════ -->
-<section class="section phase-section phase-section--isa" id="mesurer">
-  <div class="phase-deco" aria-hidden="true">M</div>
-  <div class="wrap">
-    <div class="phase-inner">
-      <div class="phase-tag rv">Étape 01 · J0 → J7</div>
-      <div class="phase-layout">
-        <div>
-          <h2 class="phase-h2 rv d1">Mesurer — <em>voir la vraie rentabilité</em></h2>
-          <p class="phase-lead rv d2">Vous ne pouvez pas améliorer votre marge sans d'abord mesurer la vraie rentabilité par commande. Pas le CA. Pas la marge brute approximative. La vraie contribution marginale — par SKU, par canal, par période. C'est le seul point de départ valable.</p>
-          <p class="rv d3" style="font-size:.875rem;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem">Dans la plupart des boutiques e-commerce, le tableau de bord montre le CA, peut-être la marge brute, parfois le ROAS. Aucun de ces indicateurs ne dit ce que vous gagnez réellement sur chaque commande — une fois intégrés les retours, le SAV, les frais plateforme et les coûts logistiques réels.</p>
-
-          <div class="phase-quote rv d4">
-            <p>"La plupart des e-commerçants ne savent pas ce qu'ils gagnent vraiment par commande. MARC commence là."</p>
-          </div>
-
-          <div class="phase-deliverable rv d5">
-            <div class="phase-deliverable-label">Livrable à J7</div>
-            <p><strong>Rapport de diagnostic complet</strong> — chaque fuite est identifiée, quantifiée, et classée par impact en euros. Vous savez exactement où vous perdez de l'argent et combien cela vous coûte par mois.</p>
+          <div class="marc-shift-grid">
+            <article><span>Avant</span><strong>Quel canal génère le plus de chiffre d’affaires ?</strong><p>Une lecture centrée sur le volume peut favoriser un canal qui coûte trop cher ou attire des commandes peu rentables.</p></article>
+            <article><span>Avec MARC</span><strong>Quel canal contribue le mieux au profit ?</strong><p>La décision intègre la marge produit, les remises, les retours, le coût d’acquisition et le réachat.</p></article>
+            <article><span>Avant</span><strong>Quel est notre produit le plus vendu ?</strong><p>Le best-seller semble prioritaire parce qu’il domine les commandes et le chiffre d’affaires.</p></article>
+            <article><span>Avec MARC</span><strong>Quel produit crée le plus de valeur ?</strong><p>La décision tient compte de la contribution, du taux de retour, de la rotation et du cash immobilisé.</p></article>
           </div>
         </div>
+      </section>
 
-        <div>
-          <div class="tag rv">Ce que l'on mesure</div>
-          <div class="phase-items rv d1">
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Contribution marginale réelle par SKU</strong>
-                Prix de vente − COGS − frais plateforme − logistique − retour estimé − SAV. Pas une approximation : la vraie marge par produit vendu.
-              </div>
+      <section class="page-section paper">
+        <div class="shell">
+          <div class="page-lead">
+            <div>
+              <p class="eyebrow"><span></span> Mise en situation</p>
+              <h2>Le bon KPI peut complètement changer la décision.</h2>
             </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>CAC réel complet par canal</strong>
-                Coût d'acquisition client intégrant les retours, le SAV et les coûts de réactivation — pas seulement le spend publicitaire.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Cash conversion cycle</strong>
-                Délai entre le paiement fournisseur et l'encaissement client. Un CCC long étouffe la trésorerie même quand la marge est bonne.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Rentabilité par canal d'acquisition</strong>
-                Google, Meta, email, organique — chaque canal analysé avec son CAC réel, son LTV et sa contribution nette.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Audit stock : stock dormant valorisé</strong>
-                Quantification du capital immobilisé en stock sans rotation. Un stock dormant de 30K€ représente souvent 3 à 5K€ de charges financières annuelles cachées.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Coûts fixes recensés et annualisés</strong>
-                Abonnements, licences, frais bancaires, outils SaaS — souvent jamais audités depuis la création de la boutique.
-              </div>
-            </div>
+            <p>
+              Thomas dirige une boutique qui vend de plus en plus. Il pense devoir augmenter ses prix
+              pour améliorer sa marge. Mais la lecture de ses KPI montre surtout un abandon panier élevé,
+              des retours en progression et des produits très vendus qui contribuent peu au profit.
+            </p>
+          </div>
+          <div class="case-study-flow">
+            <article><span>01 · Intuition</span><h3>“Je dois augmenter mes prix.”</h3><p>La marge semble être le problème le plus évident.</p></article>
+            <article><span>02 · Mesure</span><h3>Le parcours révèle plusieurs blocages.</h3><p>Conversion, retours et rentabilité produit expliquent une partie plus importante du résultat.</p></article>
+            <article><span>03 · Priorité</span><h3>Corriger avant de modifier les prix.</h3><p>La première décision devient l’amélioration du parcours et du mix produit, pas une hausse générale.</p></article>
+          </div>
+          <div class="example-actions">
+            <a class="button button-primary" href="scorecard.html">Identifier mon levier prioritaire <span>↗</span></a>
+            <a class="text-link" href="diagnostic.html">Voir comment le Diagnostic applique MARC <span aria-hidden="true">→</span></a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- ════════════════════════════
-     A — ASSAINIR
-════════════════════════════ -->
-<section class="section phase-section phase-section--wh" id="assainir">
-  <div class="phase-deco" aria-hidden="true">A</div>
-  <div class="wrap">
-    <div class="phase-inner">
-      <div class="phase-tag rv">Étape 02 · J8 → J30</div>
-      <div class="phase-layout">
-        <div>
-          <h2 class="phase-h2 rv d1">Assainir — <em>éliminer les pertes silencieuses</em></h2>
-          <p class="phase-lead rv d2">Une fois les fuites mesurées, on les stoppe dans l'ordre d'impact décroissant. Pas de transformation abstraite — des corrections concrètes, des renégociations réelles, des postes de coûts supprimés. L'objectif : un premier gain mesurable en euros avant J30.</p>
-          <p class="rv d3" style="font-size:.875rem;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem">Les pertes silencieuses s'accumulent pendant des années sans que personne ne les détecte, parce que la comptabilité traditionnelle ne les isole pas. Un audit logistique seul révèle en moyenne 3 à 8% de coûts récupérables sur le total des frais de transport — souvent en quelques appels téléphoniques.</p>
-
-          <div class="phase-quote rv d4">
-            <p>"Un audit logistique e-commerce révèle en moyenne 3 à 8% de coûts récupérables. C'est souvent le levier le plus rapide."</p>
+      <section class="page-section marc-diagnostic-section">
+        <div class="shell">
+          <div class="page-lead">
+            <div>
+              <p class="eyebrow"><span></span> De la méthode à votre boutique</p>
+              <h2>MARC donne l’ordre. Le Diagnostic 360 l’applique à vos données.</h2>
+            </div>
+            <p>
+              La méthode explique comment raisonner. Le Diagnostic Rentabilité 360 est la prestation
+              payante qui analyse votre modèle, chiffre les enjeux lorsque les données le permettent et
+              transforme cette lecture en roadmap 30/60/90 jours.
+            </p>
           </div>
-
-          <div class="phase-deliverable rv d5">
-            <div class="phase-deliverable-label">Livrable à J30</div>
-            <p><strong>Premier gain mesurable en euros dès J30.</strong> Rapport d'actions réalisées et impact constaté — chaque euro récupéré est documenté. Vous savez précisément ce qui a été fait et ce que ça a changé.</p>
-          </div>
-        </div>
-
-        <div>
-          <div class="tag rv">Ce que l'on corrige</div>
-          <div class="phase-items rv d1">
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Audit logistique complet</strong>
-                Benchmark transporteurs, analyse des zones tarifaires, détection des erreurs de facturation récurrentes. Un poste souvent jamais renegocié depuis le lancement.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Renégociation transporteur</strong>
-                Grille tarifaire actualisée selon le volume réel, récupération des remboursements non réclamés (colis perdus, retards garantis), optimisation des emballages.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Audit SAV et politique retour</strong>
-                Coût réel par retour calculé, analyse des causes de retour, optimisation du processus et de la politique pour réduire le taux sans nuire à l'expérience client.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Audit coûts fixes</strong>
-                Abonnements en doublon, licences jamais utilisées, frais bancaires non optimisés, outils remplaçables par des alternatives moins chères ou intégrées.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Nettoyage catalogue</strong>
-                Identification et traitement des SKUs à contribution marginale négative — ceux qui font du CA mais détruisent la marge.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Optimisation stock dormant</strong>
-                Plan de liquidation raisonnée, réallocation du capital immobilisé, révision des niveaux de réassort sur les SKUs lents.
-              </div>
-            </div>
+          <div class="fit-grid">
+            <article class="fit-card fit-card-positive">
+              <span>Commencez par la scorecard</span>
+              <ul>
+                <li>pour obtenir une première carte de priorisation ;</li>
+                <li>pour repérer un levier principal et des sujets secondaires ;</li>
+                <li>pour sortir de l’intuition en cinq minutes ;</li>
+                <li>pour préparer un éventuel Débrief Rentabilité.</li>
+              </ul>
+              <a class="button button-lime" href="scorecard.html">Faire ma scorecard gratuite <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="fit-card">
+              <span>Passez au Diagnostic 360</span>
+              <ul>
+                <li>si plusieurs leviers restent difficiles à arbitrer ;</li>
+                <li>si vous voulez analyser vos données en profondeur ;</li>
+                <li>si vous avez besoin de chiffrer les enjeux ;</li>
+                <li>si vous cherchez une roadmap précise pour votre équipe.</li>
+              </ul>
+              <a class="text-link" href="diagnostic.html">Découvrir le Diagnostic 360 <span aria-hidden="true">→</span></a>
+            </article>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- ════════════════════════════
-     R — RENTABILISER
-════════════════════════════ -->
-<section class="section phase-section phase-section--isa" id="rentabiliser">
-  <div class="phase-deco" aria-hidden="true">R</div>
-  <div class="wrap">
-    <div class="phase-inner">
-      <div class="phase-tag rv">Étape 03 · J31 → J60</div>
-      <div class="phase-layout">
-        <div>
-          <h2 class="phase-h2 rv d1">Rentabiliser — <em>augmenter le profit sans augmenter le volume</em></h2>
-          <p class="phase-lead rv d2">Une fois la structure assainie, on travaille à augmenter la marge — sans nécessairement augmenter le CA. Le pricing, le mix produit, l'upsell et la politique de remise sont revisités sur une base propre. C'est ici que le vrai levier de profitabilité se joue.</p>
-          <p class="rv d3" style="font-size:.875rem;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem">La plupart des e-commerçants fixent leurs prix à l'intuition, ajoutent des remises sans calculer leur impact réel sur la marge, et n'identifient jamais leurs produits les plus rentables. À cette étape, on remplace l'instinct par les chiffres — et on reconstruit une politique de prix sur la vraie marge nette.</p>
-
-          <div class="phase-quote rv d4">
-            <p>"Augmenter la marge brute de 2 points vaut souvent mieux que doubler le CA. Moins de risque, plus de profit."</p>
+      <section class="page-section paper" id="faq-marc">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow"><span></span> FAQ méthode MARC</p>
+            <h2>Comprendre la méthode avant de l’appliquer.</h2>
+            <p>Les réponses essentielles sur l’ordre des étapes, les KPI et le lien avec le Diagnostic 360.</p>
           </div>
-
-          <div class="phase-deliverable rv d5">
-            <div class="phase-deliverable-label">Livrable à J60</div>
-            <p><strong>Plan de pricing optimisé.</strong> Recommandations mix produit avec impact projeté en euros. Chaque décision de remise documentée avec son seuil de rentabilité minimal.</p>
-          </div>
-        </div>
-
-        <div>
-          <div class="tag rv">Ce que l'on optimise</div>
-          <div class="phase-items rv d1">
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Audit pricing par marge nette</strong>
-                Analyse des prix de vente en regard de la contribution marginale réelle — pas du ressenti, pas de la concurrence brute. Identification des produits sous-pricés et des produits sur-promotionnés.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Produits à haute marge sous-exposés</strong>
-                Les produits les plus rentables sont rarement les plus mis en avant. On identifie les champions de marge et on construit une stratégie de visibilité autour d'eux.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Optimisation du mix produit</strong>
-                Bundles, upsell et cross-sell construits sur la logique de marge — pas seulement sur la logique de CA. Un bundle bien conçu peut augmenter la contribution marginale de 15 à 25%.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Révision de la politique de remise</strong>
-                Calcul du seuil minimal de remise acceptable par SKU. Suppression des soldes systématiques qui détruisent la perception de valeur et la marge simultanément.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Négociation fournisseur sur les SKUs clés</strong>
-                Une fois le catalogue nettoyé, on renégocie les conditions d'achat sur les volumes concentrés — avec les arguments qui fonctionnent.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Saisonnalité des prix</strong>
-                Modélisation de la saisonnalité sur les prix et les niveaux de stock — pour maximiser la marge en haute saison et ne pas liquider en basse saison.
-              </div>
-            </div>
+          <div class="faq-list">
+            <details>
+              <summary>Qu’est-ce que la méthode MARC en e-commerce ? <span>+</span></summary>
+              <p>
+                MARC signifie Mesurer, Assainir, Rentabiliser et Croître. La méthode aide à comprendre
+                pourquoi les ventes ne se transforment pas suffisamment en marge, cash et profit, puis à
+                agir dans le bon ordre.
+              </p>
+            </details>
+            <details>
+              <summary>Pourquoi mesurer avant de chercher à vendre plus ? <span>+</span></summary>
+              <p>
+                Sans lecture fiable de la marge réelle, des coûts variables et du cash, davantage de
+                ventes peut amplifier un problème existant au lieu d’améliorer le résultat.
+              </p>
+            </details>
+            <details>
+              <summary>Quels KPI sont utilisés dans la méthode MARC ? <span>+</span></summary>
+              <p>
+                Ils dépendent du modèle : marge contributive, coût d’acquisition, conversion, abandon
+                panier, panier moyen, retours, rotation du stock, cash et réachat. L’objectif est de
+                retenir les KPI qui changent réellement une décision.
+              </p>
+            </details>
+            <details>
+              <summary>MARC convient-elle à toutes les boutiques e-commerce ? <span>+</span></summary>
+              <p>
+                La logique peut aider toute boutique, mais Upglide accompagne principalement des
+                e-commerçants déjà actifs, entre 300K€ et 5M€ de chiffre d’affaires annuel, lorsque la
+                complexité commence à dépasser l’intuition seule.
+              </p>
+            </details>
+            <details>
+              <summary>La méthode MARC remplace-t-elle un audit rentabilité ? <span>+</span></summary>
+              <p>
+                Non. MARC est la logique de décision utilisée par Upglide. Le Diagnostic Rentabilité 360
+                est la prestation payante qui applique cette méthode à vos données et à vos opérations.
+              </p>
+            </details>
+            <details>
+              <summary>Par où commencer avec la méthode MARC ? <span>+</span></summary>
+              <p>
+                La Scorecard Rentabilité constitue le premier niveau. Elle aide à repérer un levier
+                prioritaire, des leviers secondaires et les zones à surveiller avant un éventuel Débrief.
+              </p>
+            </details>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- ════════════════════════════
-     C — CROÎTRE
-════════════════════════════ -->
-<section class="section phase-section phase-section--wh" id="croitre">
-  <div class="phase-deco" aria-hidden="true">C</div>
-  <div class="wrap">
-    <div class="phase-inner">
-      <div class="phase-tag rv">Étape 04 · J61 → J90</div>
-      <div class="phase-layout">
-        <div>
-          <h2 class="phase-h2 rv d1">Croître — <em>scaler sans détruire la marge</em></h2>
-          <p class="phase-lead rv d2">Les fondations sont saines. La marge est optimisée. On peut maintenant construire la croissance sur une base solide — avec des dashboards qui permettent de piloter en temps réel. À ce stade, la croissance ne détruit plus la rentabilité : elle la multiplie.</p>
-          <p class="rv d3" style="font-size:.875rem;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem">La plupart des e-commerces font de la croissance à l'aveugle — ils augmentent le spend publicitaire sans savoir si la marge suit. À J+90, votre équipe pilote avec des indicateurs réels : CAC réel, contribution marginale par canal, seuil de rentabilité par campagne. La croissance devient une décision calculée, pas un pari.</p>
-
-          <div class="phase-quote rv d4">
-            <p>"À J+90, votre équipe pilote par les chiffres réels — pas par l'instinct."</p>
-          </div>
-
-          <div class="phase-deliverable rv d5">
-            <div class="phase-deliverable-label">Livrable à J90</div>
-            <p><strong>Outil de pilotage sur-mesure.</strong> Équipe autonome sur les indicateurs clés. Plan de croissance à 6 mois intégrant les contraintes de marge, de stock et de cashflow — calibré sur votre structure réelle.</p>
+      <section class="page-cta diagnostic-final-cta">
+        <div class="shell">
+          <p class="eyebrow"><span></span> Première étape</p>
+          <h2>Avant d’accélérer, identifiez ce qui mérite vraiment votre attention.</h2>
+          <p>
+            Répondez à huit questions pour obtenir une première carte de priorisation de votre
+            rentabilité e-commerce.
+          </p>
+          <div class="page-cta-actions">
+            <a class="button button-dark" href="scorecard.html">Faire ma scorecard gratuite <span>↗</span></a>
+            <a class="text-link" href="diagnostic.html">Découvrir le Diagnostic 360 <span aria-hidden="true">→</span></a>
           </div>
         </div>
-
-        <div>
-          <div class="tag rv">Ce que l'on construit</div>
-          <div class="phase-items rv d1">
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Dashboard de rentabilité par canal</strong>
-                Mis à jour hebdomadairement, intégrant CAC réel, contribution marginale, LTV estimée et seuil de rentabilité par canal d'acquisition.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Prévisions stock et cashflow</strong>
-                Modèle de prévision à 12 semaines intégrant la saisonnalité, les délais fournisseurs et les contraintes de trésorerie — pour ne plus jamais être pris par surprise.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Automatisation des alertes de performance</strong>
-                Alertes automatiques sur les seuils critiques : marge en dessous du plancher, CAC qui dérive, stock dormant qui s'accumule, trésorerie sous tension.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Plan de croissance par canal</strong>
-                Recommandations d'investissement par canal, intégrant le CAC réel et la LTV calculée — pour savoir exactement combien vous pouvez dépenser en acquisition sans détruire la marge.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Formation équipe aux indicateurs clés</strong>
-                Votre équipe maîtrise les indicateurs qui comptent. Pas un reporting mensuel à lire — des réflexes de pilotage intégrés dans les décisions quotidiennes.
-              </div>
-            </div>
-            <div class="phase-item">
-              <div class="pi-dot"></div>
-              <div class="phase-item-text">
-                <strong>Mise en place du pilotage autonome</strong>
-                À J+90, vous n'avez plus besoin de Caroline. L'objectif a toujours été votre autonomie — pas votre dépendance.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     MARC VS AUTRES APPROCHES
-════════════════════════════ -->
-<section class="section comparison">
-  <div class="wrap">
-    <div class="tag rv">Comparaison</div>
-    <h2 class="h2 rv d1">MARC vs autres approches</h2>
-    <p class="lead rv d2" style="margin-top:1rem;max-width:640px">Pourquoi la méthode MARC produit des résultats là où d'autres approches produisent des livrables.</p>
-
-    <div class="comp-table-wrap rv d3">
-      <table class="comp-table" aria-label="Comparaison des approches de conseil e-commerce">
-        <thead>
-          <tr>
-            <th scope="col">Critère</th>
-            <th scope="col">Consultant classique</th>
-            <th scope="col">Agence digitale</th>
-            <th scope="col">Méthode MARC</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Approche</td>
-            <td>Analyse → rapport → recommandations</td>
-            <td>Rapport mensuel + gestion du trafic</td>
-            <td class="check">Audit opérationnel + implémentation directe</td>
-          </tr>
-          <tr>
-            <td>Durée</td>
-            <td>2 à 4 semaines</td>
-            <td>Contrat longue durée, renouvellement mensuel</td>
-            <td class="check">90 jours fixes — pas un jour de plus</td>
-          </tr>
-          <tr>
-            <td>Livrable</td>
-            <td>Document PDF à implémenter soi-même</td>
-            <td>Reporting mensuel sur les KPIs d'acquisition</td>
-            <td class="check">Outil de pilotage autonome + équipe formée</td>
-          </tr>
-          <tr>
-            <td>Garantie</td>
-            <td class="cross">Aucune</td>
-            <td class="cross">Aucune</td>
-            <td class="check">Mission annulée si aucun levier identifié</td>
-          </tr>
-          <tr>
-            <td>Focus</td>
-            <td>Stratégique — recommandations non chiffrées</td>
-            <td>Acquisition et trafic — pas la structure de coûts</td>
-            <td class="check">Structure de coûts + marge nette + pilotage</td>
-          </tr>
-          <tr>
-            <td>Premier résultat</td>
-            <td>À la mise en œuvre — délai variable</td>
-            <td>Sur le trafic en 30-60 jours</td>
-            <td class="check">Premier gain en euros mesuré à J30</td>
-          </tr>
-          <tr>
-            <td>Autonomie finale</td>
-            <td class="cross">Dépendance à de nouvelles missions</td>
-            <td class="cross">Dépendance au contrat mensuel</td>
-            <td class="check">Pilotage autonome — objectif explicite</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     CTA FINAL
-════════════════════════════ -->
-<section class="cta-final">
-  <div class="wrap">
-    <div class="cta-final-inner">
-      <div class="tag tag--light rv" style="justify-content:center">Passer à l'action</div>
-      <h2 class="h2 h2--light rv d1">Prêt à appliquer MARC à votre boutique ?</h2>
-      <p class="lead lead--light rv d2">Le diagnostic offert de 30 minutes permet d'identifier vos 2 à 3 principales fuites de marge en direct — et de vérifier si MARC est pertinent pour votre situation.</p>
-      <div class="cta-final-btns rv d3">
-        <a href="audit-rentabilite-ecommerce.html" class="btn-ghost">Voir l'accompagnement en détail →</a>
-        <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold">Réserver le diagnostic offert →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     SEO PARAGRAPH
-════════════════════════════ -->
-<section class="section seo-paragraph">
-  <div class="wrap--tight">
-    <p class="rv">La <strong>méthode MARC</strong> est une séquence opérationnelle en quatre phases conçue pour transformer un e-commerce en structure rentable et pilotable en 90 jours. À l'opposé d'un <strong>audit rentabilité e-commerce</strong> classique qui produit un rapport sans implémentation, MARC commence par mesurer la <strong>contribution marginale</strong> réelle de chaque SKU — intégrant le COGS, les frais plateforme, les coûts logistiques, les retours et le SAV. La phase d'assainissement s'attaque ensuite aux <strong>fuites de marge</strong> identifiées : coûts logistiques non optimisés, politique retour coûteuse, stock dormant, coûts fixes jamais audités. Une fois ces pertes silencieuses stoppées, la phase de rentabilisation travaille sur la <strong>marge nette</strong> via le pricing, le mix produit et la politique de remise — pour augmenter le profit sans nécessairement augmenter le CA. Enfin, la phase croissance construit les outils de pilotage qui permettent à votre équipe de scaler un <strong>e-commerce rentable</strong> sans recréer les problèmes de départ. MARC n'est pas une méthode théorique : c'est une séquence de décisions financières concrètes, dans l'ordre qui produit des résultats mesurables.</p>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     FOOTER
-════════════════════════════ -->
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
-      <nav class="foot-links" aria-label="Liens secondaires">
-        <a href="podcast.html" class="foot-link">Podcast</a>
-        <a href="blog.html" class="foot-link">Blog</a>
-        <a href="ressources.html" class="foot-link">Ressources</a>
-        <a href="a-propos.html" class="foot-link">À propos</a>
-        <a href="contact.html" class="foot-link">Contact</a>
-      </nav>
-      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
-    </div>
-  </div>
-</footer>
-
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script>
-  // Progress bar
-  const prog = document.getElementById('progress');
-  window.addEventListener('scroll', () => {
-    if(prog) prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-  }, {passive:true});
-
-  // Nav scrolled state
-  const navEl = document.getElementById('nav');
-  window.addEventListener('scroll', () => { if(navEl) navEl.classList.toggle('scrolled', window.scrollY > 10); }, {passive:true});
-
-  // Burger / mobile nav
-  const burger = document.getElementById('burger');
-  const mobnav = document.getElementById('mobnav');
-  burger.addEventListener('click', () => {
-    const o = mobnav.classList.toggle('open');
-    burger.classList.toggle('open', o);
-    burger.setAttribute('aria-expanded', o);
-    document.body.style.overflow = o ? 'hidden' : '';
-  });
-  function closeMob() {
-    mobnav.classList.remove('open'); burger.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMob(); });
-
-  // Reveal on scroll
-  const rvO = new IntersectionObserver(es => es.forEach(e => {
-    if(e.isIntersecting) { e.target.classList.add('on'); rvO.unobserve(e.target); }
-  }), {threshold:.08});
-  document.querySelectorAll('.rv').forEach(el => rvO.observe(el));
-
-  // Calendly
-  function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}
-</script>
-<script src="marc.js" defer></script>
-<script src="analytics.js" defer></script>
-</body>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell footer-bottom"><span>© <span data-year></span> Upglide</span><a href="index.html">Retour à l’accueil</a></div></footer>
+  </body>
 </html>

@@ -1,544 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ressources e-commerce — Upglide | Templates et frameworks</title>
-<meta name="description" content="Templates, trackers de marges, frameworks et outils e-commerce. Ressources opérationnelles directement applicables.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://upglide.fr/ressources">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Upglide">
-<meta property="og:title" content="Ressources e-commerce — Upglide | Templates et frameworks">
-<meta property="og:description" content="Templates, trackers de marges, frameworks et outils e-commerce. Ressources opérationnelles directement applicables.">
-<meta property="og:url" content="https://upglide.fr/ressources">
-<meta property="og:image" content="https://upglide.fr/hero-dashboard.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://upglide.fr/hero-dashboard.png">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-  {"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},
-  {"@type":"ListItem","position":2,"name":"Ressources","item":"https://upglide.fr/ressources"}
-]}
-</script>
-<link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"></noscript>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
-
-<style>
-
-/* TOKENS */
-:root {
-  --isa:   #F5F1E8;
-  --alm:   #E8D4AA;
-  --lion:  #C9A052;
-  --lion2: #A8802E;
-  --pow:   #B4C8E8;
-  --dusk:  #4E6898;
-  --cad:   #1E2D5A;
-  --cad2:  #131D3C;
-  --wh:    #FFFFFF;
-  --txt:   #1E2D5A;
-  --txt2:  #4A5878;
-  --txt3:  #5A6A8A;
-  --bdr:   rgba(30,45,90,.09);
-  --ft: 'Cormorant Garamond', Georgia, serif;
-  --fb: 'Manrope', system-ui, sans-serif;
-  --r: 12px; --rlg: 20px; --rxl: 32px;
-  --shsm: 0 2px 12px rgba(30,45,90,.08);
-  --shmd: 0 8px 32px rgba(30,45,90,.12);
-  --shlg: 0 20px 64px rgba(30,45,90,.18);
-  --shg:  0 6px 24px rgba(201,160,82,.3);
-  --t: .22s ease;
-
-  /* Legacy variable aliases */
-  --marine: #1A3050;
-  --marine-2: #2D4A6E;
-  --acier: #2C6A9A;
-  --sable: #C8A870;
-  --sable-2: #B8984A;
-  --blanc: #FFFFFF;
-  --border: #D0DCE8;
-  --fond: #F4F7FB;
-  --fond-2: #EBF0F8;
-  --fond-3: #E2EAF5;
-  --ciel: #B4C8E8;
-  --radius: 8px;
-  --shadow-sm: 0 2px 8px rgba(26,48,80,.08);
-  --shadow-md: 0 8px 32px rgba(26,48,80,.12);
-  --shadow-lg: 0 20px 64px rgba(26,48,80,.18);
-  --transition: .2s ease;
-  --txt-2: #4A6078;
-  --txt-3: #5A6A8A;
-}
-/* NAV */
-/* ── NAV ── */
-    nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
-    nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
-    @media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
-    @media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
-    .logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
-    .logo span{color:var(--lion);font-style:normal;}
-    .nav-links{display:none;}
-    @media(min-width:768px){
-      .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
-      .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
-      .nav-links a:hover{color:var(--cad);background:var(--isa);}
-      .nav-links a.active{color:var(--cad);font-weight:600;}
-    }
-    .nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
-    @media(min-width:768px){.nav-cta{display:inline-flex;}}
-    .nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
-    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
-    @media(min-width:768px){.burger{display:none;}}
-    .burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
-    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-    .burger.open span:nth-child(2){opacity:0;}
-    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-    .mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
-    .mob-nav.open{display:flex;}
-    .mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
-    .mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
-    .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
-
-
-/* ── FOOTER ── */
-    footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
-    .foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
-    @media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
-    .foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
-    .foot-logo span{color:var(--lion);font-style:normal;}
-    .foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
-    .foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
-    .foot-link:hover{color:var(--wh);}
-    .foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
-
-
-/* REVEAL FIX — content always visible */
-.reveal{opacity:1!important;transform:none!important;} .rv{opacity:1!important;transform:none!important;}
-/* PAGE */
-
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--fond);color:var(--txt);font-family:var(--fb);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:920px;margin:0 auto;padding:0 2rem;}
-.section{padding:5rem 0;}
-.section--alt{background:var(--blanc);}
-.section--dark{background:var(--marine);}
-hr.divider{border:none;border-top:1px solid var(--border);}
-.s-label{font-size:0.6875rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--acier);margin-bottom:0.875rem;display:flex;align-items:center;gap:0.75rem;font-weight:500;}
-.s-label::after{content:'';flex:0 0 36px;height:1px;background:var(--acier);}
-.s-h2{font-family:var(--ft);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;color:var(--marine);margin-bottom:0.875rem;}
-.s-h2 em{font-style:italic;color:var(--acier);}
-.s-sub{font-size:1rem;color:var(--txt-2);line-height:1.8;max-width:480px;font-weight:300;margin-bottom:3rem;}
-
-/* NAV */
-
-/* PAGE HERO */
-.page-hero{padding:4rem 0 3rem;}
-.page-eyebrow{font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--acier);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
-.page-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--acier);}
-.page-h1{font-family:var(--ft);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;color:var(--marine);margin-bottom:1rem;}
-.page-h1 em{font-style:italic;color:var(--acier);}
-.page-sub{font-size:1rem;color:var(--txt-2);line-height:1.8;font-weight:300;max-width:520px;}
-
-/* TEMPLATES */
-.templates-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
-.template-card{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow var(--transition),transform var(--transition);}
-.template-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
-.template-preview{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
-.template-preview.marges{background:linear-gradient(135deg,#EEF2F7,#E4EAF2);}
-.template-preview.kpis{background:linear-gradient(135deg,#E4EAF2,#D0DCE8);}
-.template-preview.sop{background:linear-gradient(135deg,#F6F8FB,#EEF2F7);}
-.template-preview.bundle{background:linear-gradient(135deg,var(--marine),var(--marine-2));}
-.template-body{padding:1.5rem;}
-.tpl-tag{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--acier);margin-bottom:0.5rem;display:block;}
-.tpl-title{font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--marine);margin-bottom:0.375rem;line-height:1.3;}
-.tpl-desc{font-size:0.875rem;color:var(--txt-2);line-height:1.7;font-weight:300;margin-bottom:1rem;}
-.tpl-includes{list-style:none;margin-bottom:1.25rem;}
-.tpl-include{display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--txt-2);padding:0.25rem 0;font-weight:300;}
-.tpl-include::before{content:'✓';color:var(--acier);font-weight:500;flex-shrink:0;}
-.tpl-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-.tpl-prix{font-family:var(--ft);font-size:1.25rem;color:var(--marine);font-weight:400;}
-.tpl-btn{background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.8125rem;font-weight:500;padding:0.625rem 1.25rem;border:none;border-radius:var(--radius);cursor:pointer;transition:background var(--transition);}
-.tpl-btn:hover{background:var(--marine-2);}
-.template-card.bundle .tpl-tag{color:var(--sable);}
-.template-card.bundle .tpl-title,.template-card.bundle .tpl-desc,.template-card.bundle .tpl-include,.template-card.bundle .tpl-prix{color:var(--blanc);}
-.template-card.bundle .tpl-include::before{color:var(--sable);}
-.template-card.bundle{background:var(--marine);}
-.template-card.bundle .tpl-btn{background:var(--sable);color:var(--marine);}
-.template-card.bundle .tpl-btn:hover{background:var(--sable-2);}
-
-/* GRATUIT */
-.gratuit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
-.gratuit-card{background:var(--fond-2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;border-left:3px solid var(--sable);}
-.gratuit-icon{font-size:1.75rem;margin-bottom:0.875rem;}
-.gratuit-title{font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--marine);margin-bottom:0.5rem;}
-.gratuit-desc{font-size:0.875rem;color:var(--txt-2);line-height:1.7;font-weight:300;margin-bottom:1.25rem;}
-.gratuit-btn{background:transparent;color:var(--acier);font-family:var(--fb);font-size:0.875rem;font-weight:500;padding:0;border:none;border-bottom:1px solid var(--ciel);cursor:pointer;transition:color var(--transition),border-color var(--transition);}
-.gratuit-btn:hover{color:var(--marine);border-color:var(--acier);}
-
-/* QUIZ */
-.quiz-block{background:var(--marine);border-radius:var(--radius);padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
-.quiz-title{font-family:var(--ft);font-size:1.375rem;font-weight:400;color:var(--blanc);margin-bottom:0.5rem;}
-.quiz-title em{font-style:italic;color:var(--sable);}
-.quiz-sub{font-size:0.9375rem;color:var(--ciel);font-weight:300;}
-.quiz-btn{background:var(--sable);color:var(--marine);font-family:var(--fb);font-size:0.875rem;font-weight:500;padding:1rem 2rem;border:none;border-radius:var(--radius);cursor:pointer;transition:background var(--transition);white-space:nowrap;}
-.quiz-btn:hover{background:var(--sable-2);}
-
-/* OUTILS AFFILIÉS */
-.outils-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-.outil-card{background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition);}
-.outil-card:hover{border-color:var(--acier);box-shadow:var(--shadow-sm);transform:translateY(-2px);}
-.outil-icon{font-size:1.5rem;flex-shrink:0;line-height:1;margin-top:0.125rem;}
-.outil-cat{font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--acier);font-weight:500;margin-bottom:0.25rem;}
-.outil-title{font-family:var(--ft);font-size:1rem;font-weight:700;color:var(--marine);margin-bottom:0.375rem;}
-.outil-text{font-size:0.8125rem;color:var(--txt-2);line-height:1.7;font-weight:300;margin-bottom:0.75rem;}
-.outil-link{font-size:0.8125rem;font-weight:500;color:var(--acier);border-bottom:1px solid var(--ciel);padding-bottom:1px;transition:color var(--transition),border-color var(--transition);}
-.outil-link:hover{color:var(--marine);border-color:var(--acier);}
-.affiliation-mention{font-size:0.75rem;color:var(--txt-3);font-weight:300;font-style:italic;margin-top:1rem;}
-
-/* FOOTER */
-
-.reveal{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
-.reveal.visible{opacity:1;transform:none;}
-.reveal-d1{transition-delay:0.07s;}.reveal-d2{transition-delay:0.14s;}.reveal-d3{transition-delay:0.22s;}
-
-@media(max-width:768px){
-  .templates-grid,.gratuit-grid,.outils-grid{grid-template-columns:1fr;}
-  .quiz-block{grid-template-columns:1fr;}
-  .container{padding:0 1.25rem;}.section{padding:3.5rem 0;}
-  .footer-copy{text-align:left;}.footer-links{gap:1rem;}
-}
-
-
-
-.quiz-choice{background:var(--fond);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;font-family:var(--fb);font-size:0.875rem;color:var(--txt);text-align:left;cursor:pointer;transition:border-color var(--transition),background var(--transition);}
-.quiz-choice:hover{border-color:var(--acier);background:var(--blanc);}
-
-
-/* Layout utilities */
-.wrap { max-width:1040px; margin:0 auto; padding:0 2rem; }
-</style>
-<link rel="preload" href="marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="marc.css"></noscript>
-</head>
-<body>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">Upglide<span> ·</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
-      <li><a href="methode-marc.html">Méthode MARC</a></li>
-      <li><a href="ressources.html" class="active">Ressources</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
-    </ul>
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
-    <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
-      </svg>
-    </button>
-    <a href="index.html" onclick="closeMob()">Accueil</a>
-    <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
-    <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
-    <a href="ressources.html" onclick="closeMob()">Ressources</a>
-    <a href="blog.html" onclick="closeMob()">Blog</a>
-    <a href="a-propos.html" onclick="closeMob()">À propos</a>
-    <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="section--alt">
-  <div class="container">
-    <div class="page-hero">
-      <p class="page-eyebrow">Ressources</p>
-      <h1 class="page-h1">Des outils prêts à l'emploi<br>pour <em>ton e-commerce.</em></h1>
-      <p class="page-sub">Templates, checklists, quiz — tout ce que j'aurais voulu avoir quand j'ai démarré. Directement applicables à ta boutique.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- GRATUIT -->
-<div class="section--alt" id="checklist">
-  <div class="container">
-    <section class="section">
-      <p class="s-label reveal">Gratuit</p>
-      <h2 class="s-h2 reveal reveal-d1">Commence par<br>les <em>ressources gratuites.</em></h2>
-      <p class="s-sub reveal reveal-d2">Aucun prérequis. Accès immédiat.</p>
-      <div class="gratuit-grid reveal reveal-d2">
-        <div class="gratuit-card">
-          <div class="gratuit-icon">✅</div>
-          <h3 class="gratuit-title">Checklist — 10 signaux que ton e-commerce plafonne</h3>
-          <p class="gratuit-desc">15 minutes pour identifier exactement ce qui te freine. Reçue directement par email avec des explications pour chaque signal.</p>
-          <button class="gratuit-btn" onclick="window.location='index.html#lm'">Recevoir la checklist →</button>
-        </div>
-        <div class="gratuit-card" id="quiz">
-          <div class="gratuit-icon">🎯</div>
-          <h3 class="gratuit-title">Quiz — Pourquoi ton e-commerce stagne vraiment ?</h3>
-          <p class="gratuit-desc">10 questions pour identifier ton frein principal : marges, process, délégation ou pilotage ? Résultat immédiat avec plan d'action personnalisé.</p>
-          <button class="gratuit-btn">Faire le quiz →</button>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ressources pour piloter la rentabilité e-commerce : scorecard gratuite, méthode MARC et diagnostic des marges, du cash et des coûts cachés."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://upglide.fr/ressources.html" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Upglide" />
+    <meta property="og:title" content="Ressources rentabilité e-commerce | Upglide" />
+    <meta property="og:description" content="Des outils et repères pour comprendre ce que le chiffre d'affaires ne montre pas." />
+    <meta property="og:url" content="https://upglide.fr/ressources.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Ressources rentabilité e-commerce | Upglide</title>
+    <link rel="stylesheet" href="styles.css?v=13" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header" data-header>
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Upglide, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>UPGLIDE</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+          <span class="sr-only">Ouvrir le menu</span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+          <a href="scorecard.html">Scorecard</a>
+          <a href="diagnostic.html">Diagnostic 360</a>
+          <a href="methode-marc.html">Méthode MARC</a>
+          <a href="blog.html">Blog</a>
+          <a href="a-propos.html">À propos</a>
+          <a class="nav-contact" href="contact.html">Parler de mon e-commerce</a>
+        </nav>
       </div>
+    </header>
 
-      <br><br>
-      <!-- Quiz interactif simplifié -->
-      <div id="quiz-block" style="display:none;background:var(--blanc);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;">
-        <p style="font-family:var(--ft);font-size:1.125rem;font-weight:700;color:var(--marine);margin-bottom:1.5rem;" id="quiz-q">Question 1/4 — Quel est ton plus gros problème actuellement ?</p>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;" id="quiz-choices">
-          <button class="quiz-choice" onclick="quizNext(this,'marges')">Je ne connais pas mes vraies marges</button>
-          <button class="quiz-choice" onclick="quizNext(this,'process')">Tout repose sur moi, je ne peux pas déléguer</button>
-          <button class="quiz-choice" onclick="quizNext(this,'pilotage')">Je prends des décisions à l'instinct</button>
-          <button class="quiz-choice" onclick="quizNext(this,'marketplace')">Je ne sais pas comment me développer sur les marketplaces</button>
-        </div>
-        <div id="quiz-result" style="display:none;"></div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- CALCULATEURS -->
-<div class="container" id="calculateurs">
-  <section class="section">
-    <p class="s-label reveal">Calculateurs</p>
-    <h2 class="s-h2 reveal reveal-d1">Des outils pour<br><em>chiffrer vos décisions.</em></h2>
-    <p class="s-sub reveal reveal-d2">Entrez vos chiffres, obtenez des résultats actionnables en quelques secondes.</p>
-    <div class="gratuit-grid reveal reveal-d2">
-      <div class="gratuit-card" style="border-left-color:var(--acier);">
-        <div class="gratuit-icon">🧮</div>
-        <h3 class="gratuit-title">Calculateur Coût Produit Réel</h3>
-        <p class="gratuit-desc">Calculez votre vraie marge unitaire en intégrant l'impact des retours — frais de port, paiement, taux de retour. Simulation avant/après incluse.</p>
-        <a href="calculateur-cout-produit.html" class="gratuit-btn">Utiliser le calculateur →</a>
-      </div>
-      <div class="gratuit-card" style="border-left-color:var(--acier);">
-        <div class="gratuit-icon">📐</div>
-        <h3 class="gratuit-title">Calculateur Marge Unitaire Réelle</h3>
-        <p class="gratuit-desc">Version complète : TVA, frais logistiques détaillés, multi-moyens de paiement pondérés, charges indirectes, retours. Mode Simple ou Avancé, export PDF.</p>
-        <a href="calculateur-marge-unitaire.html" class="gratuit-btn">Utiliser le calculateur →</a>
-      </div>
-    </div>
-  </section>
-</div>
-
-<hr class="divider">
-
-<!-- TEMPLATES PAYANTS -->
-<div class="container" id="templates">
-  <section class="section">
-    <p class="s-label reveal">Templates &amp; outils</p>
-    <h2 class="s-h2 reveal reveal-d1">Applicables à ta boutique<br><em>dès aujourd'hui.</em></h2>
-    <p class="s-sub reveal reveal-d2">Des fichiers que tu télécharges, que tu adaptes à ton business, et que tu utilises immédiatement.</p>
-    <div class="templates-grid reveal reveal-d2">
-      <div class="template-card">
-        <div class="template-preview marges">📊</div>
-        <div class="template-body">
-          <span class="tpl-tag">Google Sheets · Marges</span>
-          <h3 class="tpl-title">Tracker de marges e-commerce</h3>
-          <p class="tpl-desc">Le fichier pour enfin connaître ta vraie rentabilité produit par produit, en intégrant tous les frais réels.</p>
-          <ul class="tpl-includes">
-            <li class="tpl-include">Calcul automatique marge brute & nette</li>
-            <li class="tpl-include">Intégration frais marketplace par plateforme</li>
-            <li class="tpl-include">Tableau de bord rentabilité par catégorie</li>
-            <li class="tpl-include">Notice d'utilisation incluse</li>
-          </ul>
-          <div class="tpl-footer">
-            <span class="tpl-prix">39€</span>
-            <button class="tpl-btn">Obtenir →</button>
-          </div>
-        </div>
-      </div>
-      <div class="template-card">
-        <div class="template-preview kpis">📈</div>
-        <div class="template-body">
-          <span class="tpl-tag">Google Sheets · Pilotage</span>
-          <h3 class="tpl-title">Dashboard KPIs e-commerce</h3>
-          <p class="tpl-desc">5 indicateurs, 30 minutes par semaine. Le tableau de bord pour piloter ton business sur des faits, pas sur des intuitions.</p>
-          <ul class="tpl-includes">
-            <li class="tpl-include">5 KPIs essentiels pré-configurés</li>
-            <li class="tpl-include">Visualisations et graphiques automatiques</li>
-            <li class="tpl-include">Suivi hebdomadaire et mensuel</li>
-            <li class="tpl-include">Compatible Shopify, WooCommerce, marketplaces</li>
-          </ul>
-          <div class="tpl-footer">
-            <span class="tpl-prix">49€</span>
-            <button class="tpl-btn">Obtenir →</button>
-          </div>
-        </div>
-      </div>
-      <div class="template-card">
-        <div class="template-preview sop">📋</div>
-        <div class="template-body">
-          <span class="tpl-tag">Notion · Process</span>
-          <h3 class="tpl-title">SOP Pack e-commerce</h3>
-          <p class="tpl-desc">10 procédures opérationnelles standards prêtes à l'emploi. Copie, adapte, délègue. Arrête de tout expliquer à voix haute.</p>
-          <ul class="tpl-includes">
-            <li class="tpl-include">10 SOP couvrant les process clés</li>
-            <li class="tpl-include">Traitement commandes & SAV</li>
-            <li class="tpl-include">Gestion fournisseurs & stocks</li>
-            <li class="tpl-include">Template d'onboarding collaborateur inclus</li>
-          </ul>
-          <div class="tpl-footer">
-            <span class="tpl-prix">29€</span>
-            <button class="tpl-btn">Obtenir →</button>
-          </div>
-        </div>
-      </div>
-      <div class="template-card bundle">
-        <div class="template-preview bundle">⭐</div>
-        <div class="template-body">
-          <span class="tpl-tag">Bundle · Meilleure valeur</span>
-          <h3 class="tpl-title">Pack Complet Upglide</h3>
-          <p class="tpl-desc">Les 3 templates + accès à tous les futurs outils. Le kit complet pour structurer ton e-commerce de A à Z.</p>
-          <ul class="tpl-includes">
-            <li class="tpl-include">Tracker de marges (39€)</li>
-            <li class="tpl-include">Dashboard KPIs (49€)</li>
-            <li class="tpl-include">SOP Pack 10 process (29€)</li>
-            <li class="tpl-include">Accès aux futures mises à jour</li>
-          </ul>
-          <div class="tpl-footer">
-            <span class="tpl-prix" style="color:var(--sable);">97€ <span style="font-size:0.875rem;color:rgba(184,200,216,0.5);text-decoration:line-through;">117€</span></span>
-            <button class="tpl-btn">Obtenir le pack →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<hr class="divider">
-
-<!-- OUTILS RECOMMANDÉS -->
-<div class="section--alt">
-  <div class="container">
-    <section class="section">
-      <p class="s-label reveal">Outils recommandés</p>
-      <h2 class="s-h2 reveal reveal-d1">Les outils que j'utilise<br><em>et que je recommande.</em></h2>
-      <p class="s-sub reveal reveal-d2">Testés et validés sur le terrain. Certains liens sont affiliés — ça ne change pas leur prix pour toi.</p>
-      <div class="outils-grid reveal reveal-d2">
-        <div class="outil-card">
-          <div class="outil-icon">🛒</div>
+    <main id="contenu">
+      <section class="page-hero">
+        <div class="shell page-hero-grid">
           <div>
-            <p class="outil-cat">Plateforme e-commerce</p>
-            <h3 class="outil-title">Shopify</h3>
-            <p class="outil-text">La plateforme que je recommande pour démarrer et scaler. Fiable, riche en intégrations, idéale pour les marketplaces.</p>
-            <a class="outil-link" href="#" rel="nofollow sponsored" target="_blank">Essayer 3 mois à 1€/mois →</a>
+            <p class="eyebrow eyebrow-light"><span></span> Ressources</p>
+            <h1>Des outils pour voir <span>ce que le CA ne montre pas.</span></h1>
           </div>
+          <aside><strong>Pratique, pas théorique.</strong><p>Des ressources conçues pour éclairer une décision ou déclencher une action.</p></aside>
         </div>
-        <div class="outil-card">
-          <div class="outil-icon">⚡</div>
-          <div>
-            <p class="outil-cat">Automatisation</p>
-            <h3 class="outil-title">Make</h3>
-            <p class="outil-text">L'outil d'automatisation le plus puissant pour non-développeurs. Connecte tout, automatise les tâches répétitives.</p>
-            <a class="outil-link" href="#" rel="nofollow sponsored" target="_blank">Commencer gratuitement →</a>
-          </div>
-        </div>
-        <div class="outil-card">
-          <div class="outil-icon">📧</div>
-          <div>
-            <p class="outil-cat">Email marketing</p>
-            <h3 class="outil-title">Brevo</h3>
-            <p class="outil-text">La solution emailing que j'utilise. Interface claire, tarifs compétitifs, parfaite pour gérer sa liste et ses campagnes.</p>
-            <a class="outil-link" href="#" rel="nofollow sponsored" target="_blank">Démarrer gratuitement →</a>
-          </div>
-        </div>
-        <div class="outil-card">
-          <div class="outil-icon">📋</div>
-          <div>
-            <p class="outil-cat">Process &amp; SOP</p>
-            <h3 class="outil-title">Notion</h3>
-            <p class="outil-text">L'outil où je construis tous mes process. Idéal pour créer ses SOP, onboarder une équipe, centraliser l'info.</p>
-            <a class="outil-link" href="#" rel="nofollow sponsored" target="_blank">Utiliser gratuitement →</a>
-          </div>
-        </div>
-        <div class="outil-card">
-          <div class="outil-icon">📊</div>
-          <div>
-            <p class="outil-cat">Analytics &amp; KPIs</p>
-            <h3 class="outil-title">Looker Studio</h3>
-            <p class="outil-text">Pour construire ses dashboards. Gratuit, connecté à toutes vos sources de données, personnalisable à l'infini.</p>
-            <a class="outil-link" href="#" rel="nofollow" target="_blank">Accéder gratuitement →</a>
-          </div>
-        </div>
-        <div class="outil-card">
-          <div class="outil-icon">🚚</div>
-          <div>
-            <p class="outil-cat">Logistique</p>
-            <h3 class="outil-title">Sendcloud</h3>
-            <p class="outil-text">La solution multi-transporteurs pour réduire ses coûts d'expédition et automatiser le suivi colis.</p>
-            <a class="outil-link" href="#" rel="nofollow sponsored" target="_blank">Essayer gratuitement →</a>
-          </div>
-        </div>
-      </div>
-      <p class="affiliation-mention reveal">* Certains liens sont des liens affiliés. Je ne recommande que des outils que j'utilise moi-même ou que j'ai validés sur le terrain.</p>
-    </section>
-  </div>
-</div>
+      </section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
-      <nav class="foot-links" aria-label="Liens secondaires">
-        <a href="podcast.html" class="foot-link">Podcast</a>
-        <a href="blog.html" class="foot-link">Blog</a>
-        <a href="ressources.html" class="foot-link">Ressources</a>
-        <a href="a-propos.html" class="foot-link">À propos</a>
-        <a href="contact.html" class="foot-link">Contact</a>
-      </nav>
-      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
-    </div>
-  </div>
-</footer>
-
-
-
-<script src="content-loader.js"></script>
-<script>
-const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
-if(burger&&mobnav){burger.addEventListener('click',function(){var o=mobnav.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});}
-function closeMob(){if(mobnav)mobnav.classList.remove('open');if(burger)burger.classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMob();});
-if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);},{passive:true});
-function goTo(id){var el=document.getElementById(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}
-document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='1';el.style.transform='none';});
-</script>
-<script>
-/* Page functions */
-function toggleMobileSub(btn){const s=btn.nextElementSibling;const o=s.classList.toggle('open');btn.classList.toggle('expanded',o);}
-function quizNext(btn,cat){
-  const result=document.getElementById('quiz-result');
-  const choices=document.getElementById('quiz-choices');
-  choices.style.display='none';
-  result.style.display='block';
-  result.innerHTML=`<div style="background:var(--fond-2);border-left:3px solid var(--sable);border-radius:var(--radius);padding:1.5rem;font-size:0.9375rem;color:var(--marine);line-height:1.7;">${quizResults[cat]}<br><br><button onclick="window.location='index.html#lm'" style="background:var(--marine);color:var(--blanc);font-family:var(--fb);font-size:0.875rem;font-weight:500;padding:0.75rem 1.5rem;border:none;border-radius:4px;cursor:pointer;margin-top:0.5rem;">Recevoir la checklist complète →</button></div>`;
-}
-</script>
-<script>function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}</script>
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script src="marc.js" defer></script>
-<script src="analytics.js" defer></script>
-</body>
+      <section class="page-section">
+        <div class="shell">
+          <div class="page-lead">
+            <div><p class="eyebrow"><span></span> Pour commencer</p><h2>Faites le point avant de chercher une nouvelle tactique.</h2></div>
+            <p>
+              La meilleure ressource n’est pas toujours une liste de conseils. C’est parfois la bonne
+              question, posée au bon moment, pour comprendre où concentrer votre attention.
+            </p>
+          </div>
+          <div class="resource-grid">
+            <article class="resource-card featured">
+              <span class="resource-tag">Outil gratuit</span>
+              <h3>Scorecard Rentabilité E-commerce</h3>
+              <p>Un auto-diagnostic rapide pour situer votre modèle et repérer vos priorités.</p>
+              <a href="scorecard.html">Faire ma scorecard →</a>
+            </article>
+            <article class="resource-card">
+              <span class="resource-tag">Méthode</span>
+              <h3>Les 4 étapes MARC</h3>
+              <p>Comprendre l’ordre logique pour améliorer la rentabilité sans fragiliser le cash.</p>
+              <a href="methode-marc.html">Lire la méthode →</a>
+            </article>
+            <article class="resource-card">
+              <span class="resource-tag">Articles</span>
+              <h3>Comprendre les leviers de rentabilité</h3>
+              <p>Des analyses concrètes sur la marge, le cash, le stock et le pilotage e-commerce.</p>
+              <a href="blog.html">Lire le blog →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell footer-bottom"><span>© <span data-year></span> Upglide</span><a href="index.html">Retour à l’accueil</a></div></footer>
+  </body>
 </html>

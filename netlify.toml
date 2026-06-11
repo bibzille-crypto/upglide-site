@@ -4,7 +4,7 @@
 
 [build]
   publish = "."
-  command = "npm install && node generate-sitemap.js && cd netlify/functions && npm install && cd ../.."
+  command = "npm install && node generate-sitemap.js && node generate-articles.js && cd netlify/functions && npm install && cd ../.."
 
 [build.environment]
   NODE_VERSION = "18"
@@ -93,12 +93,22 @@
 
 [[redirects]]
   from = "/admin"
+  to   = "/admin/dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/cms"
   to   = "/admin/index.html"
   status = 200
 
 [[redirects]]
   from = "/admin/stats"
   to   = "/admin/stats.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/import"
+  to   = "/admin/import-word.html"
   status = 200
 
 # ── HEADERS ─────────────────────────────────────────────────────────────

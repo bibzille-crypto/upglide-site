@@ -1,819 +1,617 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Audit Rentabilité E-commerce — Fuites de Marge | Upglide</title>
-  <meta name="description" content="Analyse complète de votre rentabilité e-commerce : marge, pricing, logistique, acquisition. Diagnostic gratuit 30 min — on identifie vos 2 à 3 principales fuites de marge en direct."/>
-  <meta name="keywords" content="audit rentabilité e-commerce, fuites de marge e-commerce, pourquoi mon e-commerce n'est pas rentable, optimiser cashflow e-commerce, marge opérationnelle boutique en ligne, contribution marginale e-commerce, profit par commande, audit logistique e-commerce, audit pricing, audit stock e-commerce, rentabilité par canal acquisition, coût complet client, pourquoi ma trésorerie est tendue, comment calculer vraie marge e-commerce, augmenter bénéfice e-commerce, marge nette e-commerce"/>
-  <link rel="canonical" href="https://upglide.fr/"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Audit rentabilité e-commerce | Identifiez vos pertes de marge | Upglide"/>
-  <meta property="og:description" content="Diagnostic gratuit 30 min : on identifie vos principales fuites de marge, leur impact financier, et si un audit complet est pertinent."/>
-  <meta property="og:url" content="https://upglide.fr/"/>
-  <meta property="og:locale" content="fr_FR"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Upglide aide les e-commerçants qui font déjà du chiffre à comprendre pourquoi ils ne gagnent pas assez, puis à prioriser les leviers de rentabilité : acquisition, conversion, marge, cash, stock et réachat."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://upglide.fr/" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Upglide" />
+    <meta property="og:title" content="Votre e-commerce fait du chiffre. Maintenant, il doit faire du profit." />
+    <meta
+      property="og:description"
+      content="Comprenez pourquoi votre chiffre d’affaires ne se transforme pas suffisamment en marge, cash et profit. Upglide vous aide à identifier le levier prioritaire à travailler."
+    />
+    <meta property="og:url" content="https://upglide.fr/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Rentabilité e-commerce : transformer le CA en profit | Upglide</title>
+    <link rel="stylesheet" href="styles.css?v=13" />
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://upglide.fr/#organization",
+            "name": "Upglide",
+            "url": "https://upglide.fr/",
+            "description": "Upglide aide les e-commerçants à piloter leur rentabilité, leur cash et leurs priorités de croissance."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://upglide.fr/#website",
+            "url": "https://upglide.fr/",
+            "name": "Upglide",
+            "publisher": { "@id": "https://upglide.fr/#organization" },
+            "inLanguage": "fr-FR"
+          },
+          {
+            "@type": "Service",
+            "@id": "https://upglide.fr/diagnostic.html#service",
+            "name": "Diagnostic Rentabilité 360",
+            "serviceType": "Audit rentabilité e-commerce",
+            "provider": { "@id": "https://upglide.fr/#organization" },
+            "areaServed": "France",
+            "audience": {
+              "@type": "BusinessAudience",
+              "audienceType": "E-commerçants entre 300K€ et 5M€ de chiffre d'affaires annuel"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://upglide.fr/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Comment savoir si mon e-commerce est vraiment rentable ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il faut regarder ce qu’il reste après le coût des produits, l’acquisition, les remises, les retours, la logistique, les commissions et les autres coûts variables. Le chiffre d’affaires ou la marge brute seuls ne suffisent pas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Pourquoi mon e-commerce fait-il du chiffre mais manque de trésorerie ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La croissance peut consommer du cash avant d’en produire. Le stock, les dépenses publicitaires, les délais d’encaissement, les retours, la TVA et les conditions fournisseurs peuvent créer une tension malgré des ventes élevées."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quels indicateurs suivre pour piloter la rentabilité e-commerce ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Les indicateurs utiles dépendent du modèle, mais incluent généralement la marge contributive, le coût d’acquisition, le taux de retour, les remises, les frais logistiques, la rotation du stock, le besoin en fonds de roulement et le cash disponible."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Un bon ROAS signifie-t-il que mes campagnes sont rentables ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pas nécessairement. Le ROAS compare le chiffre d’affaires aux dépenses publicitaires, mais ne tient pas compte à lui seul de la marge produit, des remises, des retours, des frais de paiement, de préparation et de livraison."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Que mesure la Scorecard Rentabilité E-commerce Upglide ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La scorecard évalue huit dimensions liées à la marge réelle, au cash, au stock, à l’acquisition et au pilotage. Elle fournit une carte de priorisation avec un levier prioritaire, deux leviers secondaires et des zones à surveiller."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "La scorecard de rentabilité est-elle gratuite ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. Elle comporte huit questions, prend environ cinq minutes et ne nécessite aucun engagement."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "À partir de quel chiffre d’affaires faut-il structurer son pilotage ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il n’existe pas de seuil universel. Le besoin apparaît lorsque les canaux, les stocks, les coûts et les décisions deviennent difficiles à relier. Upglide accompagne principalement des boutiques entre 300 000 euros et 5 millions d’euros de chiffre d’affaires annuel."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quelle différence entre la scorecard et le Diagnostic Rentabilité 360 ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La scorecard est une auto-évaluation gratuite qui aide à repérer les zones de vigilance. Le Diagnostic Rentabilité 360 analyse ensuite les données et les opérations de l’entreprise pour chiffrer les enjeux et prioriser un plan d’action."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"WebSite","@id":"https://www.upglide.fr/#website","url":"https://www.upglide.fr/","name":"Upglide","inLanguage":"fr-FR"},
-    {"@type":"Person","@id":"https://www.upglide.fr/#person","name":"Caroline","jobTitle":"Fondatrice & Consultante en rentabilité e-commerce","knowsAbout":["Audit rentabilité e-commerce","Fuites de marge","Marge opérationnelle","Contribution marginale","Cashflow e-commerce","Audit logistique","Audit pricing","Profitabilité e-commerce","Rentabilité par canal"]},
-    {"@type":"Service","name":"Audit Rentabilité E-commerce","provider":{"@id":"https://www.upglide.fr/#person"},"description":"Audit opérationnel complet : marge par SKU, CAC réel, contribution marginale, audit logistique, audit stock, audit SAV, audit pricing. Amélioration de la marge nette et du cashflow.","offers":{"@type":"Offer","description":"Si l'audit ne révèle aucun levier concret d'amélioration de votre rentabilité, la mission est annulée sans condition."}},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"Pourquoi mon e-commerce fait du CA mais pas de bénéfice ?","acceptedAnswer":{"@type":"Answer","text":"Les fuites de marge silencieuses absorbent votre profit : CAC réel sous-estimé, coût des retours non intégré, stock dormant, frais logistiques non optimisés, coûts fixes jamais audités, pricing sous-calibré. Un audit opérationnel les quantifie et les priorise."}},
-      {"@type":"Question","name":"Comment améliorer la rentabilité de ma boutique e-commerce ?","acceptedAnswer":{"@type":"Answer","text":"En travaillant la contribution marginale par produit, en réduisant le coût complet client, en réalisant un audit logistique et en auditant les coûts fixes. La méthode MARC structure cette démarche en 4 étapes séquentielles."}},
-      {"@type":"Question","name":"Comment calculer la vraie marge de mon e-commerce ?","acceptedAnswer":{"@type":"Answer","text":"La vraie marge intègre : prix de vente - COGS - frais plateforme - frais logistique - coût retour estimé - coût SAV. C'est la contribution marginale réelle par SKU, pas seulement le prix moins le coût d'achat."}},
-      {"@type":"Question","name":"Pourquoi ma trésorerie est tendue malgré les ventes ?","acceptedAnswer":{"@type":"Answer","text":"Le cash conversion cycle trop long, le stock dormant qui immobilise les liquidités, les délais de paiement fournisseur non optimisés et les remboursements clients non anticipés sont les causes les plus fréquentes d'une trésorerie tendue en e-commerce."}}
-    ]}
-  ]}
-  </script>
+    <header class="site-header" data-header>
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Upglide, accueil">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span>UPGLIDE</span>
+        </a>
 
-  <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="hero-visual.jpg" fetchpriority="high">
-  <!-- Calendly CSS — chargé après le rendu (popup seulement) -->
-  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"></noscript>
-  <!-- Google Fonts — non bloquant -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          data-menu-toggle
+        >
+          <span class="sr-only">Ouvrir le menu</span>
+          <span></span><span></span>
+        </button>
 
-  <style>
-    :root {
-      /* ── Charte Upglide ── */
-      --isa:#F5F1E8; --alm:#E8D4AA;
-      --lion:#C9A052; --lion2:#A8802E;
-      --cad:#1E2D5A; --cad2:#131D3C;
-      --wh:#FFFFFF;
-      --txt:#1E2D5A; --txt2:#4A5878; --txt3:#5A6A8A;
-      --bdr:rgba(30,45,90,.09);
-      --ft:'Cormorant Garamond',Georgia,serif;
-      --fb:'Manrope',system-ui,sans-serif;
-      --r:12px; --rl:16px;
-      --shsm:0 2px 12px rgba(30,45,90,.08);
-      --shmd:0 8px 32px rgba(30,45,90,.12);
-      --shg:0 6px 24px rgba(201,160,82,.3);
-      --t:.22s ease;
-      --ease:cubic-bezier(.4,0,.2,1);
-      /* Alias de compatibilité */
-      --navy:var(--cad); --nd:var(--cad2); --nm:var(--cad);
-      --gold:var(--lion); --gl:#d4b87a; --gd:rgba(201,160,82,.12);
-      --bg:var(--isa); --w:var(--wh);
-      --text:var(--txt); --muted:var(--txt2); --light:var(--txt3);
-      --border:var(--bdr);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:var(--fb);background:var(--isa);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    h1,h2,h3{font-family:var(--ft);line-height:1.1;letter-spacing:-.01em}
-    a{text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* ── SCROLL BAR ── */
-    #sp{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:300;will-change:width}
-
-    /* ── NAV ── */
-    nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
-    nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
-    @media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
-    @media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
-    .logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
-    .logo span{color:var(--lion);font-style:normal;}
-    .nav-links{display:none;}
-    @media(min-width:768px){
-      .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
-      .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
-      .nav-links a:hover{color:var(--cad);background:var(--isa);}
-      .nav-links a.active{color:var(--cad);font-weight:600;}
-    }
-    .nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
-    @media(min-width:768px){.nav-cta{display:inline-flex;}}
-    .nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
-    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
-    @media(min-width:768px){.burger{display:none;}}
-    .burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
-    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-    .burger.open span:nth-child(2){opacity:0;}
-    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-    .mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
-    .mob-nav.open{display:flex;}
-    .mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
-    .mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
-    .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
-
-    /* ── HERO ── */
-    .hero{min-height:92vh;padding:96px 5% 72px;background:var(--cad);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .hero-glow{position:absolute;width:800px;height:800px;top:-20%;right:-8%;background:radial-gradient(circle,rgba(201,160,82,.09) 0%,transparent 68%);pointer-events:none}
-    .hero-grid-line{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.025);pointer-events:none}
-    .hero-inner{position:relative;width:100%;max-width:1100px;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
-    .hero-content{min-width:0}
-    .hero-photo-wrap{position:relative;flex-shrink:0}
-    .hero-photo{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:20px;display:block;box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)}
-    .hero-photo-frame{position:relative;border-radius:20px;overflow:hidden}
-    .hero-photo-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,45,90,.2) 0%,transparent 55%);pointer-events:none;border-radius:20px}
-    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
-    h1.hero-h{font-size:clamp(2.1rem,4.2vw,3.6rem);color:var(--wh);margin-bottom:20px;font-weight:600;line-height:1.08}
-    h1.hero-h .em{color:var(--lion);font-style:italic}
-    .hero-sub{font-size:1rem;color:rgba(255,255,255,.58);max-width:480px;margin-bottom:36px;font-weight:400;line-height:1.8}
-    .hero-sub strong{color:rgba(255,255,255,.82);font-weight:500}
-    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:44px}
-    .btn-gold{background:var(--lion);color:var(--cad2);padding:1rem 2.25rem;border-radius:100px;font-family:var(--fb);font-size:.9375rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:all var(--t);text-decoration:none;box-shadow:0 4px 24px rgba(201,160,82,.35)}
-    .btn-gold:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,160,82,.5)}
-    .btn-ghost{background:transparent;color:rgba(255,255,255,.65);border:1.5px solid rgba(255,255,255,.2);border-radius:100px;padding:1rem 2.25rem;font-family:var(--fb);font-size:.9375rem;font-weight:600;display:inline-flex;align-items:center;transition:all var(--t);text-decoration:none}
-    .btn-ghost:hover{color:var(--wh);border-color:rgba(255,255,255,.55)}
-    .hero-proof{display:flex;gap:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.07)}
-    .hpi{display:flex;flex-direction:column;gap:3px}
-    .hpi strong{font-family:var(--ft);font-size:1.4rem;color:var(--lion);font-weight:600}
-    .hpi span{font-size:.71rem;color:rgba(255,255,255,.38);letter-spacing:.03em}
-    .hero-scarcity{margin-top:18px;font-size:.76rem;color:rgba(255,255,255,.3);letter-spacing:.02em}
-
-    /* ── MARQUEE ── */
-    .mq{background:var(--nd);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:12px 0;overflow:hidden;white-space:nowrap}
-    .mqt{display:inline-flex;animation:mq 32s linear infinite}
-    .mqt:hover{animation-play-state:paused}
-    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .mqi{display:inline-flex;align-items:center;gap:10px;padding:0 18px;font-size:.71rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-    .mqs{color:var(--gold);opacity:.45}
-
-    /* ── SECTIONS ── */
-    section{padding:96px 5%}
-    .sl{display:inline-flex;align-items:center;gap:8px;font-size:.625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lion);margin-bottom:1rem}
-    .sl::before{content:'';width:20px;height:1px;background:var(--lion);flex-shrink:0}
-    .st{font-family:var(--ft);font-size:clamp(1.75rem,3vw,2.5rem);color:var(--cad);margin-bottom:1rem;font-weight:600;line-height:1.1}
-    .ss{font-size:.9875rem;color:var(--txt2);max-width:520px;line-height:1.85;font-weight:400}
-    .sh{margin-bottom:56px}
-
-    /* ── REVEAL ── */
-    .rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-    .rv.vis{opacity:1;transform:none}
-    .d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.26s}
-
-    /* ── SEO INTRO STRIP ── */
-    .seo-strip{background:var(--wh);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:32px 5%}
-    .seo-strip-inner{max-width:1100px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-    .seo-pill{background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:.78rem;color:var(--muted);transition:all .2s;cursor:default}
-    .seo-pill:hover{border-color:rgba(200,168,112,.5);color:var(--navy);background:var(--gd)}
-
-    /* ── SECTION TRANSITIONS ── */
-    .diag-section{background:var(--isa);border-top:3px solid var(--lion)}
-    .promise{border-top:1px solid var(--bdr)}
-    .marc{border-top:1px solid var(--bdr)}
-    .guar{border-top:1px solid var(--bdr)}
-    .seo-text{background:var(--isa);border-top:1px solid var(--bdr)}
-    .about{background:var(--isa);border-top:1px solid var(--bdr)}
-
-    /* ── DIAGNOSTIC SECTION ── */
-    .diag-section{background:var(--isa)}
-    .diag-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin-bottom:48px}
-    .diag-step{background:var(--wh);border:1px solid var(--bdr);border-radius:16px;padding:32px 28px}
-    .ds-num{font-family:var(--ft);font-size:2.75rem;font-weight:600;color:rgba(201,160,82,.18);line-height:1;margin-bottom:18px}
-    .diag-step h3{font-family:var(--fb);font-size:.9375rem;color:var(--cad);font-weight:600;margin-bottom:10px;line-height:1.35}
-    .diag-step p{font-size:.875rem;color:var(--txt2);line-height:1.7}
-    .diag-cta-wrap{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
-    .diag-note{font-size:.78rem;color:var(--txt3);letter-spacing:.02em}
-    @media(max-width:768px){.diag-steps{grid-template-columns:1fr;gap:16px}}
-
-    /* ── PAIN ── */
-    .pain{background:var(--wh)}
-    .pain-wrap{display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;max-width:1080px}
-    .pain-sticky{position:sticky;top:88px}
-    .pain-big{font-family:var(--ft);font-size:clamp(2.5rem,4vw,3.5rem);color:var(--cad);line-height:1.0;margin-bottom:20px;font-weight:600}
-    .pain-big em{color:var(--lion);font-style:italic;display:block}
-    .pain-intro{font-size:.9375rem;color:var(--txt2);line-height:1.75}
-    .pain-list{display:flex;flex-direction:column}
-    .pi{display:grid;grid-template-columns:36px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--bdr);cursor:default;transition:all .2s}
-    .pi:first-child{border-top:1px solid var(--bdr)}
-    .pi:hover .pi-num{color:var(--lion)}
-    .pi-num{font-family:var(--ft);font-size:.875rem;color:rgba(30,45,90,.15);font-weight:600;margin-top:3px;transition:color .2s}
-    .pi h3{font-family:var(--fb);font-size:.9375rem;color:var(--cad);margin-bottom:5px;font-weight:600}
-    .pi p{font-size:.85rem;color:var(--txt2);line-height:1.6}
-
-    /* ── PROMISE ── */
-    .promise{background:var(--wh)}
-    .prom-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1080px}
-    .prom-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .prom-out{background:var(--isa);border:1px solid var(--bdr);border-radius:16px;padding:28px 24px;transition:border-color var(--t)}
-    .prom-out:hover{border-color:rgba(201,160,82,.3)}
-    .pout-num{font-family:var(--ft);font-size:2.25rem;font-weight:600;color:var(--lion);line-height:1;margin-bottom:10px;font-style:italic}
-    .pout-h{font-family:var(--fb);font-size:.875rem;font-weight:600;color:var(--cad);margin-bottom:6px}
-    .pout-p{font-size:.8125rem;color:var(--txt2);line-height:1.6}
-    .prom-cta-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
-    .prom-cta-row .btn-gold{align-self:flex-start}
-    .prom-link{font-size:.875rem;font-weight:600;color:var(--txt2);transition:color var(--t);align-self:flex-start}
-    .prom-link:hover{color:var(--cad)}
-    .prom-link::after{content:' →'}
-
-    /* ── MARC ── */
-    .marc{background:var(--isa)}
-    .marc-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1080px;margin-bottom:56px}
-    .marc-intro-body p{font-size:.9375rem;color:var(--txt2);line-height:1.85;margin-bottom:20px}
-    .marc-link{display:inline-flex;align-items:center;gap:6px;font-size:.875rem;font-weight:600;color:var(--cad);border-bottom:1.5px solid var(--lion);padding-bottom:2px;transition:color var(--t),border-color var(--t)}
-    .marc-link:hover{color:var(--lion);border-color:var(--lion)}
-    .marc-cta{max-width:1080px;margin-top:48px;padding-top:40px;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-    .marc-cta-txt{font-size:.9375rem;color:var(--txt2);max-width:480px;line-height:1.7}
-    .marc-cta-txt strong{color:var(--cad)}
-    .marc-rel{position:relative}
-    .marc-connector{position:absolute;top:28px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:1px;background:var(--border);z-index:0;pointer-events:none}
-    .mc-fill{position:absolute;top:0;left:0;height:100%;background:var(--gold);opacity:.45;width:0;transition:width .7s var(--ease)}
-    .marc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-    .ms{display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;z-index:1;padding:0 8px}
-    .ms-c{width:56px;height:56px;border-radius:50%;background:var(--wh);border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-family:var(--ft);font-size:1.2rem;color:var(--txt3);margin-bottom:16px;position:relative;z-index:1;transition:all .3s var(--ease)}
-    .ms.act .ms-c,.ms:hover .ms-c{background:var(--gd);border-color:rgba(200,168,112,.5);color:var(--gold);transform:scale(1.05)}
-    .ms-num{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:6px;font-weight:500;transition:color .3s}
-    .ms.act .ms-num{color:var(--gold)}
-    .ms-title{font-family:var(--ft);font-size:1rem;color:var(--light);text-align:center;transition:color .3s}
-    .ms.act .ms-title{color:var(--navy)}
-    .marc-panels{margin-top:40px;border-top:1px solid var(--border);padding-top:40px}
-    .mp{display:none}
-    .mp.act{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .mp-desc{font-size:.94rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:16px}
-    .mp-quote{font-size:.88rem;color:var(--cad);font-style:italic;font-family:var(--ft);padding:14px 18px;border-left:2px solid var(--lion);background:var(--wh);border-radius:0 6px 6px 0}
-    .mp-tags{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-    .mt{padding:9px 13px;background:var(--wh);border:1px solid var(--bdr);border-radius:6px;font-size:.78rem;color:var(--txt2);transition:all .2s;cursor:default}
-    .mt:hover{background:var(--gd);border-color:rgba(201,160,82,.35);color:var(--cad)}
-    .marc-dots{display:flex;justify-content:center;gap:7px;margin-top:32px}
-    .md{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .25s var(--ease)}
-    .md.act{background:var(--gold);width:20px;border-radius:100px}
-
-    /* ── LEAD ── */
-    .lead{background:var(--navy);position:relative;overflow:hidden}
-    .lead::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,.011) 40px,rgba(255,255,255,.011) 41px)}
-    .lead-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;max-width:1080px}
-    .lpdf{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--rl);overflow:hidden}
-    .lpdf-top{padding:26px 26px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    .lpdf-badge{display:inline-block;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,168,112,.3);padding:4px 10px;border-radius:100px;margin-bottom:12px}
-    .lpdf-title{font-family:var(--ft);font-size:.93rem;color:var(--w);font-style:italic;line-height:1.5;margin-bottom:4px}
-    .lpdf-sub{font-size:.7rem;color:rgba(255,255,255,.33);margin-bottom:18px}
-    .lpdf-body{padding:18px 26px 26px}
-    .lfr{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:6px;transition:background .2s;cursor:default}
-    .lfr:hover{background:rgba(255,255,255,.04)}
-    .lfn{width:20px;height:20px;border-radius:50%;background:rgba(200,168,112,.1);border:1px solid rgba(200,168,112,.22);color:var(--gold);font-size:.63rem;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .lft{font-size:.79rem;color:rgba(255,255,255,.68)}
-    .lpdf-annex{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);font-size:.73rem;color:rgba(255,255,255,.32);line-height:1.55}
-    .lead-form-area .sl{color:var(--gold)}
-    .lead-form-area .st{color:var(--w)}
-    .lfsub{font-size:.93rem;color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:26px;font-weight:300}
-    .lfa{display:flex;flex-direction:column;gap:9px}
-    .lf-grp{display:flex;flex-direction:column;gap:5px}
-    .lf-lbl{font-size:.76rem;font-weight:500;color:rgba(255,255,255,.62)}
-    .lf-inp{padding:12px 15px;border:1.5px solid rgba(255,255,255,.1);border-radius:7px;font-family:var(--fb);font-size:.9rem;color:var(--w);background:rgba(255,255,255,.07);outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
-    .lf-inp:focus{border-color:rgba(200,168,112,.55);box-shadow:0 0 0 3px rgba(200,168,112,.1)}
-    .lf-inp::placeholder{color:rgba(255,255,255,.28)}
-    .lf-sub{background:var(--lion);color:var(--cad2);border:none;padding:.9375rem;border-radius:100px;font-family:var(--fb);font-size:.9rem;font-weight:700;cursor:pointer;transition:all var(--t);width:100%;margin-top:4px}
-    .lf-sub:hover{background:var(--gl);transform:translateY(-1px);box-shadow:var(--shg)}
-    .lf-note{font-size:.7rem;color:rgba(255,255,255,.28);text-align:center}
-    .lead-scarcity{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:.76rem;color:rgba(255,255,255,.5)}
-    .ls-dot{width:7px;height:7px;border-radius:50%;background:#e87070;flex-shrink:0;animation:pulse-dot 1.8s ease-in-out infinite}
-
-    /* ── GUARANTEE ── */
-    .guar{background:var(--wh);border-top:1px solid var(--bdr);padding:96px 5%}
-    .gi{max-width:640px;margin:0 auto;text-align:center}
-    .gring{width:68px;height:68px;border-radius:50%;border:1.5px solid rgba(201,160,82,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:1.5rem;background:rgba(201,160,82,.06)}
-    .gt{font-family:var(--ft);font-size:clamp(1.4rem,2.5vw,2rem);color:var(--cad);margin-bottom:16px;line-height:1.2;font-weight:600}
-    .gp{font-size:.9375rem;color:var(--txt2);line-height:1.85;max-width:500px;margin:0 auto 32px}
-    .gp strong{color:var(--cad);font-weight:600}
-
-    /* ── SEO TEXT BLOCK ── */
-    .seo-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;max-width:1080px}
-    .seo-g h2{font-size:1.25rem;color:var(--navy);margin-bottom:12px}
-    .seo-g p{font-size:.88rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:12px}
-    .seo-g h3{font-family:var(--ft);font-size:.93rem;color:var(--navy);margin:18px 0 7px}
-
-    /* ── FAQ ── */
-    .faq{background:var(--wh);border-top:1px solid var(--bdr)}
-    .faq-l{max-width:760px}
-    .fi{border-bottom:1px solid var(--border)}
-    .ft-btn{width:100%;background:none;border:none;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left}
-    .fq{font-family:var(--ft);font-size:.94rem;color:var(--navy);font-weight:700;line-height:1.4}
-    .fi-icon{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--muted);font-size:.95rem;transition:all .3s var(--ease)}
-    .fi.op .fi-icon{border-color:var(--gold);background:var(--gd);color:var(--gold);transform:rotate(45deg)}
-    .faw{overflow:hidden;max-height:0;transition:max-height .4s var(--ease)}
-    .fi.op .faw{max-height:280px}
-    .fai{padding-bottom:20px;font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300}
-
-    /* ── ABOUT ── */
-    .about-layout{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
-    .founder-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid rgba(200,168,112,.3);border-radius:100px;padding:5px 14px 5px 8px;margin-bottom:20px}
-    .founder-dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
-    .founder-lbl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-    .about-name{font-family:var(--ft);font-size:1.9rem;color:var(--navy);margin-bottom:5px}
-    .about-role{font-size:.76rem;color:var(--gold);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
-    .about-bio{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:16px;font-weight:300}
-    .about-hl{background:var(--w);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin-top:4px}
-    .about-hl p{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300}
-    .about-hl strong{color:var(--navy);font-weight:500}
-    .about-visual{background:var(--navy);border-radius:var(--rl);overflow:hidden}
-    .about-photo{width:100%;height:340px;object-fit:cover;object-position:top center;display:block}
-    .av-bar{height:3px;background:var(--gold)}
-    .av-info{padding:20px 22px}
-    .av-name{font-family:var(--ft);font-size:.97rem;color:var(--w);margin-bottom:3px}
-    .av-sub{font-size:.7rem;color:rgba(255,255,255,.4)}
-
-    /* ── CTA FINAL ── */
-    .ctaf{background:var(--cad);text-align:center;padding:112px 5%;position:relative;overflow:hidden}
-    .ctaf::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,160,82,.07) 0%,transparent 65%)}
-    .ctaf-ey{font-size:.625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px;position:relative}
-    .ctaf h2{font-family:var(--ft);font-size:clamp(1.75rem,3.5vw,2.75rem);color:var(--wh);max-width:560px;margin:0 auto 20px;position:relative;font-weight:600;line-height:1.1}
-    .ctaf p{font-size:1rem;color:rgba(255,255,255,.45);margin-bottom:40px;position:relative}
-    .ctaf .btn-gold{position:relative;font-size:1rem;padding:1.125rem 2.75rem}
-    .ctaf-secondary{display:block;margin-top:18px;font-size:.8125rem;color:rgba(255,255,255,.32);position:relative}
-    .ctaf-secondary a{color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.18);transition:color .2s,border-color .2s;padding-bottom:1px}
-    .ctaf-secondary a:hover{color:var(--wh);border-color:rgba(255,255,255,.5)}
-
-    /* ── FOOTER ── */
-    footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
-    .foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
-    @media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
-    .foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
-    .foot-logo span{color:var(--lion);font-style:normal;}
-    .foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
-    .foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
-    .foot-link:hover{color:var(--wh);}
-    .foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
-
-    /* ── ANIMATIONS ── */
-    @keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-    .hero-tag{animation:fup .6s var(--ease) both}
-    h1.hero-h{animation:fup .6s var(--ease) .08s both}
-    .hero-kicker{animation:fup .6s var(--ease) .14s both}
-    .hero-sub{animation:fup .6s var(--ease) .2s both}
-    .hero-ctas{animation:fup .6s var(--ease) .28s both}
-    .hero-proof{animation:fup .6s var(--ease) .36s both}
-    .hero-scarcity{animation:fup .6s var(--ease) .42s both}
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:960px){
-      .marc-intro{grid-template-columns:1fr;gap:36px;margin-bottom:40px}
-      .prom-outcomes{grid-template-columns:1fr 1fr}
-      .marc-cta{flex-direction:column;align-items:flex-start}
-    }
-    @media(max-width:960px){
-      .hero-inner{grid-template-columns:1fr;gap:36px;max-width:100%}
-      .hero-photo-wrap{order:-1;max-width:100%}
-      .hero-photo{aspect-ratio:16/9}
-      .pain-wrap,.prom-layout,.lead-inner,.about-layout,.seo-g{grid-template-columns:1fr;gap:40px}
-      .pain-sticky{position:static}
-      .marc-steps{grid-template-columns:1fr 1fr}
-      .marc-connector{display:none}
-      .mp.act{grid-template-columns:1fr;gap:24px}
-      .about-visual{max-width:340px;margin:0 auto}
-    }
-    @media(max-width:600px){
-      .hero{min-height:auto;padding:64px 5% 56px}
-      section{padding:64px 5%}
-      h1.hero-h{font-size:2rem;margin-bottom:16px}
-      .hero-sub{font-size:.9375rem;margin-bottom:28px}
-      .hero-ctas{flex-direction:column;align-items:stretch}
-      .hero-ctas .btn-ghost{display:none}
-      .btn-gold,.btn-ghost{justify-content:center;padding:.9375rem 1.75rem}
-      .hero-proof{flex-wrap:wrap;gap:20px}
-      .hero-proof .hpi:last-child{display:none}
-      .marc-steps{grid-template-columns:1fr 1fr}
-      .mp-tags{grid-template-columns:1fr}
-      .seo-strip-inner{grid-template-columns:1fr 1fr}
-      .diag-strip{padding:40px 20px}
-      .diag-strip-q{font-size:1.25rem}
-    }
-  </style>
-<link rel="preload" href="marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="marc.css"></noscript>
-</head>
-<body>
-
-<div id="sp" role="progressbar" aria-label="Progression de lecture"></div>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">Upglide<span> ·</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
-      <li><a href="methode-marc.html">Méthode MARC</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
-    </ul>
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
-  <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
-      <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
-    </svg>
-  </button>
-  <a href="index.html" onclick="closeMob()">Accueil</a>
-  <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
-  <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
-  <a href="ressources.html" onclick="closeMob()">Ressources</a>
-  <a href="blog.html" onclick="closeMob()">Blog</a>
-  <a href="a-propos.html" onclick="closeMob()">À propos</a>
-  <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
-</div>
-
-<!-- HERO -->
-<header class="hero" role="banner">
-  <div class="hero-glow"></div>
-  <div class="hero-grid-line"></div>
-  <div class="hero-inner">
-
-    <!-- Texte -->
-    <div class="hero-content">
-      <h1 class="hero-h">
-        Votre e-commerce génère du chiffre.<br>
-        Mais combien perdez-vous <span class="em">réellement en marge ?</span>
-      </h1>
-      <p class="hero-sub">Nous identifions vos <strong>fuites invisibles de rentabilité</strong> et les leviers pour <strong>récupérer votre profit</strong> — en 30 minutes.</p>
-      <div class="hero-ctas">
-        <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold">Réserver mon diagnostic offert →</a>
-        <a href="#marc" class="btn-ghost">Voir la méthode</a>
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+          <a href="scorecard.html">Scorecard</a>
+          <a href="diagnostic.html">Diagnostic 360</a>
+          <a href="methode-marc.html">Méthode MARC</a>
+          <a href="blog.html">Blog</a>
+          <a href="a-propos.html">À propos</a>
+          <a class="nav-contact" href="contact.html">Parler de mon e-commerce</a>
+        </nav>
       </div>
-      <div class="hero-proof">
-        <div class="hpi"><strong>10 à 50K€</strong><span>récupérés en moyenne / an</span></div>
-        <div class="hpi"><strong>30 min</strong><span>diagnostic offert</span></div>
-        <div class="hpi"><strong>0 risque</strong><span>sans levier trouvé, mission annulée</span></div>
-      </div>
-      <p class="hero-scarcity">Places limitées par mois pour garantir la qualité</p>
-    </div>
+    </header>
 
-    <!-- Visuel illustratif -->
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-frame">
-        <img src="hero-visual.jpg" alt="Audit rentabilité e-commerce — tableau de bord contribution marginale" class="hero-photo" width="560" height="420" fetchpriority="high" loading="eager">
-      </div>
-    </div>
+    <main id="contenu">
+      <section class="hero">
+        <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+        <div class="shell hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span></span> Vous vendez, mais vous ne savez pas où passe l’argent ?</p>
+            <h1>
+              Votre e-commerce fait du chiffre.
+              <span>Maintenant, il doit faire du profit.</span>
+            </h1>
+            <p class="hero-lead">
+              Upglide aide les e-commerçants qui vendent déjà à comprendre pourquoi leur chiffre
+              d’affaires ne se transforme pas suffisamment en marge, cash et profit. Grâce à une
+              lecture structurée de vos KPI, nous identifions le ou les leviers à travailler en
+              priorité : acquisition, conversion, panier moyen, retours, stock, coûts ou réachat.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="scorecard.html">
+                Identifier mes leviers prioritaires
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href="methode-marc.html">
+                Découvrir la méthode MARC <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            <p class="microcopy">
+              Scorecard gratuite · 5 minutes · Levier prioritaire + leviers secondaires
+            </p>
+          </div>
 
-  </div>
-</header>
+          <div class="profit-card reveal reveal-delay" aria-label="Exemple de score de rentabilité e-commerce">
+            <div class="profit-card-top">
+              <div>
+                <p>Carte de priorisation</p>
+                <strong>Vue d’ensemble</strong>
+              </div>
+              <span class="live-pill"><i></i> Diagnostic</span>
+            </div>
 
-<main id="main-content">
-<div class="mq" aria-hidden="true">
-  <div class="mqt">
-    <span class="mqi">Fuites de marge <span class="mqs">·</span></span>
-    <span class="mqi">Audit rentabilité e-commerce <span class="mqs">·</span></span>
-    <span class="mqi">Marge nette <span class="mqs">·</span></span>
-    <span class="mqi">Marge opérationnelle <span class="mqs">·</span></span>
-    <span class="mqi">Contribution marginale <span class="mqs">·</span></span>
-    <span class="mqi">Cashflow e-commerce <span class="mqs">·</span></span>
-    <span class="mqi">Audit logistique <span class="mqs">·</span></span>
-    <span class="mqi">Coût complet client <span class="mqs">·</span></span>
-    <span class="mqi">Profit par commande <span class="mqs">·</span></span>
-    <span class="mqi">Rentabilité par canal <span class="mqs">·</span></span>
-    <span class="mqi">Fuites de marge <span class="mqs">·</span></span>
-    <span class="mqi">Audit rentabilité e-commerce <span class="mqs">·</span></span>
-    <span class="mqi">Marge nette <span class="mqs">·</span></span>
-    <span class="mqi">Marge opérationnelle <span class="mqs">·</span></span>
-    <span class="mqi">Contribution marginale <span class="mqs">·</span></span>
-    <span class="mqi">Cashflow e-commerce <span class="mqs">·</span></span>
-    <span class="mqi">Audit logistique <span class="mqs">·</span></span>
-    <span class="mqi">Coût complet client <span class="mqs">·</span></span>
-    <span class="mqi">Profit par commande <span class="mqs">·</span></span>
-    <span class="mqi">Rentabilité par canal <span class="mqs">·</span></span>
-  </div>
-</div>
+            <div class="score-zone">
+              <div class="score-ring" aria-hidden="true">
+                <div><strong>64</strong><span>/100</span></div>
+              </div>
+              <div class="score-copy">
+                <span>Rentabilité sous tension</span>
+                <p>Votre activité vend, mais plusieurs leviers peuvent empêcher le profit de suivre.</p>
+              </div>
+            </div>
 
-<!-- intent questions integrated into FAQ and SEO text sections -->
+            <div class="metric-list">
+              <div class="metric-row">
+                <div><span class="metric-icon violet">C</span><strong>Conversion</strong></div>
+                <div class="meter"><span style="--meter-width: 72%"></span></div>
+                <b>72</b>
+              </div>
+              <div class="metric-row">
+                <div><span class="metric-icon coral">C</span><strong>Cash &amp; stock</strong></div>
+                <div class="meter"><span style="--meter-width: 48%"></span></div>
+                <b>48</b>
+              </div>
+              <div class="metric-row">
+                <div><span class="metric-icon lime">R</span><strong>Retours &amp; coûts</strong></div>
+                <div class="meter"><span style="--meter-width: 57%"></span></div>
+                <b>57</b>
+              </div>
+            </div>
 
-<!-- PAIN -->
-<section class="pain" aria-labelledby="pain-title">
-  <div class="pain-wrap">
-    <div class="pain-sticky rv">
-      <p class="sl">Vous vous reconnaissez ?</p>
-      <h2 class="pain-big" id="pain-title">9 symptômes.<br><em>1 cause.</em></h2>
-      <p class="pain-intro">Des fuites de marge silencieuses qui rongent votre profit par commande. La plupart des e-commerçants en ont au moins 3 — sans le savoir. Sur 500K€ de CA, elles représentent souvent <strong>15 000 à 30 000 € perdus par an.</strong></p>
-    </div>
-    <div class="pain-list rv d1" role="list">
-      <div class="pi" role="listitem"><span class="pi-num">01</span><div><h3>Ventes sans bénéfice réel</h3><p>Commandes qui s'enchaînent — marge nette introuvable en fin de mois.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">02</span><div><h3>Cash qui manque en permanence</h3><p>Activité soutenue — le cashflow e-commerce reste constamment tendu.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">03</span><div><h3>Coût d'acquisition qui explose</h3><p>Le coût complet client dépasse ce qu'il rapporte réellement.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">04</span><div><h3>Retours qui saignent la profitabilité</h3><p>Le coût réel d'un retour est presque toujours supérieur à ce qu'on imagine.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">05</span><div><h3>SKUs qui détruisent la marge</h3><p>Certains produits plombent votre rentabilité par canal d'acquisition sans que la contribution marginale soit calculée.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">06</span><div><h3>Coûts fixes non audités</h3><p>Abonnements oubliés, transporteur jamais renégocié — des centaines d'euros de profit par commande perdus.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">07</span><div><h3>Croissance qui détruit la marge opérationnelle</h3><p>Plus de volume, moins d'EBITDA. La croissance amplifie les fuites existantes.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">08</span><div><h3>Pricing à l'aveugle</h3><p>Pas de vue sur la vraie marge par SKU. Monter ? Baisser ? Impossible de décider sans données.</p></div></div>
-      <div class="pi" role="listitem"><span class="pi-num">09</span><div><h3>Pilotage sans vision financière</h3><p>Pas de rentabilité par canal, pas d'audit logistique, pas d'audit SAV — on corrige à l'aveugle.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DIAGNOSTIC EXPLIQUÉ -->
-<section class="diag-section" aria-labelledby="diag-title">
-  <div class="sh rv">
-    <p class="sl">Comment ça fonctionne</p>
-    <h2 class="st" id="diag-title">Le diagnostic offert — un appel de 30 min, sans engagement</h2>
-    <p class="ss">Pas de pitch. Pas de pression. Un échange pour comprendre votre situation, identifier les zones à risque, et estimer en euros l'impact potentiel sur votre marge.</p>
-  </div>
-  <div class="diag-steps rv d1">
-    <div class="diag-step">
-      <div class="ds-num">01</div>
-      <h3>Vous nous présentez votre boutique</h3>
-      <p>CA, catégorie produit, canaux d'acquisition, principales douleurs du moment. On part de votre réalité, pas d'un template générique.</p>
-    </div>
-    <div class="diag-step">
-      <div class="ds-num">02</div>
-      <h3>On explore les zones à risque ensemble</h3>
-      <p>Structure de coûts, logistique, pricing, acquisition — les zones où les fuites de marge sont les plus fréquentes selon votre profil d'activité.</p>
-    </div>
-    <div class="diag-step">
-      <div class="ds-num">03</div>
-      <h3>Vous repartez avec un avis honnête</h3>
-      <p>Si un audit complet est pertinent, on vous explique pourquoi. Sinon, on vous dit aussi. Aucun engagement, aucune relance commerciale.</p>
-    </div>
-  </div>
-  <div class="diag-cta-wrap rv d2">
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold">Réserver mon diagnostic offert →</a>
-    <p class="diag-note">Appel gratuit · Sans engagement · Places limitées par mois</p>
-  </div>
-</section>
-
-<!-- PROMISE -->
-<section class="promise" aria-labelledby="prom-title">
-  <div class="prom-layout">
-    <div class="rv">
-      <p class="sl">La promesse Upglide</p>
-      <h2 class="st" id="prom-title">De la marge floue à une rentabilité prévisible</h2>
-      <p class="ss">Chaque recommandation vient d'une situation réelle. Pas de conseil générique — des leviers actionnables sur votre structure de coûts, identifiés par quelqu'un qui a piloté la rentabilité d'un e-commerce à 12M€/an.</p>
-      <div class="prom-cta-row">
-        <a href="audit-rentabilite-ecommerce.html" class="btn-gold">Voir l'accompagnement en détail →</a>
-        <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="prom-link">Ou réserver le diagnostic offert (30 min)</a>
-      </div>
-    </div>
-    <div class="prom-outcomes rv d2">
-      <div class="prom-out">
-        <div class="pout-num">+2–5 pts</div>
-        <p class="pout-h">Marge nette récupérée</p>
-        <p class="pout-p">En moyenne sur les boutiques accompagnées. Sur 500K€ de CA, 2 pts = <strong style="color:var(--cad)">10 000 € nets récupérés.</strong></p>
-      </div>
-      <div class="prom-out">
-        <div class="pout-num">30–90j</div>
-        <p class="pout-h">Premiers effets mesurables</p>
-        <p class="pout-p">Sur l'audit pricing, logistique et coûts fixes dès le premier mois.</p>
-      </div>
-      <div class="prom-out">
-        <div class="pout-num">0 €</div>
-        <p class="pout-h">Si aucun levier trouvé</p>
-        <p class="pout-p">La mission est annulée sans condition. On ne facture que ce qui crée de la valeur.</p>
-      </div>
-      <div class="prom-out">
-        <div class="pout-num">10 ans</div>
-        <p class="pout-h">De terrain, pas de théorie</p>
-        <p class="pout-p">Co-gestion d'un secteur ultra-concurrentiel. Chaque levier vient d'une situation vécue.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MARC FRAMEWORK -->
-<section class="marc" id="marc" aria-labelledby="marc-title">
-  <div class="marc-intro rv">
-    <div>
-      <p class="sl">La méthode</p>
-      <h2 class="st" id="marc-title">MARC — une séquence,<br>pas une recette</h2>
-    </div>
-    <div class="marc-intro-body">
-      <p>Beaucoup de consultants appliquent le même plan à tous leurs clients. MARC est l'inverse : on ne peut pas rentabiliser ce qu'on n'a pas mesuré. On ne croît pas sainement sur une structure de coûts non assainie.</p>
-      <p>Chaque étape débloque la suivante. La séquence n'est pas arbitraire — elle suit la logique financière d'un e-commerce.</p>
-      <a href="audit-rentabilite-ecommerce.html" class="marc-link">Voir comment MARC s'applique à votre boutique</a>
-    </div>
-  </div>
-  <div class="marc-rel rv d1">
-    <div class="marc-connector"><div class="mc-fill" id="mc-fill"></div></div>
-    <div class="marc-steps" role="tablist" aria-label="Étapes de la méthode MARC">
-      <div class="ms act" data-step="0" role="tab" aria-selected="true" tabindex="0"><div class="ms-c">M</div><p class="ms-num">Étape 01</p><h3 class="ms-title">Mesurer</h3></div>
-      <div class="ms" data-step="1" role="tab" aria-selected="false" tabindex="0"><div class="ms-c">A</div><p class="ms-num">Étape 02</p><h3 class="ms-title">Assainir</h3></div>
-      <div class="ms" data-step="2" role="tab" aria-selected="false" tabindex="0"><div class="ms-c">R</div><p class="ms-num">Étape 03</p><h3 class="ms-title">Rentabiliser</h3></div>
-      <div class="ms" data-step="3" role="tab" aria-selected="false" tabindex="0"><div class="ms-c">C</div><p class="ms-num">Étape 04</p><h3 class="ms-title">Croître</h3></div>
-    </div>
-  </div>
-  <div class="marc-panels rv d2">
-    <div class="mp act" id="mp0" role="tabpanel"><div><p class="mp-desc">Voir la vraie rentabilité — contribution marginale réelle par SKU, coût complet client, rentabilité par canal d'acquisition, audit stock, cash conversion cycle.</p><div class="mp-quote">« Vous ne pouvez pas améliorer votre marge nette sans d'abord mesurer la vraie rentabilité par commande. »</div></div><div><div class="mp-tags"><div class="mt">Contribution marginale / SKU</div><div class="mt">Coût complet client</div><div class="mt">CAC réel complet</div><div class="mt">Cash conversion cycle</div><div class="mt">Rentabilité par canal</div><div class="mt">Profit par commande</div></div></div></div>
-    <div class="mp" id="mp1" role="tabpanel"><div><p class="mp-desc">Éliminer les pertes silencieuses : audit logistique, audit transporteur, audit SAV, audit coûts fixes. Chaque fuite stoppée améliore directement la marge opérationnelle.</p><div class="mp-quote">« Un audit logistique e-commerce révèle en moyenne 3 à 8% de marge opérationnelle récupérable. »</div></div><div><div class="mp-tags"><div class="mt">Audit logistique e-commerce</div><div class="mt">Audit transporteur</div><div class="mt">Audit SAV & retours</div><div class="mt">Audit coûts fixes</div><div class="mt">Stock mort valorisé</div><div class="mt">Audit pricing</div></div></div></div>
-    <div class="mp" id="mp2" role="tabpanel"><div><p class="mp-desc">Augmenter le bénéfice e-commerce sans augmenter le volume. Optimiser la rentabilité par le pricing, le mix produit et l'upsell — sur une base assainie qui rend chaque gain durable.</p><div class="mp-quote">« Augmenter la marge brute de 2 points vaut souvent mieux que doubler le CA. »</div></div><div><div class="mp-tags"><div class="mt">Audit pricing par marge nette</div><div class="mt">Bundles & upsell</div><div class="mt">Mix produit optimisé</div><div class="mt">Offres à haute marge</div><div class="mt">Saisonnalité des prix</div><div class="mt">Négociation fournisseur</div></div></div></div>
-    <div class="mp" id="mp3" role="tabpanel"><div><p class="mp-desc">Optimiser le cashflow e-commerce et scaler proprement. Prévisions de stock, automatisation, dashboards de rentabilité par canal — pour croître sans détruire la marge opérationnelle.</p><div class="mp-quote">« La croissance sans fondations détruit la rentabilité. Avec MARC, elle la multiplie. »</div></div><div><div class="mp-tags"><div class="mt">Prévisions & cashflow</div><div class="mt">Automatisation</div><div class="mt">Dashboards de rentabilité</div><div class="mt">Rentabilité par canal</div><div class="mt">Plan de croissance</div><div class="mt">Indicateurs hebdo</div></div></div></div>
-  </div>
-  <div class="marc-dots" role="tablist" aria-label="Navigation MARC">
-    <div class="md act" data-step="0" role="tab" aria-label="Mesurer"></div>
-    <div class="md" data-step="1" role="tab" aria-label="Assainir"></div>
-    <div class="md" data-step="2" role="tab" aria-label="Rentabiliser"></div>
-    <div class="md" data-step="3" role="tab" aria-label="Croître"></div>
-  </div>
-  <div class="marc-cta rv">
-    <p class="marc-cta-txt"><strong>Vous voulez voir comment MARC s'applique concrètement ?</strong> La page audit rentabilité détaille chaque étape, les livrables, et ce que vous repartez avec.</p>
-    <a href="audit-rentabilite-ecommerce.html" class="btn-gold">Voir l'accompagnement complet →</a>
-  </div>
-</section>
-
-<!-- GUARANTEE -->
-<section class="guar" id="audit" aria-labelledby="guar-title">
-  <div class="gi rv">
-    <div class="gring" aria-hidden="true">🛡</div>
-    <h2 class="gt" id="guar-title">Si on ne trouve pas de levier concret d'amélioration — vous ne payez rien.</h2>
-    <p class="gp">Pas de remboursement à gérer : si l'audit ne révèle aucun levier concret d'amélioration de votre rentabilité, <strong>la mission est annulée sans condition</strong>. On ne facture que ce qui crée de la valeur — en euros réels, pas en promesses.</p>
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold" style="background:var(--navy);color:var(--w)">Réserver un diagnostic gratuit →</a>
-  </div>
-</section>
-
-<!-- SEO TEXT BLOCK -->
-<section class="seo-text" aria-labelledby="seo-h1">
-  <div class="seo-g">
-    <article class="rv">
-      <h2 id="seo-h1">Pourquoi votre boutique e-commerce manque de rentabilité</h2>
-      <p>La majorité des e-commerçants entre 300K et 1,5M€ font face au même paradoxe : le CA augmente, la marge nette stagne. Ce n'est pas un problème d'acquisition — c'est un problème de structure de coûts.</p>
-      <h3>Les fuites de marge qui rongent votre profit</h3>
-      <p>La <strong>contribution marginale</strong> par SKU est rarement calculée. Le coût complet client intègre rarement les retours et le SAV. Le <strong>profit par commande</strong> réel est presque toujours inférieur à l'estimation. Ces écarts représentent plusieurs points de <strong>marge opérationnelle</strong> par an.</p>
-      <h3>Audit logistique, audit transporteur, audit SAV</h3>
-      <p>Un <strong>audit logistique e-commerce</strong> révèle en moyenne 3 à 8% de coûts récupérables. L'<strong>audit transporteur</strong> identifie des remboursements jamais réclamés. L'<strong>audit SAV</strong> quantifie l'impact réel de chaque réclamation sur la marge nette. Ensemble, ils améliorent durablement le cashflow.</p>
-    </article>
-    <article class="rv d2">
-      <h2>Comment améliorer la rentabilité de votre boutique en ligne</h2>
-      <p><strong>Améliorer la rentabilité e-commerce</strong> ne passe pas par plus de ventes — mais par moins de pertes. Les leviers défensifs (audit coûts fixes, audit pricing, réduction du stock dormant) agissent directement sur le <strong>cashflow e-commerce</strong> et la marge nette.</p>
-      <h3>Rentabilité par canal d'acquisition</h3>
-      <p>La <strong>rentabilité par canal d'acquisition</strong> est rarement calculée. Un canal avec un ROAS correct peut avoir un coût complet client négatif une fois SAV et retours intégrés. L'audit opérationnel le met en lumière — qu'il s'agisse d'une boutique propre ou d'une marketplace.</p>
-      <h3>Comment calculer la vraie marge de votre e-commerce</h3>
-      <p>La vraie marge = prix de vente – COGS – frais plateforme – frais logistique – coût retour estimé – coût SAV. C'est la <strong>contribution marginale réelle</strong> par SKU — pas seulement le prix moins le coût d'achat. C'est le point de départ de la méthode MARC.</p>
-    </article>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq" aria-labelledby="faq-title">
-  <div class="sh rv"><p class="sl">Questions fréquentes</p><h2 class="st" id="faq-title">Audit rentabilité e-commerce — Vos questions</h2></div>
-  <div class="faq-l rv">
-    <div class="fi"><button class="ft-btn" aria-expanded="false"><span class="fq">Pourquoi mon e-commerce fait du CA mais pas de bénéfice ?</span><div class="fi-icon" aria-hidden="true">+</div></button><div class="faw"><p class="fai">Le signe classique des fuites de marge silencieuses : CAC réel sous-estimé, coût des retours non intégré, stock dormant, frais logistiques non optimisés, audit coûts fixes jamais réalisé, audit pricing absent. L'audit opérationnel MARC les quantifie et les priorise.</p></div></div>
-    <div class="fi"><button class="ft-btn" aria-expanded="false"><span class="fq">Comment calculer la vraie marge de mon e-commerce ?</span><div class="fi-icon" aria-hidden="true">+</div></button><div class="faw"><p class="fai">La vraie marge intègre : prix de vente – COGS – frais plateforme – frais logistique – taux de retour estimé – coût SAV. C'est la contribution marginale réelle par SKU, pas juste le prix moins le coût d'achat. La méthode MARC commence par cette mesure.</p></div></div>
-    <div class="fi"><button class="ft-btn" aria-expanded="false"><span class="fq">Pourquoi ma trésorerie est tendue malgré un bon CA ?</span><div class="fi-icon" aria-hidden="true">+</div></button><div class="faw"><p class="fai">Le cash conversion cycle trop long, le stock dormant qui immobilise les liquidités, et les remboursements clients non anticipés sont les causes les plus fréquentes. L'audit stock et l'audit logistique les identifient.</p></div></div>
-    <div class="fi"><button class="ft-btn" aria-expanded="false"><span class="fq">À qui s'adresse Upglide ?</span><div class="fi-icon" aria-hidden="true">+</div></button><div class="faw"><p class="fai">Aux e-commerçants avec une boutique propre ou sur marketplace, réalisant 300K à 1,5M€ de CA, qui ont du volume mais voient leur marge nette s'éroder. Upglide ne s'adresse pas aux vendeurs débutants.</p></div></div>
-    <div class="fi"><button class="ft-btn" aria-expanded="false"><span class="fq">En combien de temps voit-on les résultats ?</span><div class="fi-icon" aria-hidden="true">+</div></button><div class="faw"><p class="fai">Les premiers leviers actionnables sont identifiés dès la remise de l'audit. Les actions sur l'audit pricing, l'audit transporteur et les coûts fixes produisent des effets mesurables dans les 30 à 90 jours.</p></div></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about" aria-labelledby="about-title">
-  <div class="about-layout">
-    <div class="about-visual rv">
-      <img src="caroline-photo.jpg" alt="Caroline, fondatrice Upglide" class="about-photo" loading="lazy">
-      <div class="av-bar"></div>
-      <div class="av-info"><p class="av-name">Caroline</p><p class="av-sub">Fondatrice d'Upglide</p></div>
-    </div>
-    <div class="rv d1">
-      <div class="founder-badge"><div class="founder-dot"></div><span class="founder-lbl">Fondatrice d'Upglide</span></div>
-      <h2 class="about-name" id="about-title">Caroline</h2>
-      <p class="about-role">Consultante en rentabilité e-commerce · Méthode MARC</p>
-      <p class="about-bio">J'ai co-géré pendant près de 10 ans un e-commerce en secteur ultra-concurrentiel, avec des pics de CA à 12 millions d'euros par an. Un secteur où la marge ne pardonne pas : la concurrence tarifaire est permanente, les coûts logistiques imprévisibles, et chaque point de marge perdu se paie cash.</p>
-      <p class="about-bio">Cette pression constante m'a appris à piloter la rentabilité avec une précision que la plupart des e-commerçants n'appliquent jamais — parce qu'ils n'y sont pas forcés. Upglide, c'est cette discipline condensée en méthode.</p>
-      <div class="about-hl">
-        <p><strong>10 ans dans le commerce et l'e-commerce</strong> — équipes, fournisseurs, transporteurs, marges, audit SAV, plateformes. Chaque recommandation vient d'une situation vécue, pas d'un livre. Vous repartez avec des leviers actionnables dès la semaine suivante.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="ctaf" aria-labelledby="ctaf-title">
-  <p class="ctaf-ey">Prochaine étape</p>
-  <h2 id="ctaf-title">Prêt à savoir combien vous perdez réellement en marge ?</h2>
-  <p>Un appel de 30 min pour explorer votre situation — gratuit, sans engagement, sans relance.</p>
-  <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="btn-gold">Réserver votre diagnostic offert →</a>
-  <p class="ctaf-secondary">Pas encore prêt ? <a href="#lead">Commencer par le guide gratuit</a></p>
-</section>
-
-<!-- LEAD MAGNET — pour ceux qui ne sont pas encore prêts à réserver -->
-<section class="lead" id="lead" aria-labelledby="lead-title">
-  <div class="lead-inner">
-    <div class="lpdf rv">
-      <div class="lpdf-top">
-        <div class="lpdf-badge">Guide gratuit · PDF</div>
-        <p class="lpdf-title">Les 6 fuites silencieuses qui bloquent ta croissance — Plus de bénéfices, pas plus d'efforts</p>
-        <p class="lpdf-sub">Par Upglide · Audit rentabilité e-commerce</p>
-      </div>
-      <div class="lpdf-body">
-        <div style="padding:20px 0 8px">
-          <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:16px">La plupart des e-commerçants perdent entre <strong style="color:var(--gold)">15 et 30% de leur marge</strong> sur des postes qu'ils ne surveillent pas — pas parce qu'ils ne sont pas compétents, mais parce qu'ils n'ont jamais eu de méthode pour les voir.</p>
-          <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:16px">Ce guide identifie 6 zones précises où l'argent s'évapore en silence. Pour chacune : où chercher, comment calculer l'impact, et quoi faire dès cette semaine.</p>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
-            <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:rgba(255,255,255,.55)"><span style="width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>Lecture en 20 minutes</div>
-            <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:rgba(255,255,255,.55)"><span style="width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>Actions concrètes dès la semaine suivante</div>
-            <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:rgba(255,255,255,.55)"><span style="width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0"></span>Issu de 10 ans de terrain, pas de théorie</div>
+            <div class="insight">
+              <span class="insight-icon" aria-hidden="true">↗</span>
+              <div>
+                <strong>1 levier prioritaire</strong>
+                <p>+ 2 leviers secondaires à analyser avant d’accélérer.</p>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Repères d'expérience">
+        <div class="shell proof-grid">
+          <div><strong>7 ans</strong><span>de terrain e-commerce</span></div>
+          <div><strong>+40M€</strong><span>de CA cumulé co-géré</span></div>
+          <div><strong>+10</strong><span>marketplaces maîtrisées</span></div>
+          <p>De l’expérience opérationnelle, pas une lecture théorique de vos chiffres.</p>
+        </div>
+      </section>
+
+      <section class="section scorecard-feature" id="scorecard-rentabilite">
+        <div class="shell scorecard-feature-grid">
+          <div class="scorecard-feature-copy reveal">
+            <p class="eyebrow"><span></span> Votre première carte de priorisation</p>
+            <h2>Une scorecard pour comprendre pourquoi vous ne gagnez pas assez</h2>
+            <p>
+              La Scorecard Rentabilité E-commerce ne sert pas seulement à obtenir une note. Elle vous
+              aide à repérer ce qui peut empêcher votre chiffre d’affaires de se transformer en profit :
+              acquisition, conversion, panier moyen, retours, stock, cash, coûts variables ou réachat.
+            </p>
+            <ul class="scorecard-benefits">
+              <li><strong>1 levier prioritaire</strong><span>celui qui semble limiter le plus votre rentabilité aujourd’hui</span></li>
+              <li><strong>2 leviers secondaires</strong><span>les sujets qui peuvent amplifier le problème</span></li>
+              <li><strong>1 lecture claire</strong><span>pour sortir de l’intuition et prioriser vos prochaines actions</span></li>
+            </ul>
+            <a class="button button-primary button-large" href="scorecard.html">
+              Faire ma scorecard gratuitement <span aria-hidden="true">↗</span>
+            </a>
+            <p class="scorecard-reassurance">Gratuit · Résultat immédiat · Sans engagement</p>
+          </div>
+
+          <div class="scorecard-preview reveal reveal-delay" aria-label="Aperçu des résultats de la scorecard">
+            <div class="scorecard-preview-head">
+              <span>Votre résultat</span>
+              <strong>Rentabilité sous tension</strong>
+            </div>
+            <div class="scorecard-preview-score">
+              <strong>64</strong><span>/100</span>
+            </div>
+            <div class="scorecard-preview-levels">
+              <div><span>0–40</span><p>Croissance fragile</p></div>
+              <div class="is-active"><span>41–70</span><p>Rentabilité sous tension</p></div>
+              <div><span>71–100</span><p>Modèle à consolider</p></div>
+            </div>
+            <div class="scorecard-preview-priorities">
+              <span>Votre carte de priorisation</span>
+              <div><b>01</b> Levier prioritaire : conversion</div>
+              <div><b>02</b> Levier secondaire : cash &amp; stock</div>
+              <div><b>03</b> À surveiller : retours &amp; coûts</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pain-section">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span></span> Ce que vivent les e-commerçants</p>
+            <h2>Votre e-commerce vend. Mais est-ce qu’il vous rapporte vraiment ?</h2>
+            <p>
+              À mesure que l’activité grandit, le chiffre d’affaires ne suffit plus pour piloter.
+              Le vrai enjeu devient de savoir ce qui génère du profit, consomme du cash et mérite votre temps.
+            </p>
+          </div>
+
+          <div class="signal-list reveal">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Je fais du chiffre, mais je ne sais pas où passe l’argent</h3>
+                <p>Les ventes augmentent, mais l’acquisition, le stock, la logistique, les retours ou les remises absorbent une partie du résultat.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Je vends plus, mais je ne gagne pas proportionnellement plus</h3>
+                <p>Chaque palier de croissance ajoute des coûts, des arbitrages et de la complexité. Sans pilotage, le profit ne suit pas toujours le CA.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Je regarde mon ROAS, mais je ne sais pas si mes campagnes rapportent vraiment</h3>
+                <p>Le chiffre d’affaires généré ne suffit pas si la marge, les retours, les frais et le réachat ne sont pas pris en compte.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Je ne sais pas quel levier travailler en premier</h3>
+                <p>Conversion, panier moyen, acquisition, stock, retours, prix ou fidélisation : tout semble important, mais tout ne mérite pas la même urgence.</p>
+              </div>
+            </article>
+            <article>
+              <span>05</span>
+              <div>
+                <h3>J’ai des données partout, mais pas de décision claire</h3>
+                <p>Shopify, marketplaces, Ads, ERP, comptabilité : les chiffres existent, mais ils ne racontent pas toujours une histoire exploitable.</p>
+              </div>
+            </article>
+            <article>
+              <span>06</span>
+              <div>
+                <h3>Mon entreprise grandit, mais devient plus difficile à piloter</h3>
+                <p>Plus de commandes, plus de canaux, plus de stock et plus de SAV peuvent créer une croissance plus lourde que rentable.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrong-problem-section">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span></span> Prioriser avant de corriger</p>
+            <h2>Le piège : travailler le mauvais problème</h2>
+            <p>
+              Un e-commerçant peut penser qu’il doit augmenter ses prix pour améliorer sa marge. Mais si
+              son vrai sujet vient d’un taux de retour élevé, d’un panier moyen trop faible ou d’un
+              réachat insuffisant, il risque de corriger le mauvais levier.
+            </p>
+          </div>
+          <div class="content-cards reveal">
+            <article class="content-card">
+              <strong>Acquisition</strong>
+              <h3>Il pense avoir un problème d’acquisition</h3>
+              <p>Mais ses campagnes amènent du trafic. Le vrai blocage peut venir du taux de conversion ou de l’abandon panier.</p>
+            </article>
+            <article class="content-card">
+              <strong>Prix</strong>
+              <h3>Il pense devoir augmenter ses prix</h3>
+              <p>Mais si ses clients ne rachètent pas, le sujet est peut-être la fidélisation ou la valeur perçue.</p>
+            </article>
+            <article class="content-card">
+              <strong>Produits</strong>
+              <h3>Il pense que ses best-sellers sont rentables</h3>
+              <p>Mais certains produits très vendus peuvent générer peu de marge, beaucoup de retours ou immobiliser trop de cash.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section marc-section">
+        <div class="shell">
+          <div class="marc-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> La méthode MARC</p>
+              <h2>Transformer le chiffre d’affaires en profit, dans le bon ordre.</h2>
+            </div>
+            <p>
+              On ne peut pas rentabiliser ce qu’on ne mesure pas. Et on ne peut pas croître sainement
+              tant que le modèle ne transforme pas suffisamment les ventes en profit.
+            </p>
+          </div>
+          <div class="marc-grid reveal">
+            <article class="marc-card marc-one"><span>M</span><h3>Mesurer</h3><p>Comprendre où le chiffre d’affaires se transforme — ou ne se transforme pas — en marge, cash et profit.</p></article>
+            <article class="marc-card marc-two"><span>A</span><h3>Assainir</h3><p>Corriger ce qui empêche le profit de suivre : retours, remises, coûts variables, stock, litiges ou produits peu rentables.</p></article>
+            <article class="marc-card marc-three"><span>R</span><h3>Rentabiliser</h3><p>Renforcer les produits, canaux, offres et segments clients qui créent réellement de la valeur.</p></article>
+            <article class="marc-card marc-four"><span>C</span><h3>Croître</h3><p>Accélérer uniquement lorsque le modèle est capable de transformer plus de ventes en plus de profit.</p></article>
+          </div>
+          <a class="text-link section-link" href="methode-marc.html">Découvrir la méthode MARC <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section decisions-section">
+        <div class="shell">
+          <div class="decisions-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> Après votre scorecard</p>
+              <h2>Passez d’un score à une décision claire.</h2>
+            </div>
+            <p>
+              La scorecard fait ressortir un levier prioritaire, des leviers secondaires et des zones à
+              surveiller. Le Débrief Rentabilité permet ensuite de remettre ces résultats dans le
+              contexte réel de votre boutique.
+            </p>
+          </div>
+
+          <div class="decision-list reveal">
+            <article>
+              <span>01</span>
+              <div><h3>Votre levier prioritaire</h3><p>Le sujet qui semble limiter le plus la transformation de vos ventes en profit.</p></div>
+            </article>
+            <article>
+              <span>02</span>
+              <div><h3>Vos leviers secondaires</h3><p>Les mécanismes qui peuvent renforcer ou amplifier le problème principal.</p></div>
+            </article>
+            <article>
+              <span>03</span>
+              <div><h3>Vos zones à surveiller</h3><p>Les sujets à garder visibles pour éviter qu’ils ne fragilisent la suite de votre croissance.</p></div>
+            </article>
+          </div>
+
+          <div class="next-step reveal">
+            <div>
+              <strong>Besoin de comprendre vos résultats ?</strong>
+              <p>
+                Réservez un Débrief Rentabilité de 30 minutes pour lire votre scorecard, comprendre ce
+                qu’elle révèle et voir si un Diagnostic Rentabilité 360 est pertinent.
+              </p>
+            </div>
+            <a class="button button-dark" href="contact.html">
+              Réserver mon Débrief Rentabilité <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section founder-section">
+        <div class="shell founder-grid">
+          <div class="founder-copy reveal">
+            <p class="eyebrow"><span></span> Une approche de terrain</p>
+            <h2>Votre rentabilité ne se pilote pas depuis un tableur isolé.</h2>
+          </div>
+          <div class="founder-body reveal reveal-delay">
+            <p>
+              Elle se joue dans le choix des produits, les budgets publicitaires, les niveaux de stock,
+              les remises, les retours et l’organisation. Upglide rassemble ces réalités pour éviter les
+              recommandations théoriques impossibles à appliquer.
+            </p>
+            <p class="founder-signature"><strong>Caroline, fondatrice d’Upglide</strong><span>7 ans d’expérience opérationnelle en e-commerce</span></p>
+            <a class="text-link" href="a-propos.html">
+              Découvrir l’approche Upglide <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section guarantee-section">
+        <div class="shell">
+          <div class="guarantee-card reveal">
+            <span class="guarantee-stamp">×3</span>
+            <div>
+              <p class="eyebrow"><span></span> Notre engagement</p>
+              <h2>Le diagnostic doit s’autofinancer.</h2>
+              <p>
+                S’il ne révèle pas un potentiel d’amélioration supérieur à trois fois son coût, nous
+                vous le remboursons. Une promesse simple : créer plus de valeur que nous n’en facturons.
+              </p>
+            </div>
+            <a class="button button-dark" href="diagnostic.html">
+              Découvrir le diagnostic <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="shell faq-grid">
+          <div class="faq-heading reveal">
+            <p class="eyebrow"><span></span> Rentabilité e-commerce : FAQ</p>
+            <h2>Les questions que se posent vraiment les dirigeants e-commerce.</h2>
+            <p>Des réponses simples sur la marge, le cash, le ROAS, le stock et la scorecard Upglide.</p>
+          </div>
+          <div class="faq-list reveal reveal-delay">
+            <details>
+              <summary>Comment savoir si mon e-commerce est vraiment rentable ? <span>+</span></summary>
+              <p>
+                Regardez ce qu’il reste après le coût des produits, l’acquisition, les remises, les
+                retours, la logistique, les commissions et les autres coûts variables. Le chiffre
+                d’affaires ou la marge brute seuls ne permettent pas de mesurer la rentabilité réelle.
+              </p>
+            </details>
+            <details>
+              <summary>Pourquoi mon e-commerce fait-il du chiffre mais manque de trésorerie ? <span>+</span></summary>
+              <p>
+                La croissance peut consommer du cash avant d’en produire. Le stock, les dépenses
+                publicitaires, les délais d’encaissement, les retours, la TVA et les conditions
+                fournisseurs peuvent créer une tension malgré des ventes élevées.
+              </p>
+            </details>
+            <details>
+              <summary>Quels indicateurs suivre pour piloter la rentabilité e-commerce ? <span>+</span></summary>
+              <p>
+                Selon votre modèle : marge contributive, coût d’acquisition, taux de retour, remises,
+                frais logistiques, rotation du stock, besoin en fonds de roulement et cash disponible.
+                L’objectif n’est pas d’accumuler les KPI, mais de retenir ceux qui font décider.
+              </p>
+            </details>
+            <details>
+              <summary>Un bon ROAS signifie-t-il que mes campagnes sont rentables ? <span>+</span></summary>
+              <p>
+                Pas nécessairement. Le ROAS compare le chiffre d’affaires aux dépenses publicitaires,
+                mais n’intègre pas à lui seul la marge produit, les remises, les retours, les frais de
+                paiement, de préparation et de livraison.
+              </p>
+            </details>
+            <details>
+              <summary>Que mesure la Scorecard Rentabilité E-commerce Upglide ? <span>+</span></summary>
+              <p>
+                Elle évalue huit dimensions liées à la marge réelle, au cash, au stock, à l’acquisition
+                et au pilotage. Vous obtenez une carte avec un levier prioritaire, deux leviers
+                secondaires et des zones à surveiller.
+              </p>
+            </details>
+            <details>
+              <summary>La scorecard de rentabilité est-elle gratuite ? <span>+</span></summary>
+              <p>
+                Oui. Elle comporte huit questions, prend environ cinq minutes et fournit un résultat
+                immédiat, sans engagement.
+              </p>
+            </details>
+            <details>
+              <summary>À partir de quel chiffre d’affaires faut-il structurer son pilotage ? <span>+</span></summary>
+              <p>
+                Il n’existe pas de seuil universel. Le besoin apparaît lorsque les canaux, les stocks,
+                les coûts et les décisions deviennent difficiles à relier. Upglide s’adresse
+                principalement aux boutiques entre 300K€ et 5M€ de CA annuel.
+              </p>
+            </details>
+            <details>
+              <summary>Quelle différence entre la scorecard et le Diagnostic Rentabilité 360 ? <span>+</span></summary>
+              <p>
+                La scorecard est une auto-évaluation gratuite qui fait ressortir les zones de vigilance.
+                Le Diagnostic Rentabilité 360 analyse ensuite vos données et vos opérations pour
+                chiffrer les enjeux et prioriser un plan d’action adapté à votre entreprise.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner reveal">
+          <p class="eyebrow eyebrow-light"><span></span> Premier pas</p>
+          <h2>Vous savez que votre boutique vend.<br />Vérifiez maintenant si elle rapporte vraiment.</h2>
+          <div class="final-actions">
+            <a class="button button-lime button-large" href="scorecard.html">
+              Faire ma scorecard gratuite <span aria-hidden="true">↗</span>
+            </a>
+            <a class="text-link text-link-light" href="contact.html">
+              Échanger directement <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <a class="brand brand-footer" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>UPGLIDE</span>
+          </a>
+          <p>Le profit comme boussole.<br />La croissance comme conséquence.</p>
+        </div>
+        <div>
+          <strong>Explorer</strong>
+          <a href="diagnostic.html">Diagnostic 360</a>
+          <a href="methode-marc.html">Méthode MARC</a>
+          <a href="ressources.html">Ressources</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <strong>Upglide</strong>
+          <a href="a-propos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+          <a href="scorecard.html">Scorecard rentabilité</a>
+        </div>
+        <div class="footer-cta">
+          <strong>Par où commencer ?</strong>
+          <p>Obtenez une première lecture de votre rentabilité en 5 minutes.</p>
+          <a href="scorecard.html">Faire ma scorecard <span aria-hidden="true">→</span></a>
+        </div>
       </div>
-    </div>
-    <div class="lead-form-area rv d2">
-      <p class="sl" style="color:var(--gold)">Guide gratuit</p>
-      <h2 class="st" id="lead-title" style="color:var(--w)">Pas encore prêt pour le diagnostic ?</h2>
-      <p class="lfsub">Commencez par identifier vous-même vos zones à risque. Où regarder, dans quel ordre, quoi faire — les leviers issus de 10 ans de terrain.</p>
-      <div class="lfa">
-        <div class="lf-grp"><label class="lf-lbl" for="prenom">Prénom</label><input class="lf-inp" id="prenom" type="text" name="prenom" placeholder="Votre prénom" autocomplete="given-name"/></div>
-        <div class="lf-grp"><label class="lf-lbl" for="email">Adresse email</label><input class="lf-inp" id="email" type="email" name="email" placeholder="votre@email.com" autocomplete="email"/></div>
-        <button class="lf-sub" type="button">Recevoir le guide gratuitement →</button>
-        <p class="lf-note">Pas de spam. Désabonnement possible à tout moment.</p>
+      <div class="shell footer-bottom">
+        <span>© <span data-year></span> Upglide</span>
+        <span>Rentabilité · Cash · Pilotage</span>
       </div>
-    </div>
-  </div>
-</section>
-
-</main>
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
-      <nav class="foot-links" aria-label="Liens secondaires">
-        <a href="podcast.html" class="foot-link">Podcast</a>
-        <a href="blog.html" class="foot-link">Blog</a>
-        <a href="ressources.html" class="foot-link">Ressources</a>
-        <a href="a-propos.html" class="foot-link">À propos</a>
-        <a href="contact.html" class="foot-link">Contact</a>
-      </nav>
-      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
-
-/* SCROLL PROGRESS + NAV */
-const sp=document.getElementById('sp'),navEl=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  sp.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-  if(navEl)navEl.classList.toggle('scrolled',window.scrollY>10);
-},{passive:true});
-
-/* BURGER */
-const burger=document.getElementById('burger'),mobnav=document.getElementById('mobnav');
-burger.addEventListener('click',()=>{
-  const open=mobnav.classList.toggle('open');
-  burger.classList.toggle('open',open);
-  burger.setAttribute('aria-expanded',open);
-  document.body.style.overflow=open?'hidden':'';
-});
-function closeMob(){
-  mobnav.classList.remove('open');burger.classList.remove('open');
-  burger.setAttribute('aria-expanded','false');document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
-
-/* REVEAL */
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-
-/* MARC STEPPER */
-const msteps=document.querySelectorAll('.ms'),mpanels=document.querySelectorAll('.mp'),mdots=document.querySelectorAll('.md'),fill=document.getElementById('mc-fill');
-const cw=['0%','33.3%','66.6%','100%'];
-function activateStep(i){
-  msteps.forEach((s,j)=>{s.classList.toggle('act',j===i);s.setAttribute('aria-selected',j===i);});
-  mpanels.forEach((p,j)=>p.classList.toggle('act',j===i));
-  mdots.forEach((d,j)=>d.classList.toggle('act',j===i));
-  if(fill)fill.style.width=cw[i];
-}
-let ti=0,timer=setInterval(()=>{ti=(ti+1)%4;activateStep(ti);},4000);
-function stopAuto(){clearInterval(timer);}
-msteps.forEach((s,i)=>{
-  s.addEventListener('click',()=>{stopAuto();activateStep(i);});
-  s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stopAuto();activateStep(i);}});
-});
-mdots.forEach((d,i)=>d.addEventListener('click',()=>{stopAuto();activateStep(i);}));
-
-/* FAQ */
-document.querySelectorAll('.ft-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const fi=btn.closest('.fi'),open=fi.classList.contains('op');
-    document.querySelectorAll('.fi.op').forEach(i=>{i.classList.remove('op');i.querySelector('.ft-btn').setAttribute('aria-expanded','false');});
-    if(!open){fi.classList.add('op');btn.setAttribute('aria-expanded','true');}
-  });
-});
-
-/* MICRO-INTERACTIONS: btn hover ripple */
-document.querySelectorAll('.btn-gold,.nav-cta,.lf-sub').forEach(btn=>{
-  btn.addEventListener('mousedown',e=>{
-    const r=document.createElement('span');
-    const rect=btn.getBoundingClientRect();
-    const size=Math.max(rect.width,rect.height)*2;
-    r.style.cssText=`position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:rgba(255,255,255,.18);top:${e.clientY-rect.top-size/2}px;left:${e.clientX-rect.left-size/2}px;transform:scale(0);animation:ripple .5s ease forwards;pointer-events:none;`;
-    btn.style.position='relative';btn.style.overflow='hidden';
-    btn.appendChild(r);
-    setTimeout(()=>r.remove(),600);
-  });
-});
-const rStyle=document.createElement('style');
-rStyle.textContent='@keyframes ripple{to{transform:scale(1);opacity:0}}';
-document.head.appendChild(rStyle);
-
-/* CALENDLY */
-function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}
-</script>
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script src="marc.js" defer></script>
-<script src="analytics.js" defer></script>
-</body>
+    </footer>
+  </body>
 </html>

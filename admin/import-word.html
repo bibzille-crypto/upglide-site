@@ -8,9 +8,25 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6fb;color:#1a1a2e;min-height:100vh}
-  header{background:#1E2D5A;color:#fff;padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
-  header a{color:#C9A052;text-decoration:none;font-size:.875rem}
   h1{font-size:1.25rem;font-weight:600}
+  /* ── SIDEBAR ── */
+  .admin-shell{display:flex;min-height:100vh}
+  .admin-sidebar{width:220px;background:#0f1525;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;border-right:1px solid rgba(255,255,255,.05)}
+  .sidebar-brand{padding:1.375rem 1.25rem 1.25rem;font-family:Georgia,serif;font-size:1.25rem;font-weight:700;font-style:italic;color:#fff;display:flex;align-items:center;gap:.625rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06)}
+  .sidebar-brand>span:first-of-type{color:#C9A052;font-style:normal}
+  .sidebar-badge{font-size:.52rem;font-family:system-ui,sans-serif;font-style:normal;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(201,160,82,.18);color:#C9A052;border-radius:4px;padding:.2rem .45rem}
+  .sidebar-nav{flex:1;padding:.625rem 0}
+  .sidebar-section{font-size:.52rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:.875rem 1.25rem .375rem}
+  .sidebar-link{display:flex;align-items:center;gap:.625rem;padding:.6rem 1.25rem;font-size:.8375rem;font-weight:500;color:rgba(255,255,255,.45);border-left:2px solid transparent;text-decoration:none;transition:all .18s;margin:.1rem 0}
+  .sidebar-link:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.04)}
+  .sidebar-link.active{color:#fff;border-left-color:#C9A052;background:rgba(201,160,82,.08);font-weight:600}
+  .sidebar-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.75;flex-shrink:0;opacity:.7}
+  .sidebar-link.active svg{opacity:1}
+  .sidebar-footer{padding:.625rem 0;border-top:1px solid rgba(255,255,255,.06)}
+  .sidebar-ext{display:flex;align-items:center;gap:.625rem;padding:.55rem 1.25rem;font-size:.8rem;color:rgba(255,255,255,.28);text-decoration:none;transition:color .18s}
+  .sidebar-ext:hover{color:rgba(255,255,255,.65)}
+  .sidebar-ext svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+  .admin-main{margin-left:220px;flex:1;min-width:0;min-height:100vh}
   .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
 
   /* Drop zone */
@@ -100,12 +116,44 @@
 </style>
 </head>
 <body>
+<div class="admin-shell">
 
-<header>
-  <a href="/admin/">← Admin</a>
-  <h1>Importer un article depuis Word</h1>
-</header>
+  <aside class="admin-sidebar">
+    <a href="/admin/dashboard.html" class="sidebar-brand">
+      Upglide<span> ·</span><span class="sidebar-badge">Admin</span>
+    </a>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Navigation</div>
+      <a href="/admin/dashboard.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="/admin/" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Articles (CMS)
+      </a>
+      <a href="/admin/stats.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Statistiques
+      </a>
+      <a href="/admin/import-word.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Importer Word
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" class="sidebar-ext" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Voir le site
+      </a>
+      <a href="/blog" class="sidebar-ext" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Voir le blog
+      </a>
+    </div>
+  </aside>
 
+  <main class="admin-main">
 <div class="container">
 
   <div class="steps">
@@ -860,5 +908,7 @@ function setStep(n) {
   }
 }
 </script>
+  </main>
+</div>
 </body>
 </html>

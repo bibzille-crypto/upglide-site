@@ -1,401 +1,380 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog e-commerce — Upglide | Guides terrain et analyses</title>
-<meta name="description" content="Articles et analyses e-commerce : marges, process, délégation, marketplaces. Contenu opérationnel actionnable dès la lecture.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://upglide.fr/blog">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Upglide">
-<meta property="og:title" content="Blog e-commerce — Upglide | Guides terrain et analyses">
-<meta property="og:description" content="Articles et analyses e-commerce : marges, process, délégation, marketplaces. Contenu opérationnel actionnable dès la lecture.">
-<meta property="og:url" content="https://upglide.fr/blog">
-<meta property="og:image" content="https://upglide.fr/hero-dashboard.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://upglide.fr/hero-dashboard.png">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-  {"@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Accueil","item":"https://upglide.fr/"},
-    {"@type":"ListItem","position":2,"name":"Blog","item":"https://upglide.fr/blog"}
-  ]},
-  {"@type":"Blog",
-    "name":"Blog e-commerce — Upglide",
-    "description":"Articles et analyses e-commerce : marges, process, d\u00e9l\u00e9gation, marketplaces.",
-    "url":"https://upglide.fr/blog",
-    "author":{"@type":"Person","name":"Caroline","url":"https://upglide.fr/a-propos"},
-    "publisher":{"@type":"Organization","name":"Upglide","url":"https://upglide.fr/"},
-    "inLanguage":"fr-FR"
-  }
-]}
-</script>
-<link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"></noscript>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2D5A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23C9A052'%3EU%3C/text%3E%3C/svg%3E">
-<style>
-/* ── TOKENS ── */
-:root {
-  --isa:   #F5F1E8;
-  --alm:   #E8D4AA;
-  --lion:  #C9A052;
-  --lion2: #A8802E;
-  --cad:   #1E2D5A;
-  --cad2:  #131D3C;
-  --wh:    #FFFFFF;
-  --txt:   #1E2D5A;
-  --txt2:  #4A5878;
-  --txt3:  #5A6A8A;
-  --bdr:   rgba(30,45,90,.09);
-  --ft: 'Cormorant Garamond', Georgia, serif;
-  --fb: 'Manrope', system-ui, sans-serif;
-  --r: 12px; --rlg: 20px;
-  --shsm: 0 2px 12px rgba(30,45,90,.08);
-  --shmd: 0 8px 32px rgba(30,45,90,.12);
-  --t: .22s ease;
-  /* legacy */
-  --marine: #1E2D5A;
-  --marine-2: #2D4A6E;
-  --acier: #4E6898;
-  --sable: #C9A052;
-  --blanc: #FFFFFF;
-  --border: rgba(30,45,90,.12);
-  --fond: #F5F1E8;
-  --fond-2: #EFF3F9;
-  --fond-3: #E4EAF5;
-  --ciel: #B4C8E8;
-  --radius: 8px;
-  --shadow-sm: 0 2px 8px rgba(30,45,90,.08);
-  --shadow-md: 0 8px 32px rgba(30,45,90,.12);
-  --transition: .22s ease;
-  --txt-2: #4A5878;
-  --txt-3: #5A6A8A;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--fond); color: var(--txt); font-family: var(--fb); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-a { color: inherit; text-decoration: none; }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
-.container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
-.section { padding: 5rem 0; }
-.section--alt { background: var(--blanc); }
-hr.divider { border: none; border-top: 1px solid var(--border); }
-
-/* ── NAV ── */
-    nav#nav{background:var(--wh);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;transition:box-shadow var(--t);}
-    nav#nav.scrolled{box-shadow:0 2px 24px rgba(30,45,90,.1);}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;gap:1rem;}
-    @media(min-width:768px){.nav-inner{padding:1rem 2rem;}}
-    @media(min-width:1024px){.nav-inner{padding:1.125rem clamp(1.5rem,4vw,3rem);}}
-    .logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;color:var(--cad);letter-spacing:-.01em;font-style:italic;}
-    .logo span{color:var(--lion);font-style:normal;}
-    .nav-links{display:none;}
-    @media(min-width:768px){
-      .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
-      .nav-links a{font-size:.875rem;font-weight:500;color:var(--txt2);padding:.5rem .875rem;border-radius:8px;transition:color var(--t),background var(--t);}
-      .nav-links a:hover{color:var(--cad);background:var(--isa);}
-      .nav-links a.active{color:var(--cad);font-weight:600;}
-    }
-    .nav-cta{background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:.8125rem;font-weight:700;padding:.625rem 1.25rem;border:none;cursor:pointer;transition:all var(--t);border-radius:100px;white-space:nowrap;display:none;text-decoration:none;}
-    @media(min-width:768px){.nav-cta{display:inline-flex;}}
-    .nav-cta:hover{background:var(--cad2);transform:translateY(-1px);}
-    .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;}
-    @media(min-width:768px){.burger{display:none;}}
-    .burger span{display:block;width:22px;height:2px;background:var(--cad);border-radius:2px;transition:transform .3s,opacity .3s;}
-    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-    .burger.open span:nth-child(2){opacity:0;}
-    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-    .mob-nav{display:none;position:fixed;inset:0;background:var(--isa);z-index:300;padding:5rem 1.5rem 2rem;flex-direction:column;}
-    .mob-nav.open{display:flex;}
-    .mob-nav a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--cad);border-bottom:1px solid var(--bdr);}
-    .mob-nav-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;padding:.5rem;}
-    .mob-nav-cta{margin-top:2rem;background:var(--cad);color:var(--wh);font-family:var(--fb);font-size:1rem;font-weight:700;padding:1rem;border:none;border-radius:100px;cursor:pointer;width:100%;text-align:center;display:block;}
-
-
-/* ── FOOTER ── */
-    footer{background:var(--cad2);color:var(--wh);padding:3rem 0;}
-    .foot{display:flex;flex-direction:column;gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.25rem;}
-    @media(min-width:640px){.foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:0 2rem;}}
-    .foot-logo{font-family:var(--ft);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--wh);}
-    .foot-logo span{color:var(--lion);font-style:normal;}
-    .foot-links{display:flex;flex-wrap:wrap;gap:1.25rem 1.75rem;}
-    .foot-link{font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.3);transition:color var(--t);}
-    .foot-link:hover{color:var(--wh);}
-    .foot-copy{font-size:.6875rem;color:rgba(255,255,255,.12);width:100%;}
-
-/* ── BLOG PAGE ── */
-.page-hero { padding: 4rem 0 3rem; }
-.page-eyebrow { font-size: .75rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--acier); margin-bottom: 1.25rem; display: flex; align-items: center; gap: .75rem; }
-.page-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--acier); }
-.page-h1 { font-family: var(--ft); font-size: clamp(2rem,4vw,3rem); font-weight: 400; line-height: 1.15; letter-spacing: -.01em; color: var(--marine); margin-bottom: 1rem; }
-.page-h1 em { font-style: italic; color: var(--acier); }
-.page-sub { font-size: 1rem; color: var(--txt-2); line-height: 1.8; font-weight: 300; max-width: 520px; }
-
-/* ── FILTERS ── */
-.filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-.filter-btn { background: var(--blanc); border: 1px solid var(--border); border-radius: 50px; padding: .375rem 1rem; font-size: .8125rem; color: var(--txt-2); cursor: pointer; font-family: var(--fb); transition: background var(--transition), border-color var(--transition), color var(--transition); }
-.filter-btn:hover, .filter-btn.active { background: var(--marine); border-color: var(--marine); color: var(--blanc); }
-
-/* ── ARTICLE GRID ── */
-.articles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
-.article-card { background: var(--blanc); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow var(--transition), transform var(--transition); }
-.article-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.article-card-body { padding: 1.5rem; }
-.art-badge { font-size: .5625rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--acier); background: var(--fond-2); border: 1px solid var(--border); border-radius: 50px; padding: .2rem .625rem; display: inline-block; margin-bottom: 1rem; }
-.art-title { font-family: var(--ft); font-size: 1.0625rem; font-weight: 700; color: var(--marine); margin-bottom: .5rem; line-height: 1.3; }
-.art-desc { font-size: .875rem; color: var(--txt-2); line-height: 1.7; font-weight: 300; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.art-meta { display: flex; gap: .75rem; align-items: center; font-size: .6875rem; color: var(--txt-3); font-weight: 300; }
-.art-read { color: var(--acier); font-weight: 600; font-size: .8125rem; display: inline-flex; align-items: center; gap: .25rem; margin-top: 1rem; }
-.art-read::after { content: '→'; }
-
-/* ── NEWSLETTER ── */
-.nl-inline { background: var(--fond-2); border: 1px solid var(--border); border-left: 3px solid var(--sable); border-radius: var(--radius); padding: 2rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin: 3rem 0 0; }
-.nl-inline-text h3 { font-family: var(--ft); font-size: 1.125rem; font-weight: 700; color: var(--marine); margin-bottom: .25rem; }
-.nl-inline-text p { font-size: .875rem; color: var(--txt-2); font-weight: 300; }
-.nl-inline-form { display: flex; gap: .75rem; flex-shrink: 0; }
-.nl-inline-input { background: var(--blanc); border: 1px solid var(--border); border-radius: var(--radius); padding: .75rem 1rem; font-family: var(--fb); font-size: .875rem; color: var(--txt); outline: none; width: 220px; transition: border-color var(--transition); }
-.nl-inline-input:focus { border-color: var(--acier); }
-.nl-inline-btn { background: var(--marine); color: var(--blanc); font-family: var(--fb); font-size: .8125rem; font-weight: 600; padding: .75rem 1.25rem; border: none; border-radius: var(--radius); cursor: pointer; white-space: nowrap; transition: background var(--transition); }
-.nl-inline-btn:hover { background: var(--marine-2); }
-
-/* ── RESPONSIVE ── */
-@media(max-width: 768px) {
-  .articles-grid { grid-template-columns: 1fr; }
-  .nl-inline { grid-template-columns: 1fr; }
-  .nl-inline-form { flex-direction: column; }
-  .nl-inline-input { width: 100%; }
-  .container { padding: 0 1.25rem; }
-  .section { padding: 3.5rem 0; }
-  .foot-copy { text-align: left; }
-  .foot-links { gap: 1rem; }
-}
-@media(min-width: 769px) and (max-width: 1024px) {
-  .articles-grid { grid-template-columns: 1fr 1fr; }
-}
-</style>
-<link rel="preload" href="marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="marc.css"></noscript>
-</head>
-<body>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">Upglide<span> ·</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="audit-rentabilite-ecommerce.html" style="color:var(--lion);font-weight:600;">Audit Rentabilité</a></li>
-      <li><a href="methode-marc.html">Méthode MARC</a></li>
-      <li><a href="ressources.html">Ressources</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
-    </ul>
-    <a href="/audit-rentabilite-ecommerce" onclick="openDiag();return false;" class="nav-cta">Diagnostic offert</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobnav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mob-nav" id="mobnav" role="dialog" aria-modal="true" aria-label="Menu principal">
-    <button class="mob-nav-close" onclick="closeMob()" aria-label="Fermer le menu">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--cad)" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="3" x2="19" y2="19"/><line x1="19" y1="3" x2="3" y2="19"/>
-      </svg>
-    </button>
-    <a href="index.html" onclick="closeMob()">Accueil</a>
-    <a href="audit-rentabilite-ecommerce.html" onclick="closeMob()">Audit Rentabilité</a>
-    <a href="methode-marc.html" onclick="closeMob()">Méthode MARC</a>
-    <a href="ressources.html" onclick="closeMob()">Ressources</a>
-    <a href="blog.html" onclick="closeMob()">Blog</a>
-    <a href="a-propos.html" onclick="closeMob()">À propos</a>
-    <a href="/audit-rentabilite-ecommerce" onclick="closeMob();openDiag();return false;" class="mob-nav-cta">Diagnostic offert →</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="section--alt">
-  <div class="container">
-    <div class="page-hero">
-      <p class="page-eyebrow">Blog &amp; guides terrain</p>
-      <h1 class="page-h1">L'e-commerce expliqué<br>par <em>quelqu'un qui le fait.</em></h1>
-      <p class="page-sub">Articles, analyses, décryptages. Le contenu qui manque dans le milieu e-commerce. Actionnable dès la lecture.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- ARTICLES -->
-<div class="section--alt">
-  <div class="container">
-    <section class="section">
-
-      <div class="filters">
-        <button class="filter-btn active" onclick="filterCat(this,'all')">Tous</button>
-        <button class="filter-btn" onclick="filterCat(this,'Marges')">Marges</button>
-        <button class="filter-btn" onclick="filterCat(this,'Process')">Process</button>
-        <button class="filter-btn" onclick="filterCat(this,'Marketplaces')">Marketplaces</button>
-        <button class="filter-btn" onclick="filterCat(this,'Délégation')">Délégation</button>
-        <button class="filter-btn" onclick="filterCat(this,'Pilotage')">Pilotage</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conseils e-commerce sur la rentabilité, l’acquisition, le parcours client, le panier moyen et la fidélisation. Des analyses concrètes pour transformer les ventes en profit."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://upglide.fr/blog.html" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Upglide" />
+    <meta property="og:title" content="Blog e-commerce : rentabilité, acquisition et pilotage | Upglide" />
+    <meta
+      property="og:description"
+      content="Des guides terrain pour mieux comprendre vos KPI, prioriser les bons leviers et transformer votre chiffre d’affaires en profit."
+    />
+    <meta property="og:url" content="https://upglide.fr/blog.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Blog e-commerce : rentabilité, acquisition et pilotage | Upglide</title>
+    <link rel="stylesheet" href="styles.css?v=13" />
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://upglide.fr/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://upglide.fr/blog.html"
+              }
+            ]
+          },
+          {
+            "@type": "Blog",
+            "name": "Blog e-commerce Upglide",
+            "description": "Conseils et analyses sur la rentabilité, l’acquisition, le parcours client, le panier moyen et la fidélisation e-commerce.",
+            "url": "https://upglide.fr/blog.html",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Upglide",
+              "url": "https://upglide.fr/"
+            },
+            "inLanguage": "fr-FR",
+            "blogPost": [
+              {
+                "@type": "BlogPosting",
+                "headline": "Stratégie d'acquisition e-commerce : comment structurer ses campagnes (méthode en 6 étapes)",
+                "datePublished": "2026-06-11",
+                "url": "https://upglide.fr/blog/structurer-ses-campagnes-e-commerce"
+              },
+              {
+                "@type": "BlogPosting",
+                "headline": "Rentabilité e-commerce : analyser votre parcours client pour comprendre pourquoi vos marges diminuent",
+                "datePublished": "2026-06-03",
+                "url": "https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-"
+              },
+              {
+                "@type": "BlogPosting",
+                "headline": "Panier moyen e-commerce : comment l’augmenter durablement sans dépenser plus en acquisition",
+                "datePublished": "2026-05-20",
+                "url": "https://upglide.fr/blog/augmenter-panier-moyen-ecommerce"
+              },
+              {
+                "@type": "BlogPosting",
+                "headline": "Fidélisation e-commerce : 5 leviers pour transformer chaque client satisfait en ambassadeur de marque",
+                "datePublished": "2026-05-05",
+                "url": "https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quels sujets sont abordés sur le blog e-commerce Upglide ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le blog traite de rentabilité e-commerce, acquisition, parcours client, panier moyen, fidélisation, marge, cash et pilotage des KPI."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Comment savoir quel levier e-commerce travailler en premier ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il faut relier les indicateurs entre eux plutôt que les lire isolément. La Scorecard Rentabilité Upglide aide à repérer un levier prioritaire, des leviers secondaires et les zones à surveiller."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Un bon ROAS suffit-il pour piloter la rentabilité ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non. Le ROAS doit être rapproché de la marge produit, des remises, des retours, des coûts logistiques, du coût d’acquisition et du réachat."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Comment augmenter la rentabilité sans acquérir plus de trafic ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Selon le modèle, les leviers peuvent inclure la conversion, le panier moyen, la rentabilité produit, les retours, le stock ou la fidélisation."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header" data-header>
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Upglide, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>UPGLIDE</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+          <span class="sr-only">Ouvrir le menu</span><span></span><span></span>
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+          <a href="scorecard.html">Scorecard</a>
+          <a href="diagnostic.html">Diagnostic 360</a>
+          <a href="methode-marc.html">Méthode MARC</a>
+          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="a-propos.html">À propos</a>
+          <a class="nav-contact" href="contact.html">Parler de mon e-commerce</a>
+        </nav>
       </div>
+    </header>
 
-      <div id="blog-grid" class="articles-grid">
-        <div style="grid-column:span 3;text-align:center;padding:3rem 0;color:var(--txt-3);font-style:italic;font-family:var(--fb);">
-          Chargement des articles…
+    <main id="contenu">
+      <section class="page-hero blog-hero">
+        <div class="shell page-hero-grid">
+          <div>
+            <p class="eyebrow eyebrow-light"><span></span> Conseils e-commerce · Rentabilité &amp; pilotage</p>
+            <h1>Comprendre vos chiffres. <span>Agir sur les bons leviers.</span></h1>
+            <p class="diagnostic-hero-lead">
+              Acquisition, parcours client, panier moyen, fidélisation : des guides terrain pour
+              comprendre ce qui transforme réellement vos ventes en marge, cash et profit.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#articles">
+                Explorer les articles <span aria-hidden="true">↓</span>
+              </a>
+              <a class="text-link" href="scorecard.html">
+                Identifier mon levier prioritaire <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+          <aside>
+            <strong>4 guides publiés</strong>
+            <ul class="diagnostic-hero-list">
+              <li>Acquisition structurée</li>
+              <li>Rentabilité du parcours client</li>
+              <li>Panier moyen</li>
+              <li>Fidélisation</li>
+            </ul>
+          </aside>
         </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Thématiques du blog Upglide">
+        <div class="shell blog-topic-nav">
+          <a href="#acquisition"><span>01</span> Acquisition</a>
+          <a href="#rentabilite"><span>02</span> Rentabilité</a>
+          <a href="#panier-moyen"><span>03</span> Panier moyen</a>
+          <a href="#fidelisation"><span>04</span> Fidélisation</a>
+        </div>
+      </section>
+
+      <section class="page-section paper">
+        <div class="shell">
+          <div class="blog-section-intro">
+            <div>
+              <p class="eyebrow"><span></span> Dernière publication</p>
+              <h2>Structurer avant de dépenser davantage.</h2>
+            </div>
+            <p>
+              Une campagne n’est pas encore une stratégie. Ce guide présente une méthode en six étapes
+              pour choisir la cible, le canal, l’offre, le message et les tests à mener.
+            </p>
+          </div>
+          <article class="featured-post" id="acquisition">
+            <div class="post-visual post-visual-roas" aria-hidden="true">
+              <span>Stratégie</span>
+              <strong>6 étapes</strong>
+              <div class="visual-bars"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="featured-post-copy">
+              <p class="post-meta"><span>Stratégie</span> · 11 min de lecture · 11 juin 2026</p>
+              <h3>Stratégie d’acquisition e-commerce : comment structurer ses campagnes</h3>
+              <p>
+                Beaucoup d’e-commerçants ne manquent ni d’idées ni de budget pour acquérir des clients.
+                Ce qui leur manque, c’est une structure. Voici une méthode en six étapes simples.
+              </p>
+              <a class="button button-dark" href="https://upglide.fr/blog/structurer-ses-campagnes-e-commerce">
+                Lire l’article <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section" id="articles">
+        <div class="shell">
+          <div class="blog-heading">
+            <div>
+              <p class="eyebrow"><span></span> Guides par levier</p>
+              <h2>Choisissez la question qui ressemble le plus à la vôtre.</h2>
+            </div>
+            <p>
+              Chaque article part d’un problème de terrain et aide à relier les KPI à une décision
+              concrète, sans ajouter un tableau de bord de plus.
+            </p>
+          </div>
+          <div class="post-grid">
+            <article class="post-card" id="rentabilite">
+              <a class="post-visual post-visual-cash" href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-" aria-label="Lire l’article sur le parcours client et la rentabilité">
+                <span>Stratégie</span>
+                <strong>Parcours client</strong>
+                <div class="visual-orbit"></div>
+              </a>
+              <div class="post-card-copy">
+                <p class="post-meta"><span>Stratégie</span> · 10 min · 3 juin 2026</p>
+                <h3><a href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-">Analyser votre parcours client pour comprendre pourquoi vos marges diminuent</a></h3>
+                <p>Pourquoi les KPI lus isolément peuvent donner une image partielle ou trompeuse de la rentabilité.</p>
+                <a class="post-link" href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-">Lire l’article →</a>
+              </div>
+            </article>
+            <article class="post-card" id="panier-moyen">
+              <a class="post-visual post-visual-margin" href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce" aria-label="Lire l’article sur le panier moyen">
+                <span>Marges</span>
+                <strong>Panier moyen</strong>
+                <div class="visual-line"></div>
+              </a>
+              <div class="post-card-copy">
+                <p class="post-meta"><span>Marges</span> · 5 min · 20 mai 2026</p>
+                <h3><a href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">Comment augmenter durablement son panier moyen sans dépenser plus en acquisition</a></h3>
+                <p>Trois leviers concrets pour augmenter ce que chaque client dépense sans acquérir davantage de trafic.</p>
+                <a class="post-link" href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">Lire l’article →</a>
+              </div>
+            </article>
+            <article class="post-card" id="fidelisation">
+              <a class="post-visual post-visual-score" href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque" aria-label="Lire l’article sur la fidélisation e-commerce">
+                <span>Stratégie</span>
+                <strong>Fidélisation</strong>
+                <div class="visual-score">5</div>
+              </a>
+              <div class="post-card-copy">
+                <p class="post-meta"><span>Stratégie</span> · 5 min · 5 mai 2026</p>
+                <h3><a href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque">5 leviers pour transformer chaque client satisfait en ambassadeur</a></h3>
+                <p>Une expérience cohérente et mémorable pour donner envie aux clients de revenir et de recommander la marque.</p>
+                <a class="post-link" href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque">Lire l’article →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section blog-scorecard-section">
+        <div class="shell blog-scorecard-card">
+          <div>
+            <p class="eyebrow"><span></span> Passer de la lecture à la priorité</p>
+            <h2>Vous reconnaissez plusieurs problèmes à la fois ?</h2>
+            <p>
+              Acquisition, conversion, panier moyen, retours, stock ou fidélisation : la Scorecard
+              Rentabilité aide à identifier le levier qui mérite d’être analysé en premier.
+            </p>
+          </div>
+          <div class="blog-scorecard-result">
+            <span>Votre première lecture</span>
+            <strong>1 levier prioritaire</strong>
+            <p>+ 2 leviers secondaires et les zones à surveiller.</p>
+            <a class="button button-primary" href="scorecard.html">Faire ma scorecard gratuite <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section paper">
+        <div class="shell">
+          <div class="page-lead">
+            <div>
+              <p class="eyebrow"><span></span> La ligne éditoriale</p>
+              <h2>Des contenus conçus pour mieux décider, pas seulement mieux comprendre.</h2>
+            </div>
+            <p>
+              Les articles Upglide suivent la même logique que la méthode MARC : mesurer ce qui se passe,
+              corriger les blocages, renforcer ce qui crée de la valeur et accélérer uniquement lorsque
+              le modèle peut absorber la croissance.
+            </p>
+          </div>
+          <div class="content-cards">
+            <article class="content-card"><strong>Comprendre</strong><h3>Relier les KPI entre eux</h3><p>Sortir d’une lecture isolée du ROAS, du CA ou du taux de conversion.</p></article>
+            <article class="content-card"><strong>Prioriser</strong><h3>Travailler le bon problème</h3><p>Distinguer le symptôme visible du mécanisme qui limite réellement la rentabilité.</p></article>
+            <article class="content-card"><strong>Agir</strong><h3>Transformer l’analyse en décision</h3><p>Retenir les actions utiles selon leur impact, leur urgence et leur faisabilité.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="faq-blog">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow"><span></span> FAQ rentabilité e-commerce</p>
+            <h2>Les questions derrière les articles.</h2>
+            <p>Des réponses courtes pour orienter votre lecture et vos prochaines décisions.</p>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>Quels sujets sont abordés sur le blog Upglide ? <span>+</span></summary>
+              <p>
+                Le blog traite de rentabilité e-commerce, acquisition, parcours client, panier moyen,
+                fidélisation, marge, cash et pilotage des KPI.
+              </p>
+            </details>
+            <details>
+              <summary>Comment savoir quel levier e-commerce travailler en premier ? <span>+</span></summary>
+              <p>
+                Il faut relier les indicateurs entre eux plutôt que les lire isolément. La Scorecard
+                Rentabilité aide à repérer un levier prioritaire, des leviers secondaires et les zones
+                à surveiller.
+              </p>
+            </details>
+            <details>
+              <summary>Un bon ROAS suffit-il pour piloter la rentabilité ? <span>+</span></summary>
+              <p>
+                Non. Le ROAS doit être rapproché de la marge produit, des remises, des retours, des coûts
+                logistiques, du coût d’acquisition et du réachat.
+              </p>
+            </details>
+            <details>
+              <summary>Comment augmenter la rentabilité sans acquérir plus de trafic ? <span>+</span></summary>
+              <p>
+                Selon le modèle, les leviers peuvent inclure la conversion, le panier moyen, la
+                rentabilité produit, les retours, le stock ou la fidélisation.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-cta diagnostic-final-cta">
+        <div class="shell">
+          <p class="eyebrow"><span></span> Besoin d’aller plus loin ?</p>
+          <h2>Les articles éclairent un levier. Le Diagnostic 360 relie l’ensemble du modèle.</h2>
+          <p>
+            Commencez par la scorecard, puis réservez un Débrief Rentabilité si vous avez besoin de
+            remettre vos résultats dans le contexte réel de votre boutique.
+          </p>
+          <div class="page-cta-actions">
+            <a class="button button-dark" href="scorecard.html">Faire ma scorecard gratuite <span>↗</span></a>
+            <a class="text-link" href="diagnostic.html">Découvrir le Diagnostic 360 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-bottom">
+        <span>© <span data-year></span> Upglide</span>
+        <a href="index.html">Retour à l’accueil</a>
       </div>
-
-      <div class="nl-inline">
-        <div class="nl-inline-text">
-          <h3>Reçois les nouveaux articles chaque semaine</h3>
-          <p>Plus la checklist gratuite "10 signaux que ton e-commerce plafonne".</p>
-        </div>
-        <div class="nl-inline-form">
-          <input class="nl-inline-input" type="email" id="nl-blog-email" placeholder="ton@email.com">
-          <button class="nl-inline-btn" onclick="handleNLBlog()">S'abonner →</button>
-        </div>
-      </div>
-
-    </section>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <a href="index.html" class="foot-logo">Upglide<span> ·</span></a>
-      <nav class="foot-links" aria-label="Liens secondaires">
-        <a href="podcast.html" class="foot-link">Podcast</a>
-        <a href="blog.html" class="foot-link">Blog</a>
-        <a href="ressources.html" class="foot-link">Ressources</a>
-        <a href="a-propos.html" class="foot-link">À propos</a>
-        <a href="contact.html" class="foot-link">Contact</a>
-      </nav>
-      <p class="foot-copy">© 2026 Upglide — Tous droits réservés</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-/* ── NAV ── */
-var nav = document.getElementById('nav');
-var burger = document.getElementById('burger');
-var mobnav = document.getElementById('mobnav');
-
-// Scroll shadow
-if (nav) window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
-
-// Click-based dropdowns
-document.querySelectorAll('.nav-a[data-drop]').forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    var item = btn.closest('.nav-it');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); });
-    if (!isOpen) item.classList.add('open');
-  });
-});
-document.addEventListener('click', function() {
-  document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); });
-});
-
-// Burger
-if (burger && mobnav) {
-  burger.addEventListener('click', function() {
-    var o = mobnav.classList.toggle('open');
-    burger.classList.toggle('open', o);
-    document.body.style.overflow = o ? 'hidden' : '';
-  });
-}
-function closeMob() {
-  if (mobnav) mobnav.classList.remove('open');
-  if (burger) burger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeMob(); document.querySelectorAll('.nav-it').forEach(function(i) { i.classList.remove('open'); }); } });
-
-/* ── NEWSLETTER ── */
-function handleNLBlog() {
-  var input = document.getElementById('nl-blog-email');
-  if (!input) return;
-  if (!input.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-    input.style.borderColor = 'var(--sable)';
-    input.focus();
-    return;
-  }
-  input.value = '';
-  input.placeholder = 'Abonnement confirmé !';
-  input.disabled = true;
-  var btn = input.nextElementSibling;
-  if (btn) { btn.textContent = 'Abonné(e) ✓'; btn.disabled = true; }
-}
-
-/* ── BLOG GRID ── */
-(function() {
-  var allPosts = [];
-  var currentCat = 'all';
-
-  function fmtDate(d) {
-    if (!d) return '';
-    return new Date(d + (d.length === 10 ? 'T00:00:00' : '')).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-  }
-
-  window.filterCat = function(btn, cat) {
-    currentCat = cat;
-    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    renderGrid(allPosts);
-  };
-
-  function renderGrid(posts) {
-    var grid = document.getElementById('blog-grid');
-    if (!grid) return;
-    var pub = posts.filter(function(p) { return p.published; })
-                   .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
-    if (currentCat !== 'all') {
-      pub = pub.filter(function(p) { return p.category === currentCat; });
-    }
-    if (!pub.length) {
-      grid.innerHTML = '<div style="grid-column:span 3;text-align:center;padding:4rem;color:var(--txt-3);font-style:italic;font-family:var(--fb);">'
-        + (currentCat === 'all' ? 'Les articles arrivent bientôt.' : 'Aucun article dans cette catégorie.')
-        + '</div>';
-      return;
-    }
-    grid.innerHTML = pub.map(function(a) {
-      var slug = encodeURIComponent(a.slug || a.title);
-      return '<a href="/article.html?slug=' + slug + '" class="article-card" style="text-decoration:none;display:block;">'
-        + '<div class="article-card-body">'
-        + '<span class="art-badge">' + (a.category || 'Article') + '</span>'
-        + '<h3 class="art-title">' + a.title + '</h3>'
-        + (a.excerpt ? '<p class="art-desc">' + a.excerpt + '</p>' : '')
-        + '<div class="art-meta">'
-        + '<span>' + fmtDate(a.date) + '</span>'
-        + (a.readTime ? '<span>&nbsp;·&nbsp;</span><span>' + a.readTime + ' min</span>' : '')
-        + '</div>'
-        + '<span class="art-read">Lire l\'article</span>'
-        + '</div></a>';
-    }).join('');
-  }
-
-  fetch('/data/blog.json?_=' + Date.now())
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      allPosts = data.posts || [];
-      renderGrid(allPosts);
-    })
-    .catch(function() {
-      var g = document.getElementById('blog-grid');
-      if (g) g.innerHTML = '<div style="grid-column:span 3;text-align:center;padding:4rem;color:var(--txt-3);font-family:var(--fb);">Articles bientôt disponibles.</div>';
-    });
-})();
-</script>
-<script>function openDiag(){Calendly.initPopupWidget({url:'https://calendly.com/contact-upglide/30min'});return false;}</script>
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script src="marc.js" defer></script>
-<script src="analytics.js" defer></script>
-</body>
+    </footer>
+  </body>
 </html>

@@ -1,2 +1,4 @@
 /accompagnements.html   /audit-rentabilite-ecommerce   301
 /accompagnements        /audit-rentabilite-ecommerce   301
+/article.html           /blog/:slug                    302  Query=slug=:slug
+/blog/:slug             /blog/:slug.html               200

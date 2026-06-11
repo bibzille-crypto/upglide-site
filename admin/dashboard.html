@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard — Upglide Admin</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #0f1525; color: #1a1a2e; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* ── SIDEBAR ── */
+.admin-shell { display: flex; min-height: 100vh; }
+.admin-sidebar {
+  width: 220px; background: #0f1525;
+  display: flex; flex-direction: column;
+  position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+  border-right: 1px solid rgba(255,255,255,.05);
+}
+.sidebar-brand {
+  padding: 1.375rem 1.25rem 1.25rem;
+  font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; font-style: italic;
+  color: #fff; display: flex; align-items: center; gap: .625rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sidebar-brand > span:first-of-type { color: #C9A052; font-style: normal; }
+.sidebar-badge {
+  font-size: .52rem; font-family: system-ui, sans-serif; font-style: normal;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  background: rgba(201,160,82,.18); color: #C9A052; border-radius: 4px; padding: .2rem .45rem;
+}
+.sidebar-nav { flex: 1; padding: .625rem 0; overflow-y: auto; }
+.sidebar-section {
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.18); padding: .875rem 1.25rem .375rem;
+}
+.sidebar-link {
+  display: flex; align-items: center; gap: .625rem;
+  padding: .6rem 1.25rem; font-size: .8375rem; font-weight: 500;
+  color: rgba(255,255,255,.45); border-left: 2px solid transparent;
+  transition: all .18s; margin: .1rem 0;
+}
+.sidebar-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+.sidebar-link.active { color: #fff; border-left-color: #C9A052; background: rgba(201,160,82,.08); font-weight: 600; }
+.sidebar-link svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.75; flex-shrink: 0; opacity: .7; }
+.sidebar-link.active svg { opacity: 1; }
+.sidebar-footer {
+  padding: .625rem 0; border-top: 1px solid rgba(255,255,255,.06);
+}
+.sidebar-ext {
+  display: flex; align-items: center; gap: .625rem;
+  padding: .55rem 1.25rem; font-size: .8rem; color: rgba(255,255,255,.28);
+  transition: color .18s;
+}
+.sidebar-ext:hover { color: rgba(255,255,255,.65); }
+.sidebar-ext svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+
+/* ── MAIN ── */
+.admin-main { margin-left: 220px; flex: 1; min-width: 0; background: #f2f3f6; min-height: 100vh; }
+
+/* ── TOPBAR ── */
+.main-topbar {
+  background: #fff; border-bottom: 1px solid rgba(0,0,0,.07);
+  padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+}
+.main-topbar h1 { font-size: 1rem; font-weight: 700; color: #1E2D5A; }
+.topbar-meta { font-size: .8125rem; color: #8090B0; }
+
+/* ── PAGE ── */
+.page { padding: 2.5rem 2rem 5rem; max-width: 1100px; }
+
+/* ── WELCOME ── */
+.welcome-card {
+  background: linear-gradient(135deg, #1E2D5A 0%, #131D3C 100%);
+  border-radius: 16px; padding: 2.25rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; margin-bottom: 2rem;
+}
+.welcome-text h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: .375rem; letter-spacing: -.02em; }
+.welcome-text p { font-size: .9rem; color: rgba(255,255,255,.45); }
+.welcome-icon {
+  width: 60px; height: 60px; background: rgba(201,160,82,.15);
+  border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-family: Georgia, serif; font-size: 1.75rem; font-style: italic; color: #C9A052; font-weight: 700;
+}
+
+/* ── ACTION CARDS ── */
+.action-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2rem; }
+.action-card {
+  background: #fff; border: 1px solid rgba(0,0,0,.07); border-radius: 14px;
+  padding: 1.5rem; transition: box-shadow .18s, transform .18s; display: flex; flex-direction: column;
+}
+.action-card:hover { box-shadow: 0 8px 28px rgba(30,45,90,.1); transform: translateY(-2px); }
+.action-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; flex-shrink: 0;
+}
+.action-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+.action-icon.blue  { background: #EEF2FF; color: #1E2D5A; }
+.action-icon.gold  { background: #FFF8ED; color: #C9A052; }
+.action-icon.green { background: #ECFDF5; color: #22c55e; }
+.action-card h3 { font-size: .9375rem; font-weight: 700; color: #1E2D5A; margin-bottom: .375rem; }
+.action-card p { font-size: .82rem; color: #8090B0; line-height: 1.6; flex: 1; margin-bottom: 1.25rem; }
+.action-btn {
+  display: inline-flex; align-items: center; gap: .375rem;
+  font-size: .8125rem; font-weight: 700; padding: .55rem 1rem;
+  border-radius: 8px; transition: all .18s; align-self: flex-start;
+}
+.action-btn.btn-primary { background: #1E2D5A; color: #fff; }
+.action-btn.btn-primary:hover { background: #2a3d75; }
+.action-btn.btn-gold { background: #FFF8ED; color: #C9A052; border: 1px solid rgba(201,160,82,.3); }
+.action-btn.btn-gold:hover { background: #C9A052; color: #fff; border-color: #C9A052; }
+.action-btn.btn-green { background: #ECFDF5; color: #15803d; border: 1px solid rgba(34,197,94,.2); }
+.action-btn.btn-green:hover { background: #22c55e; color: #fff; }
+.action-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* ── RECENT ARTICLES ── */
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1E2D5A; }
+.section-link { font-size: .8125rem; color: #C9A052; font-weight: 600; }
+.section-link:hover { text-decoration: underline; }
+.articles-list { background: #fff; border: 1px solid rgba(0,0,0,.07); border-radius: 14px; overflow: hidden; }
+.article-row {
+  display: grid; grid-template-columns: 1fr auto auto;
+  gap: 1.5rem; align-items: center;
+  padding: 1rem 1.5rem; border-bottom: 1px solid rgba(0,0,0,.05);
+  transition: background .15s;
+}
+.article-row:last-child { border-bottom: none; }
+.article-row:hover { background: #fafafa; }
+.art-cat {
+  font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: #1E2D5A; background: #EEF2FF; border-radius: 999px; padding: .2rem .625rem;
+  display: inline-block; margin-bottom: .375rem;
+}
+.art-name { font-size: .875rem; font-weight: 600; color: #1E2D5A; line-height: 1.35; }
+.art-date { font-size: .75rem; color: #8090B0; white-space: nowrap; }
+.art-actions { display: flex; gap: .5rem; }
+.art-action-btn {
+  font-size: .72rem; font-weight: 600; padding: .35rem .75rem;
+  border-radius: 6px; border: 1px solid rgba(0,0,0,.1); color: #555; background: #fff;
+  transition: all .15s; cursor: pointer;
+}
+.art-action-btn:hover { background: #1E2D5A; color: #fff; border-color: #1E2D5A; }
+.art-loading { padding: 2rem 1.5rem; color: #8090B0; font-size: .875rem; text-align: center; }
+</style>
+</head>
+<body>
+<div class="admin-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <a href="/admin/dashboard.html" class="sidebar-brand">
+      Upglide<span> ·</span><span class="sidebar-badge">Admin</span>
+    </a>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Navigation</div>
+
+      <a href="/admin/dashboard.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="/admin/" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Articles (CMS)
+      </a>
+      <a href="/admin/stats.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Statistiques
+      </a>
+      <a href="/admin/import-word.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Importer Word
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" class="sidebar-ext" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Voir le site
+      </a>
+      <a href="/blog" class="sidebar-ext" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Voir le blog
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <div class="main-topbar">
+      <h1>Dashboard</h1>
+      <span class="topbar-meta" id="current-date"></span>
+    </div>
+
+    <div class="page">
+
+      <!-- Welcome -->
+      <div class="welcome-card">
+        <div class="welcome-text">
+          <h2>Bienvenue dans l'admin Upglide</h2>
+          <p>Gérez vos articles, consultez les stats de lecture et importez de nouveaux contenus.</p>
+        </div>
+        <div class="welcome-icon">U</div>
+      </div>
+
+      <!-- Action cards -->
+      <div class="action-grid">
+        <div class="action-card">
+          <div class="action-icon blue">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Articles (CMS)</h3>
+          <p>Créez, modifiez et publiez vos articles de blog directement depuis l'interface Decap CMS.</p>
+          <a href="/admin/" class="action-btn btn-primary">
+            Ouvrir le CMS
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon gold">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Statistiques</h3>
+          <p>Temps de lecture, profondeur de défilement et vues par article — données en temps réel.</p>
+          <a href="/admin/stats.html" class="action-btn btn-gold">
+            Voir les stats
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon green">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Importer Word</h3>
+          <p>Collez ou uploadez un document Word pour le convertir en article Markdown prêt à publier.</p>
+          <a href="/admin/import-word.html" class="action-btn btn-green">
+            Importer un article
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Recent articles -->
+      <div class="section-header">
+        <h2 class="section-title">Articles publiés</h2>
+        <a href="/admin/" class="section-link">Gérer dans le CMS →</a>
+      </div>
+
+      <div class="articles-list" id="articles-list">
+        <div class="art-loading">Chargement…</div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+// Date
+var d = new Date();
+document.getElementById('current-date').textContent =
+  d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+// Articles
+fetch('/data/blog.json?_=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    var posts = (data.posts || [])
+      .filter(function(p) { return p.published; })
+      .sort(function(a,b) { return new Date(b.date) - new Date(a.date); });
+
+    var list = document.getElementById('articles-list');
+    if (!posts.length) {
+      list.innerHTML = '<div class="art-loading">Aucun article publié pour l\'instant.</div>';
+      return;
+    }
+
+    function fmtDate(d) {
+      if (!d) return '';
+      return new Date(d + (d.length === 10 ? 'T00:00:00' : '')).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    list.innerHTML = posts.map(function(p) {
+      var slug = encodeURIComponent(p.slug);
+      return '<div class="article-row">' +
+        '<div>' +
+          '<span class="art-cat">' + (p.category || 'Article') + '</span>' +
+          '<div class="art-name">' + p.title + '</div>' +
+        '</div>' +
+        '<span class="art-date">' + fmtDate(p.date) + '</span>' +
+        '<div class="art-actions">' +
+          '<a href="/article.html?slug=' + slug + '" class="art-action-btn" target="_blank">Lire</a>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  })
+  .catch(function() {
+    document.getElementById('articles-list').innerHTML =
+      '<div class="art-loading">Impossible de charger les articles.</div>';
+  });
+</script>
+</body>
+</html>

@@ -5,11 +5,13 @@ const BASE = 'https://upglide.fr';
 const STATIC_PAGES = [
   { loc: '/',                           priority: '1.0', changefreq: 'weekly'  },
   { loc: '/audit-rentabilite-ecommerce', priority: '0.9', changefreq: 'monthly' },
+  { loc: '/diagnostic',                 priority: '0.9', changefreq: 'monthly' },
   { loc: '/methode-marc',               priority: '0.8', changefreq: 'monthly' },
   { loc: '/guide-fuites-marge',         priority: '0.7', changefreq: 'monthly' },
   { loc: '/blog',                       priority: '0.8', changefreq: 'weekly'  },
   { loc: '/podcast',                    priority: '0.7', changefreq: 'weekly'  },
   { loc: '/ressources',                 priority: '0.6', changefreq: 'monthly' },
+  { loc: '/scorecard',                  priority: '0.7', changefreq: 'monthly' },
   { loc: '/calculateur-cout-produit',    priority: '0.7', changefreq: 'monthly' },
   { loc: '/calculateur-marge-unitaire', priority: '0.7', changefreq: 'monthly' },
   { loc: '/a-propos',                   priority: '0.5', changefreq: 'yearly'  },

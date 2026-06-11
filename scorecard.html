@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Identifiez le levier prioritaire qui empêche votre chiffre d’affaires de se transformer en profit : acquisition, conversion, retours, stock, cash, marge ou réachat."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://upglide.fr/scorecard.html" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Upglide" />
+    <meta property="og:title" content="Scorecard rentabilité e-commerce gratuite | Upglide" />
+    <meta property="og:description" content="8 questions pour identifier votre levier prioritaire, vos leviers secondaires et les zones à surveiller." />
+    <meta property="og:url" content="https://upglide.fr/scorecard.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Scorecard rentabilité e-commerce gratuite | Upglide</title>
+    <link rel="stylesheet" href="styles.css?v=13" />
+    <script src="script.js" defer></script>
+    <script src="scorecard.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <div class="shell nav-wrap">
+        <a class="brand" href="index.html" aria-label="Upglide, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>UPGLIDE</span>
+        </a>
+        <a class="nav-contact" href="index.html">Retour au site</a>
+      </div>
+    </header>
+
+    <main class="scorecard-page">
+      <div class="scorecard-shell">
+        <div class="scorecard-intro">
+          <p class="eyebrow" style="justify-content:center"><span></span> Scorecard gratuite</p>
+          <h1>Pourquoi votre chiffre d’affaires ne se transforme-t-il pas assez en profit ?</h1>
+          <p>Répondez à 8 questions pour obtenir une première carte de priorisation : un levier prioritaire, des leviers secondaires et les zones à surveiller.</p>
+        </div>
+
+        <section class="quiz-card" aria-live="polite" data-quiz>
+          <div class="quiz-progress" aria-hidden="true"><span data-progress></span></div>
+          <span class="question-count" data-count>Question 1 sur 8</span>
+          <h2 data-question></h2>
+          <div class="answer-list" data-answers></div>
+        </section>
+
+        <section class="result-card" data-result tabindex="-1" hidden>
+          <div class="result-score"><strong data-score>0</strong><span>/ 100</span></div>
+          <h2 data-result-title></h2>
+          <p data-result-copy></p>
+          <div class="priority-box">
+            <strong>Votre carte de priorisation</strong>
+            <div class="priority-main">
+              <span>Levier prioritaire</span>
+              <p data-primary-lever></p>
+            </div>
+            <div class="priority-secondary">
+              <span>Leviers secondaires</span>
+              <ul data-secondary-levers></ul>
+            </div>
+            <div class="priority-watch">
+              <span>Zones à surveiller</span>
+              <ul data-watch-levers></ul>
+            </div>
+          </div>
+          <div class="result-actions">
+            <a class="button button-primary" href="contact.html">Réserver mon Débrief Rentabilité <span>→</span></a>
+            <button class="button button-dark" type="button" data-restart>Recommencer</button>
+          </div>
+          <p class="result-note">Le Débrief Rentabilité ne remplace pas un diagnostic complet. Il sert à lire vos résultats, valider les priorités et voir si une analyse plus approfondie est pertinente.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
