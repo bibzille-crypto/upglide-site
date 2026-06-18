@@ -22,6 +22,20 @@
     <title>Blog e-commerce : rentabilité, acquisition et pilotage | Upglide</title>
     <link rel="stylesheet" href="styles.css?v=13" />
     <script src="script.js" defer></script>
+    <style>
+      /* ── Blog typography overrides ── */
+      .post-card-copy h3 { font-size: 1.5rem; line-height: 1.18; letter-spacing: -0.04em; }
+      .post-card-copy h3 a { color: inherit; text-decoration: none; }
+      .post-card-copy h3 a:hover { color: var(--accent, #5f3ee8); }
+      .post-card-copy > p:not(.post-meta) { font-size: 0.92rem; line-height: 1.6; margin: 14px 0 20px; }
+      .post-meta { font-size: 0.78rem; margin: 0 0 12px; opacity: 0.7; }
+      .post-meta span { font-weight: 700; opacity: 1; }
+      .post-link { font-size: 0.85rem; letter-spacing: 0.01em; }
+      /* Featured title: slightly tighter on mobile */
+      .featured-post-copy h3 { font-size: clamp(2rem, 3.8vw, 4rem); }
+      /* Hero aside */
+      #hero-count { font-size: 1rem; }
+    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -164,13 +178,8 @@
             </div>
           </div>
           <aside>
-            <strong>4 guides publiés</strong>
-            <ul class="diagnostic-hero-list">
-              <li>Acquisition structurée</li>
-              <li>Rentabilité du parcours client</li>
-              <li>Panier moyen</li>
-              <li>Fidélisation</li>
-            </ul>
+            <strong id="hero-count">Chargement…</strong>
+            <ul class="diagnostic-hero-list" id="hero-topics"></ul>
           </aside>
         </div>
       </section>
@@ -189,27 +198,21 @@
           <div class="blog-section-intro">
             <div>
               <p class="eyebrow"><span></span> Dernière publication</p>
-              <h2>Structurer avant de dépenser davantage.</h2>
+              <h2 id="feat-headline"></h2>
             </div>
-            <p>
-              Une campagne n’est pas encore une stratégie. Ce guide présente une méthode en six étapes
-              pour choisir la cible, le canal, l’offre, le message et les tests à mener.
-            </p>
+            <p id="feat-desc"></p>
           </div>
-          <article class="featured-post" id="acquisition">
-            <div class="post-visual post-visual-roas" aria-hidden="true">
-              <span>Stratégie</span>
-              <strong>6 étapes</strong>
+          <article class="featured-post" id="feat-article">
+            <div class="post-visual post-visual-roas" id="feat-visual" aria-hidden="true">
+              <span id="feat-cat"></span>
+              <strong id="feat-kw"></strong>
               <div class="visual-bars"><i></i><i></i><i></i><i></i></div>
             </div>
             <div class="featured-post-copy">
-              <p class="post-meta"><span>Stratégie</span> · 11 min de lecture · 11 juin 2026</p>
-              <h3>Stratégie d’acquisition e-commerce : comment structurer ses campagnes</h3>
-              <p>
-                Beaucoup d’e-commerçants ne manquent ni d’idées ni de budget pour acquérir des clients.
-                Ce qui leur manque, c’est une structure. Voici une méthode en six étapes simples.
-              </p>
-              <a class="button button-dark" href="https://upglide.fr/blog/structurer-ses-campagnes-e-commerce">
+              <p class="post-meta" id="feat-meta"></p>
+              <h3 id="feat-title"></h3>
+              <p id="feat-excerpt"></p>
+              <a class="button button-dark" id="feat-link" href="#">
                 Lire l’article <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -231,47 +234,111 @@
           </div>
           <div class="post-grid" id="post-grid"></div>
           <script>
-          var VISUALS = ['post-visual-cash','post-visual-margin','post-visual-score','post-visual-acquisition','post-visual-convert'];
-          var ICONS   = ['<div class="visual-orbit"></div>','<div class="visual-line"></div>','<div class="visual-score">5</div>','<div class="visual-orbit"></div>','<div class="visual-line"></div>'];
-          function fmtDateBlog(d){
-            if(!d) return '';
-            try{ return new Date(d+(d.length===10?'T00:00:00':'')).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }catch(e){return d;}
+          var CAT_VISUAL = {
+            'Acquisition': 'post-visual-cash',
+            'Marges': 'post-visual-margin',
+            'Conversion': 'post-visual-score',
+            'Fidelisation': 'post-visual-score',
+            'Fid\u00e9lisation': 'post-visual-score',
+            'Strat\u00e9gie': 'post-visual-roas',
+            'Strategie': 'post-visual-roas'
+          };
+          var GRID_VISUALS = ['post-visual-cash','post-visual-margin','post-visual-score','post-visual-roas','post-visual-acquisition'];
+          var GRID_ICONS   = [
+            '<div class="visual-orbit"></div>',
+            '<div class="visual-line"></div>',
+            '<div class="visual-score">5</div>',
+            '<div class="visual-bars"><i></i><i></i><i></i><i></i></div>',
+            '<div class="visual-orbit"></div>'
+          ];
+
+          function fmtDateBlog(d) {
+            if (!d) return '';
+            try { return new Date(d + (d.length === 10 ? 'T00:00:00' : '')).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'}); }
+            catch(e) { return d; }
           }
-          function renderBlogGrid(data){
-            var grid=document.getElementById('post-grid');
-            if(!grid) return;
-            try{
-              var posts=(data.posts||[]).filter(function(p){return p.published;})
-                .sort(function(a,b){return(b.date||'').localeCompare(a.date||'');});
-              if(!posts.length){grid.innerHTML='<p>Aucun article disponible.</p>';return;}
-              grid.innerHTML=posts.map(function(p,i){
-                var vis=VISUALS[i%VISUALS.length];
-                var ico=ICONS[i%ICONS.length];
-                var url='/blog/'+p.slug;
-                var cat=p.category||'';
-                var date=fmtDateBlog(p.date);
-                return '<article class="post-card">'+
-                  '<a class="post-visual '+vis+'" href="'+url+'">'+
-                    '<span>'+cat+'</span>'+
-                    '<strong>'+p.title.split(' ').slice(0,3).join(' ')+'</strong>'+
-                    ico+
-                  '</a>'+
-                  '<div class="post-card-copy">'+
-                    '<p class="post-meta"><span>'+cat+'</span>'+(p.readTime?' · '+p.readTime+' min':'')+( date?' · '+date:'')+'</p>'+
-                    '<h3><a href="'+url+'">'+p.title+'</a></h3>'+
-                    (p.excerpt?'<p>'+p.excerpt+'</p>':'')+
-                    '<a class="post-link" href="'+url+'">Lire l\'article \u2192</a>'+
-                  '</div>'+
-                '</article>';
+
+          function txt(id, val) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = val;
+          }
+
+          function renderFeatured(p, total) {
+            var url  = '/blog/' + p.slug;
+            var cat  = p.category || '';
+            var date = fmtDateBlog(p.date);
+            var vis  = CAT_VISUAL[cat] || 'post-visual-roas';
+            var kw   = p.title.split(' ').slice(0, 3).join(' ');
+            var meta = (cat ? '<span>' + cat + '</span> \u00b7 ' : '') +
+                       (p.readTime ? p.readTime + ' min \u00b7 ' : '') + date;
+
+            txt('feat-headline', p.title);
+            txt('feat-desc',     p.excerpt || '');
+            txt('feat-cat',      cat);
+            txt('feat-kw',       kw);
+            txt('feat-title',    p.title);
+            txt('feat-excerpt',  p.excerpt || '');
+
+            var featMeta = document.getElementById('feat-meta');
+            if (featMeta) featMeta.innerHTML = meta;
+
+            var featLink = document.getElementById('feat-link');
+            if (featLink) featLink.href = url;
+
+            var featVisual = document.getElementById('feat-visual');
+            if (featVisual) featVisual.className = 'post-visual ' + vis;
+
+            var heroCount = document.getElementById('hero-count');
+            if (heroCount) heroCount.textContent = total + ' article' + (total > 1 ? 's' : '') + ' publi' + (total > 1 ? '\u00e9s' : '\u00e9');
+
+            var heroTopics = document.getElementById('hero-topics');
+            if (heroTopics) {
+              var seen = [];
+              heroTopics.innerHTML = p && [cat].filter(Boolean).map(function(c){
+                return '<li>' + c + '</li>';
               }).join('');
-            }catch(e){
-              grid.innerHTML='<p>Erreur d\'affichage : '+e.message+'</p>';
             }
           }
+
+          function renderGrid(posts) {
+            var grid = document.getElementById('post-grid');
+            if (!grid) return;
+            if (!posts.length) { grid.innerHTML = '<p>Aucun article disponible.</p>'; return; }
+            grid.innerHTML = posts.map(function(p, i) {
+              var url  = '/blog/' + p.slug;
+              var cat  = p.category || '';
+              var date = fmtDateBlog(p.date);
+              var vis  = GRID_VISUALS[i % GRID_VISUALS.length];
+              var ico  = GRID_ICONS[i % GRID_ICONS.length];
+              return '<article class="post-card">' +
+                '<a class="post-visual ' + vis + '" href="' + url + '">' +
+                  '<span>' + cat + '</span>' +
+                  '<strong>' + p.title.split(' ').slice(0, 3).join(' ') + '</strong>' +
+                  ico +
+                '</a>' +
+                '<div class="post-card-copy">' +
+                  '<p class="post-meta">' + (cat ? '<span>' + cat + '</span>' : '') + (p.readTime ? ' \u00b7 ' + p.readTime + ' min' : '') + (date ? ' \u00b7 ' + date : '') + '</p>' +
+                  '<h3><a href="' + url + '">' + p.title + '</a></h3>' +
+                  (p.excerpt ? '<p>' + p.excerpt + '</p>' : '') +
+                  '<a class="post-link" href="' + url + '">Lire l\'article \u2192</a>' +
+                '</div>' +
+              '</article>';
+            }).join('');
+          }
+
           fetch('/data/blog.json')
-            .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-            .then(renderBlogGrid)
-            .catch(function(e){ var g=document.getElementById('post-grid'); if(g) g.innerHTML='<p>Impossible de charger les articles ('+e.message+').</p>'; });
+            .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+            .then(function(data) {
+              var posts = (data.posts || []).filter(function(p) { return p.published; })
+                .sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+              if (!posts.length) return;
+              renderFeatured(posts[0], posts.length);
+              renderGrid(posts);
+            })
+            .catch(function(e) {
+              var g = document.getElementById('post-grid');
+              if (g) g.innerHTML = '<p>Impossible de charger les articles (' + e.message + ').</p>';
+            });
           </script>
         </div>
       </section>
