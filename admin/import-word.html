@@ -777,6 +777,219 @@ var GH_REPO  = 'bibzille-crypto/upglide-site';
 var GH_FILE  = 'data/blog.json';
 var GH_API   = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
 
+// ─── Static HTML generator (mirrors generate-articles.js) ─────────────────
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtDate(d) {
+  if (!d) return '';
+  return new Date(d + (d.length === 10 ? 'T00:00:00' : '')).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+}
+function parseMDStatic(md) {
+  if (!md) return '';
+  function fmt(s) {
+    return s
+      .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="art-img" loading="lazy">')
+      .replace(/\[BOUTON:\s*(.+?)\]\((.+?)\)/g, '<a class="art-cta-btn" href="$2">$1</a>')
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  }
+  var html = '', inList = false, inTable = false, tableHeaderDone = false, tableHtml = '';
+  var lines = md.split('\n');
+  function closeTable() {
+    if (inTable) { tableHtml += '</tbody></table></div>'; html += tableHtml; tableHtml = ''; inTable = false; tableHeaderDone = false; }
+  }
+  for (var i = 0; i < lines.length; i++) {
+    var raw = lines[i];
+    if (/^\s*\|/.test(raw)) {
+      var isSep = /^\s*\|[\s\-:|]+\|/.test(raw) && /---/.test(raw);
+      var cells = raw.split('|').filter(function(c,j,a){return j>0&&j<a.length-1;}).map(function(c){return fmt(c.trim());});
+      if (!inTable) { if (inList) { html += '</ul>'; inList = false; } inTable = true; tableHeaderDone = false; tableHtml = '<div class="art-table-wrap"><table class="art-table"><thead><tr>'+cells.map(function(c){return'<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'; }
+      else if (!tableHeaderDone && isSep) { tableHeaderDone = true; }
+      else if (!isSep) { tableHtml += '<tr>'+cells.map(function(c){return'<td>'+c+'</td>';}).join('')+'</tr>'; }
+      continue;
+    }
+    closeTable();
+    if      (/^#{4,6} /.test(raw))  { if (inList){html+='</ul>';inList=false;} html+='<h4>'+fmt(raw.replace(/^#{4,6} /,''))+'</h4>'; }
+    else if (/^### /.test(raw))     { if (inList){html+='</ul>';inList=false;} html+='<h3>'+fmt(raw.slice(4))+'</h3>'; }
+    else if (/^## /.test(raw))      { if (inList){html+='</ul>';inList=false;} html+='<h2>'+fmt(raw.slice(3))+'</h2>'; }
+    else if (/^# /.test(raw))       { if (inList){html+='</ul>';inList=false;} html+='<h2>'+fmt(raw.slice(2))+'</h2>'; }
+    else if (/^> /.test(raw))       { if (inList){html+='</ul>';inList=false;} html+='<blockquote>'+fmt(raw.slice(2))+'</blockquote>'; }
+    else if (/^[-*] /.test(raw))    { if (!inList){html+='<ul>';inList=true;}  html+='<li>'+fmt(raw.slice(2))+'</li>'; }
+    else if (/^\d+\. /.test(raw))   { if (!inList){html+='<ol>';inList='ol';} html+='<li>'+fmt(raw.replace(/^\d+\. /,''))+'</li>'; }
+    else if (/^---/.test(raw))      { if (inList){html+=inList==='ol'?'</ol>':'</ul>';inList=false;} html+='<hr>'; }
+    else if (raw.trim()==='')       { if (inList){html+=inList==='ol'?'</ol>':'</ul>';inList=false;} }
+    else                            { if (inList){html+=inList==='ol'?'</ol>':'</ul>';inList=false;} html+='<p>'+fmt(raw)+'</p>'; }
+  }
+  closeTable();
+  if (inList) html += inList==='ol'?'</ol>':'</ul>';
+  return html;
+}
+function buildSummaryStatic(art) {
+  if (!art.summary || !art.summary.trim()) return '';
+  var lines = art.summary.split('\n').map(function(l){return l.trim();}).filter(Boolean);
+  if (!lines.length) return '';
+  return '<div class="art-retenir"><div class="art-retenir-header"><div class="art-retenir-icon">✦</div><div class="art-retenir-title">À retenir</div></div><div class="art-retenir-body"><ul class="art-retenir-list">'+lines.map(function(l){return'<li>'+l+'</li>';}).join('')+'</ul></div></div>';
+}
+function buildSidebarStatic(posts, currentSlug) {
+  return [...posts].sort(function(a,b){return(b.date||'').localeCompare(a.date||'');}).map(function(p){
+    return '<a href="/blog/'+p.slug+'" class="art-list-link'+(p.slug===currentSlug?' active':'')+'"><span class="art-list-cat">'+escHtml(p.category||'')+'</span><span class="art-list-title">'+escHtml(p.title)+'</span></a>';
+  }).join('');
+}
+function buildStaticHTML(art, posts, pageCSS) {
+  var SITE_URL = 'https://upglide.fr';
+  var url      = SITE_URL+'/blog/'+art.slug;
+  var title    = art.title+' — Upglide';
+  var desc     = art.excerpt || '';
+  var ogImg    = art.image || SITE_URL+'/hero-dashboard.png';
+  var dateStr  = fmtDate(art.date);
+  var readStr  = art.readTime ? art.readTime+' min de lecture' : '';
+  var bcTitle  = art.title.length > 40 ? art.title.slice(0,40)+'…' : art.title;
+  var coverHTML   = art.image ? '<img src="'+art.image+'" alt="'+escHtml(art.title)+'" class="art-cover-img" loading="eager">' : '';
+  var summaryHTML = buildSummaryStatic(art);
+  var bodyHTML    = parseMDStatic(art.content || '');
+  var sidebarHTML = buildSidebarStatic(posts, art.slug);
+  var jsonld = JSON.stringify({'@context':'https://schema.org','@type':'Article','headline':art.title,'description':desc,'datePublished':art.date||'','author':{'@type':'Person','name':'Caroline','url':SITE_URL+'/a-propos'},'publisher':{'@type':'Organization','name':'Upglide','url':SITE_URL+'/'},'mainEntityOfPage':{'@type':'WebPage','@id':url},'inLanguage':'fr-FR'});
+  var bcJsonld = JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':SITE_URL+'/'},{'@type':'ListItem','position':2,'name':'Blog','item':SITE_URL+'/blog'},{'@type':'ListItem','position':3,'name':art.title,'item':url}]});
+  return `<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escHtml(title)}</title>
+  <meta name="description" content="${escHtml(desc)}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="${url}">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Upglide">
+  <meta property="og:title" content="${escHtml(title)}">
+  <meta property="og:description" content="${escHtml(desc)}">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${escHtml(ogImg)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${escHtml(ogImg)}">
+  <script type="application/ld+json">${jsonld}</script>
+  <script type="application/ld+json">${bcJsonld}</script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+  <link rel="preload" href="/marc.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/marc.css"></noscript>
+  <style>${pageCSS}</style>
+</head>
+<body class="art-page">
+<div class="art-progress" id="art-progress"></div>
+<header class="site-header" data-header>
+  <div class="shell nav-wrap">
+    <a class="brand" href="/" aria-label="Upglide, accueil">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>UPGLIDE</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+      <span class="sr-only">Ouvrir le menu</span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-menu>
+      <a href="/diagnostic">Diagnostic 360</a>
+      <a href="/methode-marc">Méthode MARC</a>
+      <a href="/ressources">Ressources</a>
+      <a href="/blog">Blog</a>
+      <a href="/a-propos">À propos</a>
+      <a class="nav-contact" href="/contact">Parler de mon e-commerce</a>
+    </nav>
+  </div>
+</header>
+<div class="art-hero" id="art-hero">
+  <div class="shell">
+    <div class="art-breadcrumb">
+      <a href="/">Accueil</a><span class="art-breadcrumb-sep">›</span>
+      <a href="/blog">Blog</a><span class="art-breadcrumb-sep">›</span>
+      <span>${escHtml(bcTitle)}</span>
+    </div>
+    ${art.category ? '<span class="art-category-badge">'+escHtml(art.category)+'</span>' : ''}
+    <h1 class="art-h1">${escHtml(art.title)}</h1>
+    <div class="art-meta-bar">
+      ${dateStr ? '<span>'+dateStr+'</span>' : ''}
+      ${dateStr && readStr ? '<span class="art-meta-sep"></span>' : ''}
+      ${readStr ? '<span>'+readStr+'</span>' : ''}
+    </div>
+  </div>
+</div>
+<div class="art-page-body">
+  <aside class="art-sidebar" id="art-sidebar">
+    <div id="toc-section" style="display:none;">
+      <div class="sidebar-heading">Dans cet article</div>
+      ${readStr ? '<div class="art-read-time">'+readStr+'</div>' : ''}
+      <nav id="art-toc"></nav>
+    </div>
+    <div id="all-articles-section">
+      <div class="sidebar-heading">Tous les articles</div>
+      <nav id="sidebar-articles">${sidebarHTML}</nav>
+    </div>
+    <a href="/diagnostic" class="sidebar-cta">Réserver l'appel →</a>
+  </aside>
+  <main class="art-main">
+    <div class="art-mobile-nav" id="art-mobile-nav">
+      <a href="/blog"><svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Blog</a>
+      ${art.category ? '<span class="art-mobile-cat">'+escHtml(art.category)+'</span>' : ''}
+    </div>
+    <a href="/blog" class="art-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Retour au blog</a>
+    <div class="art-card" id="art-card">
+      <div id="art-content">
+        ${coverHTML}
+        ${summaryHTML}
+        ${bodyHTML}
+      </div>
+    </div>
+    <div class="art-share" id="art-share">
+      <span class="art-share-lbl">Partager</span>
+      <a class="art-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <button class="art-share-btn" onclick="copyLink()">
+        <svg width="13" height="13" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span id="copy-lbl">Copier le lien</span>
+      </button>
+    </div>
+    <div class="art-cta" id="art-cta">
+      <span class="art-cta-label">Accompagnement 1:1</span>
+      <h3>Votre boutique mérite<br>un regard extérieur.</h3>
+      <p>30 minutes. Gratuit. On voit si on peut travailler ensemble.</p>
+      <a href="/diagnostic" class="art-cta-link">Réserver l'appel découverte →</a>
+    </div>
+  </main>
+</div>
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>UPGLIDE</span></a>
+      <p>Le profit comme boussole.<br>La croissance comme conséquence.</p>
+    </div>
+    <div><strong>Explorer</strong><a href="/diagnostic">Diagnostic 360</a><a href="/methode-marc">Méthode MARC</a><a href="/ressources">Ressources</a><a href="/blog">Blog</a></div>
+    <div><strong>Upglide</strong><a href="/a-propos">À propos</a><a href="/contact">Contact</a><a href="/scorecard">Score rentabilité</a></div>
+    <div class="footer-cta"><strong>Par où commencer ?</strong><p>Obtenez une première lecture de votre rentabilité en 5 minutes.</p><a href="/scorecard">Faire le score →</a></div>
+  </div>
+  <div class="shell footer-bottom">
+    <span>© <span data-year></span> Upglide</span>
+    <span>Rentabilité · Cash · Pilotage</span>
+  </div>
+</footer>
+<script>
+var prog=document.getElementById('art-progress');
+if(prog)window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';},{passive:true});
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(function(){var l=document.getElementById('copy-lbl');l.textContent='Copié !';setTimeout(function(){l.textContent='Copier le lien';},2000);});}
+(function(){var content=document.getElementById('art-content'),tocNav=document.getElementById('art-toc'),tocSect=document.getElementById('toc-section');if(!content||!tocNav)return;var headings=Array.from(content.querySelectorAll('h2,h3')).filter(function(h){return!/à retenir|en résumé|résumé|conclusion rapide/i.test(h.textContent);});if(!headings.length)return;headings.forEach(function(h,i){if(!h.id)h.id='section-'+i;var a=document.createElement('a');a.href='#'+h.id;a.className='toc-link'+(h.tagName==='H3'?' toc-h3':'');a.textContent=h.textContent;a.addEventListener('click',function(e){e.preventDefault();document.getElementById(h.id).scrollIntoView({behavior:'smooth',block:'start'});});tocNav.appendChild(a);});if(tocSect)tocSect.style.display='block';var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){var link=tocNav.querySelector('a[href="#'+entry.target.id+'"]');if(link)link.classList.toggle('active',entry.isIntersecting);});},{rootMargin:'-10% 0px -80% 0px',threshold:0});headings.forEach(function(h){obs.observe(h);});})();
+(function(){var slug='${art.slug}',startTime=Date.now(),maxDepth=0,statsSent=false;window.addEventListener('scroll',function(){var h=document.body.scrollHeight-window.innerHeight;if(h>0){var d=Math.round(window.scrollY/h*100);if(d>maxDepth)maxDepth=d;}},{passive:true});function sendStats(){if(statsSent)return;statsSent=true;var time=Math.round((Date.now()-startTime)/1000);if(time<5)return;navigator.sendBeacon('/.netlify/functions/track',new URLSearchParams({slug:slug,time:time,depth:maxDepth}).toString());}window.addEventListener('pagehide',sendStats);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')sendStats();});})();
+</script>
+<script src="/marc.js" defer></script>
+<script src="/analytics.js" defer></script>
+</body>
+</html>`;
+}
+
 async function publishToGitHub() {
   var token = document.getElementById('gh-token').value.trim();
   if (!token) { setPublishStatus('⚠️ Entre ton token GitHub.', 'warn'); return; }
@@ -790,21 +1003,28 @@ async function publishToGitHub() {
   document.getElementById('btn-publish').disabled = true;
 
   try {
-    // 1. Fetch current blog.json from GitHub
-    var getRes = await fetch(GH_API, {
-      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
-    });
+    // 1. Fetch blog.json + article.html CSS in parallel
+    var [getRes, tmplRes] = await Promise.all([
+      fetch(GH_API, { headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' } }),
+      fetch('/article.html?_=' + Date.now())
+    ]);
     if (!getRes.ok) throw new Error('Impossible de lire blog.json (statut ' + getRes.status + ')');
     var ghData = await getRes.json();
-    // Decode base64 → UTF-8 correctly (atob() returns Latin-1 bytes, must re-decode)
     var binary = atob(ghData.content.replace(/\n/g, ''));
     var utf8 = decodeURIComponent(escape(binary));
     var currentContent = JSON.parse(utf8);
     var sha = ghData.sha;
 
+    // Extract page CSS from article.html
+    var pageCSS = '';
+    if (tmplRes.ok) {
+      var tmplText = await tmplRes.text();
+      var cssMatch = tmplText.match(/<style>([\s\S]*?)<\/style>/);
+      pageCSS = cssMatch ? cssMatch[1] : '';
+    }
+
     // 2. Prepend new article (most recent first)
     var posts = currentContent.posts || [];
-    // Remove existing entry with same slug if any (update case)
     posts = posts.filter(function(p) { return p.slug !== articleObj.slug; });
     posts.unshift(articleObj);
     currentContent.posts = posts;
@@ -814,23 +1034,36 @@ async function publishToGitHub() {
     var newContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentContent, null, 2))));
     var putRes = await fetch(GH_API, {
       method: 'PUT',
-      headers: {
-        'Authorization': 'token ' + token,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'article: ' + articleObj.title.slice(0, 72),
-        content: newContent,
-        sha: sha
-      })
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'article: ' + articleObj.title.slice(0, 72), content: newContent, sha: sha })
     });
     if (!putRes.ok) {
       var err = await putRes.json();
-      throw new Error(err.message || 'Erreur lors du commit');
+      throw new Error(err.message || 'Erreur lors du commit blog.json');
     }
 
-    setPublishStatus('✓ Article publié ! Netlify déploie dans ~30 secondes.', 'ok');
+    // 4. Generate & commit static HTML for the article
+    setPublishStatus('<span class="spinner"></span> Génération de la page statique…', '');
+    var staticHTML = buildStaticHTML(articleObj, posts, pageCSS);
+    var htmlPath   = 'blog/' + articleObj.slug + '.html';
+    var htmlApiUrl = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + htmlPath;
+
+    // Check if file already exists (need SHA to update)
+    var checkRes = await fetch(htmlApiUrl, { headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' } });
+    var htmlBody = { message: 'article(static): ' + articleObj.slug, content: btoa(unescape(encodeURIComponent(staticHTML))) };
+    if (checkRes.ok) { var checkData = await checkRes.json(); htmlBody.sha = checkData.sha; }
+
+    var htmlPutRes = await fetch(htmlApiUrl, {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(htmlBody)
+    });
+    if (!htmlPutRes.ok) {
+      var htmlErr = await htmlPutRes.json();
+      throw new Error('Page statique : ' + (htmlErr.message || 'Erreur commit'));
+    }
+
+    setPublishStatus('✓ Article publié et page statique générée ! En ligne dans ~15 secondes.', 'ok');
   } catch(e) {
     setPublishStatus('❌ ' + e.message, 'err');
   }
