@@ -229,47 +229,49 @@
               concrète, sans ajouter un tableau de bord de plus.
             </p>
           </div>
-          <div class="post-grid">
-            <article class="post-card" id="rentabilite">
-              <a class="post-visual post-visual-cash" href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-" aria-label="Lire l’article sur le parcours client et la rentabilité">
-                <span>Stratégie</span>
-                <strong>Parcours client</strong>
-                <div class="visual-orbit"></div>
-              </a>
-              <div class="post-card-copy">
-                <p class="post-meta"><span>Stratégie</span> · 10 min · 3 juin 2026</p>
-                <h3><a href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-">Analyser votre parcours client pour comprendre pourquoi vos marges diminuent</a></h3>
-                <p>Pourquoi les KPI lus isolément peuvent donner une image partielle ou trompeuse de la rentabilité.</p>
-                <a class="post-link" href="https://upglide.fr/blog/rentabilite-e-commerce-le-parcours-client-revele-pourquoi-vendre-plus-peut-vous-">Lire l’article →</a>
-              </div>
-            </article>
-            <article class="post-card" id="panier-moyen">
-              <a class="post-visual post-visual-margin" href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce" aria-label="Lire l’article sur le panier moyen">
-                <span>Marges</span>
-                <strong>Panier moyen</strong>
-                <div class="visual-line"></div>
-              </a>
-              <div class="post-card-copy">
-                <p class="post-meta"><span>Marges</span> · 5 min · 20 mai 2026</p>
-                <h3><a href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">Comment augmenter durablement son panier moyen sans dépenser plus en acquisition</a></h3>
-                <p>Trois leviers concrets pour augmenter ce que chaque client dépense sans acquérir davantage de trafic.</p>
-                <a class="post-link" href="https://upglide.fr/blog/augmenter-panier-moyen-ecommerce">Lire l’article →</a>
-              </div>
-            </article>
-            <article class="post-card" id="fidelisation">
-              <a class="post-visual post-visual-score" href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque" aria-label="Lire l’article sur la fidélisation e-commerce">
-                <span>Stratégie</span>
-                <strong>Fidélisation</strong>
-                <div class="visual-score">5</div>
-              </a>
-              <div class="post-card-copy">
-                <p class="post-meta"><span>Stratégie</span> · 5 min · 5 mai 2026</p>
-                <h3><a href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque">5 leviers pour transformer chaque client satisfait en ambassadeur</a></h3>
-                <p>Une expérience cohérente et mémorable pour donner envie aux clients de revenir et de recommander la marque.</p>
-                <a class="post-link" href="https://upglide.fr/blog/cinq-leviers-pour-transformer-chaque-client-satisfait-en-ambassadeur-de-marque">Lire l’article →</a>
-              </div>
-            </article>
+          <div class="post-grid" id="post-grid">
+            <p style="color:#888;font-size:.9rem">Chargement des articles…</p>
           </div>
+          <script>
+          (function(){
+            var VISUALS = [‘post-visual-cash’,’post-visual-margin’,’post-visual-score’,’post-visual-acquisition’,’post-visual-convert’];
+            var ICONS   = [‘<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’,’<div class="visual-score">5</div>’,’<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’];
+            function fmtDate(d){
+              if(!d) return ‘’;
+              return new Date(d+(d.length===10?’T00:00:00’:’’)).toLocaleDateString(‘fr-FR’,{day:’numeric’,month:’long’,year:’numeric’});
+            }
+            fetch(‘/data/blog.json?_=’+Date.now())
+              .then(function(r){return r.json();})
+              .then(function(data){
+                var posts=(data.posts||[]).filter(function(p){return p.published;})
+                  .sort(function(a,b){return(b.date||’’).localeCompare(a.date||’’);});
+                var grid=document.getElementById(‘post-grid’);
+                if(!posts.length){grid.innerHTML=’<p>Aucun article disponible.</p>’;return;}
+                grid.innerHTML=posts.map(function(p,i){
+                  var vis=VISUALS[i%VISUALS.length];
+                  var ico=ICONS[i%ICONS.length];
+                  var url=’/blog/’+p.slug;
+                  var cat=p.category||’’;
+                  var date=fmtDate(p.date);
+                  var meta=[cat,p.readTime?p.readTime+’ min’:’’,date].filter(Boolean).join(‘ · ‘);
+                  return ‘<article class="post-card">’+
+                    ‘<a class="post-visual ‘+vis+’" href="’+url+’" aria-label="Lire : ‘+p.title.replace(/"/g,’’)+’">’+
+                      ‘<span>’+cat+’</span>’+
+                      ‘<strong>’+p.title.split(‘ ‘).slice(0,3).join(‘ ‘)+’</strong>’+
+                      ico+
+                    ‘</a>’+
+                    ‘<div class="post-card-copy">’+
+                      (meta?’<p class="post-meta"><span>’+cat+’</span> · ‘+(p.readTime?p.readTime+’ min · ‘:’’)+date+’</p>’:’’)+
+                      ‘<h3><a href="’+url+’">’+p.title+’</a></h3>’+
+                      (p.excerpt?’<p>’+p.excerpt+’</p>’:’’)+
+                      ‘<a class="post-link" href="’+url+’">Lire l\’article →</a>’+
+                    ‘</div>’+
+                  ‘</article>’;
+                }).join(‘’);
+              })
+              .catch(function(){document.getElementById(‘post-grid’).innerHTML=’<p>Impossible de charger les articles.</p>’;});
+          })();
+          </script>
         </div>
       </section>
 
