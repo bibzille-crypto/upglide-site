@@ -229,48 +229,49 @@
               concrète, sans ajouter un tableau de bord de plus.
             </p>
           </div>
-          <div class="post-grid" id="post-grid">
-            <p style="color:#888;font-size:.9rem">Chargement des articles…</p>
-          </div>
+          <div class="post-grid" id="post-grid"></div>
           <script>
-          (function(){
-            var VISUALS = [‘post-visual-cash’,’post-visual-margin’,’post-visual-score’,’post-visual-acquisition’,’post-visual-convert’];
-            var ICONS   = [‘<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’,’<div class="visual-score">5</div>’,’<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’];
-            function fmtDate(d){
-              if(!d) return ‘’;
-              return new Date(d+(d.length===10?’T00:00:00’:’’)).toLocaleDateString(‘fr-FR’,{day:’numeric’,month:’long’,year:’numeric’});
+          var VISUALS = [‘post-visual-cash’,’post-visual-margin’,’post-visual-score’,’post-visual-acquisition’,’post-visual-convert’];
+          var ICONS   = [‘<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’,’<div class="visual-score">5</div>’,’<div class="visual-orbit"></div>’,’<div class="visual-line"></div>’];
+          function fmtDateBlog(d){
+            if(!d) return ‘’;
+            try{ return new Date(d+(d.length===10?’T00:00:00’:’’)).toLocaleDateString(‘fr-FR’,{day:’numeric’,month:’long’,year:’numeric’}); }catch(e){return d;}
+          }
+          function renderBlogGrid(data){
+            var grid=document.getElementById(‘post-grid’);
+            if(!grid) return;
+            try{
+              var posts=(data.posts||[]).filter(function(p){return p.published;})
+                .sort(function(a,b){return(b.date||’’).localeCompare(a.date||’’);});
+              if(!posts.length){grid.innerHTML=’<p>Aucun article disponible.</p>’;return;}
+              grid.innerHTML=posts.map(function(p,i){
+                var vis=VISUALS[i%VISUALS.length];
+                var ico=ICONS[i%ICONS.length];
+                var url=’/blog/’+p.slug;
+                var cat=p.category||’’;
+                var date=fmtDateBlog(p.date);
+                return ‘<article class="post-card">’+
+                  ‘<a class="post-visual ‘+vis+’" href="’+url+’">’+
+                    ‘<span>’+cat+’</span>’+
+                    ‘<strong>’+p.title.split(‘ ‘).slice(0,3).join(‘ ‘)+’</strong>’+
+                    ico+
+                  ‘</a>’+
+                  ‘<div class="post-card-copy">’+
+                    ‘<p class="post-meta"><span>’+cat+’</span>’+(p.readTime?’ · ‘+p.readTime+’ min’:’’)+( date?’ · ‘+date:’’)+’</p>’+
+                    ‘<h3><a href="’+url+’">’+p.title+’</a></h3>’+
+                    (p.excerpt?’<p>’+p.excerpt+’</p>’:’’)+
+                    ‘<a class="post-link" href="’+url+’">Lire l\’article \u2192</a>’+
+                  ‘</div>’+
+                ‘</article>’;
+              }).join(‘’);
+            }catch(e){
+              grid.innerHTML=’<p>Erreur d\’affichage : ‘+e.message+’</p>’;
             }
-            fetch(‘/data/blog.json?_=’+Date.now())
-              .then(function(r){return r.json();})
-              .then(function(data){
-                var posts=(data.posts||[]).filter(function(p){return p.published;})
-                  .sort(function(a,b){return(b.date||’’).localeCompare(a.date||’’);});
-                var grid=document.getElementById(‘post-grid’);
-                if(!posts.length){grid.innerHTML=’<p>Aucun article disponible.</p>’;return;}
-                grid.innerHTML=posts.map(function(p,i){
-                  var vis=VISUALS[i%VISUALS.length];
-                  var ico=ICONS[i%ICONS.length];
-                  var url=’/blog/’+p.slug;
-                  var cat=p.category||’’;
-                  var date=fmtDate(p.date);
-                  var meta=[cat,p.readTime?p.readTime+’ min’:’’,date].filter(Boolean).join(‘ · ‘);
-                  return ‘<article class="post-card">’+
-                    ‘<a class="post-visual ‘+vis+’" href="’+url+’" aria-label="Lire : ‘+p.title.replace(/"/g,’’)+’">’+
-                      ‘<span>’+cat+’</span>’+
-                      ‘<strong>’+p.title.split(‘ ‘).slice(0,3).join(‘ ‘)+’</strong>’+
-                      ico+
-                    ‘</a>’+
-                    ‘<div class="post-card-copy">’+
-                      (meta?’<p class="post-meta"><span>’+cat+’</span> · ‘+(p.readTime?p.readTime+’ min · ‘:’’)+date+’</p>’:’’)+
-                      ‘<h3><a href="’+url+’">’+p.title+’</a></h3>’+
-                      (p.excerpt?’<p>’+p.excerpt+’</p>’:’’)+
-                      ‘<a class="post-link" href="’+url+’">Lire l\’article →</a>’+
-                    ‘</div>’+
-                  ‘</article>’;
-                }).join(‘’);
-              })
-              .catch(function(){document.getElementById(‘post-grid’).innerHTML=’<p>Impossible de charger les articles.</p>’;});
-          })();
+          }
+          fetch(‘/data/blog.json’)
+            .then(function(r){ if(!r.ok) throw new Error(‘HTTP ‘+r.status); return r.json(); })
+            .then(renderBlogGrid)
+            .catch(function(e){ var g=document.getElementById(‘post-grid’); if(g) g.innerHTML=’<p>Impossible de charger les articles (‘+e.message+’).</p>’; });
           </script>
         </div>
       </section>
